@@ -32,6 +32,7 @@ test:
 	poetry run pytest leetcode/ \
 		-v --cov=leetcode --cov=leetcode_py \
 		--cov-report=term-missing \
+		--cov-report=xml \
 		--ignore=leetcode/_template \
 		--ignore=leetcode/__pycache__
 
