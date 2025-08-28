@@ -1,0 +1,35 @@
+name: security
+on:
+    push:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 4 * * *" # run once a day at 4 AM
+
+jobs:
+    trivy-scan:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+            - name: Run Trivy dependency scan
+              uses: aquasecurity/trivy-action@dc5a429b52fcf669ce959baa2c2dd26090d2a6c4 # v0.32.0
+              with:
+                  scan-type: fs
+                  format: table
+                  exit-code: "1"
+                  vuln-type: "os,library"
+
+    gitleaks:
+        name: gitleaks
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+              with:
+                  fetch-depth: 0
+
+            - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
