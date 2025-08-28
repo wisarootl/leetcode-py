@@ -1,0 +1,57 @@
+name: cd
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+    issues: write
+    pull-requests: write
+
+jobs:
+    versioning:
+        name: versioning
+        runs-on: ubuntu-latest
+        outputs:
+            new_release_version: ${{ steps.set-outputs.outputs.version }}
+            new_release_published: ${{ steps.set-outputs.outputs.published }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+              with:
+                  fetch-depth: 0
+
+            - name: Check existing release
+              id: check-release
+              run: |
+                  CURRENT_SHA=$(git rev-parse HEAD)
+                  EXISTING_TAG=$(git tag --points-at $CURRENT_SHA | grep '^v' | head -1)
+                  if [ -n "$EXISTING_TAG" ]; then
+                      echo "existing_tag=$EXISTING_TAG" >> $GITHUB_OUTPUT
+                      echo "existing_version=${EXISTING_TAG#v}" >> $GITHUB_OUTPUT
+                      echo "has_existing=true" >> $GITHUB_OUTPUT
+                  else
+                      echo "has_existing=false" >> $GITHUB_OUTPUT
+                  fi
+
+            - id: release
+              name: Release
+              if: steps.check-release.outputs.has_existing == 'false'
+              uses: cycjimmy/semantic-release-action@16ca923e6ccbb50770c415a0ccd43709a8c5f7a4 # v4.2.2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Set outputs
+              id: set-outputs
+              run: |
+                  if [ "${{ steps.check-release.outputs.has_existing }}" == "true" ]; then
+                      echo "version=${{ steps.check-release.outputs.existing_version }}" >> $GITHUB_OUTPUT
+                      echo "published=true" >> $GITHUB_OUTPUT
+                      echo "Using existing release: ${{ steps.check-release.outputs.existing_version }}"
+                  else
+                      echo "version=${{ steps.release.outputs.new_release_version }}" >> $GITHUB_OUTPUT
+                      echo "published=${{ steps.release.outputs.new_release_published }}" >> $GITHUB_OUTPUT
+                      echo "New release: ${{ steps.release.outputs.new_release_version }}"
+                  fi
