@@ -38,3 +38,17 @@ jobs:
 
             - name: Run tests
               run: make test
+
+            - name: SonarQube Scan
+              if: matrix.os == 'ubuntu-latest'
+              uses: SonarSource/sonarqube-scan-action@8c71dc039c2dd71d3821e89a2b58ecc7fee6ced9 # v5.3.0
+              env:
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+            - name: Upload coverage reports to Codecov
+              if: matrix.os == 'ubuntu-latest'
+              uses: codecov/codecov-action@fdcc8476540edceab3de004e990f80d881c6cc00 # v5.5.0
+              with:
+                  fail_ci_if_error: true
+                  token: ${{ secrets.CODECOV_TOKEN }}
+                  verbose: true
