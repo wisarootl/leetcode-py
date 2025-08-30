@@ -9,6 +9,80 @@
 
 Premium LeetCode practice environment with modern Python tooling, beautiful tree visualizations, and comprehensive testing.
 
+## 📋 Prerequisites
+
+- Python 3.9+
+- make
+- git
+- Optional: Graphviz for tree visualizations
+
+## 🛠️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/wisarootl/leetcode-py.git
+cd leetcode-py
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Generate all problems
+make gen-all-problems
+
+# Verify setup
+make test
+```
+
+## 📁 Problem Structure
+
+Each problem follows a consistent template:
+
+```
+leetcode/two_sum/
+├── README.md          # Problem description and examples
+├── solution.py        # Your implementation with TODO placeholder
+├── tests.py          # Comprehensive test cases
+├── notebook.ipynb    # Interactive playground
+└── __init__.py       # Package marker
+```
+
+## 🎯 Supported Problem Categories
+
+- **Arrays & Hashing** - Two Sum, Group Anagrams, Top K Elements
+- **Two Pointers** - Valid Palindrome, Container With Most Water
+- **Sliding Window** - Longest Substring, Minimum Window
+- **Stack** - Valid Parentheses, Daily Temperatures
+- **Binary Search** - Search Rotated Array, Find Minimum
+- **Linked Lists** - Reverse List, Merge Lists, Detect Cycle
+- **Trees** - Invert Tree, Maximum Depth, Serialize/Deserialize
+- **Tries** - Implement Trie, Word Search II
+- **Heap/Priority Queue** - Merge K Lists, Find Median
+- **Backtracking** - Combination Sum, Word Search, N-Queens
+- **Graphs** - Clone Graph, Course Schedule, Islands
+- **Advanced DP** - Climbing Stairs, Coin Change, LCS
+- **Greedy** - Jump Game, Gas Station
+- **Intervals** - Merge Intervals, Meeting Rooms
+- **Math & Geometry** - Rotate Image, Spiral Matrix
+
+Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**. This is an ongoing project - contributions are welcome!
+
+## 🎨 Visualizations
+
+### Tree Visualization
+
+![Tree Visualization Placeholder](docs/images/tree-viz.png)
+_Beautiful tree rendering with anytree and Graphviz_
+
+### Linked List Visualization
+
+![LinkedList Visualization Placeholder](docs/images/linkedlist-viz.png)
+_Clean arrow-based list visualization_
+
+### Jupyter Notebook Integration
+
+![Notebook Placeholder](docs/images/notebook-example.png)
+_Interactive multi-cell playground for each problem_
+
 ## ✨ Features
 
 - **Template-driven development** - Consistent structure for every problem
@@ -22,6 +96,9 @@ Premium LeetCode practice environment with modern Python tooling, beautiful tree
 ## 🚀 Quick Start
 
 ```bash
+# Generate all problems to start practicing
+make gen-all-problems
+
 # Run existing problems
 make p-test PROBLEM=insert_interval
 make p-test PROBLEM=invert_binary_tree
@@ -30,25 +107,42 @@ make p-test PROBLEM=invert_binary_tree
 make test
 ```
 
-**Adding new problems**:
+## 🔄 Workflow Examples
 
-- Copy problem and placeholder solution from LeetCode
-- Ask LLM to generate them
-- LLM follows workflow in `.amazonq/rules/problem-creation.md` using cookiecutter templates
-
-## 🧰 Commands
+**Practice existing problems**:
 
 ```bash
-make p-test PROBLEM=insert_interval     # Test specific problem
-make test                               # Run all tests
-make lint                               # Code quality checks
-make p-gen PROBLEM=new_prob             # Generate new problem
+# Work on a specific problem
+make p-test PROBLEM=two_sum
+# Edit leetcode/two_sum/solution.py
+# Run tests to verify
 ```
 
-**🍴 Fork Setup**:
+**Add new problems**:
 
 ```bash
-make gen-all-problems                   # Regenerate all problems from JSON templates
+# Copy problem description and solution placeholder from LeetCode
+# Then ask your LLM assistant:
+# "Create a new LeetCode problem for Valid Anagram"
+#
+# Behind the scenes, the LLM will:
+# 1. Create JSON template following .amazonq/rules/problem-creation.md
+# 2. Run `make p-gen PROBLEM=valid_anagram`
+# 3. Generate complete problem structure with tests
+# 4. You just implement the solution!
+```
+
+_The LLM follows structured rules in `.amazonq/rules/problem-creation.md` to ensure consistent, high-quality problem generation using proven templates._
+
+**Bulk operations**:
+
+```bash
+# Test all problems
+make test
+# Regenerate all from templates
+make gen-all-problems
+# Check code quality
+make lint
 ```
 
 ## 🧰 Helper Classes
@@ -62,5 +156,7 @@ make gen-all-problems                   # Regenerate all problems from JSON temp
     - Simple array ↔ list conversion
     - Perfect for debugging linked list problems
 - New helpers: Add to `leetcode_py/`
+
+This is an ongoing project - contributions are welcome!
 
 Perfect for interview preparation with professional-grade tooling and beautiful visualizations.
