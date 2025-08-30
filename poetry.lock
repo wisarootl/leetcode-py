@@ -1800,14 +1800,14 @@ test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,
 
 [[package]]
 name = "typer"
-version = "0.17.2"
+version = "0.17.3"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "typer-0.17.2-py3-none-any.whl", hash = "sha256:dcec4ac496ae08b2a679384814eb8372cca8b001b1d8871dcd914c9ef70ecb91"},
-    {file = "typer-0.17.2.tar.gz", hash = "sha256:5e68921e0264de92535baa0d2acacec6b854ea0cd96f2b730dbbb143dea4fe7f"},
+    {file = "typer-0.17.3-py3-none-any.whl", hash = "sha256:643919a79182ab7ac7581056d93c6a2b865b026adf2872c4d02c72758e6f095b"},
+    {file = "typer-0.17.3.tar.gz", hash = "sha256:0c600503d472bcf98d29914d4dcd67f80c24cc245395e2e00ba3603c9332e8ba"},
 ]
 
 [package.dependencies]
