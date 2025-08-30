@@ -14,6 +14,7 @@
 - **Tree problems**: Use `.templates/leetcode/examples/tree.json5`
 - **Basic problems**: Use `.templates/leetcode/examples/basic.json5`
 - **Don't add extra fields** - templates are complete
+- **Python naming convention**: Use snake_case for all parameter names (e.g., `new_interval` not `newInterval`)
 - **If lint fails**: Fix JSON and regenerate, don't edit generated files
 - **After any manual edits**: Always update JSON template and verify with `make p-gen FORCE=1`
 

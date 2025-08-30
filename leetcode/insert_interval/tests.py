@@ -11,7 +11,7 @@ class TestInsertInterval:
         self.solution = Solution()
 
     @pytest.mark.parametrize(
-        "intervals, newInterval, expected",
+        "intervals, new_interval, expected",
         [
             ([[1, 3], [6, 9]], [2, 5], [[1, 5], [6, 9]]),
             ([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8], [[1, 2], [3, 10], [12, 16]]),
@@ -20,8 +20,10 @@ class TestInsertInterval:
         ],
     )
     @logged_test
-    def test_insert(self, intervals: list[list[int]], newInterval: list[int], expected: list[list[int]]):
-        logger.info(f"Testing with intervals={intervals}, newInterval={newInterval}")
-        result = self.solution.insert(intervals, newInterval)
+    def test_insert(
+        self, intervals: list[list[int]], new_interval: list[int], expected: list[list[int]]
+    ):
+        logger.info(f"Testing with intervals={intervals}, new_interval={new_interval}")
+        result = self.solution.insert(intervals, new_interval)
         logger.success(f"Got result: {result}")
         assert result == expected
