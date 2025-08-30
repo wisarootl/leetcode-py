@@ -1,5 +1,7 @@
 PYTHON_VERSION = 3.13
+# QUESTION ?= reverse_linked_list_ii
 QUESTION ?= invert_binary_tree
+FORCE ?= 0
 
 sync_submodules:
 	git submodule update --init --recursive --remote
@@ -28,6 +30,8 @@ lint:
 		--install-types \
 		--non-interactive \
 		--check-untyped-defs .
+	poetry run nbqa isort . --nbqa-exclude=".templates"
+	poetry run nbqa mypy . --nbqa-exclude=".templates"
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 
 
@@ -36,13 +40,22 @@ test:
 		-v --cov=leetcode --cov=leetcode_py \
 		--cov-report=term-missing \
 		--cov-report=xml \
-		--ignore=leetcode/_template \
+		--ignore=.templates \
 		--ignore=leetcode/__pycache__
 
-test-question:
+# Test Questions
+q-test:
 	@echo "Testing question: $(QUESTION)"
 	@if [ ! -d "leetcode/$(QUESTION)" ]; then \
 		echo "Error: Question '$(QUESTION)' not found in leetcode/ directory"; \
 		exit 1; \
 	fi
 	poetry run pytest leetcode/$(QUESTION)/tests.py -v -s
+
+# Generate Question
+q-gen:
+	@echo "Generating question: $(QUESTION)"
+	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(QUESTION).json $(if $(filter 1,$(FORCE)),--force)
+
+dbg:
+	poetry run python generate_problem.py valid_parentheses.json

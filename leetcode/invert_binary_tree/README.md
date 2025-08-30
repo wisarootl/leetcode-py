@@ -3,6 +3,7 @@
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
 **Tags:** grind-75
+**LeetCode:** [Problem 226](https://leetcode.com/problems/invert-binary-tree/description/)
 
 ## Problem Description
 
@@ -35,6 +36,3 @@ Output: []
 
 - The number of nodes in the tree is in the range [0, 100].
 - -100 <= Node.val <= 100
-
-**Time Complexity:** O(?)
-**Space Complexity:** O(?)

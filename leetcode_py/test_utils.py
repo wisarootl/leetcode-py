@@ -2,13 +2,17 @@ from functools import wraps
 
 from loguru import logger
 
+# # Configure logger to disable backtrace
+# logger.remove()
+# logger.add(sys.stderr, backtrace=False)
+
 
 def logged_test(func):
     """Decorator to add consistent logging to test methods."""
 
     @wraps(func)
     def wrapper(*args, **kwargs):
-        logger.info("")
+        print("")
         try:
             result = func(*args, **kwargs)
             logger.debug("Test passed! ✨")

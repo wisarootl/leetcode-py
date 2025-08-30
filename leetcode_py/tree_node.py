@@ -1,3 +1,4 @@
+import graphviz
 from anytree import Node, RenderTree
 
 
@@ -71,6 +72,36 @@ class TreeNode:
         if not tree:
             return str(None)
         return "\n".join([f"{pre}{node.name}" for pre, _, node in RenderTree(tree)])
+
+    def _repr_html_(self) -> str:
+        dot = graphviz.Digraph()
+        dot.attr(rankdir="TB")
+
+        def add_nodes(node: "TreeNode | None", node_id: int = 0) -> int:
+            if not node:
+                return node_id
+
+            dot.node(str(node_id), str(node.val))
+            current_id = node_id
+            next_id = node_id + 1
+
+            if node.left:
+                dot.edge(str(current_id), str(next_id))
+                next_id = add_nodes(node.left, next_id) + 1
+
+            if node.right:
+                dot.edge(str(current_id), str(next_id))
+                next_id = add_nodes(node.right, next_id) + 1
+
+            return next_id - 1
+
+        add_nodes(self)
+        return dot.pipe(format="svg", encoding="utf-8")
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, TreeNode):
+            return False
+        return self.to_list() == other.to_list()
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.to_list()})"
