@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-QUESTION ?= reverse_linked_list_ii
+QUESTION ?= insert_interval
 FORCE ?= 0
 
 sync_submodules:

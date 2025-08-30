@@ -1,0 +1,68 @@
+{
+    "question_name": "insert_interval",
+    "class_name": "InsertInterval",
+    "method_name": "insert",
+    "problem_number": "57",
+    "problem_title": "Insert Interval",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "tags": ["grind-75"],
+    "problem_description": "You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.\n\nInsert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).\n\nReturn intervals after the insertion.",
+    "examples": [
+        { "input": "intervals = [[1,3],[6,9]], newInterval = [2,5]", "output": "[[1,5],[6,9]]" },
+        {
+            "input": "intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]",
+            "output": "[[1,2],[3,10],[12,16]]"
+        }
+    ],
+    "constraints": "- 0 <= intervals.length <= 10^4\n- intervals[i].length == 2\n- 0 <= starti <= endi <= 10^5\n- intervals is sorted by starti in ascending order.\n- newInterval.length == 2\n- 0 <= start <= end <= 10^5",
+    "parameters": "intervals: list[list[int]], newInterval: list[int]",
+    "return_type": "list[list[int]]",
+    "dummy_return": "[]",
+    "imports": "",
+    "test_cases": [
+        {
+            "args": [
+                [
+                    [1, 3],
+                    [6, 9]
+                ],
+                [2, 5]
+            ],
+            "expected": [
+                [1, 5],
+                [6, 9]
+            ]
+        },
+        {
+            "args": [
+                [
+                    [1, 2],
+                    [3, 5],
+                    [6, 7],
+                    [8, 10],
+                    [12, 16]
+                ],
+                [4, 8]
+            ],
+            "expected": [
+                [1, 2],
+                [3, 10],
+                [12, 16]
+            ]
+        },
+        { "args": [[], [5, 7]], "expected": [[5, 7]] },
+        { "args": [[[1, 5]], [2, 3]], "expected": [[1, 5]] }
+    ],
+    "param_names": "intervals, newInterval, expected",
+    "param_names_with_types": "intervals: list[list[int]], newInterval: list[int], expected: list[list[int]]",
+    "input_description": "intervals={intervals}, newInterval={newInterval}",
+    "input_params": "intervals, newInterval",
+    "expected_param": "expected",
+    "method_args": "intervals, newInterval",
+    "test_setup": "",
+    "test_logging": "",
+    "assertion_code": "assert result == expected",
+    "test_input_setup": "# Example test case\\nintervals = [[1,3],[6,9]]\\nnewInterval = [2,5]",
+    "expected_output_setup": "expected = [[1,5],[6,9]]"
+}
