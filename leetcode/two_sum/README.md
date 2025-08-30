@@ -2,6 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Hash Table
+**Tags:** grind-75
 
 ## Problem Description
 
@@ -45,18 +46,6 @@ Output: [0,1]
 ## Follow-up
 
 Can you come up with an algorithm that is less than O(n²) time complexity?
-
-## Solution
-
-```python
-def twoSum(nums, target):
-    seen = {}
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i
-```
 
 **Time Complexity:** O(n)
 **Space Complexity:** O(n)

@@ -1,9 +1,12 @@
 PYTHON_VERSION = 3.13
-QUESTION ?= two_sum
+QUESTION ?= invert_binary_tree
 
 sync_submodules:
 	git submodule update --init --recursive --remote
 
+# WARNING: Opinionated development setup for macOS + zsh + brew
+# This will install/update many tools: pipx, poetry, pre-commit, etc.
+# Only use if you understand what it does and accept the changes
 setup_dev: sync_submodules
 	chmod +x scripts/shared/python/poetry/setup_dev.sh
 	./scripts/shared/python/poetry/setup_dev.sh \
@@ -42,4 +45,4 @@ test-question:
 		echo "Error: Question '$(QUESTION)' not found in leetcode/ directory"; \
 		exit 1; \
 	fi
-	cd leetcode/$(QUESTION) && poetry run pytest tests.py -v -s
+	poetry run pytest leetcode/$(QUESTION)/tests.py -v -s

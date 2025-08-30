@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
+anytree = "^2.13.0"
 black = "*"
 isort = "*"
 loguru = "*"
