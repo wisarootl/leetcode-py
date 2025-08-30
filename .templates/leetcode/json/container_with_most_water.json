@@ -1,0 +1,42 @@
+{
+    "problem_name": "container_with_most_water",
+    "class_name": "ContainerWithMostWater",
+    "method_name": "max_area",
+    "problem_number": "11",
+    "problem_title": "Container With Most Water",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Greedy",
+    "tags": ["grind-75"],
+    "problem_description": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).\n\nFind two lines that together with the x-axis form a container, such that the container contains the most water.\n\nReturn the maximum amount of water a container can store.\n\nNotice that you may not slant the container.",
+    "examples": [
+        {
+            "input": "height = [1,8,6,2,5,4,8,3,7]",
+            "output": "49",
+            "explanation": "The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49."
+        },
+        { "input": "height = [1,1]", "output": "1" }
+    ],
+    "constraints": "- n == height.length\n- 2 <= n <= 10^5\n- 0 <= height[i] <= 10^4",
+    "parameters": "height: list[int]",
+    "return_type": "int",
+    "dummy_return": "0",
+    "imports": "",
+    "test_cases": [
+        { "args": [[1, 8, 6, 2, 5, 4, 8, 3, 7]], "expected": 49 },
+        { "args": [[1, 1]], "expected": 1 },
+        { "args": [[1, 2, 1]], "expected": 2 },
+        { "args": [[2, 3, 4, 5, 18, 17, 6]], "expected": 17 },
+        { "args": [[1, 2, 4, 3]], "expected": 4 }
+    ],
+    "param_names": "height, expected",
+    "param_names_with_types": "height: list[int], expected: int",
+    "input_description": "height={height}",
+    "input_params": "height",
+    "expected_param": "expected",
+    "method_args": "height",
+    "test_setup": "",
+    "test_logging": "",
+    "assertion_code": "assert result == expected",
+    "test_input_setup": "# Example test case\nheight = [1, 8, 6, 2, 5, 4, 8, 3, 7]",
+    "expected_output_setup": "expected = 49"
+}
