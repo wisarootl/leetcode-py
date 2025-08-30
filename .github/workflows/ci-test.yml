@@ -36,6 +36,9 @@ jobs:
               if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
               run: poetry install --no-interaction --no-ansi
 
+            - name: Install Graphviz
+              run: sudo apt-get update && sudo apt-get install -y graphviz
+
             - name: Run tests
               run: make test
 
