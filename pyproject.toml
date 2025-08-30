@@ -7,16 +7,24 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+typer = "^0.16.1"
+
+[tool.poetry.group.base.dependencies]
+anytree = "^2.13.0"
+loguru = "^0.7.3"
 
 [tool.poetry.group.dev.dependencies]
-anytree = "^2.13.0"
-black = "*"
-isort = "*"
-loguru = "*"
-mypy = "*"
-pytest = "*"
-pytest-cov = "*"
-ruff = "*"
+black = "^25.1.0"
+cookiecutter = "^2.6.0"
+graphviz = "^0.21"
+ipykernel = "^6.30.1"
+isort = "^6.0.1"
+mypy = "^1.17.1"
+nbqa = "^1.9.1"
+pre-commit = "^4.3.0"
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
+ruff = "^0.12.11"
 
 [build-system]
 requires = ["poetry-core"]
@@ -31,7 +39,7 @@ target-version = ['py312']
 include = '.*\.(py|ipynb)$' # All .py and .ipynb files
 extend-exclude = '''
 /(
-    leetcode/_template
+    .templates
 )/
 '''
 
@@ -43,12 +51,12 @@ force_grid_wrap = 0
 combine_as_imports = true
 use_parentheses = true
 ensure_newline_before_comments = true
-extend_skip_glob = ["leetcode/_template/*"]
+extend_skip_glob = [".templates/*"]
 
 [tool.ruff]
 line-length = 105
 target-version = 'py312'
-extend-exclude = ["leetcode/_template"]
+extend-exclude = [".templates"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
@@ -58,11 +66,11 @@ files = '**/*.py'
 warn_unused_configs = true
 ignore_missing_imports = true
 disable_error_code = ["return", "no-redef"]
-exclude = ["leetcode/_template"]
+exclude = [".templates"]
 
 [tool.pytest.ini_options]
-testpaths = ["leetcode"]
-python_files = ["tests.py"]
+testpaths = ["leetcode", "tests"]
+python_files = ["tests.py", "test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"

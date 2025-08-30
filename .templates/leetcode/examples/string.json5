@@ -1,0 +1,61 @@
+{
+  // String problem template
+  // Use this for string manipulation problems
+
+  // REQUIRED: Core identifiers
+  "problem_name": "valid_palindrome",
+  "class_name": "ValidPalindrome",
+  "method_name": "is_palindrome",
+
+  // REQUIRED: Problem metadata
+  "problem_number": "125",
+  "problem_title": "Valid Palindrome",
+  "difficulty": "Easy",
+  "topics": "Two Pointers, String",
+
+  // OPTIONAL: Problem categorization
+  "tags": ["grind-75"],
+
+  // REQUIRED: Problem description
+  "problem_description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string s, return true if it is a palindrome, or false otherwise.",
+
+  // REQUIRED: Examples
+  "examples": [
+    { "input": "s = \"A man, a plan, a canal: Panama\"", "output": "true" },
+    { "input": "s = \"race a car\"", "output": "false" },
+    { "input": "s = \" \"", "output": "true" }
+  ],
+
+  // REQUIRED: Constraints
+  "constraints": "- 1 <= s.length <= 2 * 10^5\n- s consists only of printable ASCII characters.",
+
+  // REQUIRED: Method signature
+  "parameters": "s: str",
+  "return_type": "bool",
+  "dummy_return": "False",
+
+  // REQUIRED: Imports (empty for string problems)
+  "imports": "",
+
+  // REQUIRED: Test cases
+  "test_cases": [
+    { "args": ["A man, a plan, a canal: Panama"], "expected": true },
+    { "args": ["race a car"], "expected": false },
+    { "args": [" "], "expected": true }
+  ],
+
+  // REQUIRED: Test configuration
+  "param_names": "s, expected",
+  "param_names_with_types": "s: str, expected: bool",
+  "input_description": "s=\"{s}\"",
+  "input_params": "s",
+  "expected_param": "expected",
+  "method_args": "s",
+  "test_setup": "",
+  "test_logging": "",
+  "assertion_code": "assert result == expected",
+
+  // REQUIRED: Notebook setup
+  "test_input_setup": "# Example test case\ns = \"A man, a plan, a canal: Panama\"",
+  "expected_output_setup": "expected = True"
+}

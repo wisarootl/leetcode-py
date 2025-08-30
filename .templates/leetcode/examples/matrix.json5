@@ -1,0 +1,59 @@
+{
+  // Matrix problem template
+  // Use this for 2D array/matrix problems
+
+  // REQUIRED: Core identifiers
+  "problem_name": "rotate_image",
+  "class_name": "RotateImage",
+  "method_name": "rotate",
+
+  // REQUIRED: Problem metadata
+  "problem_number": "48",
+  "problem_title": "Rotate Image",
+  "difficulty": "Medium",
+  "topics": "Array, Math, Matrix",
+
+  // OPTIONAL: Problem categorization
+  "tags": ["grind-75"],
+
+  // REQUIRED: Problem description
+  "problem_description": "You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).\n\nYou have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.",
+
+  // REQUIRED: Examples
+  "examples": [
+    { "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]", "output": "[[7,4,1],[8,5,2],[9,6,3]]" },
+    { "input": "matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]", "output": "[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]" }
+  ],
+
+  // REQUIRED: Constraints
+  "constraints": "- n == matrix.length == matrix[i].length\n- 1 <= n <= 20\n- -1000 <= matrix[i][j] <= 1000",
+
+  // REQUIRED: Method signature
+  "parameters": "matrix: list[list[int]]",
+  "return_type": "None",
+  "dummy_return": "None",
+
+  // REQUIRED: Imports (empty for matrix problems)
+  "imports": "",
+
+  // REQUIRED: Test cases (for in-place operations, test the modified matrix)
+  "test_cases": [
+    { "args": [[[1,2,3],[4,5,6],[7,8,9]]], "expected": [[7,4,1],[8,5,2],[9,6,3]] },
+    { "args": [[[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]], "expected": [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]] }
+  ],
+
+  // REQUIRED: Test configuration
+  "param_names": "matrix, expected",
+  "param_names_with_types": "matrix: list[list[int]], expected: list[list[int]]",
+  "input_description": "matrix={matrix}",
+  "input_params": "matrix",
+  "expected_param": "expected",
+  "method_args": "matrix",
+  "test_setup": "",
+  "test_logging": "",
+  "assertion_code": "assert matrix == expected",
+
+  // REQUIRED: Notebook setup
+  "test_input_setup": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]",
+  "expected_output_setup": "expected = [[7,4,1],[8,5,2],[9,6,3]]"
+}

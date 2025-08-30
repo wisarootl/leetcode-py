@@ -7,53 +7,156 @@
 [![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
 
-Premium LeetCode practice environment with modern Python tooling, beautiful tree visualizations, and comprehensive testing.
+Premium LeetCode practice repository with Python solutions, algorithm templates, data structure visualizations, and automated testing. Perfect for coding interview preparation, competitive programming, and mastering algorithms with Blind 75, Grind 75, and NeetCode 150 problems.
+
+## 📋 Prerequisites
+
+- Python 3.9+
+- make
+- git
+- Optional: Graphviz for tree visualizations
+
+## 🛠️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/wisarootl/leetcode-py.git
+cd leetcode-py
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Generate all problems
+make gen-all-problems
+
+# Verify setup
+make test
+```
+
+## 📁 Problem Structure
+
+Each problem follows a consistent template:
+
+```
+leetcode/two_sum/
+├── README.md          # Problem description and examples
+├── solution.py        # Your implementation with TODO placeholder
+├── tests.py          # Comprehensive test cases
+├── notebook.ipynb    # Interactive playground
+└── __init__.py       # Package marker
+```
+
+## 🎯 Supported Problem Categories
+
+- **Arrays & Hashing** - Two Sum, Group Anagrams, Top K Elements
+- **Two Pointers** - Valid Palindrome, Container With Most Water
+- **Sliding Window** - Longest Substring, Minimum Window
+- **Stack** - Valid Parentheses, Daily Temperatures
+- **Binary Search** - Search Rotated Array, Find Minimum
+- **Linked Lists** - Reverse List, Merge Lists, Detect Cycle
+- **Trees** - Invert Tree, Maximum Depth, Serialize/Deserialize
+- **Tries** - Implement Trie, Word Search II
+- **Heap/Priority Queue** - Merge K Lists, Find Median
+- **Backtracking** - Combination Sum, Word Search, N-Queens
+- **Graphs** - Clone Graph, Course Schedule, Islands
+- **Advanced DP** - Climbing Stairs, Coin Change, LCS
+- **Greedy** - Jump Game, Gas Station
+- **Intervals** - Merge Intervals, Meeting Rooms
+- **Math & Geometry** - Rotate Image, Spiral Matrix
+
+Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**. This is an ongoing project - contributions are welcome!
+
+## 🎨 Visualizations
+
+### Tree Visualization
+
+![Tree Visualization Placeholder](docs/images/tree-viz.png)
+_Beautiful tree rendering with anytree and Graphviz_
+
+### Linked List Visualization
+
+![LinkedList Visualization Placeholder](docs/images/linkedlist-viz.png)
+_Clean arrow-based list visualization_
+
+### Jupyter Notebook Integration
+
+![Notebook Placeholder](docs/images/notebook-example.png)
+_Interactive multi-cell playground for each problem_
 
 ## ✨ Features
 
 - **Template-driven development** - Consistent structure for every problem
-- **Beautiful tree visualizations** - Pretty-printed binary trees with anytree
-- **Rich test logging** - `@logged_test` decorator with detailed tracebacks
-- **One-command testing** - `make test-question QUESTION=problem_name`
-- **Code quality** - black, isort, ruff, mypy integration
+- **Beautiful visualizations** - TreeNode with anytree/Graphviz, ListNode with arrows
+- **Interactive notebooks** - Multi-cell playground for each problem
+- **One-command testing** - `make p-test PROBLEM=problem_name`
+- **Bulk regeneration** - `make gen-all-problems` from JSON templates
+- **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
 - **Modern Python** - PEP 585/604 syntax with full type hints
 
 ## 🚀 Quick Start
 
 ```bash
+# Generate all problems to start practicing
+make gen-all-problems
+
 # Run existing problems
-make test-question QUESTION=two_sum
-make test-question QUESTION=invert_binary_tree
+make p-test PROBLEM=insert_interval
+make p-test PROBLEM=invert_binary_tree
 
 # Run all tests
 make test
 ```
 
-**Adding new problems**: Use an LLM agent (rules in `.amazonq/rules/development-rules.md`) to automatically create new problems from copied LeetCode problem text using the template structure.
+## 🔄 Workflow Examples
 
-## 🧰 Commands
+**Practice existing problems**:
 
 ```bash
-make test-question QUESTION=two_sum  # Test specific problem
-make test                            # Run all tests
-make lint                           # Code quality checks
+# Work on a specific problem
+make p-test PROBLEM=two_sum
+# Edit leetcode/two_sum/solution.py
+# Run tests to verify
 ```
 
-## 🎨 Example Output
+**Add new problems**:
 
+```bash
+# Copy problem description and solution placeholder from LeetCode
+# Then ask your LLM assistant:
+# "Create a new LeetCode problem for Valid Anagram"
+#
+# Behind the scenes, the LLM will:
+# 1. Create JSON template following .amazonq/rules/problem-creation.md
+# 2. Run `make p-gen PROBLEM=valid_anagram`
+# 3. Generate complete problem structure with tests
+# 4. You just implement the solution!
 ```
-# TreeNode visualization
-4
-├── 2
-│   ├── 1
-│   └── 3
-└── 7
-    ├── 6
-    └── 9
 
-# Test logging
-2024-01-01 10:00:00 | SUCCESS | Got result: [4,7,2,9,6,3,1]
-2024-01-01 10:00:00 | DEBUG   | Test passed! ✨
+_The LLM follows structured rules in `.amazonq/rules/problem-creation.md` to ensure consistent, high-quality problem generation using proven templates._
+
+**Bulk operations**:
+
+```bash
+# Test all problems
+make test
+# Regenerate all from templates
+make gen-all-problems
+# Check code quality
+make lint
 ```
+
+## 🧰 Helper Classes
+
+- **TreeNode**: `from leetcode_py.tree_node import TreeNode`
+    - Beautiful tree visualization with anytree rendering
+    - Jupyter notebook support with Graphviz diagrams
+    - Easy array ↔ tree conversion for testing
+- **ListNode**: `from leetcode_py.list_node import ListNode`
+    - Clean arrow visualization (`1 -> 2 -> 3`)
+    - Simple array ↔ list conversion
+    - Perfect for debugging linked list problems
+- New helpers: Add to `leetcode_py/`
+
+This is an ongoing project - contributions are welcome!
 
 Perfect for interview preparation with professional-grade tooling and beautiful visualizations.
