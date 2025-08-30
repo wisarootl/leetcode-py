@@ -5,9 +5,9 @@ Reference templates for creating new LeetCode problems. **Copy from these exampl
 ## Usage
 
 1. **Choose the right template** based on problem type
-2. **Copy the entire structure** to `.templates/leetcode/json/{question_name}.json`
+2. **Copy the entire structure** to `.templates/leetcode/json/{problem_name}.json`
 3. **Update all fields** with your problem's data
-4. **Generate**: `make q-gen QUESTION=your_question`
+4. **Generate**: `make p-gen PROBLEM=your_problem`
 
 ## Templates
 
@@ -45,7 +45,7 @@ Reference templates for creating new LeetCode problems. **Copy from these exampl
 
 ### Required Core Fields
 
-- `question_name`, `class_name`, `method_name`
+- `problem_name`, `class_name`, `method_name`
 - `problem_number`, `problem_title`, `difficulty`, `topics`
 - `problem_description`, `examples`, `constraints`
 - `parameters`, `return_type`, `dummy_return`
@@ -68,4 +68,4 @@ Reference templates for creating new LeetCode problems. **Copy from these exampl
 1. **Copy structure exactly** - all fields are required
 2. **Use modern Python syntax**: `list[int]`, `TreeNode | None`
 3. **Match existing patterns** - see current JSON files for reference
-4. **Test thoroughly** - run `make lint` and `make q-test` after generation
+4. **Test thoroughly** - run `make lint` and `make p-test` after generation

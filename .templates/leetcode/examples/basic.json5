@@ -3,7 +3,7 @@
   // Copy this structure when creating new basic problems
 
   // REQUIRED: Core identifiers
-  "question_name": "two_sum",
+  "problem_name": "two_sum",
   "class_name": "TwoSum",
   "method_name": "two_sum",
 

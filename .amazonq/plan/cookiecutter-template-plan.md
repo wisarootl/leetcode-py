@@ -2,23 +2,23 @@
 
 ## TASK PURPOSE & CRITICAL RULES
 
-**PURPOSE:** Update the cookiecutter template to generate files that exactly match the reference structure in `.templates/leetcode/.example/{{cookiecutter.question_name}}/`
+**PURPOSE:** Update the cookiecutter template to generate files that exactly match the reference structure in `.templates/leetcode/.example/{{cookiecutter.problem_name}}/`
 
 **REFERENCE DIRECTORIES (NEVER MODIFY - THESE ARE EXAMPLES):**
 
-- `.templates/leetcode/.example/{{cookiecutter.question_name}}/` - Shows what the template SHOULD generate
+- `.templates/leetcode/.example/{{cookiecutter.problem_name}}/` - Shows what the template SHOULD generate
 - `leetcode/.example/` - Generated file examples for comparison
 
 **ACTUAL TEMPLATE DIRECTORY (MODIFY THIS):**
 
-- `.templates/leetcode/{{cookiecutter.question_name}}/` - The cookiecutter template files to update
+- `.templates/leetcode/{{cookiecutter.problem_name}}/` - The cookiecutter template files to update
 
 **WORKFLOW:**
 
-1. Look at `.templates/leetcode/.example/{{cookiecutter.question_name}}/` to see target structure
-2. Modify `.templates/leetcode/{{cookiecutter.question_name}}/` to match the reference
-3. Generate with `make q-gen`
-4. Compare generated files vs reference with `make q-validate`
+1. Look at `.templates/leetcode/.example/{{cookiecutter.problem_name}}/` to see target structure
+2. Modify `.templates/leetcode/{{cookiecutter.problem_name}}/` to match the reference
+3. Generate with `make p-gen`
+4. Compare generated files vs reference with `make p-validate`
 
 **ERROR PREVENTION:** The template directory does NOT have `.example` in the path!
 
@@ -38,7 +38,7 @@
 
 - **Tool**: `.amazonq/plan/compare_template_files.py` (already exists - no need to implement)
 - **Usage**:
-    - `poetry run python .amazonq/plan/compare_template_files.py generated --question=QUESTION_NAME` - Compare generated files vs reference
+    - `poetry run python .amazonq/plan/compare_template_files.py generated --problem=PROBLEM_NAME` - Compare generated files vs reference
 - **Analysis**: Line-by-line diff of all file types
 - **Document**: Exact differences and required changes
 - **Verify**: Template variables handle all variations
@@ -48,27 +48,27 @@
 #### Phase 1: Add `__init__.py`
 
 - **Add**: Empty `__init__.py` file to template
-- **Validate**: `make q-gen` → `make q-validate` → `make lint`
+- **Validate**: `make p-gen` → `make p-validate` → `make lint`
 
 #### Phase 2: Fix `solution.py`
 
 - **Update**: Modern syntax (`TreeNode | None`), clean template logic
-- **Validate**: `make q-gen` → `make q-validate` → `make lint`
+- **Validate**: `make p-gen` → `make p-validate` → `make lint`
 
 #### Phase 3: Fix `tests.py`
 
 - **Update**: Relative imports (`from .solution`), clean structure
-- **Validate**: `make q-gen` → `make q-validate` → `make lint`
+- **Validate**: `make p-gen` → `make p-validate` → `make lint`
 
 #### Phase 4: Fix `README.md`
 
 - **Update**: Clean formatting, proper markdown
-- **Validate**: `make q-gen` → `make q-validate` → `make lint`
+- **Validate**: `make p-gen` → `make p-validate` → `make lint`
 
 #### Phase 5: Fix `playground.ipynb`
 
 - **Update**: Clean cells without execution state
-- **Validate**: `make q-gen` → `make q-validate` → `make lint`
+- **Validate**: `make p-gen` → `make p-validate` → `make lint`
 
 **Benefits**: Isolated debugging, safer progression, easier rollback
 
@@ -115,9 +115,9 @@
 ### 5. Template Generation Logic
 
 - **File**: `.templates/leetcode/gen.py` (already handles variable mapping)
-- **Integration**: Works with `make q-gen QUESTION=name` (verified in Makefile)
+- **Integration**: Works with `make p-gen PROBLEM=name` (verified in Makefile)
 - **Update**: Handle new `__init__.py` file
-- **Process**: JSON → `gen.py` → cookiecutter → `leetcode/$(QUESTION)/`
+- **Process**: JSON → `gen.py` → cookiecutter → `leetcode/$(PROBLEM)/`
 
 ### 6. Automated Validation System
 
@@ -125,18 +125,18 @@
 - **Usage**:
     ```bash
     # Validate current template generates correct files
-    poetry run python .amazonq/plan/compare_template_files.py generated --question=invert_binary_tree
+    poetry run python .amazonq/plan/compare_template_files.py generated --problem=invert_binary_tree
     ```
-- **Makefile**: `make q-validate QUESTION=name` (implemented)
+- **Makefile**: `make p-validate PROBLEM=name` (implemented)
 - **Test**: Template regression testing
-- **Ensure**: `make q-gen` + `make lint` + `make q-test` all pass
+- **Ensure**: `make p-gen` + `make lint` + `make p-test` all pass
 
 ### 7. Testing & Validation
 
 - **Test**: Template generation with existing JSON files
 - **Verify**: Generated files match `leetcode/.example/` structure exactly
 - **Compare**: Automated diff against reference files
-- **Ensure**: `make q-gen` works seamlessly
+- **Ensure**: `make p-gen` works seamlessly
 - **Test**: Recreation process from `.prompt/` files
 - **Validate**: Multi-problem type generation
 
@@ -144,7 +144,7 @@
 
 ```json
 {
-  "question_name": "snake_case_name",
+  "problem_name": "snake_case_name",
   "class_name": "PascalCaseName",
   "method_name": "snake_case_method",
   "problem_number": "226",
@@ -181,16 +181,16 @@
 ### Automated Validation
 
 8. ✅ Automated diff shows no differences vs `leetcode/.example/`
-9. ✅ `make q-validate` passes for all problem types
+9. ✅ `make p-validate` passes for all problem types
 10. ✅ Recreation from `.prompt/` works flawlessly
 11. ✅ All linting passes (`make lint`)
-12. ✅ Tests run successfully (`make q-test`)
+12. ✅ Tests run successfully (`make p-test`)
 
 ## Files to Modify
 
 ### Template Files
 
-1. `.templates/leetcode/{{cookiecutter.question_name}}/`
+1. `.templates/leetcode/{{cookiecutter.problem_name}}/`
     - **Add**: `__init__.py` (empty file)
     - **Update**: `solution.py` (modern syntax, imports)
     - **Update**: `tests.py` (match `leetcode/.example/` format)
@@ -212,7 +212,7 @@
 ### Validation Tools
 
 4. **Reusable**: `.amazonq/plan/compare_template_files.py` (handles both template and generated comparisons)
-5. **New**: Makefile target `make q-validate`
+5. **New**: Makefile target `make p-validate`
 
 ## Risk Mitigation
 

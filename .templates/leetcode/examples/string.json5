@@ -3,7 +3,7 @@
   // Use this for string manipulation problems
 
   // REQUIRED: Core identifiers
-  "question_name": "valid_palindrome",
+  "problem_name": "valid_palindrome",
   "class_name": "ValidPalindrome",
   "method_name": "is_palindrome",
 

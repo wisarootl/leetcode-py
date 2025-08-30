@@ -1,5 +1,5 @@
 {
-    "question_name": "invert_binary_tree",
+    "problem_name": "invert_binary_tree",
     "class_name": "InvertBinaryTree",
     "method_name": "invert_tree",
     "problem_number": "226",

@@ -3,7 +3,7 @@
 **Difficulty:** {{cookiecutter.difficulty}}
 **Topics:** {{cookiecutter.topics}}
 **Tags:** {% for _, tags in cookiecutter._tags | dictsort %}{{ tags | join(', ') }}{% endfor %}
-**LeetCode:** [Problem {{cookiecutter.problem_number}}](https://leetcode.com/problems/{{cookiecutter.question_name.replace('_', "-")}}/description/)
+**LeetCode:** [Problem {{cookiecutter.problem_number}}](https://leetcode.com/problems/{{cookiecutter.problem_name.replace('_', "-")}}/description/)
 
 ## Problem Description
 

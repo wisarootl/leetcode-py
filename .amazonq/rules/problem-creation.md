@@ -1,12 +1,12 @@
-# Question Creation Guide
+# Problem Creation Guide
 
 ## Quick Steps
 
-1. Create JSON: `.templates/leetcode/json/{question_name}.json`
-2. Update Makefile: `QUESTION ?= your_new_question`
-3. Generate: `make q-gen`
+1. Create JSON: `.templates/leetcode/json/{problem_name}.json`
+2. Update Makefile: `PROBLEM ?= your_new_problem`
+3. Generate: `make p-gen`
 4. Verify: `make lint`
-5. **If you edit generated files**: Update JSON template, then `make q-gen FORCE=1` to ensure reproducibility
+5. **If you edit generated files**: Update JSON template, then `make p-gen FORCE=1` to ensure reproducibility
 
 ## JSON Template Rules
 
@@ -15,7 +15,7 @@
 - **Basic problems**: Use `.templates/leetcode/examples/basic.json5`
 - **Don't add extra fields** - templates are complete
 - **If lint fails**: Fix JSON and regenerate, don't edit generated files
-- **After any manual edits**: Always update JSON template and verify with `make q-gen FORCE=1`
+- **After any manual edits**: Always update JSON template and verify with `make p-gen FORCE=1`
 
 ## Tags (Optional)
 

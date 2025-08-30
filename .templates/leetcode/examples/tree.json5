@@ -3,7 +3,7 @@
   // Use this for problems involving TreeNode structures
 
   // REQUIRED: Core identifiers
-  "question_name": "invert_binary_tree",
+  "problem_name": "invert_binary_tree",
   "class_name": "InvertBinaryTree",
   "method_name": "invert_tree",
 

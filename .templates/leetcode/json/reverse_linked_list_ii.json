@@ -20,7 +20,7 @@
     "problem_description": "Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.",
     "problem_number": "92",
     "problem_title": "Reverse Linked List II",
-    "question_name": "reverse_linked_list_ii",
+    "problem_name": "reverse_linked_list_ii",
     "return_type": "ListNode | None",
     "dummy_return": "None",
     "test_cases": [

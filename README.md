@@ -14,8 +14,8 @@ Premium LeetCode practice environment with modern Python tooling, beautiful tree
 - **Template-driven development** - Consistent structure for every problem
 - **Beautiful visualizations** - TreeNode with anytree/Graphviz, ListNode with arrows
 - **Interactive notebooks** - Multi-cell playground for each problem
-- **One-command testing** - `make q-test QUESTION=problem_name`
-- **Bulk regeneration** - `make gen-all-questions` from JSON templates
+- **One-command testing** - `make p-test PROBLEM=problem_name`
+- **Bulk regeneration** - `make gen-all-problems` from JSON templates
 - **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
 - **Modern Python** - PEP 585/604 syntax with full type hints
 
@@ -23,8 +23,8 @@ Premium LeetCode practice environment with modern Python tooling, beautiful tree
 
 ```bash
 # Run existing problems
-make q-test QUESTION=insert_interval
-make q-test QUESTION=invert_binary_tree
+make p-test PROBLEM=insert_interval
+make p-test PROBLEM=invert_binary_tree
 
 # Run all tests
 make test
@@ -32,23 +32,23 @@ make test
 
 **Adding new problems**:
 
-- Copy question and placeholder solution from LeetCode
+- Copy problem and placeholder solution from LeetCode
 - Ask LLM to generate them
-- LLM follows workflow in `.amazonq/rules/question-creation.md` using cookiecutter templates
+- LLM follows workflow in `.amazonq/rules/problem-creation.md` using cookiecutter templates
 
 ## 🧰 Commands
 
 ```bash
-make q-test QUESTION=insert_interval    # Test specific problem
+make p-test PROBLEM=insert_interval     # Test specific problem
 make test                               # Run all tests
 make lint                               # Code quality checks
-make q-gen QUESTION=new_prob            # Generate new problem
+make p-gen PROBLEM=new_prob             # Generate new problem
 ```
 
 **🍴 Fork Setup**:
 
 ```bash
-make gen-all-questions                  # Regenerate all problems from JSON templates
+make gen-all-problems                   # Regenerate all problems from JSON templates
 ```
 
 ## 🧰 Helper Classes

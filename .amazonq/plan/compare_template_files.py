@@ -48,7 +48,7 @@ def compare_files(file1: Path, file2: Path, label1: str, label2: str) -> bool:
 
 def main(
     mode: str = typer.Argument(help="Compare template files or generated files (template|generated)"),
-    question: str = typer.Option("invert_binary_tree", help="Question name for comparison"),
+    problem: str = typer.Option("invert_binary_tree", help="Problem name for comparison"),
 ):
     """Compare files for template validation."""
     if mode not in ["template", "generated"]:
@@ -61,21 +61,21 @@ def main(
 
     if mode == "template":
         # Compare reference vs template source
-        dir1 = base_dir / "leetcode" / ".example" / question
-        dir2 = base_dir / ".templates" / "leetcode" / ".example" / "{{cookiecutter.question_name}}"
+        dir1 = base_dir / "leetcode" / ".example" / problem
+        dir2 = base_dir / ".templates" / "leetcode" / ".example" / "{{cookiecutter.problem_name}}"
         label1, label2 = "Reference", "Template"
         print("TEMPLATE SOURCE ANALYSIS")
 
     elif mode == "generated":
         # Compare reference vs currently generated
-        dir1 = base_dir / "leetcode" / ".example" / question
-        dir2 = base_dir / "leetcode" / question
+        dir1 = base_dir / "leetcode" / ".example" / problem
+        dir2 = base_dir / "leetcode" / problem
         label1, label2 = "Reference", "Generated"
         print("GENERATED FILES VALIDATION")
 
         if not dir2.exists():
             print(f"\n❌ ERROR: Generated directory does not exist: {dir2}")
-            print(f"Run: make q-gen QUESTION={question}")
+            print(f"Run: make p-gen PROBLEM={problem}")
             return
 
     print(f"{label1}: {dir1}")

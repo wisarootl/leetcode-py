@@ -3,7 +3,7 @@
   // Use this for 2D array/matrix problems
 
   // REQUIRED: Core identifiers
-  "question_name": "rotate_image",
+  "problem_name": "rotate_image",
   "class_name": "RotateImage",
   "method_name": "rotate",
 

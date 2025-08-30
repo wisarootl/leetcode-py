@@ -3,7 +3,7 @@
   // Use this for problems involving ListNode structures
 
   // REQUIRED: Core identifiers
-  "question_name": "reverse_linked_list_ii",
+  "problem_name": "reverse_linked_list_ii",
   "class_name": "ReverseLinkedListII",
   "method_name": "reverse_between",
 

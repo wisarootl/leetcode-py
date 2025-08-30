@@ -81,18 +81,18 @@ def convert_arrays_to_nested(data: dict) -> dict:
     return extra_context
 
 
-def check_overwrite_permission(question_name: str, force: bool) -> None:
+def check_overwrite_permission(problem_name: str, force: bool) -> None:
 
     if force:
         return
 
     output_dir = Path(__file__).parent.parent.parent / "leetcode"
-    problem_dir = output_dir / question_name
+    problem_dir = output_dir / problem_name
 
     if not problem_dir.exists():
         return
 
-    typer.echo(f"⚠️  Warning: Question '{question_name}' already exists in leetcode/", err=True)
+    typer.echo(f"⚠️  Warning: Problem '{problem_name}' already exists in leetcode/", err=True)
     typer.echo("This will overwrite existing files. Use --force to skip this check.", err=True)
 
     if sys.stdin.isatty():  # Interactive terminal
@@ -129,8 +129,8 @@ def generate_problem(json_file: str, force: bool = False) -> None:
     extra_context = convert_arrays_to_nested(data)
 
     # Check if problem already exists
-    question_name = extra_context.get("question_name", "unknown")
-    check_overwrite_permission(question_name, force)
+    problem_name = extra_context.get("problem_name", "unknown")
+    check_overwrite_permission(problem_name, force)
 
     # Generate project using cookiecutter
     template_dir = Path(__file__).parent
@@ -144,7 +144,7 @@ def generate_problem(json_file: str, force: bool = False) -> None:
         output_dir=str(output_dir),
     )
 
-    typer.echo(f"✅ Generated problem: {question_name}")
+    typer.echo(f"✅ Generated problem: {problem_name}")
 
 
 if __name__ == "__main__":
