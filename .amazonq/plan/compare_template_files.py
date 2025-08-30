@@ -9,18 +9,18 @@ import typer
 
 def compare_files(file1: Path, file2: Path, label1: str, label2: str) -> bool:
     """Compare two files and show differences. Returns True if identical."""
-    print(f"\n{'='*60}")
-    print(f"COMPARING: {file1.name}")
-    print(f"{label1}: {file1}")
-    print(f"{label2}: {file2}")
-    print(f"{'='*60}")
+    typer.echo(f"\n{'='*60}")
+    typer.echo(f"COMPARING: {file1.name}")
+    typer.echo(f"{label1}: {file1}")
+    typer.echo(f"{label2}: {file2}")
+    typer.echo(f"{'='*60}")
 
     if not file1.exists():
-        print(f"❌ MISSING: {file1} does not exist")
+        typer.echo(f"❌ MISSING: {file1} does not exist")
         return False
 
     if not file2.exists():
-        print(f"❌ MISSING: {file2} does not exist")
+        typer.echo(f"❌ MISSING: {file2} does not exist")
         return False
 
     content1 = file1.read_text().splitlines(keepends=True)
@@ -37,12 +37,12 @@ def compare_files(file1: Path, file2: Path, label1: str, label2: str) -> bool:
     )
 
     if not diff:
-        print("✅ FILES IDENTICAL")
+        typer.echo("✅ FILES IDENTICAL")
         return True
     else:
-        print("❌ DIFFERENCES FOUND:")
+        typer.echo("❌ DIFFERENCES FOUND:")
         for line in diff:
-            print(line)
+            typer.echo(line)
         return False
 
 
@@ -52,7 +52,7 @@ def main(
 ):
     """Compare files for template validation."""
     if mode not in ["template", "generated"]:
-        print(f"❌ ERROR: Invalid mode '{mode}'. Use 'template' or 'generated'")
+        typer.echo(f"❌ ERROR: Invalid mode '{mode}'. Use 'template' or 'generated'")
         return
 
     base_dir = Path(__file__).parent.parent.parent
@@ -64,22 +64,22 @@ def main(
         dir1 = base_dir / "leetcode" / ".example" / problem
         dir2 = base_dir / ".templates" / "leetcode" / ".example" / "{{cookiecutter.problem_name}}"
         label1, label2 = "Reference", "Template"
-        print("TEMPLATE SOURCE ANALYSIS")
+        typer.echo("TEMPLATE SOURCE ANALYSIS")
 
     elif mode == "generated":
         # Compare reference vs currently generated
         dir1 = base_dir / "leetcode" / ".example" / problem
         dir2 = base_dir / "leetcode" / problem
         label1, label2 = "Reference", "Generated"
-        print("GENERATED FILES VALIDATION")
+        typer.echo("GENERATED FILES VALIDATION")
 
         if not dir2.exists():
-            print(f"\n❌ ERROR: Generated directory does not exist: {dir2}")
-            print(f"Run: make p-gen PROBLEM={problem}")
+            typer.echo(f"\n❌ ERROR: Generated directory does not exist: {dir2}")
+            typer.echo(f"Run: make p-gen PROBLEM={problem}")
             return
 
-    print(f"{label1}: {dir1}")
-    print(f"{label2}: {dir2}")
+    typer.echo(f"{label1}: {dir1}")
+    typer.echo(f"{label2}: {dir2}")
 
     identical_count = 0
     for filename in files_to_compare:
@@ -88,10 +88,10 @@ def main(
         if compare_files(file1, file2, label1, label2):
             identical_count += 1
 
-    print(f"\n{'='*60}")
-    print(f"SUMMARY: {identical_count}/{len(files_to_compare)} files identical")
-    print("- ✅ = Files identical")
-    print("- ❌ = Differences found or missing files")
+    typer.echo(f"\n{'='*60}")
+    typer.echo(f"SUMMARY: {identical_count}/{len(files_to_compare)} files identical")
+    typer.echo("- ✅ = Files identical")
+    typer.echo("- ❌ = Differences found or missing files")
 
 
 if __name__ == "__main__":
