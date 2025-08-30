@@ -24,14 +24,18 @@ lint:
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	poetry run black .
 	poetry run isort .
-	poetry run ruff check .
+	poetry run nbqa ruff . --nbqa-exclude=".templates" --ignore=F401,F821
+	poetry run ruff check . --exclude="**/*.ipynb"
 	poetry run mypy \
 		--explicit-package-bases \
 		--install-types \
 		--non-interactive \
 		--check-untyped-defs .
 	poetry run nbqa isort . --nbqa-exclude=".templates"
-	poetry run nbqa mypy . --nbqa-exclude=".templates"
+	poetry run nbqa mypy . \
+		--nbqa-exclude=".templates" \
+		--ignore-missing-imports \
+		--disable-error-code=name-defined
 
 
 test:
@@ -55,6 +59,19 @@ q-test:
 q-gen:
 	@echo "Generating question: $(QUESTION)"
 	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(QUESTION).json $(if $(filter 1,$(FORCE)),--force)
+
+# Generate All Questions - useful for people who fork this repo
+gen-all-questions:
+	@echo "This will DELETE all existing questions and regenerate from JSON templates."
+	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] || exit 1
+	@echo "Deleting existing questions..."
+	@rm -rf leetcode/*/
+	@echo "Generating all questions..."
+	@for json_file in .templates/leetcode/json/*.json; do \
+		question=$$(basename "$$json_file" .json); \
+		echo "Generating: $$question"; \
+		poetry run python .templates/leetcode/gen.py "$$json_file" $(if $(filter 1,$(FORCE)),--force); \
+	done
 
 # Validate Question - INTERNAL USE ONLY: For cookiecutter template creation/validation
 # Do not use during normal problem solving - only for template development

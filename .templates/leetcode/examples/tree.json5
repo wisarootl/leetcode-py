@@ -3,18 +3,18 @@
   // Use this for problems involving TreeNode structures
 
   // REQUIRED: Core identifiers
-  "question_name": "invert_binary_tree",    // Snake case from problem title
-  "class_name": "InvertBinaryTree",         // PascalCase version
-  "method_name": "invert_tree",             // Snake case method name (often different from title)
+  "question_name": "invert_binary_tree",
+  "class_name": "InvertBinaryTree",
+  "method_name": "invert_tree",
 
   // REQUIRED: Problem metadata
-  "problem_number": "226",                  // String number from LeetCode URL
-  "problem_title": "Invert Binary Tree",   // Exact title from LeetCode
-  "difficulty": "Easy",                     // Easy|Medium|Hard
-  "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",  // From LeetCode tags
+  "problem_number": "226",
+  "problem_title": "Invert Binary Tree",
+  "difficulty": "Easy",
+  "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
 
   // OPTIONAL: Problem categorization
-  "tags": ["grind-75"],                     // Popular algorithm lists
+  "tags": ["grind-75"],
 
   // REQUIRED: Problem description
   "problem_description": "Given the root of a binary tree, invert the tree, and return its root.",
@@ -44,14 +44,12 @@
     { "args": [[]], "expected": [] }
   ],
 
-  // REQUIRED: Test parameters (use expected_list for tree problems to match reference)
+  // REQUIRED: Test parameters (use expected_list for tree problems)
   "param_names": "root_list, expected_list",
   "param_names_with_types": "root_list: list[int | None], expected_list: list[int | None]",
-
-  // REQUIRED: Test configuration for tree problems
   "input_description": "root_list={root_list}",
-  "input_params": "root",                   // Actual TreeNode object passed to method
-  "expected_param": "expected",             // TreeNode object for assertion
+  "input_params": "root",
+  "expected_param": "expected",
   "method_args": "root",
 
   // REQUIRED: Tree-specific test setup (converts arrays to TreeNode objects)

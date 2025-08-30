@@ -2,59 +2,57 @@
   // Basic problem template for array/string/number problems
   // Copy this structure when creating new basic problems
 
-  // REQUIRED: Core identifiers (snake_case for question_name, PascalCase for class_name)
-  "question_name": "two_sum",           // Snake case from problem title
-  "class_name": "TwoSum",               // PascalCase version
-  "method_name": "two_sum",             // Snake case method name
+  // REQUIRED: Core identifiers
+  "question_name": "two_sum",
+  "class_name": "TwoSum",
+  "method_name": "two_sum",
 
-  // REQUIRED: Problem metadata (copy directly from LeetCode)
-  "problem_number": "1",                // String number from URL
-  "problem_title": "Two Sum",           // Exact title from LeetCode
-  "difficulty": "Easy",                 // Easy|Medium|Hard
-  "topics": "Array, Hash Table",        // Comma-separated from LeetCode tags
+  // REQUIRED: Problem metadata
+  "problem_number": "1",
+  "problem_title": "Two Sum",
+  "difficulty": "Easy",
+  "topics": "Array, Hash Table",
 
-  // OPTIONAL: Problem categorization tags
-  "tags": ["grind-75"],                 // Popular lists: grind-75, blind-75, neetcode-150, top-interview
+  // OPTIONAL: Problem categorization
+  "tags": ["grind-75"],
 
-  // REQUIRED: Problem description (copy full description from LeetCode)
+  // REQUIRED: Problem description
   "problem_description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
 
-  // REQUIRED: Examples (copy from LeetCode, keep input/output as strings)
+  // REQUIRED: Examples
   "examples": [
     { "input": "nums = [2,7,11,15], target = 9", "output": "[0,1]" },
     { "input": "nums = [3,2,4], target = 6", "output": "[1,2]" },
     { "input": "nums = [3,3], target = 6", "output": "[0,1]" }
   ],
 
-  // REQUIRED: Constraints (copy exactly from LeetCode with \n for line breaks)
+  // REQUIRED: Constraints
   "constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
 
-  // REQUIRED: Method signature components
-  "parameters": "nums: list[int], target: int",    // Modern Python type hints
-  "return_type": "list[int]",                      // Return type with modern syntax
-  "dummy_return": "[]",                            // Default return for TODO implementation
+  // REQUIRED: Method signature
+  "parameters": "nums: list[int], target: int",
+  "return_type": "list[int]",
+  "dummy_return": "[]",
 
-  // REQUIRED: Import statements (empty for basic problems, specify for TreeNode/ListNode)
+  // REQUIRED: Imports (empty for basic problems)
   "imports": "",
 
-  // REQUIRED: Test configuration
+  // REQUIRED: Test cases
   "test_cases": [
     { "args": [[2, 7, 11, 15], 9], "expected": [0, 1] },
     { "args": [[3, 2, 4], 6], "expected": [1, 2] },
     { "args": [[3, 3], 6], "expected": [0, 1] }
   ],
 
-  // REQUIRED: Test method parameters (use expected, not expected_list for basic problems)
+  // REQUIRED: Test configuration
   "param_names": "nums, target, expected",
   "param_names_with_types": "nums: list[int], target: int, expected: list[int]",
-
-  // REQUIRED: Test setup and logging
   "input_description": "nums={nums}, target={target}",
   "input_params": "nums, target",
   "expected_param": "expected",
   "method_args": "nums, target",
-  "test_setup": "",                                // Empty for basic problems
-  "test_logging": "",                              // Empty for default logging
+  "test_setup": "",
+  "test_logging": "",
   "assertion_code": "assert result == expected",
 
   // REQUIRED: Notebook setup

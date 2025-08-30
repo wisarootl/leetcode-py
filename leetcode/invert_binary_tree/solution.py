@@ -5,9 +5,5 @@ class Solution:
     # Time: O(?)
     # Space: O(?)
     def invert_tree(self, root: TreeNode | None) -> TreeNode | None:
-        if not root:
-            return None
-        root.left, root.right = root.right, root.left
-        self.invert_tree(root.left)
-        self.invert_tree(root.right)
-        return root
+        # TODO: Implement solution
+        return None

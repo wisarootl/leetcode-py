@@ -1,65 +1,61 @@
 {
-  // String problem template for string manipulation problems
-  // Use this for problems that primarily work with strings
+  // String problem template
+  // Use this for string manipulation problems
 
   // REQUIRED: Core identifiers
-  "question_name": "valid_parentheses",        // Snake case from problem title
-  "class_name": "ValidParentheses",            // PascalCase version
-  "method_name": "is_valid",                   // Method name (often is_* for boolean returns)
+  "question_name": "valid_palindrome",
+  "class_name": "ValidPalindrome",
+  "method_name": "is_palindrome",
 
   // REQUIRED: Problem metadata
-  "problem_number": "20",                      // String number from LeetCode URL
-  "problem_title": "Valid Parentheses",       // Exact title from LeetCode
-  "difficulty": "Easy",                        // Easy|Medium|Hard
-  "topics": "String, Stack",                   // From LeetCode tags
+  "problem_number": "125",
+  "problem_title": "Valid Palindrome",
+  "difficulty": "Easy",
+  "topics": "Two Pointers, String",
 
   // OPTIONAL: Problem categorization
-  "tags": ["grind-75"],                        // Popular algorithm lists
+  "tags": ["grind-75"],
 
   // REQUIRED: Problem description
-  "problem_description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+  "problem_description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string s, return true if it is a palindrome, or false otherwise.",
 
-  // REQUIRED: Examples (string problems use string inputs/outputs)
+  // REQUIRED: Examples
   "examples": [
-    { "input": "s = \"()\"", "output": "true" },
-    { "input": "s = \"()[]{}\"", "output": "true" },
-    { "input": "s = \"(]\"", "output": "false" }
+    { "input": "s = \"A man, a plan, a canal: Panama\"", "output": "true" },
+    { "input": "s = \"race a car\"", "output": "false" },
+    { "input": "s = \" \"", "output": "true" }
   ],
 
   // REQUIRED: Constraints
-  "constraints": "- 1 <= s.length <= 10^4\n- s consists of parentheses only '()[]{}'.",
+  "constraints": "- 1 <= s.length <= 2 * 10^5\n- s consists only of printable ASCII characters.",
 
-  // REQUIRED: Method signature (single string parameter common)
+  // REQUIRED: Method signature
   "parameters": "s: str",
-  "return_type": "bool",                       // Boolean return type common for validation problems
+  "return_type": "bool",
   "dummy_return": "False",
 
-  // REQUIRED: Import statements (empty for string problems unless using special data structures)
+  // REQUIRED: Imports (empty for string problems)
   "imports": "",
 
-  // REQUIRED: Test cases (string inputs, boolean outputs)
+  // REQUIRED: Test cases
   "test_cases": [
-    { "args": ["()"], "expected": true },
-    { "args": ["()[]{}"], "expected": true },
-    { "args": ["(]"], "expected": false },
-    { "args": ["([)]"], "expected": false },
-    { "args": ["{[]}"], "expected": true }
+    { "args": ["A man, a plan, a canal: Panama"], "expected": true },
+    { "args": ["race a car"], "expected": false },
+    { "args": [" "], "expected": true }
   ],
 
-  // REQUIRED: Test parameters (simple for string problems)
+  // REQUIRED: Test configuration
   "param_names": "s, expected",
   "param_names_with_types": "s: str, expected: bool",
-
-  // REQUIRED: Test configuration for string problems
-  "input_description": "s={s}",
-  "input_params": "s",                         // Single parameter
+  "input_description": "s=\"{s}\"",
+  "input_params": "s",
   "expected_param": "expected",
   "method_args": "s",
-  "test_setup": "",                            // No setup needed for basic string problems
-  "test_logging": "",                          // Default logging
+  "test_setup": "",
+  "test_logging": "",
   "assertion_code": "assert result == expected",
 
-  // REQUIRED: Notebook setup for string problems
-  "test_input_setup": "# Example test case\ns = \"()\"",
+  // REQUIRED: Notebook setup
+  "test_input_setup": "# Example test case\ns = \"A man, a plan, a canal: Panama\"",
   "expected_output_setup": "expected = True"
 }

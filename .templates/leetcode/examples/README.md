@@ -1,77 +1,71 @@
-# LeetCode Problem Template Examples
+# LeetCode Template Examples
 
-These JSON5 files serve as reference templates for creating new LeetCode problems. Each template is designed to help LLMs parse raw problem text from leetcode.com into the correct JSON format.
+Reference templates for creating new LeetCode problems. **Copy from these examples** - don't create from scratch.
 
-## Template Types
+## Usage
 
-### 1. `basic.json5` - Array/Number Problems
+1. **Choose the right template** based on problem type
+2. **Copy the entire structure** to `.templates/leetcode/json/{question_name}.json`
+3. **Update all fields** with your problem's data
+4. **Generate**: `make q-gen QUESTION=your_question`
 
-- **Use for**: Array manipulation, hash table, basic algorithms
-- **Examples**: Two Sum, Contains Duplicate, Product of Array Except Self
-- **Key features**: Simple parameters, basic return types, no special imports
+## Templates
 
-### 2. `tree.json5` - Binary Tree Problems
+### `basic.json5`
 
-- **Use for**: Binary tree traversal, tree manipulation, tree construction
-- **Examples**: Invert Binary Tree, Maximum Depth, Validate BST
-- **Key features**: TreeNode import, array-to-tree conversion, tree-specific logging
+- **Use for**: Array, string, number, hash table problems
+- **Examples**: Two Sum, Valid Anagram, Contains Duplicate
+- **Features**: Simple parameters, direct assertions
 
-### 3. `linked_list.json5` - Linked List Problems
+### `tree.json5`
 
-- **Use for**: Singly linked list manipulation, list reversal, merging
-- **Examples**: Reverse Linked List, Merge Two Lists, Remove Nth Node
-- **Key features**: ListNode import, array-to-list conversion, multiple parameters
+- **Use for**: Binary tree problems
+- **Examples**: Invert Binary Tree, Maximum Depth, Same Tree
+- **Features**: TreeNode import, array-to-tree conversion, tree logging
 
-### 4. `string.json5` - String Problems
+### `linked_list.json5`
 
-- **Use for**: String manipulation, validation, parsing
-- **Examples**: Valid Parentheses, Longest Substring, Palindrome Check
-- **Key features**: String parameters, boolean returns, validation patterns
+- **Use for**: Linked list problems
+- **Examples**: Reverse Linked List, Merge Two Lists, Cycle Detection
+- **Features**: ListNode import, array-to-list conversion, list logging
 
-### 5. `matrix.json5` - 2D Array/Matrix Problems
+### `string.json5`
 
-- **Use for**: Matrix operations, 2D array manipulation, grid problems
+- **Use for**: String manipulation problems
+- **Examples**: Valid Palindrome, Longest Substring, Anagrams
+- **Features**: String parameters, boolean/string returns
+
+### `matrix.json5`
+
+- **Use for**: 2D array/matrix problems
 - **Examples**: Rotate Image, Spiral Matrix, Set Matrix Zeroes
-- **Key features**: 2D list types, in-place modifications, deep copy for testing
+- **Features**: Matrix parameters, in-place operation testing
 
-## Usage Instructions
+## Key Fields
 
-1. **Choose the appropriate template** based on the problem's primary data structure
-2. **Copy the template structure** and fill in the specific problem details
-3. **Follow the comments** for guidance on each field
-4. **Use modern Python syntax** (e.g., `list[int]` instead of `List[int]`)
-5. **Test the generated JSON** with `make q-gen QUESTION=your_problem`
+### Required Core Fields
 
-## Key Conventions
+- `question_name`, `class_name`, `method_name`
+- `problem_number`, `problem_title`, `difficulty`, `topics`
+- `problem_description`, `examples`, `constraints`
+- `parameters`, `return_type`, `dummy_return`
 
-- **Naming**: Use snake_case for `question_name` and `method_name`, PascalCase for `class_name`
-- **Types**: Use modern Python type hints (`list[int]`, `TreeNode | None`)
-- **Parameters**: Match the exact parameter names from the LeetCode method signature
-- **Test Cases**: Use the same data format as the examples (arrays for trees/lists)
-- **Imports**: Only include necessary imports (`TreeNode`, `ListNode`, etc.)
+### Test Configuration
 
-## Common Patterns
+- `test_cases`: Array of `{args, expected}` objects
+- `param_names`: Parameter names for test methods
+- `test_setup`: Code to convert test data (e.g., arrays to TreeNode)
+- `assertion_code`: How to compare result with expected
 
-### Return Types & Dummy Returns
+### Notebook Setup
 
-- `bool` → `"False"`
-- `int` → `"0"`
-- `str` → `"\"\""`
-- `list[int]` → `"[]"`
-- `TreeNode | None` → `"None"`
-- `ListNode | None` → `"None"`
+- `test_input_setup`: Code for notebook input cell
+- `expected_output_setup`: Code for notebook expected cell
+- `imports`: Required imports (TreeNode, ListNode, etc.)
 
-### Test Parameter Naming
+## Rules
 
-- **Basic problems**: `param1, param2, expected`
-- **Tree problems**: `root_list, expected_list` (converts arrays to TreeNode)
-- **Linked List problems**: `head_list, param2, expected_list` (converts arrays to ListNode)
-
-### Test Setup Patterns
-
-- **Basic**: No setup needed (`""`)
-- **Tree**: `"root = TreeNode.from_list(root_list)\\nexpected = TreeNode.from_list(expected_list)"`
-- **Linked List**: `"head = ListNode.from_list(head_list)\\nexpected = ListNode.from_list(expected_list)"`
-- **Matrix (in-place)**: `"import copy\\noriginal_matrix = copy.deepcopy(matrix)"`
-
-These templates ensure consistency and proper integration with the existing test framework and validation system.
+1. **Copy structure exactly** - all fields are required
+2. **Use modern Python syntax**: `list[int]`, `TreeNode | None`
+3. **Match existing patterns** - see current JSON files for reference
+4. **Test thoroughly** - run `make lint` and `make q-test` after generation

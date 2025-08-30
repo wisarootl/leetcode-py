@@ -28,7 +28,7 @@
         { "args": [[5], 1, 1], "expected": [5] },
         { "args": [[1, 2, 3], 1, 3], "expected": [3, 2, 1] }
     ],
-    "test_input_setup": "# Example test case\\nhead = ListNode.from_list([1, 2, 3, 4, 5])\\nleft = 2\\nright = 4",
+    "test_input_setup": "# Example test case\nhead = ListNode.from_list([1, 2, 3, 4, 5])\nleft = 2\nright = 4",
     "test_logging": "logger.success(f\"Got result: {result.to_list() if result else []}\")",
     "test_setup": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
     "topics": "Linked List"

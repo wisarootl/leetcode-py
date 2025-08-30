@@ -12,49 +12,55 @@ Premium LeetCode practice environment with modern Python tooling, beautiful tree
 ## ✨ Features
 
 - **Template-driven development** - Consistent structure for every problem
-- **Beautiful tree visualizations** - Pretty-printed binary trees with anytree
-- **Rich test logging** - `@logged_test` decorator with detailed tracebacks
-- **One-command testing** - `make test-question QUESTION=problem_name`
-- **Code quality** - black, isort, ruff, mypy integration
+- **Beautiful visualizations** - TreeNode with anytree/Graphviz, ListNode with arrows
+- **Interactive notebooks** - Multi-cell playground for each problem
+- **One-command testing** - `make q-test QUESTION=problem_name`
+- **Bulk regeneration** - `make gen-all-questions` from JSON templates
+- **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
 - **Modern Python** - PEP 585/604 syntax with full type hints
 
 ## 🚀 Quick Start
 
 ```bash
 # Run existing problems
-make q-test QUESTION=two_sum
+make q-test QUESTION=insert_interval
 make q-test QUESTION=invert_binary_tree
 
 # Run all tests
 make test
 ```
 
-**Adding new problems**: Use an LLM agent (rules in `.amazonq/rules/development-rules.md`) to automatically create new problems from copied LeetCode problem text using the template structure.
+**Adding new problems**:
+
+- Copy question and placeholder solution from LeetCode
+- Ask LLM to generate them
+- LLM follows workflow in `.amazonq/rules/question-creation.md` using cookiecutter templates
 
 ## 🧰 Commands
 
 ```bash
-make q-test QUESTION=two_sum  # Test specific problem
-make test                     # Run all tests
-make lint                     # Code quality checks
-make q-gen QUESTION=new_prob  # Generate new problem
+make q-test QUESTION=insert_interval    # Test specific problem
+make test                               # Run all tests
+make lint                               # Code quality checks
+make q-gen QUESTION=new_prob            # Generate new problem
 ```
 
-## 🎨 Example Output
+**🍴 Fork Setup**:
 
+```bash
+make gen-all-questions                  # Regenerate all problems from JSON templates
 ```
-# TreeNode visualization
-4
-├── 2
-│   ├── 1
-│   └── 3
-└── 7
-    ├── 6
-    └── 9
 
-# Test logging
-2024-01-01 10:00:00 | SUCCESS | Got result: [4,7,2,9,6,3,1]
-2024-01-01 10:00:00 | DEBUG   | Test passed! ✨
-```
+## 🧰 Helper Classes
+
+- **TreeNode**: `from leetcode_py.tree_node import TreeNode`
+    - Beautiful tree visualization with anytree rendering
+    - Jupyter notebook support with Graphviz diagrams
+    - Easy array ↔ tree conversion for testing
+- **ListNode**: `from leetcode_py.list_node import ListNode`
+    - Clean arrow visualization (`1 -> 2 -> 3`)
+    - Simple array ↔ list conversion
+    - Perfect for debugging linked list problems
+- New helpers: Add to `leetcode_py/`
 
 Perfect for interview preparation with professional-grade tooling and beautiful visualizations.
