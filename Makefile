@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= insert_interval
+PROBLEM ?= spiral_matrix
 FORCE ?= 0
 
 sync_submodules:

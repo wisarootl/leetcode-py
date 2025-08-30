@@ -11,10 +11,8 @@ Premium LeetCode practice repository with Python solutions, algorithm templates,
 
 ## 📋 Prerequisites
 
-- Python 3.9+
-- make
-- git
-- Optional: Graphviz for tree visualizations
+- Python 3.13+
+- make, git, Graphviz, poetry
 
 ## 🛠️ Installation
 

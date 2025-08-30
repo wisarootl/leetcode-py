@@ -1,0 +1,66 @@
+{
+    "problem_name": "spiral_matrix",
+    "class_name": "SpiralMatrix",
+    "method_name": "spiral_order",
+    "problem_number": "54",
+    "problem_title": "Spiral Matrix",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix, Simulation",
+    "tags": ["grind-75"],
+    "problem_description": "Given an m x n matrix, return all elements of the matrix in spiral order.",
+    "examples": [
+        { "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]", "output": "[1,2,3,6,9,8,7,4,5]" },
+        {
+            "input": "matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]",
+            "output": "[1,2,3,4,8,12,11,10,9,5,6,7]"
+        }
+    ],
+    "constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 10\n- -100 <= matrix[i][j] <= 100",
+    "parameters": "matrix: list[list[int]]",
+    "return_type": "list[int]",
+    "dummy_return": "[]",
+    "imports": "",
+    "test_cases": [
+        {
+            "args": [
+                [
+                    [1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9]
+                ]
+            ],
+            "expected": [1, 2, 3, 6, 9, 8, 7, 4, 5]
+        },
+        {
+            "args": [
+                [
+                    [1, 2, 3, 4],
+                    [5, 6, 7, 8],
+                    [9, 10, 11, 12]
+                ]
+            ],
+            "expected": [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
+        },
+        { "args": [[[1]]], "expected": [1] },
+        {
+            "args": [
+                [
+                    [1, 2],
+                    [3, 4]
+                ]
+            ],
+            "expected": [1, 2, 4, 3]
+        }
+    ],
+    "param_names": "matrix, expected",
+    "param_names_with_types": "matrix: list[list[int]], expected: list[int]",
+    "input_description": "matrix={matrix}",
+    "input_params": "matrix",
+    "expected_param": "expected",
+    "method_args": "matrix",
+    "test_setup": "",
+    "test_logging": "",
+    "assertion_code": "assert result == expected",
+    "test_input_setup": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]",
+    "expected_output_setup": "expected = [1,2,3,6,9,8,7,4,5]"
+}
