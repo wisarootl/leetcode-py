@@ -13,6 +13,7 @@
 
 - Use snake_case for Python method names (following Python convention)
 - Always include type hints for function parameters and return types
+- Use PEP 585/604 syntax: `list[str]`, `dict[str, int]`, `Type | None`, etc.
 - Add return statements to satisfy type checkers even if unreachable
 - Follow the project's linting rules (black, isort, ruff, mypy)
 
@@ -26,6 +27,13 @@
     - `{parameters}` - method parameters with types
     - `{return_type}` - return type annotation
     - Test case placeholders with actual examples
+- **Template Implementation**: Do NOT implement the Solution class - only provide test cases and structure
+- **Helper Functions/Classes**: If the question relies on underlying helper functions or classes (e.g., TreeNode, ListNode):
+    - First check if implementation already exists in `leetcode_py/common/` directory
+    - If found, import from common module
+    - If not found, create shared implementation in `leetcode_py/common/` for reusable classes
+    - For question-specific helpers, implement directly in the solution file
+- **Update Makefile**: When adding new question, update the default `QUESTION` value in Makefile to the new question name
 - Always use the template structure for consistency
 
 ## File Structure

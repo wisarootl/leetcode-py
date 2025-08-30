@@ -1,0 +1,76 @@
+from anytree import Node, RenderTree
+
+
+def build_anytree(node: "TreeNode | None", parent: Node | None = None) -> Node | None:
+    if not node:
+        return Node("None", parent=parent) if parent else None
+    current = Node(str(node.val), parent=parent)
+    if node.left or node.right:
+        build_anytree(node.left, current)
+        build_anytree(node.right, current)
+    return current
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: "TreeNode | None" = None, right: "TreeNode | None" = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+    @classmethod
+    def from_list(cls, arr: list[int | None]) -> "TreeNode | None":
+        """Convert array representation to binary tree."""
+        if not arr or arr[0] is None:
+            return None
+
+        root = cls(arr[0])
+        queue = [root]
+        i = 1
+
+        while queue and i < len(arr):
+            node = queue.pop(0)
+
+            if i < len(arr) and arr[i] is not None:
+                left_val = arr[i]
+                assert left_val is not None
+                node.left = cls(left_val)
+                queue.append(node.left)
+            i += 1
+
+            if i < len(arr) and arr[i] is not None:
+                right_val = arr[i]
+                assert right_val is not None
+                node.right = cls(right_val)
+                queue.append(node.right)
+            i += 1
+
+        return root
+
+    def to_list(self) -> list[int | None]:
+        """Convert binary tree to array representation."""
+        result: list[int | None] = []
+        queue: list[TreeNode | None] = [self]
+
+        while queue:
+            node = queue.pop(0)
+            if node:
+                result.append(node.val)
+                queue.append(node.left)
+                queue.append(node.right)
+            else:
+                result.append(None)
+
+        # Remove trailing None values
+        while result and result[-1] is None:
+            result.pop()
+
+        return result
+
+    def __str__(self) -> str:
+        tree = build_anytree(self)
+        if not tree:
+            return str(None)
+        return "\n".join([f"{pre}{node.name}" for pre, _, node in RenderTree(tree)])
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.to_list()})"

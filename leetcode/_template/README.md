@@ -2,6 +2,7 @@
 
 **Difficulty:** {DIFFICULTY}
 **Topics:** {TOPICS}
+**Tags:** {TAGS}
 
 ## Problem Description
 
@@ -38,14 +39,6 @@ Output: {OUTPUT_3}
 ## Follow-up
 
 {FOLLOW_UP}
-
-## Solution
-
-```python
-def {method_name}({parameters}):
-    # TODO: Implement solution
-    pass
-```
 
 **Time Complexity:** O(?)
 **Space Complexity:** O(?)

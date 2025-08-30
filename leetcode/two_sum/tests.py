@@ -1,6 +1,8 @@
 import pytest
 from loguru import logger
 
+from leetcode_py.test_utils import logged_test
+
 from .solution import Solution
 
 
@@ -16,7 +18,9 @@ class TestTwoSum:
             ([3, 3], 6, [0, 1]),
         ],
     )
+    @logged_test
     def test_two_sum(self, nums, target, expected):
+        logger.info(f"Testing with nums: {nums}, target: {target}")
         result = self.solution.two_sum(nums, target)
+        logger.success(f"Got result: {result}")
         assert result == expected
-        logger.success("test")
