@@ -200,4 +200,17 @@
 - **Multi-problem testing** ensures template generalization
 - **Explicit file comparison** documents exact requirements
 
+## Critical Rule: Reference Directory Protection
+
+**NEVER modify these reference directories:**
+
+- `.templates/leetcode/.example/` - Template reference examples
+- `leetcode/.example/` - Generated file reference examples
+
+**ONLY modify the actual template directory:**
+
+- `.templates/leetcode/{{cookiecutter.question_name}}/` - The actual cookiecutter template
+
+**Workflow**: Modify template → Generate (`make q-gen`) → Compare vs reference (`make q-validate`)
+
 This plan ensures the template generates files that exactly match `leetcode/.example/` while maintaining the robust generation process described in the rules.
