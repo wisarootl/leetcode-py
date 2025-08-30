@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
-typer = "^0.16.1"
+typer = "^0.17.0"
 
 [tool.poetry.group.base.dependencies]
 anytree = "^2.13.0"
