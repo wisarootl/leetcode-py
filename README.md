@@ -22,8 +22,8 @@ Premium LeetCode practice environment with modern Python tooling, beautiful tree
 
 ```bash
 # Run existing problems
-make test-question QUESTION=two_sum
-make test-question QUESTION=invert_binary_tree
+make q-test QUESTION=two_sum
+make q-test QUESTION=invert_binary_tree
 
 # Run all tests
 make test
@@ -34,9 +34,10 @@ make test
 ## 🧰 Commands
 
 ```bash
-make test-question QUESTION=two_sum  # Test specific problem
-make test                            # Run all tests
-make lint                           # Code quality checks
+make q-test QUESTION=two_sum  # Test specific problem
+make test                     # Run all tests
+make lint                     # Code quality checks
+make q-gen QUESTION=new_prob  # Generate new problem
 ```
 
 ## 🎨 Example Output

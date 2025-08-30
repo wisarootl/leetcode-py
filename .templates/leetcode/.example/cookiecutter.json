@@ -29,6 +29,7 @@
         ]
     },
     "param_names": "nums, target, expected",
+    "param_names_with_types": "nums: list[int], target: int, expected: list[int]",
     "input_description": "nums={nums}, target={target}",
     "input_params": "nums, target",
     "expected_param": "expected",

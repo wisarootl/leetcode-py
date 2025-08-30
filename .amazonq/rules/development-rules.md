@@ -14,7 +14,7 @@
 
 ## Testing
 
-- Test specific: `make test-question QUESTION=<name>`
+- Test specific: `make q-test QUESTION=<name>`
 - Test all: `make test`
 - Beautiful logging with loguru
 

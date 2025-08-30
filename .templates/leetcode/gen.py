@@ -102,8 +102,8 @@ def generate_problem(json_file: str, force: bool = False) -> None:
     data = check_and_prompt_tags(data)
 
     # Save updated data back to JSON file
-    with open(json_path, 'w') as f:
-        json.dump(data, f, indent=4)
+    with open(json_path, "w") as f:
+        json.dump(data, f)
 
     # Convert arrays to cookiecutter-friendly nested format
     extra_context = convert_arrays_to_nested(data)

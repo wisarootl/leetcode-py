@@ -27,3 +27,11 @@ class ListNode:
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.to_list()})"
+
+    def _repr_html_(self) -> str:
+        return self.__str__()
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, ListNode):
+            return False
+        return self.to_list() == other.to_list()

@@ -40,6 +40,7 @@
 
     // Tree-specific test setup
     param_names: "root, expected",
+    param_names_with_types: "root: list[int], expected: list[int]",
     input_description: "root={root}",
     input_params: "root",
     expected_param: "expected",

@@ -20,7 +20,7 @@ class Test{{cookiecutter.class_name}}:
         ],
     )
     @logged_test
-    def test_{{cookiecutter.method_name}}(self, {{cookiecutter.param_names}}):
+    def test_{{cookiecutter.method_name}}(self, {{cookiecutter.param_names_with_types}}):
         logger.info(f"Testing with {{cookiecutter.input_description}}")
         {%- if cookiecutter.test_setup %}
         {{cookiecutter.test_setup}}

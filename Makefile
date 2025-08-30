@@ -1,6 +1,6 @@
 PYTHON_VERSION = 3.13
-# QUESTION ?= reverse_linked_list_ii
-QUESTION ?= invert_binary_tree
+QUESTION ?= reverse_linked_list_ii
+# QUESTION ?= invert_binary_tree
 FORCE ?= 0
 
 sync_submodules:
@@ -22,6 +22,7 @@ assert_setup_dev:
 
 lint:
 	poetry sort
+	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	poetry run black .
 	poetry run isort .
 	poetry run ruff check .
@@ -32,7 +33,6 @@ lint:
 		--check-untyped-defs .
 	poetry run nbqa isort . --nbqa-exclude=".templates"
 	poetry run nbqa mypy . --nbqa-exclude=".templates"
-	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 
 
 test:
@@ -56,6 +56,15 @@ q-test:
 q-gen:
 	@echo "Generating question: $(QUESTION)"
 	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(QUESTION).json $(if $(filter 1,$(FORCE)),--force)
+
+# Validate Question
+q-validate:
+	@echo "Validating question: $(QUESTION)"
+	@if [ ! -d "leetcode/$(QUESTION)" ]; then \
+		echo "Error: Generated question '$(QUESTION)' not found. Run: make q-gen QUESTION=$(QUESTION)"; \
+		exit 1; \
+	fi
+	poetry run python .amazonq/plan/compare_template_files.py generated --question=$(QUESTION)
 
 dbg:
 	poetry run python generate_problem.py valid_parentheses.json
