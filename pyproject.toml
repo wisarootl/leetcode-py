@@ -69,8 +69,8 @@ disable_error_code = ["return", "no-redef"]
 exclude = [".templates"]
 
 [tool.pytest.ini_options]
-testpaths = ["leetcode"]
-python_files = ["tests.py"]
+testpaths = ["leetcode", "tests"]
+python_files = ["tests.py", "test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"

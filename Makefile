@@ -39,7 +39,7 @@ lint:
 
 
 test:
-	poetry run pytest leetcode/ \
+	poetry run pytest leetcode/ tests/ \
 		-v --cov=leetcode --cov=leetcode_py \
 		--cov-report=term-missing \
 		--cov-report=xml \

@@ -7,7 +7,7 @@
 [![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
 
-Premium LeetCode practice environment with modern Python tooling, beautiful tree visualizations, and comprehensive testing.
+Premium LeetCode practice repository with Python solutions, algorithm templates, data structure visualizations, and automated testing. Perfect for coding interview preparation, competitive programming, and mastering algorithms with Blind 75, Grind 75, and NeetCode 150 problems.
 
 ## 📋 Prerequisites
 
