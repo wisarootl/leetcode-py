@@ -18,6 +18,7 @@
     "constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
     "parameters": "nums: list[int], target: int",
     "return_type": "list[int]",
+    "dummy_return": "[]",
     "imports": "",
     "test_setup": "",
     "test_logging": "",

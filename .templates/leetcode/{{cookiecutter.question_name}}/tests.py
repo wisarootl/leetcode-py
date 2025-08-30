@@ -1,9 +1,11 @@
 import pytest
 from loguru import logger
-from solution import Solution
 
-from leetcode_py.test_utils import logged_test
 {{cookiecutter.imports}}
+from leetcode_py.test_utils import logged_test
+
+from .solution import Solution
+
 
 class Test{{cookiecutter.class_name}}:
     def setup_method(self):
@@ -23,7 +25,9 @@ class Test{{cookiecutter.class_name}}:
     def test_{{cookiecutter.method_name}}(self, {{cookiecutter.param_names_with_types}}):
         logger.info(f"Testing with {{cookiecutter.input_description}}")
         {%- if cookiecutter.test_setup %}
-        {{cookiecutter.test_setup}}
+        {%- for line in cookiecutter.test_setup.split('\n') %}
+        {{line}}
+        {%- endfor %}
         {%- endif %}
         result = self.solution.{{cookiecutter.method_name}}({{cookiecutter.input_params}})
         {%- if cookiecutter.test_logging %}

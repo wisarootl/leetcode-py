@@ -1,6 +1,5 @@
 PYTHON_VERSION = 3.13
 QUESTION ?= reverse_linked_list_ii
-# QUESTION ?= invert_binary_tree
 FORCE ?= 0
 
 sync_submodules:
@@ -57,7 +56,8 @@ q-gen:
 	@echo "Generating question: $(QUESTION)"
 	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(QUESTION).json $(if $(filter 1,$(FORCE)),--force)
 
-# Validate Question
+# Validate Question - INTERNAL USE ONLY: For cookiecutter template creation/validation
+# Do not use during normal problem solving - only for template development
 q-validate:
 	@echo "Validating question: $(QUESTION)"
 	@if [ ! -d "leetcode/$(QUESTION)" ]; then \
@@ -65,6 +65,3 @@ q-validate:
 		exit 1; \
 	fi
 	poetry run python .amazonq/plan/compare_template_files.py generated --question=$(QUESTION)
-
-dbg:
-	poetry run python generate_problem.py valid_parentheses.json

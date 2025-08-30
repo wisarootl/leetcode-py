@@ -2,8 +2,8 @@ from leetcode_py.list_node import ListNode
 
 
 class Solution:
-    # Time: O(n)
-    # Space: O(1)
+    # Time: O(?)
+    # Space: O(?)
     def reverse_between(self, head: ListNode | None, left: int, right: int) -> ListNode | None:
         if not head or left == right:
             return head

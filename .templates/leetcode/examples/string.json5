@@ -1,0 +1,65 @@
+{
+  // String problem template for string manipulation problems
+  // Use this for problems that primarily work with strings
+
+  // REQUIRED: Core identifiers
+  "question_name": "valid_parentheses",        // Snake case from problem title
+  "class_name": "ValidParentheses",            // PascalCase version
+  "method_name": "is_valid",                   // Method name (often is_* for boolean returns)
+
+  // REQUIRED: Problem metadata
+  "problem_number": "20",                      // String number from LeetCode URL
+  "problem_title": "Valid Parentheses",       // Exact title from LeetCode
+  "difficulty": "Easy",                        // Easy|Medium|Hard
+  "topics": "String, Stack",                   // From LeetCode tags
+
+  // OPTIONAL: Problem categorization
+  "tags": ["grind-75"],                        // Popular algorithm lists
+
+  // REQUIRED: Problem description
+  "problem_description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+
+  // REQUIRED: Examples (string problems use string inputs/outputs)
+  "examples": [
+    { "input": "s = \"()\"", "output": "true" },
+    { "input": "s = \"()[]{}\"", "output": "true" },
+    { "input": "s = \"(]\"", "output": "false" }
+  ],
+
+  // REQUIRED: Constraints
+  "constraints": "- 1 <= s.length <= 10^4\n- s consists of parentheses only '()[]{}'.",
+
+  // REQUIRED: Method signature (single string parameter common)
+  "parameters": "s: str",
+  "return_type": "bool",                       // Boolean return type common for validation problems
+  "dummy_return": "False",
+
+  // REQUIRED: Import statements (empty for string problems unless using special data structures)
+  "imports": "",
+
+  // REQUIRED: Test cases (string inputs, boolean outputs)
+  "test_cases": [
+    { "args": ["()"], "expected": true },
+    { "args": ["()[]{}"], "expected": true },
+    { "args": ["(]"], "expected": false },
+    { "args": ["([)]"], "expected": false },
+    { "args": ["{[]}"], "expected": true }
+  ],
+
+  // REQUIRED: Test parameters (simple for string problems)
+  "param_names": "s, expected",
+  "param_names_with_types": "s: str, expected: bool",
+
+  // REQUIRED: Test configuration for string problems
+  "input_description": "s={s}",
+  "input_params": "s",                         // Single parameter
+  "expected_param": "expected",
+  "method_args": "s",
+  "test_setup": "",                            // No setup needed for basic string problems
+  "test_logging": "",                          // Default logging
+  "assertion_code": "assert result == expected",
+
+  // REQUIRED: Notebook setup for string problems
+  "test_input_setup": "# Example test case\ns = \"()\"",
+  "expected_output_setup": "expected = True"
+}

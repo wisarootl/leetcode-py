@@ -2,8 +2,8 @@ from leetcode_py.tree_node import TreeNode
 
 
 class Solution:
-    # Time: O(n)
-    # Space: O(h)
+    # Time: O(?)
+    # Space: O(?)
     def invert_tree(self, root: TreeNode | None) -> TreeNode | None:
         if not root:
             return None

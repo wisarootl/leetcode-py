@@ -1,5 +1,5 @@
 {
-    "assertion_code": "assert (result.to_list() if result else []) == expected",
+    "assertion_code": "assert result == expected",
     "class_name": "ReverseLinkedListII",
     "constraints": "- The number of nodes in the list is n.\n- 1 <= n <= 500\n- -500 <= Node.val <= 500\n- 1 <= left <= right <= n",
     "difficulty": "Medium",
@@ -14,14 +14,15 @@
     "input_params": "head, left, right",
     "method_args": "head, left, right",
     "method_name": "reverse_between",
-    "param_names": "head_list, left, right, expected",
-    "param_names_with_types": "head_list: list[int], left: int, right: int, expected: list[int]",
+    "param_names": "head_list, left, right, expected_list",
+    "param_names_with_types": "head_list: list[int], left: int, right: int, expected_list: list[int]",
     "parameters": "head: ListNode | None, left: int, right: int",
     "problem_description": "Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.",
     "problem_number": "92",
     "problem_title": "Reverse Linked List II",
     "question_name": "reverse_linked_list_ii",
     "return_type": "ListNode | None",
+    "dummy_return": "None",
     "test_cases": [
         { "args": [[1, 2, 3, 4, 5], 2, 4], "expected": [1, 4, 3, 2, 5] },
         { "args": [[5], 1, 1], "expected": [5] },
@@ -29,6 +30,6 @@
     ],
     "test_input_setup": "# Example test case\\nhead = ListNode.from_list([1, 2, 3, 4, 5])\\nleft = 2\\nright = 4",
     "test_logging": "logger.success(f\"Got result: {result.to_list() if result else []}\")",
-    "test_setup": "head = ListNode.from_list(head_list)",
+    "test_setup": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
     "topics": "Linked List"
 }

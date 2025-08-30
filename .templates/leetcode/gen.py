@@ -6,10 +6,10 @@ from pathlib import Path
 
 import typer
 from cookiecutter.main import cookiecutter
+import sys
 
 
 def check_and_prompt_tags(data: dict) -> dict:
-    """Check if tags are empty and prompt user for common options."""
     import sys
 
     common_tags = ["grind-75", "blind-75", "neetcode-150", "top-interview"]
@@ -50,8 +50,28 @@ def check_and_prompt_tags(data: dict) -> dict:
     return data
 
 
+def auto_set_dummy_return(data: dict) -> dict:
+    if "dummy_return" not in data and "return_type" in data:
+        return_type = data["return_type"]
+        dummy_map = {"bool": "False", "int": "0", "str": '""', "float": "0.0", "None": "None"}
+
+        if return_type in dummy_map:
+            data["dummy_return"] = dummy_map[return_type]
+        elif return_type.startswith("list["):
+            data["dummy_return"] = "[]"
+        elif return_type.startswith("dict["):
+            data["dummy_return"] = "{}"
+        elif return_type.startswith("set["):
+            data["dummy_return"] = "set()"
+        elif return_type.startswith("tuple["):
+            data["dummy_return"] = "()"
+        else:
+            data["dummy_return"] = "None"
+
+    return data
+
+
 def convert_arrays_to_nested(data: dict) -> dict:
-    """Convert array fields to cookiecutter-friendly nested format."""
     extra_context = data.copy()
     array_fields = ["examples", "test_cases", "tags"]
     for field in array_fields:
@@ -62,8 +82,6 @@ def convert_arrays_to_nested(data: dict) -> dict:
 
 
 def check_overwrite_permission(question_name: str, force: bool) -> None:
-    """Check if user wants to overwrite existing problem."""
-    import sys
 
     if force:
         return
@@ -88,7 +106,6 @@ def check_overwrite_permission(question_name: str, force: bool) -> None:
 
 
 def generate_problem(json_file: str, force: bool = False) -> None:
-    """Generate LeetCode problem from JSON file."""
     json_path = Path(json_file)
     if not json_path.exists():
         typer.echo(f"Error: {json_file} not found", err=True)
@@ -100,6 +117,9 @@ def generate_problem(json_file: str, force: bool = False) -> None:
 
     # Check and prompt for tags if empty
     data = check_and_prompt_tags(data)
+
+    # Auto-set dummy_return if not provided
+    data = auto_set_dummy_return(data)
 
     # Save updated data back to JSON file
     with open(json_path, "w") as f:
