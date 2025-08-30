@@ -3,7 +3,6 @@
 
 import difflib
 from pathlib import Path
-from typing import Literal
 
 import typer
 
@@ -48,12 +47,14 @@ def compare_files(file1: Path, file2: Path, label1: str, label2: str) -> bool:
 
 
 def main(
-    mode: Literal["template", "generated"] = typer.Argument(
-        help="Compare template files or generated files"
-    ),
+    mode: str = typer.Argument(help="Compare template files or generated files (template|generated)"),
     question: str = typer.Option("invert_binary_tree", help="Question name for comparison"),
 ):
     """Compare files for template validation."""
+    if mode not in ["template", "generated"]:
+        print(f"❌ ERROR: Invalid mode '{mode}'. Use 'template' or 'generated'")
+        return
+
     base_dir = Path(__file__).parent.parent.parent
 
     files_to_compare = ["solution.py", "tests.py", "README.md", "playground.ipynb", "__init__.py"]

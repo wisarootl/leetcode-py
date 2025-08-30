@@ -1,5 +1,27 @@
 # Cookiecutter Template Modernization Plan
 
+## TASK PURPOSE & CRITICAL RULES
+
+**PURPOSE:** Update the cookiecutter template to generate files that exactly match the reference structure in `.templates/leetcode/.example/{{cookiecutter.question_name}}/`
+
+**REFERENCE DIRECTORIES (NEVER MODIFY - THESE ARE EXAMPLES):**
+
+- `.templates/leetcode/.example/{{cookiecutter.question_name}}/` - Shows what the template SHOULD generate
+- `leetcode/.example/` - Generated file examples for comparison
+
+**ACTUAL TEMPLATE DIRECTORY (MODIFY THIS):**
+
+- `.templates/leetcode/{{cookiecutter.question_name}}/` - The cookiecutter template files to update
+
+**WORKFLOW:**
+
+1. Look at `.templates/leetcode/.example/{{cookiecutter.question_name}}/` to see target structure
+2. Modify `.templates/leetcode/{{cookiecutter.question_name}}/` to match the reference
+3. Generate with `make q-gen`
+4. Compare generated files vs reference with `make q-validate`
+
+**ERROR PREVENTION:** The template directory does NOT have `.example` in the path!
+
 ## Analysis Summary
 
 **Target Structure**: `leetcode/.example/` contains the reference implementation
@@ -14,10 +36,9 @@
 
 ### 0. Explicit File Content Analysis
 
-- **Tool**: `.amazonq/plan/compare_template_files.py` (reusable comparison script)
+- **Tool**: `.amazonq/plan/compare_template_files.py` (already exists - no need to implement)
 - **Usage**:
-    - `python .amazonq/plan/compare_template_files.py template` - Compare reference vs template source
-    - `python .amazonq/plan/compare_template_files.py generated` - Compare reference vs generated files
+    - `poetry run python .amazonq/plan/compare_template_files.py generated --question=QUESTION_NAME` - Compare generated files vs reference
 - **Analysis**: Line-by-line diff of all file types
 - **Document**: Exact differences and required changes
 - **Verify**: Template variables handle all variations
@@ -104,7 +125,7 @@
 - **Usage**:
     ```bash
     # Validate current template generates correct files
-    python .amazonq/plan/compare_template_files.py generated --question=invert_binary_tree
+    poetry run python .amazonq/plan/compare_template_files.py generated --question=invert_binary_tree
     ```
 - **Makefile**: `make q-validate QUESTION=name` (implemented)
 - **Test**: Template regression testing
@@ -199,18 +220,5 @@
 - **Automated validation** catches regressions immediately
 - **Multi-problem testing** ensures template generalization
 - **Explicit file comparison** documents exact requirements
-
-## Critical Rule: Reference Directory Protection
-
-**NEVER modify these reference directories:**
-
-- `.templates/leetcode/.example/` - Template reference examples
-- `leetcode/.example/` - Generated file reference examples
-
-**ONLY modify the actual template directory:**
-
-- `.templates/leetcode/{{cookiecutter.question_name}}/` - The actual cookiecutter template
-
-**Workflow**: Modify template → Generate (`make q-gen`) → Compare vs reference (`make q-validate`)
 
 This plan ensures the template generates files that exactly match `leetcode/.example/` while maintaining the robust generation process described in the rules.
