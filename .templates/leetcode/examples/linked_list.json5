@@ -1,62 +1,76 @@
 {
-    // Linked list problem template
-    // Use this for problems involving ListNode structures
+    // Linked List problem template - for linked list problems
+    // Example: Reverse Linked List II
+    // Key differences: ListNode imports, list-specific test setup
 
-    // REQUIRED: Core identifiers
-    problem_name: "reverse_linked_list_ii",
-    class_name: "ReverseLinkedListII",
-    method_name: "reverse_between",
+    // === PROBLEM IDENTIFICATION ===
+    problem_name: "reverse_linked_list_ii", // snake_case: used for directory/file names
+    solution_class_name: "Solution", // Always "Solution" for algorithm problems
+    problem_number: "92", // LeetCode problem number as string
+    problem_title: "Reverse Linked List II", // Exact title from LeetCode
+    difficulty: "Medium", // Easy, Medium, Hard
+    topics: "Linked List", // Linked list related topics
+    tags: ["grind-75"], // Optional: common problem set tags
 
-    // REQUIRED: Problem metadata
-    problem_number: "92", // OPTIONAL: omit if no LeetCode number
-    problem_title: "Reverse Linked List II",
-    difficulty: "Medium",
-    topics: "Linked List",
+    // === README CONTENT ===
+    // IMPORTANT: Preserve rich HTML content from LeetCode including:
+    // - Code snippets with backticks: `code`
+    // - Bold text: **bold** or <strong>bold</strong>
+    // - Italic text: *italic* or <em>italic</em>
+    // - Images: <img> tags with proper src and styling
+    // - HTML formatting: <p>, <br>, <ul>, <li>, etc.
+    // - Mathematical expressions and special characters
+    readme_description: "Given the `head` of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return the reversed list.",
 
-    // OPTIONAL: Problem categorization
-    tags: [],
-
-    // REQUIRED: Problem description
-    problem_description: "Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.",
-
-    // REQUIRED: Examples
-    examples: [
-        { input: "head = [1,2,3,4,5], left = 2, right = 4", output: "[1,4,3,2,5]" },
-        { input: "head = [5], left = 1, right = 1", output: "[5]" },
+    readme_examples: [
+        {
+            content: "```\nInput: head = [1,2,3,4,5], left = 2, right = 4\nOutput: [1,4,3,2,5]\n```",
+        },
+        {
+            content: "```\nInput: head = [5], left = 1, right = 1\nOutput: [5]\n```",
+        },
     ],
 
-    // REQUIRED: Constraints
-    constraints: "- The number of nodes in the list is n.\n- 1 <= n <= 500\n- -500 <= Node.val <= 500\n- 1 <= left <= right <= n",
+    readme_constraints: "- The number of nodes in the list is n\n- 1 <= n <= 500\n- -500 <= Node.val <= 500\n- 1 <= left <= right <= n",
+    readme_additional: "**Follow up:** Could you do it in one pass?", // Optional follow-up questions
 
-    // REQUIRED: Method signature
-    parameters: "head: ListNode | None, left: int, right: int",
-    return_type: "ListNode | None",
-    dummy_return: "None",
-
-    // REQUIRED: ListNode import for linked list problems
-    imports: "from leetcode_py import ListNode",
-
-    // REQUIRED: Test cases
-    test_cases: [
-        { args: [[1, 2, 3, 4, 5], 2, 4], expected: [1, 4, 3, 2, 5] },
-        { args: [[5], 1, 1], expected: [5] },
-        { args: [[1, 2, 3], 1, 3], expected: [3, 2, 1] },
+    // === SOLUTION TEMPLATE ===
+    // IMPORTANT: Linked list problems need ListNode import
+    solution_imports: "from leetcode_py import ListNode",
+    solution_methods: [
+        {
+            name: "reverse_between", // snake_case method name
+            parameters: "head: ListNode | None, left: int, right: int", // Use ListNode | None for nullable parameters
+            return_type: "ListNode | None", // Modern union syntax
+            dummy_return: "None", // None for linked list problems
+        },
     ],
 
-    // REQUIRED: Test parameters (use expected_list for linked list problems)
-    param_names: "head_list, left, right, expected_list",
-    param_names_with_types: "head_list: list[int], left: int, right: int, expected_list: list[int]",
-    input_description: "head_list={head_list}, left={left}, right={right}",
-    input_params: "head, left, right",
-    expected_param: "expected",
-    method_args: "head, left, right",
+    // === TEST CONFIGURATION ===
+    // IMPORTANT: Linked list tests need ListNode import and special test setup
+    test_imports: "import pytest\n\nfrom leetcode_py import ListNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    test_helper_methods: [
+        {
+            name: "setup_method",
+            parameters: "",
+            body: "self.solution = Solution()",
+        },
+    ],
+    test_methods: [
+        {
+            name: "test_reverse_between",
+            parametrize: "head_list, left, right, expected_list", // Use *_list naming for list array inputs
+            parametrize_typed: "head_list: list[int], left: int, right: int, expected_list: list[int]",
+            test_cases: "[([1, 2, 3, 4, 5], 2, 4, [1, 4, 3, 2, 5]), ([5], 1, 1, [5])]",
+            // IMPORTANT: Linked list test body converts arrays to ListNode and compares objects directly
+            body: "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)\nresult = self.solution.reverse_between(head, left, right)\nassert result == expected",
+        },
+    ],
 
-    // REQUIRED: Linked list-specific test setup
-    test_setup: "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
-    test_logging: 'logger.success(f"Got result: {result.to_list() if result else []}")',
-    assertion_code: "assert result == expected",
-
-    // REQUIRED: Notebook setup for linked list problems
-    test_input_setup: "# Example test case\nhead = ListNode.from_list([1, 2, 3, 4, 5])\nleft = 2\nright = 4",
-    expected_output_setup: "expected = ListNode.from_list([1, 4, 3, 2, 5])",
+    // === PLAYGROUND NOTEBOOK ===
+    // IMPORTANT: Linked list playground needs ListNode import and conversion
+    playground_imports: "from solution import Solution\n\nfrom leetcode_py import ListNode",
+    playground_test_case: "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nhead = ListNode.from_list(head_list)\nleft, right = 2, 4\nexpected = ListNode.from_list([1, 4, 3, 2, 5])",
+    playground_execution: "result = Solution().reverse_between(head, left, right)\nresult",
+    playground_assertion: "assert result == expected",
 }

@@ -1,13 +1,14 @@
-# 226. Invert Binary Tree
+# Invert Binary Tree
 
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
 **Tags:** grind-75
+
 **LeetCode:** [Problem 226](https://leetcode.com/problems/invert-binary-tree/description/)
 
 ## Problem Description
 
-Given the root of a binary tree, invert the tree, and return its root.
+Given the `root` of a binary tree, invert the tree, and return its root.
 
 ## Examples
 
@@ -34,5 +35,5 @@ Output: []
 
 ## Constraints
 
-- The number of nodes in the tree is in the range [0, 100].
+- The number of nodes in the tree is in the range [0, 100]
 - -100 <= Node.val <= 100

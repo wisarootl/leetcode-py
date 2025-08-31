@@ -1,9 +1,13 @@
-{{cookiecutter.imports}}
+{{cookiecutter.solution_imports}}
 
-
-class Solution:
+class {{cookiecutter.solution_class_name}}:
+    {%- for _, methods in cookiecutter._solution_methods | dictsort %}
+    {%- for method in methods %}
     # Time: O(?)
     # Space: O(?)
-    def {{cookiecutter.method_name}}(self, {{cookiecutter.parameters}}) -> {{cookiecutter.return_type}}:
-        # TODO: Implement solution
-        return {{cookiecutter.dummy_return}}
+    def {{method.name}}(self, {{method.parameters}}) -> {{method.return_type}}:
+        # TODO: Implement {{method.name}}
+        return {{method.dummy_return}}
+
+    {%- endfor %}
+    {%- endfor %}

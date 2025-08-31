@@ -1,41 +1,59 @@
 {
     "problem_name": "two_sum",
-    "class_name": "TwoSum",
-    "method_name": "two_sum",
+    "solution_class_name": "Solution",
     "problem_number": "1",
     "problem_title": "Two Sum",
     "difficulty": "Easy",
     "topics": "Array, Hash Table",
     "_tags": { "list": ["grind-75"] },
-    "problem_description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-    "_examples": {
+
+    "readme_description": "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.",
+    "_readme_examples": {
         "list": [
-            { "input": "nums = [2,7,11,15], target = 9", "output": "[0,1]" },
-            { "input": "nums = [3,2,4], target = 6", "output": "[1,2]" },
-            { "input": "nums = [3,3], target = 6", "output": "[0,1]" }
+            {
+                "content": "```\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\n```\n**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1]."
+            }
         ]
     },
-    "constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
-    "parameters": "nums: list[int], target: int",
-    "return_type": "list[int]",
-    "dummy_return": "[]",
-    "imports": "",
-    "test_setup": "",
-    "test_logging": "",
-    "_test_cases": {
+    "readme_constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
+    "readme_additional": "",
+
+    "solution_imports": "",
+    "_solution_methods": {
         "list": [
-            { "args": [[2, 7, 11, 15], 9], "expected": [0, 1] },
-            { "args": [[3, 2, 4], 6], "expected": [1, 2] },
-            { "args": [[3, 3], 6], "expected": [0, 1] }
+            {
+                "name": "two_sum",
+                "parameters": "nums: list[int], target: int",
+                "return_type": "list[int]",
+                "dummy_return": "[]"
+            }
         ]
     },
-    "param_names": "nums, target, expected",
-    "param_names_with_types": "nums: list[int], target: int, expected: list[int]",
-    "input_description": "nums={nums}, target={target}",
-    "input_params": "nums, target",
-    "expected_param": "expected",
-    "method_args": "nums, target",
-    "test_input_setup": "nums = [2, 7, 11, 15]\ntarget = 9",
-    "expected_output_setup": "expected = [0, 1]",
-    "assertion_code": "assert result == expected"
+
+    "test_imports": "import pytest\nfrom loguru import logger\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_two_sum",
+                "parametrize": "nums, target, expected",
+                "parametrize_typed": "nums: list[int], target: int, expected: list[int]",
+                "test_cases": "[([2, 7, 11, 15], 9, [0, 1]), ([3, 2, 4], 6, [1, 2])]",
+                "body": "result = self.solution.two_sum(nums, target)\nassert result == expected"
+            }
+        ]
+    },
+
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nnums = [2, 7, 11, 15]\ntarget = 9\nexpected = [0, 1]",
+    "playground_execution": "result = Solution().two_sum(nums, target)\nresult",
+    "playground_assertion": "assert result == expected"
 }

@@ -1,66 +1,46 @@
 {
     "problem_name": "spiral_matrix",
-    "class_name": "SpiralMatrix",
-    "method_name": "spiral_order",
+    "solution_class_name": "Solution",
     "problem_number": "54",
     "problem_title": "Spiral Matrix",
     "difficulty": "Medium",
     "topics": "Array, Matrix, Simulation",
     "tags": ["grind-75"],
-    "problem_description": "Given an m x n matrix, return all elements of the matrix in spiral order.",
-    "examples": [
-        { "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]", "output": "[1,2,3,6,9,8,7,4,5]" },
+    "readme_description": "Given an `m x n` matrix, return all elements of the matrix in spiral order.",
+    "readme_examples": [
         {
-            "input": "matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]",
-            "output": "[1,2,3,4,8,12,11,10,9,5,6,7]"
-        }
-    ],
-    "constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 10\n- -100 <= matrix[i][j] <= 100",
-    "parameters": "matrix: list[list[int]]",
-    "return_type": "list[int]",
-    "dummy_return": "[]",
-    "imports": "",
-    "test_cases": [
-        {
-            "args": [
-                [
-                    [1, 2, 3],
-                    [4, 5, 6],
-                    [7, 8, 9]
-                ]
-            ],
-            "expected": [1, 2, 3, 6, 9, 8, 7, 4, 5]
+            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg\" style=\"width: 242px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [1,2,3,6,9,8,7,4,5]\n```"
         },
         {
-            "args": [
-                [
-                    [1, 2, 3, 4],
-                    [5, 6, 7, 8],
-                    [9, 10, 11, 12]
-                ]
-            ],
-            "expected": [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
-        },
-        { "args": [[[1]]], "expected": [1] },
-        {
-            "args": [
-                [
-                    [1, 2],
-                    [3, 4]
-                ]
-            ],
-            "expected": [1, 2, 4, 3]
+            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg\" style=\"width: 322px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]\nOutput: [1,2,3,4,8,12,11,10,9,5,6,7]\n```"
         }
     ],
-    "param_names": "matrix, expected",
-    "param_names_with_types": "matrix: list[list[int]], expected: list[int]",
-    "input_description": "matrix={matrix}",
-    "input_params": "matrix",
-    "expected_param": "expected",
-    "method_args": "matrix",
-    "test_setup": "",
-    "test_logging": "",
-    "assertion_code": "assert result == expected",
-    "test_input_setup": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]",
-    "expected_output_setup": "expected = [1,2,3,6,9,8,7,4,5]"
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 10\n- -100 <= matrix[i][j] <= 100",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "spiral_order",
+            "parameters": "matrix: list[list[int]]",
+            "return_type": "list[int]",
+            "dummy_return": "[]"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_spiral_order",
+            "parametrize": "matrix, expected",
+            "parametrize_typed": "matrix: list[list[int]], expected: list[int]",
+            "test_cases": "[([[1,2,3],[4,5,6],[7,8,9]], [1,2,3,6,9,8,7,4,5]), ([[1,2,3,4],[5,6,7,8],[9,10,11,12]], [1,2,3,4,8,12,11,10,9,5,6,7])]",
+            "body": "result = self.solution.spiral_order(matrix)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]\nexpected = [1,2,3,6,9,8,7,4,5]",
+    "playground_execution": "result = Solution().spiral_order(matrix)\nresult",
+    "playground_assertion": "assert result == expected"
 }

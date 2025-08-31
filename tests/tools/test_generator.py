@@ -61,48 +61,48 @@ class TestTemplateGenerator:
     def test_convert_arrays_to_nested(self):
         """Test converting arrays to nested format."""
         data: dict[str, Any] = {
-            "examples": [{"input": "test"}],
+            "readme_examples": [{"content": "test"}],
             "tags": ["grind-75"],
             "other_field": "value",
         }
 
         result = self.generator.convert_arrays_to_nested(data)
 
-        assert "_examples" in result
-        assert result["_examples"] == {"list": [{"input": "test"}]}
+        assert "_readme_examples" in result
+        assert result["_readme_examples"] == {"list": [{"content": "test"}]}
         assert "_tags" in result
         assert result["_tags"] == {"list": ["grind-75"]}
-        assert "examples" not in result
+        assert "readme_examples" not in result
         assert "tags" not in result
         assert result["other_field"] == "value"
 
     def test_convert_arrays_to_nested_partial_arrays(self):
         """Test converting only some arrays to nested format."""
         data: dict[str, Any] = {
-            "examples": [{"input": "test"}],
-            "test_cases": [[1, 2, 3]],
+            "solution_methods": [{"name": "test"}],
+            "test_methods": [[1, 2, 3]],
             "other_list": ["not", "converted"],  # Not in array_fields
             "string_field": "value",
         }
 
         result = self.generator.convert_arrays_to_nested(data)
 
-        assert "_examples" in result
-        assert "_test_cases" in result
+        assert "_solution_methods" in result
+        assert "_test_methods" in result
         assert "other_list" in result  # Should remain unchanged
         assert result["other_list"] == ["not", "converted"]
         assert result["string_field"] == "value"
 
     def test_convert_arrays_to_nested_non_list_values(self):
         """Test converting arrays when field exists but is not a list."""
-        data: dict[str, Any] = {"examples": "not a list", "tags": None, "test_cases": 123}
+        data: dict[str, Any] = {"readme_examples": "not a list", "tags": None, "solution_methods": 123}
 
         result = self.generator.convert_arrays_to_nested(data)
 
         # Non-list values should remain unchanged
-        assert result["examples"] == "not a list"
+        assert result["readme_examples"] == "not a list"
         assert result["tags"] is None
-        assert result["test_cases"] == 123
+        assert result["solution_methods"] == 123
 
     def test_check_overwrite_permission_force(self):
         """Test overwrite permission with force flag."""

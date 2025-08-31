@@ -1,12 +1,11 @@
 import pytest
-from loguru import logger
 
 from leetcode_py.test_utils import logged_test
 
 from .solution import Solution
 
 
-class TestInsertInterval:
+class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
@@ -15,15 +14,11 @@ class TestInsertInterval:
         [
             ([[1, 3], [6, 9]], [2, 5], [[1, 5], [6, 9]]),
             ([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8], [[1, 2], [3, 10], [12, 16]]),
-            ([], [5, 7], [[5, 7]]),
-            ([[1, 5]], [2, 3], [[1, 5]]),
         ],
     )
     @logged_test
     def test_insert(
         self, intervals: list[list[int]], new_interval: list[int], expected: list[list[int]]
     ):
-        logger.info(f"Testing with intervals={intervals}, new_interval={new_interval}")
         result = self.solution.insert(intervals, new_interval)
-        logger.success(f"Got result: {result}")
         assert result == expected

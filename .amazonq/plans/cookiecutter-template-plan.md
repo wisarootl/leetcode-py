@@ -157,7 +157,7 @@
   "constraints": "Formatted constraints",
   "parameters": "typed_params: list[int]",
   "return_type": "TreeNode | None",
-  "imports": "from leetcode_py.tree_node import TreeNode",
+  "imports": "from leetcode_py import TreeNode",
   "test_cases": [{"args": [...], "expected": ...}]
 }
 ```
