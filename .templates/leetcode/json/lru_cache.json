@@ -1,0 +1,42 @@
+{
+    "problem_name": "lru_cache",
+    "class_name": "LRUCache",
+    "method_name": "lru_cache",
+    "problem_number": "146",
+    "problem_title": "LRU Cache",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Linked List, Design, Doubly-Linked List",
+    "tags": ["grind-75", "top-interview"],
+    "problem_description": "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.\n\nImplement the LRUCache class:\n\n- LRUCache(int capacity) Initialize the LRU cache with positive size capacity.\n- int get(int key) Return the value of the key if the key exists, otherwise return -1.\n- void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.\n\nThe functions get and put must each run in O(1) average time complexity.",
+    "examples": [
+        {
+            "input": "[\"LRUCache\", \"put\", \"put\", \"get\", \"put\", \"get\", \"put\", \"get\", \"get\", \"get\"]\n[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]",
+            "output": "[null, null, null, 1, null, -1, null, -1, 3, 4]"
+        }
+    ],
+    "constraints": "- 1 <= capacity <= 3000\n- 0 <= key <= 10^4\n- 0 <= value <= 10^5\n- At most 2 * 10^5 calls will be made to get and put.",
+    "parameters": "capacity: int",
+    "return_type": "None",
+    "dummy_return": "None",
+    "imports": "",
+    "test_cases": [
+        {
+            "args": [
+                ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"],
+                [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+            ],
+            "expected": [null, null, null, 1, null, -1, null, -1, 3, 4]
+        }
+    ],
+    "param_names": "operations, inputs, expected",
+    "param_names_with_types": "operations: list[str], inputs: list[list[int]], expected: list[int | None]",
+    "input_description": "operations={operations}, inputs={inputs}",
+    "input_params": "operations, inputs",
+    "expected_param": "expected",
+    "method_args": "operations, inputs",
+    "test_setup": "cache = None\nresult = []\nfor i, op in enumerate(operations):\n    if op == \"LRUCache\":\n        cache = LRUCache(inputs[i][0])\n        result.append(None)\n    elif op == \"get\":\n        result.append(cache.get(inputs[i][0]))\n    elif op == \"put\":\n        cache.put(inputs[i][0], inputs[i][1])\n        result.append(None)",
+    "test_logging": "logger.info(f\"Testing LRU Cache with operations: {operations}\")\nlogger.info(f\"Inputs: {inputs}\")\nlogger.info(f\"Expected: {expected}\")\nlogger.info(f\"Result: {result}\")",
+    "assertion_code": "assert result == expected",
+    "test_input_setup": "operations = [\"LRUCache\", \"put\", \"put\", \"get\", \"put\", \"get\", \"put\", \"get\", \"get\", \"get\"]\ninputs = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]",
+    "expected_output_setup": "expected = [None, None, None, 1, None, -1, None, -1, 3, 4]"
+}

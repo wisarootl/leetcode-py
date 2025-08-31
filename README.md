@@ -9,12 +9,7 @@
 
 Premium LeetCode practice repository with Python solutions, algorithm templates, data structure visualizations, and automated testing. Perfect for coding interview preparation, competitive programming, and mastering algorithms with Blind 75, Grind 75, and NeetCode 150 problems.
 
-## 📋 Prerequisites
-
-- Python 3.13+
-- make, git, Graphviz, poetry
-
-## 🛠️ Installation
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
@@ -22,14 +17,23 @@ git clone https://github.com/wisarootl/leetcode-py.git
 cd leetcode-py
 
 # Install dependencies
-pip install -r requirements.txt
+poetry install
 
-# Generate all problems
+# Generate all problems to start practicing (fresh start - wipes all solutions)
 make gen-all-problems
 
-# Verify setup
+# Run existing problems
+make p-test PROBLEM=insert_interval
+make p-test PROBLEM=invert_binary_tree
+
+# Run all tests
 make test
 ```
+
+## 📋 Prerequisites
+
+- Python 3.13+
+- make, git, Graphviz, poetry
 
 ## 📁 Problem Structure
 
@@ -91,20 +95,6 @@ _Interactive multi-cell playground for each problem_
 - **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
 - **Modern Python** - PEP 585/604 syntax with full type hints
 
-## 🚀 Quick Start
-
-```bash
-# Generate all problems to start practicing
-make gen-all-problems
-
-# Run existing problems
-make p-test PROBLEM=insert_interval
-make p-test PROBLEM=invert_binary_tree
-
-# Run all tests
-make test
-```
-
 ## 🔄 Workflow Examples
 
 **Practice existing problems**:
@@ -119,18 +109,12 @@ make p-test PROBLEM=two_sum
 **Add new problems**:
 
 ```bash
-# Copy problem description and solution placeholder from LeetCode
-# Then ask your LLM assistant:
-# "Create a new LeetCode problem for Valid Anagram"
-#
-# Behind the scenes, the LLM will:
-# 1. Create JSON template following .amazonq/rules/problem-creation.md
-# 2. Run `make p-gen PROBLEM=valid_anagram`
-# 3. Generate complete problem structure with tests
-# 4. You just implement the solution!
+# Ask your LLM assistant:
+# "Create LeetCode problem 146 (LRU Cache)"
+# The assistant handles everything automatically!
 ```
 
-_The LLM follows structured rules in `.amazonq/rules/problem-creation.md` to ensure consistent, high-quality problem generation using proven templates._
+_Behind the scenes: Assistant follows `.amazonq/rules/problem-creation.md` to scrape problem data, create JSON template, generate structure with `make p-gen`, and verify with `make lint`._
 
 **Bulk operations**:
 

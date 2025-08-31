@@ -31,6 +31,9 @@ def fetch(
     if number:
         problem = scraper.get_problem_by_number(number)
     else:
+        if slug is None:
+            typer.echo("Error: Slug cannot be None", err=True)
+            raise typer.Exit(1)
         problem = scraper.get_problem_by_slug(slug)
 
     if not problem:
