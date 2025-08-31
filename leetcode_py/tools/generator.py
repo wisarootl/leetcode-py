@@ -137,13 +137,11 @@ class TemplateGenerator:
         """Convert arrays to cookiecutter-friendly nested format."""
         extra_context = data.copy()
         array_fields = [
-            # "examples",
-            # "test_cases",
             "tags",
             "readme_examples",
             "solution_methods",
             "test_helper_methods",
-            "test_methods",  # New format
+            "test_methods",
         ]
         for field in array_fields:
             if field in data and isinstance(data[field], list):
