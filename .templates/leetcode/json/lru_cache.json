@@ -26,7 +26,7 @@
         }
     ],
     "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import LRUCache",
-    "test_class_name": "LruCache",
+    "test_class_name": "LRUCache",
     "test_helper_methods": [],
     "test_methods": [
         {
