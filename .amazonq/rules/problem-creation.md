@@ -93,6 +93,14 @@ Required fields for `.templates/leetcode/json/{problem_name}.json`:
 - **method_name**: snake_case (e.g., "two_sum", "is_palindrome")
 - **parameters**: Use snake_case for all parameter names
 
+### PascalCase Rules for Properties
+
+When creating JSON properties that use PascalCase (solution_class_name, test_class_name):
+
+- **Acronyms**: Keep all caps (e.g., "LRUCache" not "LruCache")
+- **Roman numerals**: Keep all caps (e.g., "ReverseLinkedListII" not "ReverseLinkedListIi")
+- **Common patterns**: "BST", "DFS", "BFS", "API", "URL", "HTML", "JSON", "XML"
+
 ## Special Problem Types
 
 ### Tree Problems

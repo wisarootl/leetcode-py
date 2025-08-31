@@ -2,6 +2,7 @@
     // Linked List problem template - for linked list problems
     // Example: Reverse Linked List II
     // Key differences: ListNode imports, list-specific test setup
+    // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
     // === PROBLEM IDENTIFICATION ===
     problem_name: "reverse_linked_list_ii", // snake_case: used for directory/file names
@@ -49,7 +50,7 @@
     // === TEST CONFIGURATION ===
     // IMPORTANT: Linked list tests need ListNode import and special test setup
     test_imports: "import pytest\n\nfrom leetcode_py import ListNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
-    test_class_name: "ReverseLinkedListIi",            // PascalCase: TestClassName for pytest class
+    test_class_name: "ReverseLinkedListII", // PascalCase: TestClassName for pytest class
     test_helper_methods: [
         {
             name: "setup_method",

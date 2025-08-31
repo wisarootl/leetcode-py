@@ -2,6 +2,7 @@
     // Design problem template - for data structure design problems
     // Example: LRU Cache
     // Key differences: Custom class name, multiple methods, complex test setup
+    // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
     // === PROBLEM IDENTIFICATION ===
     problem_name: "lru_cache", // snake_case: used for directory/file names

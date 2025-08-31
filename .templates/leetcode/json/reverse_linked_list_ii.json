@@ -23,7 +23,7 @@
         }
     ],
     "test_imports": "import pytest\n\nfrom leetcode_py import ListNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
-    "test_class_name": "ReverseLinkedListIi",
+    "test_class_name": "ReverseLinkedListII",
     "test_helper_methods": [
         { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
     ],

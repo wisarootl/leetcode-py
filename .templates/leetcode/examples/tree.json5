@@ -2,6 +2,7 @@
     // Tree problem template - for binary tree problems
     // Example: Invert Binary Tree
     // Key differences: TreeNode imports, tree-specific test setup
+    // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
     // === PROBLEM IDENTIFICATION ===
     problem_name: "invert_binary_tree", // snake_case: used for directory/file names

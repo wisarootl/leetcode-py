@@ -2,6 +2,7 @@
   // Matrix problem template - for 2D array/matrix problems
   // Example: Spiral Matrix
   // Key differences: 2D array parameters, often have visual examples with images
+  // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
   // === PROBLEM IDENTIFICATION ===
   "problem_name": "spiral_matrix",                   // snake_case: used for directory/file names

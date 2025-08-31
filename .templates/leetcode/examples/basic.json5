@@ -1,6 +1,7 @@
 {
   // Basic problem template - for array, string, number problems
   // Example: Container With Most Water, Spiral Matrix
+  // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
   // === PROBLEM IDENTIFICATION ===
   "problem_name": "container_with_most_water",        // snake_case: used for directory/file names
