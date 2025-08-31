@@ -2,6 +2,7 @@
     // Tree problem template - for binary tree problems
     // Example: Invert Binary Tree
     // Key differences: TreeNode imports, tree-specific test setup
+    // NOTE: PascalCase naming - keep acronyms/Roman numerals ALL CAPS (LRUCache, ReverseLinkedListII)
 
     // === PROBLEM IDENTIFICATION ===
     problem_name: "invert_binary_tree", // snake_case: used for directory/file names
@@ -53,6 +54,7 @@
     // === TEST CONFIGURATION ===
     // IMPORTANT: Tree tests need TreeNode import and special test setup
     test_imports: "import pytest\n\nfrom leetcode_py import TreeNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    test_class_name: "InvertBinaryTree",               // PascalCase: TestClassName for pytest class
     test_helper_methods: [
         {
             name: "setup_method",

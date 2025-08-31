@@ -1,7 +1,7 @@
 {{cookiecutter.test_imports}}
 
 
-class Test{{cookiecutter.solution_class_name}}:
+class Test{{cookiecutter.test_class_name}}:
     {%- for _, helper_methods in cookiecutter._test_helper_methods | dictsort %}
     {%- for method in helper_methods %}
     def {{method.name}}(self{% if method.parameters %}, {{method.parameters}}{% endif %}):

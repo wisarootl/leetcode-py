@@ -84,6 +84,14 @@ This directory contains comprehensive JSON5 template examples for different type
 - **Test Cases**: String representation of Python data structures
 - **Imports**: Include necessary helper classes (TreeNode, ListNode)
 
+#### PascalCase Naming Rules
+
+For `solution_class_name` and `test_class_name` properties:
+
+- **Acronyms**: Keep all caps ("LRUCache" not "LruCache")
+- **Roman numerals**: Keep all caps ("ReverseLinkedListII" not "ReverseLinkedListIi")
+- **Common patterns**: "BST", "DFS", "BFS", "API", "URL", "HTML", "JSON", "XML"
+
 ### Template Selection Process
 
 1. Identify problem type from description/title

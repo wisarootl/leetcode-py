@@ -24,6 +24,7 @@
         }
     ],
     "test_imports": "import pytest\n\nfrom leetcode_py import TreeNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    "test_class_name": "InvertBinaryTree",
     "test_helper_methods": [
         { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
     ],
