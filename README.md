@@ -145,11 +145,11 @@ make lint
 
 ## 🧰 Helper Classes
 
-- **TreeNode**: `from leetcode_py.tree_node import TreeNode`
+- **TreeNode**: `from leetcode_py import TreeNode`
     - Beautiful tree visualization with anytree rendering
     - Jupyter notebook support with Graphviz diagrams
     - Easy array ↔ tree conversion for testing
-- **ListNode**: `from leetcode_py.list_node import ListNode`
+- **ListNode**: `from leetcode_py import ListNode`
     - Clean arrow visualization (`1 -> 2 -> 3`)
     - Simple array ↔ list conversion
     - Perfect for debugging linked list problems

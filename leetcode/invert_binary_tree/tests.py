@@ -1,8 +1,8 @@
 import pytest
 from loguru import logger
 
+from leetcode_py import TreeNode
 from leetcode_py.test_utils import logged_test
-from leetcode_py.tree_node import TreeNode
 
 from .solution import Solution, SolutionBFS, SolutionDFS
 

@@ -9,7 +9,7 @@
     ],
     "expected_output_setup": "expected = ListNode.from_list([1, 4, 3, 2, 5])",
     "expected_param": "expected",
-    "imports": "from leetcode_py.list_node import ListNode",
+    "imports": "from leetcode_py import ListNode",
     "input_description": "head_list={head_list}, left={left}, right={right}",
     "input_params": "head, left, right",
     "method_args": "head, left, right",

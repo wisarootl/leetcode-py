@@ -1,62 +1,62 @@
 {
-  // Linked list problem template
-  // Use this for problems involving ListNode structures
+    // Linked list problem template
+    // Use this for problems involving ListNode structures
 
-  // REQUIRED: Core identifiers
-  "problem_name": "reverse_linked_list_ii",
-  "class_name": "ReverseLinkedListII",
-  "method_name": "reverse_between",
+    // REQUIRED: Core identifiers
+    problem_name: "reverse_linked_list_ii",
+    class_name: "ReverseLinkedListII",
+    method_name: "reverse_between",
 
-  // REQUIRED: Problem metadata
-  "problem_number": "92",
-  "problem_title": "Reverse Linked List II",
-  "difficulty": "Medium",
-  "topics": "Linked List",
+    // REQUIRED: Problem metadata
+    problem_number: "92", // OPTIONAL: omit if no LeetCode number
+    problem_title: "Reverse Linked List II",
+    difficulty: "Medium",
+    topics: "Linked List",
 
-  // OPTIONAL: Problem categorization
-  "tags": [],
+    // OPTIONAL: Problem categorization
+    tags: [],
 
-  // REQUIRED: Problem description
-  "problem_description": "Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.",
+    // REQUIRED: Problem description
+    problem_description: "Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.",
 
-  // REQUIRED: Examples
-  "examples": [
-    { "input": "head = [1,2,3,4,5], left = 2, right = 4", "output": "[1,4,3,2,5]" },
-    { "input": "head = [5], left = 1, right = 1", "output": "[5]" }
-  ],
+    // REQUIRED: Examples
+    examples: [
+        { input: "head = [1,2,3,4,5], left = 2, right = 4", output: "[1,4,3,2,5]" },
+        { input: "head = [5], left = 1, right = 1", output: "[5]" },
+    ],
 
-  // REQUIRED: Constraints
-  "constraints": "- The number of nodes in the list is n.\n- 1 <= n <= 500\n- -500 <= Node.val <= 500\n- 1 <= left <= right <= n",
+    // REQUIRED: Constraints
+    constraints: "- The number of nodes in the list is n.\n- 1 <= n <= 500\n- -500 <= Node.val <= 500\n- 1 <= left <= right <= n",
 
-  // REQUIRED: Method signature
-  "parameters": "head: ListNode | None, left: int, right: int",
-  "return_type": "ListNode | None",
-  "dummy_return": "None",
+    // REQUIRED: Method signature
+    parameters: "head: ListNode | None, left: int, right: int",
+    return_type: "ListNode | None",
+    dummy_return: "None",
 
-  // REQUIRED: ListNode import for linked list problems
-  "imports": "from leetcode_py.list_node import ListNode",
+    // REQUIRED: ListNode import for linked list problems
+    imports: "from leetcode_py import ListNode",
 
-  // REQUIRED: Test cases
-  "test_cases": [
-    { "args": [[1, 2, 3, 4, 5], 2, 4], "expected": [1, 4, 3, 2, 5] },
-    { "args": [[5], 1, 1], "expected": [5] },
-    { "args": [[1, 2, 3], 1, 3], "expected": [3, 2, 1] }
-  ],
+    // REQUIRED: Test cases
+    test_cases: [
+        { args: [[1, 2, 3, 4, 5], 2, 4], expected: [1, 4, 3, 2, 5] },
+        { args: [[5], 1, 1], expected: [5] },
+        { args: [[1, 2, 3], 1, 3], expected: [3, 2, 1] },
+    ],
 
-  // REQUIRED: Test parameters (use expected_list for linked list problems)
-  "param_names": "head_list, left, right, expected_list",
-  "param_names_with_types": "head_list: list[int], left: int, right: int, expected_list: list[int]",
-  "input_description": "head_list={head_list}, left={left}, right={right}",
-  "input_params": "head, left, right",
-  "expected_param": "expected",
-  "method_args": "head, left, right",
+    // REQUIRED: Test parameters (use expected_list for linked list problems)
+    param_names: "head_list, left, right, expected_list",
+    param_names_with_types: "head_list: list[int], left: int, right: int, expected_list: list[int]",
+    input_description: "head_list={head_list}, left={left}, right={right}",
+    input_params: "head, left, right",
+    expected_param: "expected",
+    method_args: "head, left, right",
 
-  // REQUIRED: Linked list-specific test setup
-  "test_setup": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
-  "test_logging": "logger.success(f\"Got result: {result.to_list() if result else []}\")",
-  "assertion_code": "assert result == expected",
+    // REQUIRED: Linked list-specific test setup
+    test_setup: "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
+    test_logging: 'logger.success(f"Got result: {result.to_list() if result else []}")',
+    assertion_code: "assert result == expected",
 
-  // REQUIRED: Notebook setup for linked list problems
-  "test_input_setup": "# Example test case\nhead = ListNode.from_list([1, 2, 3, 4, 5])\nleft = 2\nright = 4",
-  "expected_output_setup": "expected = ListNode.from_list([1, 4, 3, 2, 5])"
+    // REQUIRED: Notebook setup for linked list problems
+    test_input_setup: "# Example test case\nhead = ListNode.from_list([1, 2, 3, 4, 5])\nleft = 2\nright = 4",
+    expected_output_setup: "expected = ListNode.from_list([1, 4, 3, 2, 5])",
 }

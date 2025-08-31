@@ -1,63 +1,63 @@
 {
-  // Tree problem template for binary tree problems
-  // Use this for problems involving TreeNode structures
+    // Tree problem template for binary tree problems
+    // Use this for problems involving TreeNode structures
 
-  // REQUIRED: Core identifiers
-  "problem_name": "invert_binary_tree",
-  "class_name": "InvertBinaryTree",
-  "method_name": "invert_tree",
+    // REQUIRED: Core identifiers
+    problem_name: "invert_binary_tree",
+    class_name: "InvertBinaryTree",
+    method_name: "invert_tree",
 
-  // REQUIRED: Problem metadata
-  "problem_number": "226",
-  "problem_title": "Invert Binary Tree",
-  "difficulty": "Easy",
-  "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    // REQUIRED: Problem metadata
+    problem_number: "226", // OPTIONAL: omit if no LeetCode number
+    problem_title: "Invert Binary Tree",
+    difficulty: "Easy",
+    topics: "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
 
-  // OPTIONAL: Problem categorization
-  "tags": ["grind-75"],
+    // OPTIONAL: Problem categorization
+    tags: ["grind-75"],
 
-  // REQUIRED: Problem description
-  "problem_description": "Given the root of a binary tree, invert the tree, and return its root.",
+    // REQUIRED: Problem description
+    problem_description: "Given the root of a binary tree, invert the tree, and return its root.",
 
-  // REQUIRED: Examples (tree problems show array representation)
-  "examples": [
-    { "input": "root = [4,2,7,1,3,6,9]", "output": "[4,7,2,9,6,3,1]" },
-    { "input": "root = [2,1,3]", "output": "[2,3,1]" },
-    { "input": "root = []", "output": "[]" }
-  ],
+    // REQUIRED: Examples (tree problems show array representation)
+    examples: [
+        { input: "root = [4,2,7,1,3,6,9]", output: "[4,7,2,9,6,3,1]" },
+        { input: "root = [2,1,3]", output: "[2,3,1]" },
+        { input: "root = []", output: "[]" },
+    ],
 
-  // REQUIRED: Constraints
-  "constraints": "- The number of nodes in the tree is in the range [0, 100].\n- -100 <= Node.val <= 100",
+    // REQUIRED: Constraints
+    constraints: "- The number of nodes in the tree is in the range [0, 100].\n- -100 <= Node.val <= 100",
 
-  // REQUIRED: Method signature (TreeNode | None for nullable tree parameters)
-  "parameters": "root: TreeNode | None",
-  "return_type": "TreeNode | None",
-  "dummy_return": "None",
+    // REQUIRED: Method signature (TreeNode | None for nullable tree parameters)
+    parameters: "root: TreeNode | None",
+    return_type: "TreeNode | None",
+    dummy_return: "None",
 
-  // REQUIRED: TreeNode import for tree problems
-  "imports": "from leetcode_py.tree_node import TreeNode",
+    // REQUIRED: TreeNode import for tree problems
+    imports: "from leetcode_py import TreeNode",
 
-  // REQUIRED: Test cases (use array representation for tree inputs/outputs)
-  "test_cases": [
-    { "args": [[4, 2, 7, 1, 3, 6, 9]], "expected": [4, 7, 2, 9, 6, 3, 1] },
-    { "args": [[2, 1, 3]], "expected": [2, 3, 1] },
-    { "args": [[]], "expected": [] }
-  ],
+    // REQUIRED: Test cases (use array representation for tree inputs/outputs)
+    test_cases: [
+        { args: [[4, 2, 7, 1, 3, 6, 9]], expected: [4, 7, 2, 9, 6, 3, 1] },
+        { args: [[2, 1, 3]], expected: [2, 3, 1] },
+        { args: [[]], expected: [] },
+    ],
 
-  // REQUIRED: Test parameters (use expected_list for tree problems)
-  "param_names": "root_list, expected_list",
-  "param_names_with_types": "root_list: list[int | None], expected_list: list[int | None]",
-  "input_description": "root_list={root_list}",
-  "input_params": "root",
-  "expected_param": "expected",
-  "method_args": "root",
+    // REQUIRED: Test parameters (use expected_list for tree problems)
+    param_names: "root_list, expected_list",
+    param_names_with_types: "root_list: list[int | None], expected_list: list[int | None]",
+    input_description: "root_list={root_list}",
+    input_params: "root",
+    expected_param: "expected",
+    method_args: "root",
 
-  // REQUIRED: Tree-specific test setup (converts arrays to TreeNode objects)
-  "test_setup": "root = TreeNode.from_list(root_list)\nexpected = TreeNode.from_list(expected_list)",
-  "test_logging": "logger.success(f\"Got result: {result.to_list() if result else []}\")",
-  "assertion_code": "assert result == expected",
+    // REQUIRED: Tree-specific test setup (converts arrays to TreeNode objects)
+    test_setup: "root = TreeNode.from_list(root_list)\nexpected = TreeNode.from_list(expected_list)",
+    test_logging: 'logger.success(f"Got result: {result.to_list() if result else []}")',
+    assertion_code: "assert result == expected",
 
-  // REQUIRED: Notebook setup for tree problems
-  "test_input_setup": "# Example test case\nroot = TreeNode.from_list([4, 2, 7, 1, 3, 6, 9])",
-  "expected_output_setup": "expected = TreeNode.from_list([4, 7, 2, 9, 6, 3, 1])"
+    // REQUIRED: Notebook setup for tree problems
+    test_input_setup: "# Example test case\nroot = TreeNode.from_list([4, 2, 7, 1, 3, 6, 9])",
+    expected_output_setup: "expected = TreeNode.from_list([4, 7, 2, 9, 6, 3, 1])",
 }

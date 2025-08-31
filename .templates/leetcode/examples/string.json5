@@ -8,7 +8,7 @@
   "method_name": "is_palindrome",
 
   // REQUIRED: Problem metadata
-  "problem_number": "125",
+  "problem_number": "125", // OPTIONAL: omit if no LeetCode number
   "problem_title": "Valid Palindrome",
   "difficulty": "Easy",
   "topics": "Two Pointers, String",
