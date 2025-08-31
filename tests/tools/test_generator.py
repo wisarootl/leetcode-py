@@ -106,15 +106,15 @@ class TestTemplateGenerator:
 
     def test_check_overwrite_permission_force(self):
         """Test overwrite permission with force flag."""
-        template_dir = Path("/fake/template")
+        output_dir = Path("/fake/output")
         # Should not raise exception with force=True
-        self.generator.check_overwrite_permission("test_problem", True, template_dir)
+        self.generator.check_overwrite_permission("test_problem", True, output_dir)
 
     def test_check_overwrite_permission_nonexistent_problem(self):
         """Test overwrite permission when problem doesn't exist."""
-        template_dir = Path("/nonexistent/template")
+        output_dir = Path("/nonexistent/output")
         # Should not raise exception when problem doesn't exist
-        self.generator.check_overwrite_permission("nonexistent_problem", False, template_dir)
+        self.generator.check_overwrite_permission("nonexistent_problem", False, output_dir)
 
     def test_check_and_prompt_tags_with_existing_tags(self):
         """Test check_and_prompt_tags when tags already exist."""
@@ -157,3 +157,82 @@ class TestTemplateGenerator:
         nested_data = self.generator.convert_arrays_to_nested(processed_data)
         assert "_tags" in nested_data
         assert nested_data["_tags"] == {"list": []}
+
+    def test_file_operations_injection(self):
+        """Test that file operations can be injected for testing."""
+        from unittest.mock import Mock
+
+        from leetcode_py.tools.generator import FileOperations
+
+        mock_file_ops = Mock(spec=FileOperations)
+        generator = TemplateGenerator(file_ops=mock_file_ops)
+        assert generator.file_ops is mock_file_ops
+
+    def test_check_and_prompt_tags_interactive_valid_choices(self):
+        """Test interactive tag selection with valid choices."""
+        from unittest.mock import patch
+
+        data: dict[str, Any] = {"tags": []}
+
+        with (
+            patch("sys.stdin.isatty", return_value=True),
+            patch("typer.prompt", return_value="1,2"),
+            patch("typer.echo"),
+        ):
+            result = self.generator.check_and_prompt_tags(data)
+            assert "grind-75" in result["tags"]
+            assert "blind-75" in result["tags"]
+
+    def test_check_and_prompt_tags_interactive_skip(self):
+        """Test interactive tag selection with skip option."""
+        from unittest.mock import patch
+
+        data: dict[str, Any] = {"tags": []}
+
+        with (
+            patch("sys.stdin.isatty", return_value=True),
+            patch("typer.prompt", return_value="0"),
+            patch("typer.echo"),
+        ):
+            result = self.generator.check_and_prompt_tags(data)
+            assert result["tags"] == []
+
+    def test_check_and_prompt_tags_interactive_invalid_input(self):
+        """Test interactive tag selection with invalid input."""
+        from unittest.mock import patch
+
+        data: dict[str, Any] = {"tags": []}
+
+        with (
+            patch("sys.stdin.isatty", return_value=True),
+            patch("typer.prompt", return_value="invalid"),
+            patch("typer.echo"),
+        ):
+            result = self.generator.check_and_prompt_tags(data)
+            assert result["tags"] == []
+
+    def test_generate_problem_success(self):
+        """Test successful problem generation."""
+        from unittest.mock import Mock, patch
+
+        from leetcode_py.tools.generator import FileOperations
+
+        mock_file_ops = Mock(spec=FileOperations)
+        mock_file_ops.exists.side_effect = lambda path: str(path).endswith("test.json")
+        mock_file_ops.read_json.return_value = {
+            "problem_name": "test_problem",
+            "return_type": "bool",
+            "tags": [],
+        }
+
+        generator = TemplateGenerator(file_ops=mock_file_ops)
+
+        template_dir = Path("/test/template")
+        output_dir = Path("/test/output")
+
+        with patch("leetcode_py.tools.generator.cookiecutter", return_value=None) as mock_cookiecutter:
+            generator.generate_problem("test.json", template_dir, output_dir, force=True)
+
+            mock_file_ops.read_json.assert_called_once()
+            mock_file_ops.write_json.assert_called_once()
+            mock_cookiecutter.assert_called_once()

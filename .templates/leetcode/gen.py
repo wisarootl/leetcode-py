@@ -18,7 +18,8 @@ def generate(
     """Generate LeetCode problem from JSON using cookiecutter."""
     generator = TemplateGenerator()
     template_dir = Path(__file__).parent
-    generator.generate_problem(json_file, force, template_dir)
+    output_dir = template_dir.parent.parent / "leetcode"
+    generator.generate_problem(json_file, template_dir, output_dir, force)
 
 
 if __name__ == "__main__":

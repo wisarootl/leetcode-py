@@ -48,7 +48,7 @@ leetcode/two_sum/
 └── __init__.py       # Package marker
 ```
 
-## 🎯 Supported Problem Categories
+## 🎯 Supported Problem Categories (ongoing)
 
 - **Arrays & Hashing** - Two Sum, Group Anagrams, Top K Elements
 - **Two Pointers** - Valid Palindrome, Container With Most Water
@@ -66,7 +66,7 @@ leetcode/two_sum/
 - **Intervals** - Merge Intervals, Meeting Rooms
 - **Math & Geometry** - Rotate Image, Spiral Matrix
 
-Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**. This is an ongoing project - contributions are welcome!
+Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**.
 
 ## 🎨 Visualizations
 
@@ -101,9 +101,12 @@ _Interactive multi-cell playground for each problem_
 
 ```bash
 # Work on a specific problem
-make p-test PROBLEM=two_sum
-# Edit leetcode/two_sum/solution.py
+make p-test PROBLEM=lru_cache
+# Edit leetcode/lru_cache/solution.py
 # Run tests to verify
+
+# Or use make p-test if default problem is set in Makefile
+make p-test
 ```
 
 **Add new problems**:
@@ -127,7 +130,7 @@ make gen-all-problems
 make lint
 ```
 
-## 🧰 Helper Classes
+## 🧰 Helper Classes (ongoing)
 
 - **TreeNode**: `from leetcode_py import TreeNode`
     - Beautiful tree visualization with anytree rendering
@@ -138,7 +141,5 @@ make lint
     - Simple array ↔ list conversion
     - Perfect for debugging linked list problems
 - New helpers: Add to `leetcode_py/`
-
-This is an ongoing project - contributions are welcome!
 
 Perfect for interview preparation with professional-grade tooling and beautiful visualizations.

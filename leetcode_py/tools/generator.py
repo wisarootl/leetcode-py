@@ -3,17 +3,60 @@
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Protocol
 
 import typer
 from cookiecutter.main import cookiecutter
 
 
+class FileOperations(Protocol):
+    """Protocol for file operations to enable testing."""
+
+    def read_json(self, path: Path) -> Dict[str, Any]:
+        """Read JSON from file."""
+        ...
+
+    def write_json(self, path: Path, data: Dict[str, Any]) -> None:
+        """Write JSON to file."""
+        ...
+
+    def exists(self, path: Path) -> bool:
+        """Check if path exists."""
+        ...
+
+
+class DefaultFileOperations:
+    """Default file operations implementation."""
+
+    def read_json(self, path: Path) -> Dict[str, Any]:
+        """Read JSON from file."""
+        try:
+            with open(path) as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            typer.echo(f"Error reading {path}: {e}", err=True)
+            raise typer.Exit(1)
+
+    def write_json(self, path: Path, data: Dict[str, Any]) -> None:
+        """Write JSON to file."""
+        try:
+            with open(path, "w") as f:
+                json.dump(data, f)
+        except OSError as e:
+            typer.echo(f"Error writing {path}: {e}", err=True)
+            raise typer.Exit(1)
+
+    def exists(self, path: Path) -> bool:
+        """Check if path exists."""
+        return path.exists()
+
+
 class TemplateGenerator:
     """Generator for LeetCode problem templates using cookiecutter."""
 
-    def __init__(self):
+    def __init__(self, file_ops: FileOperations | None = None):
         self.common_tags = ["grind-75", "blind-75", "neetcode-150", "top-interview"]
+        self.file_ops = file_ops or DefaultFileOperations()
 
     def check_and_prompt_tags(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Check and prompt for tags if empty."""
@@ -85,18 +128,19 @@ class TemplateGenerator:
                 del extra_context[field]
         return extra_context
 
-    def check_overwrite_permission(self, problem_name: str, force: bool, template_dir: Path) -> None:
+    def check_overwrite_permission(self, problem_name: str, force: bool, output_dir: Path) -> None:
         """Check if problem exists and get overwrite permission."""
         if force:
             return
 
-        output_dir = template_dir.parent.parent / "leetcode"
         problem_dir = output_dir / problem_name
 
-        if not problem_dir.exists():
+        if not self.file_ops.exists(problem_dir):
             return
 
-        typer.echo(f"⚠️  Warning: Problem '{problem_name}' already exists in leetcode/", err=True)
+        typer.echo(
+            f"⚠️  Warning: Problem '{problem_name}' already exists in {output_dir.name}/", err=True
+        )
         typer.echo("This will overwrite existing files. Use --force to skip this check.", err=True)
 
         if sys.stdin.isatty():  # Interactive terminal
@@ -109,25 +153,23 @@ class TemplateGenerator:
             raise typer.Exit(1)
 
     def generate_problem(
-        self, json_file: str, force: bool = False, template_dir: Path | None = None
+        self, json_file: str, template_dir: Path, output_dir: Path, force: bool = False
     ) -> None:
         """Generate problem from JSON using cookiecutter."""
         json_path = Path(json_file)
-        if not json_path.exists():
+        if not self.file_ops.exists(json_path):
             typer.echo(f"Error: {json_file} not found", err=True)
             raise typer.Exit(1)
 
         # Load JSON data
-        with open(json_path) as f:
-            data = json.load(f)
+        data = self.file_ops.read_json(json_path)
 
         # Process data
         data = self.check_and_prompt_tags(data)
         data = self.auto_set_dummy_return(data)
 
         # Save updated data back to JSON file
-        with open(json_path, "w") as f:
-            json.dump(data, f)
+        self.file_ops.write_json(json_path, data)
 
         # Convert arrays to cookiecutter-friendly nested format
         extra_context = self.convert_arrays_to_nested(data)
@@ -135,21 +177,19 @@ class TemplateGenerator:
         # Check if problem already exists
         problem_name = extra_context.get("problem_name", "unknown")
 
-        # Use provided template_dir or default
-        if template_dir is None:
-            template_dir = Path(__file__).parent.parent.parent / ".templates" / "leetcode"
-
-        self.check_overwrite_permission(problem_name, force, template_dir)
+        self.check_overwrite_permission(problem_name, force, output_dir)
 
         # Generate project using cookiecutter
-        output_dir = template_dir.parent.parent / "leetcode"
-
-        cookiecutter(
-            str(template_dir),
-            extra_context=extra_context,
-            no_input=True,
-            overwrite_if_exists=True,
-            output_dir=str(output_dir),
-        )
+        try:
+            cookiecutter(
+                str(template_dir),
+                extra_context=extra_context,
+                no_input=True,
+                overwrite_if_exists=True,
+                output_dir=str(output_dir),
+            )
+        except Exception as e:
+            typer.echo(f"Error generating template: {e}", err=True)
+            raise typer.Exit(1)
 
         typer.echo(f"✅ Generated problem: {problem_name}")
