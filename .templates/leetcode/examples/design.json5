@@ -59,6 +59,7 @@
   // === TEST CONFIGURATION ===
   // IMPORTANT: Design problems import the custom class, not Solution
   "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import LRUCache",
+  "test_class_name": "LruCache",                      // PascalCase: TestClassName for pytest class
   "test_helper_methods": [],                        // Often empty for design problems
   "test_methods": [
     {

@@ -49,6 +49,7 @@
     // === TEST CONFIGURATION ===
     // IMPORTANT: Linked list tests need ListNode import and special test setup
     test_imports: "import pytest\n\nfrom leetcode_py import ListNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    test_class_name: "ReverseLinkedListIi",            // PascalCase: TestClassName for pytest class
     test_helper_methods: [
         {
             name: "setup_method",

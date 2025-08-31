@@ -27,6 +27,7 @@
         }
     ],
     "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "InsertInterval",
     "test_helper_methods": [
         { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
     ],

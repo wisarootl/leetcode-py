@@ -53,6 +53,7 @@
     // === TEST CONFIGURATION ===
     // IMPORTANT: Tree tests need TreeNode import and special test setup
     test_imports: "import pytest\n\nfrom leetcode_py import TreeNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    test_class_name: "InvertBinaryTree",               // PascalCase: TestClassName for pytest class
     test_helper_methods: [
         {
             name: "setup_method",

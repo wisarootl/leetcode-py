@@ -5,7 +5,7 @@ from leetcode_py.test_utils import logged_test
 from .solution import LRUCache
 
 
-class TestLRUCache:
+class TestLruCache:
     @pytest.mark.parametrize(
         "operations, inputs, expected",
         [

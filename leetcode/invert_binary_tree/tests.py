@@ -6,7 +6,7 @@ from leetcode_py.test_utils import logged_test
 from .solution import Solution, SolutionBFS, SolutionDFS
 
 
-class TestSolution:
+class TestInvertBinaryTree:
     @pytest.mark.parametrize("solution_class", [Solution, SolutionDFS, SolutionBFS])
     @pytest.mark.parametrize(
         "root_list, expected_list",

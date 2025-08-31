@@ -6,7 +6,7 @@ from leetcode_py.test_utils import logged_test
 from .solution import Solution
 
 
-class TestSolution:
+class TestReverseLinkedListIi:
     def setup_method(self):
         self.solution = Solution()
 

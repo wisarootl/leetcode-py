@@ -31,6 +31,7 @@
     },
 
     "test_imports": "import pytest\nfrom loguru import logger\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "TwoSum",
     "_test_helper_methods": {
         "list": [
             {
