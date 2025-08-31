@@ -1,6 +1,6 @@
 from collections import deque
 
-from leetcode_py.tree_node import TreeNode
+from leetcode_py import TreeNode
 
 # Note: "Fringe" is the general CS term for the data structure holding nodes to be explored.
 # Stack (LIFO) → DFS, Queue (FIFO) → BFS, Priority Queue → A*/Best-first search

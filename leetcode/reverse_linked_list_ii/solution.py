@@ -1,4 +1,4 @@
-from leetcode_py.list_node import ListNode
+from leetcode_py import ListNode
 
 
 class Solution:

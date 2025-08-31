@@ -12,6 +12,25 @@ def build_anytree(node: "TreeNode | None", parent: Node | None = None) -> Node |
     return current
 
 
+def add_nodes(dot: graphviz.Digraph, node: "TreeNode | None", node_id: int = 0) -> int:
+    if not node:
+        return node_id
+
+    dot.node(str(node_id), str(node.val))
+    current_id = node_id
+    next_id = node_id + 1
+
+    if node.left:
+        dot.edge(str(current_id), str(next_id))
+        next_id = add_nodes(dot, node.left, next_id) + 1
+
+    if node.right:
+        dot.edge(str(current_id), str(next_id))
+        next_id = add_nodes(dot, node.right, next_id) + 1
+
+    return next_id - 1
+
+
 class TreeNode:
     def __init__(self, val: int = 0, left: "TreeNode | None" = None, right: "TreeNode | None" = None):
         self.val = val
@@ -77,25 +96,7 @@ class TreeNode:
         dot = graphviz.Digraph()
         dot.attr(rankdir="TB")
 
-        def add_nodes(node: "TreeNode | None", node_id: int = 0) -> int:
-            if not node:
-                return node_id
-
-            dot.node(str(node_id), str(node.val))
-            current_id = node_id
-            next_id = node_id + 1
-
-            if node.left:
-                dot.edge(str(current_id), str(next_id))
-                next_id = add_nodes(node.left, next_id) + 1
-
-            if node.right:
-                dot.edge(str(current_id), str(next_id))
-                next_id = add_nodes(node.right, next_id) + 1
-
-            return next_id - 1
-
-        add_nodes(self)
+        add_nodes(dot, self)
         return dot.pipe(format="svg", encoding="utf-8")
 
     def __eq__(self, other: object) -> bool:

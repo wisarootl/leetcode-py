@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= spiral_matrix
+PROBLEM ?= lru_cache
 FORCE ?= 0
 
 sync_submodules:

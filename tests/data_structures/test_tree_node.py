@@ -1,6 +1,7 @@
 import pytest
 
-from leetcode_py.tree_node import TreeNode, build_anytree
+from leetcode_py import TreeNode
+from leetcode_py.data_structures.tree_node import build_anytree
 
 
 class TestTreeNode:
@@ -155,7 +156,9 @@ class TestTreeNode:
         # This happens when we have a node but build_anytree fails
         import unittest.mock
 
-        with unittest.mock.patch("leetcode_py.tree_node.build_anytree", return_value=None):
+        with unittest.mock.patch(
+            "leetcode_py.data_structures.tree_node.build_anytree", return_value=None
+        ):
             node = TreeNode(1)
             result = str(node)
             assert result == "None"

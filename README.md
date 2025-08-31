@@ -9,12 +9,7 @@
 
 Premium LeetCode practice repository with Python solutions, algorithm templates, data structure visualizations, and automated testing. Perfect for coding interview preparation, competitive programming, and mastering algorithms with Blind 75, Grind 75, and NeetCode 150 problems.
 
-## 📋 Prerequisites
-
-- Python 3.13+
-- make, git, Graphviz, poetry
-
-## 🛠️ Installation
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
@@ -22,14 +17,23 @@ git clone https://github.com/wisarootl/leetcode-py.git
 cd leetcode-py
 
 # Install dependencies
-pip install -r requirements.txt
+poetry install
 
-# Generate all problems
+# Generate all problems to start practicing (fresh start - wipes all solutions)
 make gen-all-problems
 
-# Verify setup
+# Run existing problems
+make p-test PROBLEM=insert_interval
+make p-test PROBLEM=invert_binary_tree
+
+# Run all tests
 make test
 ```
+
+## 📋 Prerequisites
+
+- Python 3.13+
+- make, git, Graphviz, poetry
 
 ## 📁 Problem Structure
 
@@ -44,7 +48,7 @@ leetcode/two_sum/
 └── __init__.py       # Package marker
 ```
 
-## 🎯 Supported Problem Categories
+## 🎯 Supported Problem Categories (ongoing)
 
 - **Arrays & Hashing** - Two Sum, Group Anagrams, Top K Elements
 - **Two Pointers** - Valid Palindrome, Container With Most Water
@@ -62,7 +66,7 @@ leetcode/two_sum/
 - **Intervals** - Merge Intervals, Meeting Rooms
 - **Math & Geometry** - Rotate Image, Spiral Matrix
 
-Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**. This is an ongoing project - contributions are welcome!
+Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**.
 
 ## 🎨 Visualizations
 
@@ -91,46 +95,29 @@ _Interactive multi-cell playground for each problem_
 - **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
 - **Modern Python** - PEP 585/604 syntax with full type hints
 
-## 🚀 Quick Start
-
-```bash
-# Generate all problems to start practicing
-make gen-all-problems
-
-# Run existing problems
-make p-test PROBLEM=insert_interval
-make p-test PROBLEM=invert_binary_tree
-
-# Run all tests
-make test
-```
-
 ## 🔄 Workflow Examples
 
 **Practice existing problems**:
 
 ```bash
 # Work on a specific problem
-make p-test PROBLEM=two_sum
-# Edit leetcode/two_sum/solution.py
+make p-test PROBLEM=lru_cache
+# Edit leetcode/lru_cache/solution.py
 # Run tests to verify
+
+# Or use make p-test if default problem is set in Makefile
+make p-test
 ```
 
 **Add new problems**:
 
 ```bash
-# Copy problem description and solution placeholder from LeetCode
-# Then ask your LLM assistant:
-# "Create a new LeetCode problem for Valid Anagram"
-#
-# Behind the scenes, the LLM will:
-# 1. Create JSON template following .amazonq/rules/problem-creation.md
-# 2. Run `make p-gen PROBLEM=valid_anagram`
-# 3. Generate complete problem structure with tests
-# 4. You just implement the solution!
+# Ask your LLM assistant:
+# "Create LeetCode problem 146 (LRU Cache)"
+# The assistant handles everything automatically!
 ```
 
-_The LLM follows structured rules in `.amazonq/rules/problem-creation.md` to ensure consistent, high-quality problem generation using proven templates._
+_Behind the scenes: Assistant follows `.amazonq/rules/problem-creation.md` to scrape problem data, create JSON template, generate structure with `make p-gen`, and verify with `make lint`._
 
 **Bulk operations**:
 
@@ -143,18 +130,16 @@ make gen-all-problems
 make lint
 ```
 
-## 🧰 Helper Classes
+## 🧰 Helper Classes (ongoing)
 
-- **TreeNode**: `from leetcode_py.tree_node import TreeNode`
+- **TreeNode**: `from leetcode_py import TreeNode`
     - Beautiful tree visualization with anytree rendering
     - Jupyter notebook support with Graphviz diagrams
     - Easy array ↔ tree conversion for testing
-- **ListNode**: `from leetcode_py.list_node import ListNode`
+- **ListNode**: `from leetcode_py import ListNode`
     - Clean arrow visualization (`1 -> 2 -> 3`)
     - Simple array ↔ list conversion
     - Perfect for debugging linked list problems
 - New helpers: Add to `leetcode_py/`
-
-This is an ongoing project - contributions are welcome!
 
 Perfect for interview preparation with professional-grade tooling and beautiful visualizations.

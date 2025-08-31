@@ -1,7 +1,7 @@
 import pytest
 from loguru import logger
 
-from leetcode_py.list_node import ListNode
+from leetcode_py import ListNode
 from leetcode_py.test_utils import logged_test
 
 from .solution import Solution
