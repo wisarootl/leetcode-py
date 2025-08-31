@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= lru_cache
+PROBLEM ?= invert_binary_tree
 FORCE ?= 0
 
 sync_submodules:

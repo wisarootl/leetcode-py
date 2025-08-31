@@ -1,61 +1,73 @@
 {
-  // Basic problem template for array/string/number problems
-  // Copy this structure when creating new basic problems
+  // Basic problem template - for array, string, number problems
+  // Example: Container With Most Water, Spiral Matrix
 
-  // REQUIRED: Core identifiers
-  "problem_name": "two_sum",
-  "class_name": "TwoSum",
-  "method_name": "two_sum",
+  // === PROBLEM IDENTIFICATION ===
+  "problem_name": "container_with_most_water",        // snake_case: used for directory/file names
+  "solution_class_name": "Solution",                  // Always "Solution" for basic problems
+  "problem_number": "11",                            // LeetCode problem number as string
+  "problem_title": "Container With Most Water",       // Exact title from LeetCode
+  "difficulty": "Medium",                            // Easy, Medium, Hard
+  "topics": "Array, Two Pointers, Greedy",          // Comma-separated topics from LeetCode
+  "tags": ["grind-75"],                             // Optional: common problem set tags
 
-  // REQUIRED: Problem metadata
-  "problem_number": "1", // OPTIONAL: omit if no LeetCode number
-  "problem_title": "Two Sum",
-  "difficulty": "Easy",
-  "topics": "Array, Hash Table",
+  // === README CONTENT ===
+  // IMPORTANT: Preserve rich HTML content from LeetCode including:
+  // - Code snippets with backticks: `code`
+  // - Bold text: **bold** or <strong>bold</strong>
+  // - Italic text: *italic* or <em>italic</em>
+  // - Images: <img> tags with proper src and styling
+  // - HTML formatting: <p>, <br>, <ul>, <li>, etc.
+  // - Mathematical expressions and special characters
+  "readme_description": "You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `i`th line are `(i, 0)` and `(i, height[i])`.\n\nFind two lines that together with the x-axis form a container, such that the container contains the most water.\n\nReturn the maximum amount of water a container can store.\n\nNotice that you may not slant the container.",
 
-  // OPTIONAL: Problem categorization
-  "tags": ["grind-75"],
-
-  // REQUIRED: Problem description
-  "problem_description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-
-  // REQUIRED: Examples
-  "examples": [
-    { "input": "nums = [2,7,11,15], target = 9", "output": "[0,1]" },
-    { "input": "nums = [3,2,4], target = 6", "output": "[1,2]" },
-    { "input": "nums = [3,3], target = 6", "output": "[0,1]" }
+  "readme_examples": [
+    {
+      // Include images for visual problems - use HTML img tags
+      "content": "<img alt=\"\" src=\"https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg\" style=\"width: 600px; height: 287px;\" />\n\n```\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\nExplanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.\n```"
+    },
+    {
+      // Additional examples without images
+      "content": "```\nInput: height = [1,1]\nOutput: 1\n```"
+    }
   ],
 
-  // REQUIRED: Constraints
-  "constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
+  "readme_constraints": "- n == height.length\n- 2 <= n <= 10^5\n- 0 <= height[i] <= 10^4",
+  "readme_additional": "",                           // Optional: additional notes, follow-up questions
 
-  // REQUIRED: Method signature
-  "parameters": "nums: list[int], target: int",
-  "return_type": "list[int]",
-  "dummy_return": "[]",
-
-  // REQUIRED: Imports (empty for basic problems)
-  "imports": "",
-
-  // REQUIRED: Test cases
-  "test_cases": [
-    { "args": [[2, 7, 11, 15], 9], "expected": [0, 1] },
-    { "args": [[3, 2, 4], 6], "expected": [1, 2] },
-    { "args": [[3, 3], 6], "expected": [0, 1] }
+  // === SOLUTION TEMPLATE ===
+  "solution_imports": "",                            // Empty for basic problems, add imports if needed
+  "solution_methods": [
+    {
+      "name": "max_area",                           // snake_case method name
+      "parameters": "height: list[int]",            // Modern Python type hints (list[int], not List[int])
+      "return_type": "int",                         // Return type annotation
+      "dummy_return": "0"                           // Default return value (auto-set by generator)
+    }
   ],
 
-  // REQUIRED: Test configuration
-  "param_names": "nums, target, expected",
-  "param_names_with_types": "nums: list[int], target: int, expected: list[int]",
-  "input_description": "nums={nums}, target={target}",
-  "input_params": "nums, target",
-  "expected_param": "expected",
-  "method_args": "nums, target",
-  "test_setup": "",
-  "test_logging": "",
-  "assertion_code": "assert result == expected",
+  // === TEST CONFIGURATION ===
+  "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+  "test_helper_methods": [
+    {
+      "name": "setup_method",
+      "parameters": "",
+      "body": "self.solution = Solution()"
+    }
+  ],
+  "test_methods": [
+    {
+      "name": "test_max_area",                      // test_{method_name}
+      "parametrize": "height, expected",           // pytest parametrize parameters
+      "parametrize_typed": "height: list[int], expected: int", // Method signature with type hints
+      "test_cases": "[([1,8,6,2,5,4,8,3,7], 49), ([1,1], 1), ([1,2,1], 2)]", // Test data as string
+      "body": "result = self.solution.max_area(height)\nassert result == expected"
+    }
+  ],
 
-  // REQUIRED: Notebook setup
-  "test_input_setup": "# Example test case\nnums = [2, 7, 11, 15]\ntarget = 9",
-  "expected_output_setup": "expected = [0, 1]"
+  // === PLAYGROUND NOTEBOOK ===
+  "playground_imports": "from solution import Solution",
+  "playground_test_case": "# Example test case\nheight = [1,8,6,2,5,4,8,3,7]\nexpected = 49",
+  "playground_execution": "result = Solution().max_area(height)\nresult",
+  "playground_assertion": "assert result == expected"
 }

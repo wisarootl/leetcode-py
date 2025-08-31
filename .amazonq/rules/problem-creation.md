@@ -77,13 +77,13 @@ Required fields for `.templates/leetcode/json/{problem_name}.json`:
 
 ### Tree Problems
 
-- Add `"imports": "from leetcode_py.tree_node import TreeNode"`
+- Add `"imports": "from leetcode_py import TreeNode"`
 - Use `TreeNode | None` for nullable tree parameters
 - Test setup: `root = TreeNode.from_list(root_list)`
 
 ### Linked List Problems
 
-- Add `"imports": "from leetcode_py.list_node import ListNode"`
+- Add `"imports": "from leetcode_py import ListNode"`
 - Use `ListNode | None` for nullable list parameters
 - Test setup: `head = ListNode.from_list(head_list)`
 

@@ -136,7 +136,13 @@ class TemplateGenerator:
     def convert_arrays_to_nested(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Convert arrays to cookiecutter-friendly nested format."""
         extra_context = data.copy()
-        array_fields = ["examples", "test_cases", "tags"]
+        array_fields = [
+            "tags",
+            "readme_examples",
+            "solution_methods",
+            "test_helper_methods",
+            "test_methods",
+        ]
         for field in array_fields:
             if field in data and isinstance(data[field], list):
                 extra_context[f"_{field}"] = {"list": data[field]}

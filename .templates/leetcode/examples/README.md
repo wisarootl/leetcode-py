@@ -1,71 +1,109 @@
-# LeetCode Template Examples
+# LeetCode Problem Template Examples
 
-Reference templates for creating new LeetCode problems. **Copy from these examples** - don't create from scratch.
+This directory contains comprehensive JSON5 template examples for different types of LeetCode problems. These examples serve as references when creating new problems using the universal cookiecutter template.
 
-## Usage
+## Template Types
 
-1. **Choose the right template** based on problem type
-2. **Copy the entire structure** to `.templates/leetcode/json/{problem_name}.json`
-3. **Update all fields** with your problem's data
-4. **Generate**: `make p-gen PROBLEM=your_problem`
+### 1. `basic.json5` - Basic Algorithm Problems
 
-## Templates
+**Use for:** Array, string, number, hash table problems
+**Examples:** Container With Most Water, Two Sum, Valid Palindrome
+**Key features:**
 
-### `basic.json5`
+- Simple `Solution` class with single method
+- Standard test parametrization
+- Basic playground setup
 
-- **Use for**: Array, string, number, hash table problems
-- **Examples**: Two Sum, Valid Anagram, Contains Duplicate
-- **Features**: Simple parameters, direct assertions
+### 2. `tree.json5` - Binary Tree Problems
 
-### `tree.json5`
+**Use for:** Binary tree, BST, tree traversal problems
+**Examples:** Invert Binary Tree, Maximum Depth, Serialize Tree
+**Key features:**
 
-- **Use for**: Binary tree problems
-- **Examples**: Invert Binary Tree, Maximum Depth, Same Tree
-- **Features**: TreeNode import, array-to-tree conversion, tree logging
+- `TreeNode` imports and conversions
+- `TreeNode.from_list()` and `TreeNode.to_list()` in tests
+- Tree visualization support
 
-### `linked_list.json5`
+### 3. `linked_list.json5` - Linked List Problems
 
-- **Use for**: Linked list problems
-- **Examples**: Reverse Linked List, Merge Two Lists, Cycle Detection
-- **Features**: ListNode import, array-to-list conversion, list logging
+**Use for:** Singly/doubly linked list problems
+**Examples:** Reverse Linked List, Merge Lists, Detect Cycle
+**Key features:**
 
-### `string.json5`
+- `ListNode` imports and conversions
+- `ListNode.from_list()` and `ListNode.to_list()` in tests
+- Arrow visualization support
 
-- **Use for**: String manipulation problems
-- **Examples**: Valid Palindrome, Longest Substring, Anagrams
-- **Features**: String parameters, boolean/string returns
+### 4. `design.json5` - Data Structure Design Problems
 
-### `matrix.json5`
+**Use for:** Design problems requiring custom classes
+**Examples:** LRU Cache, Implement Trie, Design HashMap
+**Key features:**
 
-- **Use for**: 2D array/matrix problems
-- **Examples**: Rotate Image, Spiral Matrix, Set Matrix Zeroes
-- **Features**: Matrix parameters, in-place operation testing
+- Custom class names (not `Solution`)
+- Multiple methods including `__init__`
+- Complex operation sequence testing
+- Type annotations for complex test logic
 
-## Key Fields
+### 5. `matrix.json5` - 2D Array/Matrix Problems
 
-### Required Core Fields
+**Use for:** Matrix manipulation, 2D array problems
+**Examples:** Spiral Matrix, Rotate Image, Search 2D Matrix
+**Key features:**
 
-- `problem_name`, `class_name`, `method_name`
-- `problem_number`, `problem_title`, `difficulty`, `topics`
-- `problem_description`, `examples`, `constraints`
-- `parameters`, `return_type`, `dummy_return`
+- 2D array type annotations (`list[list[int]]`)
+- Visual examples with images
+- Matrix-specific test cases
 
-### Test Configuration
+## Usage Guidelines
 
-- `test_cases`: Array of `{args, expected}` objects
-- `param_names`: Parameter names for test methods
-- `test_setup`: Code to convert test data (e.g., arrays to TreeNode)
-- `assertion_code`: How to compare result with expected
+### Problem Type Detection
 
-### Notebook Setup
+1. **Basic**: Single algorithm, simple input/output
+2. **Tree**: Mentions "tree", "node", uses tree terminology
+3. **Linked List**: Mentions "linked list", "node", list operations
+4. **Design**: "Design", "Implement", multiple operations
+5. **Matrix**: "matrix", "2D array", "grid", visual layout
 
-- `test_input_setup`: Code for notebook input cell
-- `expected_output_setup`: Code for notebook expected cell
-- `imports`: Required imports (TreeNode, ListNode, etc.)
+### Key Template Fields
 
-## Rules
+#### Required Fields
 
-1. **Copy structure exactly** - all fields are required
-2. **Use modern Python syntax**: `list[int]`, `TreeNode | None`
-3. **Match existing patterns** - see current JSON files for reference
-4. **Test thoroughly** - run `make lint` and `make p-test` after generation
+- `problem_name`: snake_case identifier
+- `solution_class_name`: "Solution" or custom class name
+- `problem_number`: LeetCode number as string
+- `problem_title`: Exact LeetCode title
+- `difficulty`: "Easy", "Medium", or "Hard"
+- `topics`: Comma-separated topic string
+- `solution_methods`: Array of method definitions
+
+#### Important Patterns
+
+- **Type Hints**: Use modern syntax (`list[int]`, `dict[str, int]`, `Type | None`)
+- **Method Names**: Always snake_case
+- **Test Cases**: String representation of Python data structures
+- **Imports**: Include necessary helper classes (TreeNode, ListNode)
+
+### Template Selection Process
+
+1. Identify problem type from description/title
+2. Choose appropriate template from examples
+3. Customize fields for specific problem
+4. Ensure imports match problem requirements
+5. Verify test setup matches data structures used
+
+## Validation
+
+All templates are validated against:
+
+- Cookiecutter template compatibility
+- Linting requirements (black, isort, ruff, mypy)
+- Test framework integration
+- Notebook JSON format compliance
+
+## Notes
+
+- JSON5 format allows comments for documentation
+- All examples are based on working, tested templates
+- Templates are designed for the universal cookiecutter system
+- Examples include both simple and complex problem patterns

@@ -1,42 +1,21 @@
-import pytest
-from loguru import logger
-
-{{cookiecutter.imports}}
-from leetcode_py.test_utils import logged_test
-
-from .solution import Solution
+{{cookiecutter.test_imports}}
 
 
-class Test{{cookiecutter.class_name}}:
-    def setup_method(self):
-        self.solution = Solution()
+class Test{{cookiecutter.solution_class_name}}:
+    {%- for _, helper_methods in cookiecutter._test_helper_methods | dictsort %}
+    {%- for method in helper_methods %}
+    def {{method.name}}(self{% if method.parameters %}, {{method.parameters}}{% endif %}):
+        {{method.body | indent(8, first=False)}}
 
-    @pytest.mark.parametrize(
-        "{{cookiecutter.param_names}}",
-        [
-            {%- for _, test_cases in cookiecutter._test_cases | dictsort %}
-            {%- for test_case in test_cases %}
-            ({% for arg in test_case.args %}{% if arg is string %}"{{ arg }}"{% else %}{{ arg }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}, {{ test_case.expected }}),
-            {%- endfor %}
-            {%- endfor %}
-        ],
-    )
+    {%- endfor %}
+    {%- endfor %}
+
+    {%- for _, test_methods in cookiecutter._test_methods | dictsort %}
+    {%- for method in test_methods %}
+    @pytest.mark.parametrize("{{method.parametrize}}", {{method.test_cases}})
     @logged_test
-    def test_{{cookiecutter.method_name}}(self, {{cookiecutter.param_names_with_types}}):
-        logger.info(f"Testing with {{cookiecutter.input_description}}")
-        {%- if cookiecutter.test_setup %}
-        {%- for line in cookiecutter.test_setup.split('\n') %}
-        {{line}}
-        {%- endfor %}
-        {%- endif %}
-        result = self.solution.{{cookiecutter.method_name}}({{cookiecutter.input_params}})
-        {%- if cookiecutter.test_logging %}
-        {{cookiecutter.test_logging}}
-        {%- else %}
-        logger.success(f"Got result: {result}")
-        {%- endif %}
-        {%- if cookiecutter.assertion_code %}
-        {{cookiecutter.assertion_code}}
-        {%- else %}
-        assert result == {{cookiecutter.expected_param}}
-        {%- endif %}
+    def {{method.name}}(self, {{method.parametrize_typed if method.parametrize_typed else method.parametrize}}):
+        {{method.body | indent(8, first=False)}}
+
+    {%- endfor %}
+    {%- endfor %}
