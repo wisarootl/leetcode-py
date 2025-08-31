@@ -17,14 +17,14 @@ class HTMLParser:
         """Parse HTML content to extract description, examples, and constraints."""
         # Extract description (everything before first example)
         desc_match = re.search(
-            r'<p>(.*?)(?=<p><strong class="example">|<p><strong>Constraints:|$)', html_content, re.DOTALL
+            r'<p>(.*)(?=<p><strong class="example">|<p><strong>Constraints:|$)', html_content, re.DOTALL
         )
         description = HTMLParser.clean_html(desc_match.group(1)) if desc_match else ""
 
         # Extract examples
         examples = []
         example_pattern = (
-            r'<p><strong class="example">Example (\d+):</strong></p>\s*<pre>\s*(.*?)\s*</pre>'
+            r'<p><strong class="example">Example (\d+):</strong></p>\s*<pre>\s*(.*)\s*</pre>'
         )
         for match in re.finditer(example_pattern, html_content, re.DOTALL):
             example_num = match.group(1)

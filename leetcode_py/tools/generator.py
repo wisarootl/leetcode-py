@@ -60,42 +60,57 @@ class TemplateGenerator:
 
     def check_and_prompt_tags(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Check and prompt for tags if empty."""
-        if "tags" in data and (not data["tags"] or data["tags"] == []):
-            if sys.stdin.isatty():  # Interactive terminal
-                typer.echo("\n📋 No tags specified. Would you like to add any common tags?")
-                typer.echo("Available options:")
-                for i, tag in enumerate(self.common_tags, 1):
-                    typer.echo(f"  {i}. {tag}")
-                typer.echo("  0. Skip (no tags)")
-
-                choices_input = typer.prompt(
-                    "Select options (comma-separated, e.g. '1,2' or '0' to skip)"
-                )
-
-                try:
-                    choices = [int(x.strip()) for x in choices_input.split(",")]
-                    selected_tags: list[str] = []
-
-                    for choice in choices:
-                        if choice == 0:
-                            selected_tags = []
-                            break
-                        elif 1 <= choice <= len(self.common_tags):
-                            tag = self.common_tags[choice - 1]
-                            if tag not in selected_tags:
-                                selected_tags.append(tag)
-
-                    data["tags"] = selected_tags
-                    if selected_tags:
-                        typer.echo(f"✅ Added tags: {', '.join(selected_tags)}")
-                    else:
-                        typer.echo("✅ No tags added")
-
-                except ValueError:
-                    typer.echo("⚠️  Invalid input, skipping tags")
-                    data["tags"] = []
-
+        if self._should_prompt_for_tags(data) and sys.stdin.isatty():
+            selected_tags = self._prompt_for_tags()
+            data["tags"] = selected_tags
+            self._display_tags_result(selected_tags)
         return data
+
+    def _should_prompt_for_tags(self, data: Dict[str, Any]) -> bool:
+        """Check if we should prompt for tags."""
+        return "tags" in data and (not data["tags"] or data["tags"] == [])
+
+    def _prompt_for_tags(self) -> list[str]:
+        """Prompt user for tag selection."""
+        self._display_tag_options()
+        choices_input = typer.prompt("Select options (comma-separated, e.g. '1,2' or '0' to skip)")
+        return self._process_tag_choices(choices_input)
+
+    def _display_tag_options(self) -> None:
+        """Display available tag options."""
+        typer.echo("\n📋 No tags specified. Would you like to add any common tags?")
+        typer.echo("Available options:")
+        for i, tag in enumerate(self.common_tags, 1):
+            typer.echo(f"  {i}. {tag}")
+        typer.echo("  0. Skip (no tags)")
+
+    def _process_tag_choices(self, choices_input: str) -> list[str]:
+        """Process user's tag choices."""
+        try:
+            choices = [int(x.strip()) for x in choices_input.split(",")]
+            return self._build_selected_tags(choices)
+        except ValueError:
+            typer.echo("⚠️  Invalid input, skipping tags")
+            return []
+
+    def _build_selected_tags(self, choices: list[int]) -> list[str]:
+        """Build list of selected tags from choices."""
+        selected_tags: list[str] = []
+        for choice in choices:
+            if choice == 0:
+                return []
+            if 1 <= choice <= len(self.common_tags):
+                tag = self.common_tags[choice - 1]
+                if tag not in selected_tags:
+                    selected_tags.append(tag)
+        return selected_tags
+
+    def _display_tags_result(self, selected_tags: list[str]) -> None:
+        """Display the result of tag selection."""
+        if selected_tags:
+            typer.echo(f"✅ Added tags: {', '.join(selected_tags)}")
+        else:
+            typer.echo("✅ No tags added")
 
     def auto_set_dummy_return(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Auto-set dummy_return based on return_type."""
