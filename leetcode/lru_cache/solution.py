@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 class LRUCache:
     # Space: O(capacity)
-    def __init__(self, capacity: int):
+    def __init__(self, capacity: int) -> None:
         self.capacity = capacity
         self.cache: OrderedDict[int, int] = OrderedDict()
 
