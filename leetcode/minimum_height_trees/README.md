@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Graph, Topological Sort
-**Tags:**
+**Tags:** grind-75
 
 **LeetCode:** [Problem 310](https://leetcode.com/problems/minimum-height-trees/description/)
 

@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= minimum_height_trees
+PROBLEM ?= binary_tree_right_side_view
 FORCE ?= 0
 
 sync_submodules:

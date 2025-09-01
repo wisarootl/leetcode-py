@@ -1,0 +1,47 @@
+{
+    "problem_name": "validate_binary_search_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "98",
+    "problem_title": "Validate Binary Search Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
+    "tags": ["grind-75"],
+    "readme_description": "Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).\n\nA **valid BST** is defined as follows:\n\n- The left subtree of a node contains only nodes with keys **strictly less than** the node's key.\n- The right subtree of a node contains only nodes with keys **strictly greater than** the node's key.\n- Both the left and right subtrees must also be binary search trees.",
+    "readme_examples": [
+        {
+            "content": "![Example 1](https://assets.leetcode.com/uploads/2020/12/01/tree1.jpg)\n\n```\nInput: root = [2,1,3]\nOutput: true\n```"
+        },
+        {
+            "content": "![Example 2](https://assets.leetcode.com/uploads/2020/12/01/tree2.jpg)\n\n```\nInput: root = [5,1,4,null,null,3,6]\nOutput: false\n```\n**Explanation:** The root node's value is 5 but its right child's value is 4."
+        }
+    ],
+    "readme_constraints": "- The number of nodes in the tree is in the range `[1, 10^4]`.\n- `-2^31 <= Node.val <= 2^31 - 1`",
+    "readme_additional": "",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_methods": [
+        {
+            "name": "is_valid_bst",
+            "parameters": "root: TreeNode[int] | None",
+            "return_type": "bool",
+            "dummy_return": "False"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom leetcode_py import TreeNode\nfrom .solution import Solution",
+    "test_class_name": "ValidateBinarySearchTree",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_is_valid_bst",
+            "parametrize": "root_list, expected",
+            "parametrize_typed": "root_list: list[int | None], expected: bool",
+            "test_cases": "[([2, 1, 3], True), ([5, 1, 4, None, None, 3, 6], False), ([2, 1, 3], True), ([1], True), ([1, 1], False)]",
+            "body": "root = TreeNode.from_list(root_list)\nresult = self.solution.is_valid_bst(root)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_test_case": "# Example test case\nroot_list: list[int | None] = [2, 1, 3]\nexpected = True",
+    "playground_execution": "root = TreeNode.from_list(root_list)\nresult = Solution().is_valid_bst(root)\nresult",
+    "playground_assertion": "assert result == expected"
+}
