@@ -20,7 +20,7 @@ class TestInvertBinaryTree:
         solution_class: type[Solution | SolutionDFS | SolutionBFS],
     ):
         solution = solution_class()
-        root = TreeNode.from_list(root_list)
-        expected = TreeNode.from_list(expected_list)
+        root = TreeNode[int].from_list(root_list)
+        expected = TreeNode[int].from_list(expected_list)
         result = solution.invert_tree(root)
         assert result == expected

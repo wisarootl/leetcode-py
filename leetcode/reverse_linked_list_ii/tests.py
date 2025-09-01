@@ -18,7 +18,7 @@ class TestReverseLinkedListII:
     def test_reverse_between(
         self, head_list: list[int], left: int, right: int, expected_list: list[int]
     ):
-        head = ListNode.from_list(head_list)
-        expected = ListNode.from_list(expected_list)
+        head = ListNode[int].from_list(head_list)
+        expected = ListNode[int].from_list(expected_list)
         result = self.solution.reverse_between(head, left, right)
         assert result == expected

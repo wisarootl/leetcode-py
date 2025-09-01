@@ -18,8 +18,8 @@
     "solution_methods": [
         {
             "name": "invert_tree",
-            "parameters": "root: TreeNode | None",
-            "return_type": "TreeNode | None",
+            "parameters": "root: TreeNode[int] | None",
+            "return_type": "TreeNode[int] | None",
             "dummy_return": "None"
         }
     ],
@@ -34,11 +34,11 @@
             "parametrize": "root_list, expected_list",
             "parametrize_typed": "root_list: list[int | None], expected_list: list[int | None]",
             "test_cases": "[([4, 2, 7, 1, 3, 6, 9], [4, 7, 2, 9, 6, 3, 1]), ([2, 1, 3], [2, 3, 1]), ([], [])]",
-            "body": "root = TreeNode.from_list(root_list)\nexpected = TreeNode.from_list(expected_list)\nresult = self.solution.invert_tree(root)\nassert result == expected"
+            "body": "root = TreeNode[int].from_list(root_list)\nexpected = TreeNode[int].from_list(expected_list)\nresult = self.solution.invert_tree(root)\nassert result == expected"
         }
     ],
     "playground_imports": "from solution import Solution\n\nfrom leetcode_py import TreeNode",
-    "playground_test_case": "# Example test case\nroot_list: list[int | None] = [4, 2, 7, 1, 3, 6, 9]\nroot = TreeNode.from_list(root_list)\nexpected = TreeNode.from_list([4, 7, 2, 9, 6, 3, 1])",
+    "playground_test_case": "# Example test case\nroot_list: list[int | None] = [4, 2, 7, 1, 3, 6, 9]\nroot = TreeNode[int].from_list(root_list)\nexpected = TreeNode[int].from_list([4, 7, 2, 9, 6, 3, 1])",
     "playground_execution": "result = Solution().invert_tree(root)\nresult",
     "playground_assertion": "assert result == expected"
 }

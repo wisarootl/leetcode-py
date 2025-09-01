@@ -10,7 +10,7 @@ class Solution:
     # DFS recursive
     # Time: O(n)
     # Space: O(h) where h is height of tree
-    def invert_tree(self, root: TreeNode | None) -> TreeNode | None:
+    def invert_tree(self, root: TreeNode[int] | None) -> TreeNode[int] | None:
         if not root:
             return None
 
@@ -22,11 +22,11 @@ class SolutionDFS:
     # DFS iterative
     # Time: O(n)
     # Space: O(h) where h is height of tree
-    def invert_tree(self, root: TreeNode | None) -> TreeNode | None:
+    def invert_tree(self, root: TreeNode[int] | None) -> TreeNode[int] | None:
         if not root:
             return None
 
-        stack: list[TreeNode | None] = [root]
+        stack: list[TreeNode[int] | None] = [root]
         while stack:
             node = stack.pop()
             if node is None:
@@ -42,11 +42,11 @@ class SolutionDFS:
 class SolutionBFS:
     # Time: O(n)
     # Space: O(w) where w is maximum width of tree
-    def invert_tree(self, root: TreeNode | None) -> TreeNode | None:
+    def invert_tree(self, root: TreeNode[int] | None) -> TreeNode[int] | None:
         if not root:
             return None
 
-        queue: deque[TreeNode | None] = deque([root])
+        queue: deque[TreeNode[int] | None] = deque([root])
         while queue:
             node = queue.popleft()
             if node is None:

@@ -41,8 +41,8 @@
     solution_methods: [
         {
             name: "reverse_between", // snake_case method name
-            parameters: "head: ListNode | None, left: int, right: int", // Use ListNode | None for nullable parameters
-            return_type: "ListNode | None", // Modern union syntax
+            parameters: "head: ListNode[int] | None, left: int, right: int", // Use ListNode[int] | None for nullable parameters
+            return_type: "ListNode[int] | None", // Modern union syntax with explicit generic type
             dummy_return: "None", // None for linked list problems
         },
     ],
@@ -65,14 +65,14 @@
             parametrize_typed: "head_list: list[int], left: int, right: int, expected_list: list[int]",
             test_cases: "[([1, 2, 3, 4, 5], 2, 4, [1, 4, 3, 2, 5]), ([5], 1, 1, [5])]",
             // IMPORTANT: Linked list test body converts arrays to ListNode and compares objects directly
-            body: "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)\nresult = self.solution.reverse_between(head, left, right)\nassert result == expected",
+            body: "head = ListNode[int].from_list(head_list)\nexpected = ListNode[int].from_list(expected_list)\nresult = self.solution.reverse_between(head, left, right)\nassert result == expected",
         },
     ],
 
     // === PLAYGROUND NOTEBOOK ===
     // IMPORTANT: Linked list playground needs ListNode import and conversion
     playground_imports: "from solution import Solution\n\nfrom leetcode_py import ListNode",
-    playground_test_case: "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nhead = ListNode.from_list(head_list)\nleft, right = 2, 4\nexpected = ListNode.from_list([1, 4, 3, 2, 5])",
+    playground_test_case: "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nhead = ListNode[int].from_list(head_list)\nleft, right = 2, 4\nexpected = ListNode[int].from_list([1, 4, 3, 2, 5])",
     playground_execution: "result = Solution().reverse_between(head, left, right)\nresult",
     playground_assertion: "assert result == expected",
 }

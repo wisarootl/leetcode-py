@@ -4,11 +4,11 @@ from leetcode_py import ListNode
 class Solution:
     # Time: O(n)
     # Space: O(1)
-    def reverse_between(self, head: ListNode | None, left: int, right: int) -> ListNode | None:
+    def reverse_between(self, head: ListNode[int] | None, left: int, right: int) -> ListNode[int] | None:
         if not head or left == right:
             return head
 
-        dummy = ListNode(0)
+        dummy = ListNode[int](0)
         dummy.next = head
         prev = dummy
 

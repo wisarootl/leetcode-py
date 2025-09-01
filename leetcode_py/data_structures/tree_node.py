@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 import graphviz
 from anytree import Node, RenderTree
@@ -7,7 +7,7 @@ from anytree import Node, RenderTree
 T = TypeVar("T")
 
 
-def build_anytree(node: "TreeNode[T] | None", parent: Node | None = None) -> Node | None:
+def build_anytree(node: "TreeNode[Any] | None", parent: Node | None = None) -> Node | None:
     if not node:
         return Node("None", parent=parent) if parent else None
     current = Node(str(node.val), parent=parent)
@@ -17,7 +17,7 @@ def build_anytree(node: "TreeNode[T] | None", parent: Node | None = None) -> Nod
     return current
 
 
-def add_nodes(dot: graphviz.Digraph, node: "TreeNode[T] | None", node_id: int = 0) -> int:
+def add_nodes(dot: graphviz.Digraph, node: "TreeNode[Any] | None", node_id: int = 0) -> int:
     if not node:
         return node_id
 
