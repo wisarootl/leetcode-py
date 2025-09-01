@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= evaluate_reverse_polish_notation
+PROBLEM ?= task_scheduler
 FORCE ?= 0
 
 sync_submodules:
