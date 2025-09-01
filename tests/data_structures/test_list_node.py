@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from leetcode_py import ListNode
@@ -5,32 +7,33 @@ from leetcode_py import ListNode
 
 class TestListNode:
     @pytest.mark.parametrize(
-        "val,expected_val,expected_next",
+        "val, expected_val, expected_next",
         [
-            (None, 0, None),  # default
             (5, 5, None),  # with value
+            ("hello", "hello", None),  # string value
         ],
     )
-    def test_init(self, val, expected_val, expected_next):
-        node = ListNode() if val is None else ListNode(val)
+    def test_init(self, val: Any, expected_val: Any, expected_next: Any) -> None:
+        node = ListNode(val)
         assert node.val == expected_val
         assert node.next == expected_next
 
-    def test_init_with_next(self):
-        next_node = ListNode(2)
-        node = ListNode(1, next_node)
+    def test_init_with_next(self) -> None:
+        next_node = ListNode[int](2)
+        node = ListNode[int](1, next_node)
         assert node.val == 1
         assert node.next == next_node
 
     @pytest.mark.parametrize(
-        "input_list,expected_result",
+        "input_list, expected_result",
         [
             ([], None),
             ([1], "single_node"),
             ([1, 2, 3], "multiple_nodes"),
+            (["a", "b"], "string_nodes"),
         ],
     )
-    def test_from_list(self, input_list, expected_result):
+    def test_from_list(self, input_list: list[Any], expected_result: str | None) -> None:
         result = ListNode.from_list(input_list)
 
         if expected_result is None:
@@ -47,26 +50,36 @@ class TestListNode:
             assert result.next.next is not None
             assert result.next.next.val == 3
             assert result.next.next.next is None
+        elif expected_result == "string_nodes":
+            assert result is not None
+            assert result.val == "a"
+            assert result.next is not None
+            assert result.next.val == "b"
+            assert result.next.next is None
 
     @pytest.mark.parametrize(
-        "input_list,expected_output",
+        "input_list, expected_output",
         [
             ([1], [1]),
             ([1, 2, 3], [1, 2, 3]),
+            (["x", "y"], ["x", "y"]),
         ],
     )
-    def test_to_list(self, input_list, expected_output):
+    def test_to_list(self, input_list: list[Any], expected_output: list[Any]) -> None:
         node = ListNode.from_list(input_list)
         assert node is not None
         assert node.to_list() == expected_output
 
     @pytest.mark.parametrize(
-        "input_list,expected_str,expected_repr",
+        "input_list, expected_str, expected_repr",
         [
             ([1, 2, 3], "1 -> 2 -> 3", "ListNode([1, 2, 3])"),
+            (["a", "b"], "a -> b", "ListNode(['a', 'b'])"),
         ],
     )
-    def test_string_representations(self, input_list, expected_str, expected_repr):
+    def test_string_representations(
+        self, input_list: list[Any], expected_str: str, expected_repr: str
+    ) -> None:
         node = ListNode.from_list(input_list)
         assert node is not None
         assert str(node) == expected_str
@@ -74,20 +87,20 @@ class TestListNode:
         assert node._repr_html_() == expected_str
 
     @pytest.mark.parametrize(
-        "list1,list2,should_equal",
+        "list1,list2, should_equal",
         [
             ([1, 2, 3], [1, 2, 3], True),
             ([1, 2, 3], [1, 2, 4], False),
         ],
     )
-    def test_equality(self, list1, list2, should_equal):
+    def test_equality(self, list1: list[int], list2: list[int], should_equal: bool) -> None:
         node1 = ListNode.from_list(list1)
         node2 = ListNode.from_list(list2)
         assert (node1 == node2) == should_equal
 
     @pytest.mark.parametrize("other_value", [[1], "1"])
-    def test_equality_different_types(self, other_value):
-        node = ListNode(1)
+    def test_equality_different_types(self, other_value: Any) -> None:
+        node = ListNode[int](1)
         assert node != other_value
 
     @pytest.mark.parametrize(
@@ -96,9 +109,11 @@ class TestListNode:
             [1, 2, 3, 4, 5],
             [1],
             [10, 20, 30],
+            ["hello", "world"],
+            [True, False, True],
         ],
     )
-    def test_roundtrip_conversion(self, test_list):
+    def test_roundtrip_conversion(self, test_list: list[Any]) -> None:
         node = ListNode.from_list(test_list)
         assert node is not None
         result = node.to_list()

@@ -17,8 +17,8 @@
     "solution_methods": [
         {
             "name": "reverse_between",
-            "parameters": "head: ListNode | None, left: int, right: int",
-            "return_type": "ListNode | None",
+            "parameters": "head: ListNode[int] | None, left: int, right: int",
+            "return_type": "ListNode[int] | None",
             "dummy_return": "None"
         }
     ],
@@ -33,11 +33,11 @@
             "parametrize": "head_list, left, right, expected_list",
             "parametrize_typed": "head_list: list[int], left: int, right: int, expected_list: list[int]",
             "test_cases": "[([1, 2, 3, 4, 5], 2, 4, [1, 4, 3, 2, 5]), ([5], 1, 1, [5])]",
-            "body": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)\nresult = self.solution.reverse_between(head, left, right)\nassert result == expected"
+            "body": "head = ListNode[int].from_list(head_list)\nexpected = ListNode[int].from_list(expected_list)\nresult = self.solution.reverse_between(head, left, right)\nassert result == expected"
         }
     ],
     "playground_imports": "from solution import Solution\n\nfrom leetcode_py import ListNode",
-    "playground_test_case": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nhead = ListNode.from_list(head_list)\nleft, right = 2, 4\nexpected = ListNode.from_list([1, 4, 3, 2, 5])",
+    "playground_test_case": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nhead = ListNode[int].from_list(head_list)\nleft, right = 2, 4\nexpected = ListNode[int].from_list([1, 4, 3, 2, 5])",
     "playground_execution": "result = Solution().reverse_between(head, left, right)\nresult",
     "playground_assertion": "assert result == expected"
 }

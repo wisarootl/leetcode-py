@@ -1,8 +1,13 @@
+from typing import Any, Generic, TypeVar
+
 import graphviz
 from anytree import Node, RenderTree
 
+# TODO: Remove TypeVar when minimum Python version is 3.12+ (use class TreeNode[T]: syntax)
+T = TypeVar("T")
 
-def build_anytree(node: "TreeNode | None", parent: Node | None = None) -> Node | None:
+
+def build_anytree(node: "TreeNode[Any] | None", parent: Node | None = None) -> Node | None:
     if not node:
         return Node("None", parent=parent) if parent else None
     current = Node(str(node.val), parent=parent)
@@ -12,7 +17,7 @@ def build_anytree(node: "TreeNode | None", parent: Node | None = None) -> Node |
     return current
 
 
-def add_nodes(dot: graphviz.Digraph, node: "TreeNode | None", node_id: int = 0) -> int:
+def add_nodes(dot: graphviz.Digraph, node: "TreeNode[Any] | None", node_id: int = 0) -> int:
     if not node:
         return node_id
 
@@ -31,14 +36,14 @@ def add_nodes(dot: graphviz.Digraph, node: "TreeNode | None", node_id: int = 0) 
     return next_id - 1
 
 
-class TreeNode:
-    def __init__(self, val: int = 0, left: "TreeNode | None" = None, right: "TreeNode | None" = None):
+class TreeNode(Generic[T]):
+    def __init__(self, val: T, left: "TreeNode[T] | None" = None, right: "TreeNode[T] | None" = None):
         self.val = val
         self.left = left
         self.right = right
 
     @classmethod
-    def from_list(cls, arr: list[int | None]) -> "TreeNode | None":
+    def from_list(cls, arr: list[T | None]) -> "TreeNode[T] | None":
         """Convert array representation to binary tree."""
         if not arr or arr[0] is None:
             return None
@@ -66,10 +71,10 @@ class TreeNode:
 
         return root
 
-    def to_list(self) -> list[int | None]:
+    def to_list(self) -> list[T | None]:
         """Convert binary tree to array representation."""
-        result: list[int | None] = []
-        queue: list[TreeNode | None] = [self]
+        result: list[T | None] = []
+        queue: list[TreeNode[T] | None] = [self]
 
         while queue:
             node = queue.pop(0)
