@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= clone_graph
+PROBLEM ?= minimum_height_trees
 FORCE ?= 0
 
 sync_submodules:

@@ -22,7 +22,4 @@ class TestCloneGraph:
         node = GraphNode.from_adjacency_list(adj_list)
         result = solution.clone_graph(node)
 
-        if result is None:
-            assert node is None
-        else:
-            assert result.is_clone(node)
+        assert result.is_clone(node) if result else node is None
