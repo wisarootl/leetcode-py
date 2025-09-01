@@ -1,10 +1,16 @@
-class ListNode:
-    def __init__(self, val: int = 0, next: "ListNode | None" = None):
+# from typing import Generic, TypeVar
+
+# # TODO: Remove TypeVar when minimum Python version is 3.12+ (use class ListNode[T]: syntax)
+# T = TypeVar("T")
+
+
+class ListNode[T]:
+    def __init__(self, val: T, next: "ListNode[T] | None" = None):
         self.val = val
         self.next = next
 
     @classmethod
-    def from_list(cls, arr: list[int]) -> "ListNode | None":
+    def from_list(cls, arr: list[T]) -> "ListNode[T] | None":
         if not arr:
             return None
         head = cls(arr[0])
@@ -14,9 +20,9 @@ class ListNode:
             current = current.next
         return head
 
-    def to_list(self) -> list[int]:
+    def to_list(self) -> list[T]:
         result = []
-        current: "ListNode | None" = self
+        current: "ListNode[T] | None" = self
         while current:
             result.append(current.val)
             current = current.next
