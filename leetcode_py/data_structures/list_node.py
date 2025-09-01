@@ -1,10 +1,10 @@
-# from typing import Generic, TypeVar
+from typing import Generic, TypeVar
 
-# # TODO: Remove TypeVar when minimum Python version is 3.12+ (use class ListNode[T]: syntax)
-# T = TypeVar("T")
+# TODO: Remove TypeVar when minimum Python version is 3.12+ (use class ListNode[T]: syntax)
+T = TypeVar("T")
 
 
-class ListNode[T]:
+class ListNode(Generic[T]):
     def __init__(self, val: T, next: "ListNode[T] | None" = None):
         self.val = val
         self.next = next
