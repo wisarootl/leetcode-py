@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= binary_tree_right_side_view
+PROBLEM ?= evaluate_reverse_polish_notation
 FORCE ?= 0
 
 sync_submodules:
