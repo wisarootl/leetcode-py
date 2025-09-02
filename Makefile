@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= invert_binary_tree
+PROBLEM ?= task_scheduler
 FORCE ?= 0
 
 sync_submodules:

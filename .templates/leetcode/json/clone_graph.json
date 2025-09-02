@@ -1,0 +1,50 @@
+{
+    "problem_name": "clone_graph",
+    "solution_class_name": "Solution",
+    "problem_number": "133",
+    "problem_title": "Clone Graph",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Depth-First Search, Breadth-First Search, Graph",
+    "tags": ["grind-75"],
+    "readme_description": "Given a reference of a node in a **connected** undirected graph.\n\nReturn a **deep copy** (clone) of the graph.\n\nEach node in the graph contains a value (`int`) and a list (`List[Node]`) of its neighbors.\n\n```\nclass Node {\n    public int val;\n    public List<Node> neighbors;\n}\n```\n\n**Test case format:**\n\nFor simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with `val == 1`, the second node with `val == 2`, and so on. The graph is represented in the test case using an adjacency list.\n\n**An adjacency list** is a collection of unordered **lists** used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.\n\nThe given node will always be the first node with `val = 1`. You must return the **copy of the given node** as a reference to the cloned graph.",
+    "readme_examples": [
+        {
+            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png\" style=\"width: 454px; height: 500px;\" />\n\n```\nInput: adjList = [[2,4],[1,3],[2,4],[1,3]]\nOutput: [[2,4],[1,3],[2,4],[1,3]]\nExplanation: There are 4 nodes in the graph.\n1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n```"
+        },
+        {
+            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/01/07/graph.png\" style=\"width: 163px; height: 148px;\" />\n\n```\nInput: adjList = [[]]\nOutput: [[]]\nExplanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.\n```"
+        },
+        {
+            "content": "```\nInput: adjList = []\nOutput: []\nExplanation: This an empty graph, it does not have any nodes.\n```"
+        }
+    ],
+    "readme_constraints": "- The number of nodes in the graph is in the range `[0, 100]`.\n- `1 <= Node.val <= 100`\n- `Node.val` is unique for each node.\n- There are no repeated edges and no self-loops in the graph.\n- The Graph is connected and all nodes can be visited starting from the given node.",
+    "readme_additional": "",
+    "solution_imports": "from leetcode_py import GraphNode",
+    "solution_methods": [
+        {
+            "name": "clone_graph",
+            "parameters": "node: GraphNode | None",
+            "return_type": "GraphNode | None",
+            "dummy_return": "None"
+        }
+    ],
+    "test_imports": "import pytest\n\nfrom leetcode_py import GraphNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    "test_class_name": "CloneGraph",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_clone_graph",
+            "parametrize": "adj_list",
+            "parametrize_typed": "adj_list: list[list[int]]",
+            "test_cases": "[[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], []]",
+            "body": "node = GraphNode.from_adjacency_list(adj_list)\nresult = self.solution.clone_graph(node)\nassert result.is_clone(node) if result else node is None"
+        }
+    ],
+    "playground_imports": "from solution import Solution\n\nfrom leetcode_py import GraphNode",
+    "playground_test_case": "# Example test case\nadj_list = [[2,4],[1,3],[2,4],[1,3]]\nnode = GraphNode.from_adjacency_list(adj_list)",
+    "playground_execution": "result = Solution().clone_graph(node)\nresult",
+    "playground_assertion": "assert result.is_clone(node) if result else node is None"
+}
