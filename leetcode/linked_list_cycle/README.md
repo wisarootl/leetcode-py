@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, Linked List, Two Pointers
-**Tags:**
+**Tags:** grind-75
 
 **LeetCode:** [Problem 141](https://leetcode.com/problems/linked-list-cycle/description/)
 

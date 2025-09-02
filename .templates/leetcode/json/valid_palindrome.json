@@ -1,0 +1,50 @@
+{
+    "problem_name": "valid_palindrome",
+    "solution_class_name": "Solution",
+    "problem_number": "125",
+    "problem_title": "Valid Palindrome",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "tags": ["grind-75"],
+    "readme_description": "A phrase is a **palindrome** if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string `s`, return `true` if it is a **palindrome**, or `false` otherwise.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: s = \"A man, a plan, a canal: Panama\"\nOutput: true\n```\n**Explanation:** \"amanaplanacanalpanama\" is a palindrome."
+        },
+        {
+            "content": "```\nInput: s = \"race a car\"\nOutput: false\n```\n**Explanation:** \"raceacar\" is not a palindrome."
+        },
+        {
+            "content": "```\nInput: s = \" \"\nOutput: true\n```\n**Explanation:** s is an empty string \"\" after removing non-alphanumeric characters. Since an empty string reads the same forward and backward, it is a palindrome."
+        }
+    ],
+    "readme_constraints": "- `1 <= s.length <= 2 * 10^5`\n- `s` consists only of printable ASCII characters.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "is_palindrome",
+            "parameters": "s: str",
+            "return_type": "bool",
+            "dummy_return": "False"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "ValidPalindrome",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_is_palindrome",
+            "parametrize": "s, expected",
+            "parametrize_typed": "s: str, expected: bool",
+            "test_cases": "[(\"A man, a plan, a canal: Panama\", True), (\"race a car\", False), (\" \", True), (\"\", True), (\"a\", True), (\"Madam\", True), (\"No 'x' in Nixon\", True), (\"Mr. Owl ate my metal worm\", True)]",
+            "body": "result = self.solution.is_palindrome(s)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ns = \"A man, a plan, a canal: Panama\"\nexpected = True",
+    "playground_execution": "result = Solution().is_palindrome(s)\nresult",
+    "playground_assertion": "assert result == expected"
+}
