@@ -6,11 +6,17 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 
 1. **Scrape** problem data using `.templates/leetcode/scrape.py`
 2. **Transform** data into proper JSON template format
-3. **Create** JSON file in `.templates/leetcode/json/{problem_name}.json`
-4. **Update** Makefile with `PROBLEM ?= {problem_name}`
-5. **Generate** problem structure using `make p-gen`
-6. **Verify** with `make lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
-7. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make lint` until passes to ensure reproducibility
+3. **CRITICAL: Include images** - Extract image URLs from scraped data and add to readme_examples with format: `![Example N](image_url)\n\n` before code blocks
+    - Check scraped data for image URLs in the `raw_content` field
+    - Look for patterns: `https://assets.leetcode.com/uploads/...` or `<img alt="" src="..." />`
+    - Common patterns: `kthtree1.jpg`, `kthtree2.jpg`, `clone_graph.png`, `container.jpg`
+    - Images provide crucial visual context, especially for tree and graph problems
+    - Always verify images are included in `readme_examples` and accessible
+4. **Create** JSON file in `.templates/leetcode/json/{problem_name}.json`
+5. **Update** Makefile with `PROBLEM ?= {problem_name}`
+6. **Generate** problem structure using `make p-gen`
+7. **Verify** with `make lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
+8. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make lint` until passes to ensure reproducibility
 
 ## Scraping Commands
 
@@ -46,7 +52,7 @@ Required fields for `.templates/leetcode/json/{problem_name}.json`:
     "readme_description": "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.",
     "readme_examples": [
         {
-            "content": "```\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\n```\n**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1]."
+            "content": "![Example 1](https://example.com/image1.jpg)\n\n```\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\n```\n**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1]."
         }
     ],
     "readme_constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",

@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= task_scheduler
+PROBLEM ?= kth_smallest_element_in_a_bst
 FORCE ?= 0
 
 sync_submodules:
