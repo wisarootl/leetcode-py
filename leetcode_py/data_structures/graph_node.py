@@ -55,7 +55,7 @@ class GraphNode:
             return False
 
         # First check if structures are equal
-        if not (self != other):
+        if self != other:
             return False
 
         # Then check all nodes are different objects
