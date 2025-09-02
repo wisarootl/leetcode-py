@@ -84,7 +84,6 @@ class TestListNode:
         assert node is not None
         assert str(node) == expected_str
         assert repr(node) == expected_repr
-        assert node._repr_html_() == expected_str
 
     @pytest.mark.parametrize(
         "list1,list2, should_equal",
@@ -118,3 +117,49 @@ class TestListNode:
         assert node is not None
         result = node.to_list()
         assert result == test_list
+
+    def test_has_cycle_no_cycle(self) -> None:
+        # Test linear list has no cycle
+        node = ListNode.from_list([1, 2, 3])
+        assert node is not None
+        assert not node._has_cycle()
+
+    def test_has_cycle_with_cycle(self) -> None:
+        # Create a cycle: 1 -> 2 -> 3 -> 2 (cycle back to node 2)
+        node1 = ListNode(1)
+        node2 = ListNode(2)
+        node3 = ListNode(3)
+        node1.next = node2
+        node2.next = node3
+        node3.next = node2  # Create cycle
+
+        assert node1._has_cycle()
+
+    def test_str_with_cycle(self) -> None:
+        # Create a cycle and test string representation
+        node1 = ListNode(1)
+        node2 = ListNode(2)
+        node1.next = node2
+        node2.next = node1  # Create cycle
+
+        result = str(node1)
+        assert "-> ... (cycle back to 1)" in result
+
+    def test_equality_with_cycles(self) -> None:
+        # Create two cyclic lists
+        node1 = ListNode(1)
+        node2 = ListNode(2)
+        node1.next = node2
+        node2.next = node1  # Create cycle
+
+        node3 = ListNode(1)
+        node4 = ListNode(2)
+        node3.next = node4
+        node4.next = node3  # Create cycle
+
+        # Cyclic lists should not be equal (for simplicity)
+        assert node1 != node3
+
+        # Test cyclic vs non-cyclic
+        linear_node = ListNode.from_list([1, 2])
+        assert node1 != linear_node

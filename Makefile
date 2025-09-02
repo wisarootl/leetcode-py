@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= search_in_rotated_sorted_array
+PROBLEM ?= linked_list_cycle
 FORCE ?= 0
 
 sync_submodules:
