@@ -5,13 +5,14 @@ class Solution:
     # Time: O(n)
     # Space: O(1)
     def has_cycle(self, head: ListNode[int] | None) -> bool:
-        slow = head
         fast = head
+        slow = head
 
-        while fast is not None and fast.next is not None:
-            slow = slow.next  # type: ignore[union-attr]
+        while fast and fast.next:
+            assert slow is not None
             fast = fast.next.next
-            if slow is fast:
-                return True  # Cycle detected
+            slow = slow.next
+            if fast is slow:
+                return True
 
-        return False  # No cycle
+        return False

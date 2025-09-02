@@ -34,9 +34,9 @@
     "test_helper_methods": [
         { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" },
         {
-            "name": "_create_cycle_list",
+            "name": "create_cycle_list",
             "parameters": "values: list[int], pos: int",
-            "body": "if not values:\n    return None\n\nhead = ListNode.from_list(values)\nif pos == -1:\n    return head\n\n# Find the node at position pos\ncurrent = head\nfor _ in range(pos):\n    current = current.next\ncycle_node = current\n\n# Find the tail\ntail = head\nwhile tail.next:\n    tail = tail.next\n\n# Create cycle\ntail.next = cycle_node\nreturn head"
+            "body": "if not values:\n    return None\n\nnodes = []\nhead = ListNode(values[0])\nnodes.append(head)\ncurrent = head\n\nfor i in range(1, len(values)):\n    current.next = ListNode(values[i])\n    current = current.next\n    nodes.append(current)\n\nif pos != -1 and pos < len(nodes):\n    current.next = nodes[pos]\n\nreturn head"
         }
     ],
     "test_methods": [
@@ -44,12 +44,12 @@
             "name": "test_has_cycle",
             "parametrize": "values, pos, expected",
             "parametrize_typed": "values: list[int], pos: int, expected: bool",
-            "test_cases": "[([3, 2, 0, -4], 1, True), ([1, 2], 0, True), ([1], -1, False), ([], -1, False), ([1, 2, 3, 4, 5], 2, True), ([1, 2, 3], -1, False)]",
-            "body": "head = self._create_cycle_list(values, pos)\nresult = self.solution.has_cycle(head)\nassert result == expected"
+            "test_cases": "[([3, 2, 0, -4], 1, True), ([1, 2], 0, True), ([1], -1, False), ([], -1, False), ([1, 2, 3], -1, False), ([1, 2, 3, 4, 5], 0, True), ([1, 2, 3, 4, 5], 2, True), ([1, 2, 3, 4, 5], 4, True), ([1], 0, True), ([1, 2], 1, True), ([1, 2, 3, 4, 5, 6, 7, 8], 3, True), ([1, 2, 3, 4, 5, 6, 7, 8], -1, False), ([1, 2], -1, False), ([5, 10], 0, True), ([5, 10], 1, True), ([0], -1, False), ([-1, -2, -3], 1, True), ([100, 200, 300], 0, True)]",
+            "body": "head = self.create_cycle_list(values, pos)\nresult = self.solution.has_cycle(head)\nassert result == expected"
         }
     ],
-    "playground_imports": "from leetcode_py import ListNode\nfrom solution import Solution",
-    "playground_test_case": "# Example test case\nvalues = [3, 2, 0, -4]\npos = 1\nexpected = True",
-    "playground_execution": "head = create_cycle_list(values, pos)\nresult = Solution().has_cycle(head)\nresult",
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "import os\nimport sys\nsys.path.append(os.path.join(os.getcwd(), \\\"..\\\"))\nfrom linked_list_cycle.tests import TestLinkedListCycle\n\n# Example test case\nvalues = [3, 2, 0, -4]\npos = 1\nexpected = True",
+    "playground_execution": "head = TestLinkedListCycle().create_cycle_list(values, pos)\nresult = Solution().has_cycle(head)\nresult",
     "playground_assertion": "assert result == expected"
 }
