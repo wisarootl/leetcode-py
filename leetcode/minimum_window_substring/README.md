@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Hash Table, String, Sliding Window
-**Tags:** grind-75, neetcode-150
+**Tags:** grind-75
 
 **LeetCode:** [Problem 76](https://leetcode.com/problems/minimum-window-substring/description/)
 

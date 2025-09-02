@@ -5,7 +5,7 @@
     "problem_title": "Minimum Window Substring",
     "difficulty": "Hard",
     "topics": "Hash Table, String, Sliding Window",
-    "tags": ["grind-75", "neetcode-150"],
+    "tags": ["grind-75"],
     "readme_description": "Given two strings `s` and `t` of lengths `m` and `n` respectively, return the **minimum window substring** of `s` such that every character in `t` (including duplicates) is included in the window. If there is no such substring, return the empty string `\"\"`.\n\nThe testcases will be generated such that the answer is unique.",
     "readme_examples": [
         {

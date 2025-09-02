@@ -1,0 +1,44 @@
+{
+    "problem_name": "search_in_rotated_sorted_array",
+    "solution_class_name": "Solution",
+    "problem_number": "33",
+    "problem_title": "Search in Rotated Sorted Array",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "tags": ["grind-75"],
+    "readme_description": "There is an integer array `nums` sorted in ascending order (with **distinct** values).\n\nPrior to being passed to your function, `nums` is **possibly left rotated** at an unknown index `k` (`1 <= k < nums.length`) such that the resulting array is `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]` (**0-indexed**). For example, `[0,1,2,4,5,6,7]` might be left rotated by 3 indices and become `[4,5,6,7,0,1,2]`.\n\nGiven the array `nums` **after** the possible rotation and an integer `target`, return *the index of* `target` *if it is in* `nums`*, or* `-1` *if it is not in* `nums`.\n\nYou must write an algorithm with `O(log n)` runtime complexity.",
+    "readme_examples": [
+        { "content": "```\nInput: nums = [4,5,6,7,0,1,2], target = 0\nOutput: 4\n```" },
+        { "content": "```\nInput: nums = [4,5,6,7,0,1,2], target = 3\nOutput: -1\n```" },
+        { "content": "```\nInput: nums = [1], target = 0\nOutput: -1\n```" }
+    ],
+    "readme_constraints": "- `1 <= nums.length <= 5000`\n- `-10^4 <= nums[i] <= 10^4`\n- All values of `nums` are **unique**.\n- `nums` is an ascending array that is possibly rotated.\n- `-10^4 <= target <= 10^4`",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "search",
+            "parameters": "nums: list[int], target: int",
+            "return_type": "int",
+            "dummy_return": "-1"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "SearchInRotatedSortedArray",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_search",
+            "parametrize": "nums, target, expected",
+            "parametrize_typed": "nums: list[int], target: int, expected: int",
+            "test_cases": "[([4, 5, 6, 7, 0, 1, 2], 0, 4), ([4, 5, 6, 7, 0, 1, 2], 3, -1), ([1], 0, -1), ([1], 1, 0), ([3, 1], 1, 1)]",
+            "body": "result = self.solution.search(nums, target)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nnums = [4, 5, 6, 7, 0, 1, 2]\ntarget = 0\nexpected = 4",
+    "playground_execution": "result = Solution().search(nums, target)\nresult",
+    "playground_assertion": "assert result == expected"
+}

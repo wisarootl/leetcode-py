@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= minimum_window_substring
+PROBLEM ?= search_in_rotated_sorted_array
 FORCE ?= 0
 
 sync_submodules:
