@@ -10,8 +10,7 @@ class TestLinkedListCycle:
     def setup_method(self):
         self.solution = Solution()
 
-    @staticmethod
-    def create_cycle_list(values: list[int], pos: int) -> ListNode[int] | None:
+    def create_cycle_list(self, values: list[int], pos: int) -> ListNode[int] | None:
         if not values:
             return None
 
