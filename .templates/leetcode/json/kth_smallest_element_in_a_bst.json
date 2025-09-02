@@ -5,7 +5,7 @@
     "problem_title": "Kth Smallest Element in a BST",
     "difficulty": "Medium",
     "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
-    "tags": [],
+    "tags": ["grind-75"],
     "readme_description": "Given the `root` of a binary search tree, and an integer `k`, return the `k`th smallest value (1-indexed) of all the values of the nodes in the tree.",
     "readme_examples": [
         {

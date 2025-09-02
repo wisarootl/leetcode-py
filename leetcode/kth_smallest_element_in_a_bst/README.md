@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Depth-First Search, Binary Search Tree, Binary Tree
-**Tags:**
+**Tags:** grind-75
 
 **LeetCode:** [Problem 230](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
 

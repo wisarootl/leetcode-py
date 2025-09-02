@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= kth_smallest_element_in_a_bst
+PROBLEM ?= minimum_window_substring
 FORCE ?= 0
 
 sync_submodules:
