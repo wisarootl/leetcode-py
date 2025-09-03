@@ -1,0 +1,50 @@
+{
+    "problem_name": "minimum_window_substring",
+    "solution_class_name": "Solution",
+    "problem_number": "76",
+    "problem_title": "Minimum Window Substring",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Sliding Window",
+    "tags": ["grind-75"],
+    "readme_description": "Given two strings `s` and `t` of lengths `m` and `n` respectively, return the **minimum window substring** of `s` such that every character in `t` (including duplicates) is included in the window. If there is no such substring, return the empty string `\"\"`.\n\nThe testcases will be generated such that the answer is unique.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: s = \"ADOBECODEBANC\", t = \"ABC\"\nOutput: \"BANC\"\n```\n**Explanation:** The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t."
+        },
+        {
+            "content": "```\nInput: s = \"a\", t = \"a\"\nOutput: \"a\"\n```\n**Explanation:** The entire string s is the minimum window."
+        },
+        {
+            "content": "```\nInput: s = \"a\", t = \"aa\"\nOutput: \"\"\n```\n**Explanation:** Both 'a's from t must be included in the window. Since the largest window of s only has one 'a', return empty string."
+        }
+    ],
+    "readme_constraints": "- `m == s.length`\n- `n == t.length`\n- `1 <= m, n <= 10^5`\n- `s` and `t` consist of uppercase and lowercase English letters.",
+    "readme_additional": "**Follow up:** Could you find an algorithm that runs in `O(m + n)` time?",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "min_window",
+            "parameters": "s: str, t: str",
+            "return_type": "str",
+            "dummy_return": "\"\""
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "MinimumWindowSubstring",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_min_window",
+            "parametrize": "s, t, expected",
+            "parametrize_typed": "s: str, t: str, expected: str",
+            "test_cases": "[(\"ADOBECODEBANC\", \"ABC\", \"BANC\"), (\"a\", \"a\", \"a\"), (\"a\", \"aa\", \"\")]",
+            "body": "result = self.solution.min_window(s, t)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ns = \\\"ADOBECODEBANC\\\"\nt = \\\"ABC\\\"\nexpected = \\\"BANC\\\"",
+    "playground_execution": "result = Solution().min_window(s, t)\nresult",
+    "playground_assertion": "assert result == expected"
+}

@@ -5,7 +5,7 @@
     "problem_title": "Reverse Linked List II",
     "difficulty": "Medium",
     "topics": "Linked List",
-    "tags": ["grind-75"],
+    "tags": [],
     "readme_description": "Given the `head` of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return the reversed list.",
     "readme_examples": [
         { "content": "```\nInput: head = [1,2,3,4,5], left = 2, right = 4\nOutput: [1,4,3,2,5]\n```" },

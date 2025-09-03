@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List
-**Tags:** grind-75
+**Tags:**
 
 **LeetCode:** [Problem 92](https://leetcode.com/problems/reverse-linked-list-ii/description/)
 

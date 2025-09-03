@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= task_scheduler
+PROBLEM ?= k_closest_points_to_origin
 FORCE ?= 0
 
 sync_submodules:

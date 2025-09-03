@@ -1,0 +1,47 @@
+{
+    "problem_name": "kth_smallest_element_in_a_bst",
+    "solution_class_name": "Solution",
+    "problem_number": "230",
+    "problem_title": "Kth Smallest Element in a BST",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
+    "tags": ["grind-75"],
+    "readme_description": "Given the `root` of a binary search tree, and an integer `k`, return the `k`th smallest value (1-indexed) of all the values of the nodes in the tree.",
+    "readme_examples": [
+        {
+            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/28/kthtree1.jpg)\n\n```\nInput: root = [3,1,4,null,2], k = 1\nOutput: 1\n```"
+        },
+        {
+            "content": "![Example 2](https://assets.leetcode.com/uploads/2021/01/28/kthtree2.jpg)\n\n```\nInput: root = [5,3,6,2,4,null,null,1], k = 3\nOutput: 3\n```"
+        }
+    ],
+    "readme_constraints": "- The number of nodes in the tree is `n`.\n- `1 <= k <= n <= 10^4`\n- `0 <= Node.val <= 10^4`",
+    "readme_additional": "**Follow up:** If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_methods": [
+        {
+            "name": "kth_smallest",
+            "parameters": "root: TreeNode | None, k: int",
+            "return_type": "int",
+            "dummy_return": "0"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom leetcode_py import TreeNode\nfrom .solution import Solution",
+    "test_class_name": "KthSmallestElementInABst",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_kth_smallest",
+            "parametrize": "root_list, k, expected",
+            "parametrize_typed": "root_list: list[int | None], k: int, expected: int",
+            "test_cases": "[([3, 1, 4, None, 2], 1, 1), ([5, 3, 6, 2, 4, None, None, 1], 3, 3), ([1], 1, 1)]",
+            "body": "root = TreeNode.from_list(root_list)\nresult = self.solution.kth_smallest(root, k)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_test_case": "# Example test case\nroot_list = [3, 1, 4, None, 2]\nk = 1\nexpected = 1",
+    "playground_execution": "root = TreeNode.from_list(root_list)\nresult = Solution().kth_smallest(root, k)\nresult",
+    "playground_assertion": "assert result == expected"
+}

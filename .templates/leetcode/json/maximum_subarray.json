@@ -1,0 +1,50 @@
+{
+    "problem_name": "maximum_subarray",
+    "solution_class_name": "Solution",
+    "problem_number": "53",
+    "problem_title": "Maximum Subarray",
+    "difficulty": "Medium",
+    "topics": "Array, Divide and Conquer, Dynamic Programming",
+    "tags": ["grind-75"],
+    "readme_description": "Given an integer array `nums`, find the subarray with the largest sum, and return its sum.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: nums = [-2,1,-3,4,-1,2,1,-5,4]\nOutput: 6\n```\n**Explanation:** The subarray [4,-1,2,1] has the largest sum 6."
+        },
+        {
+            "content": "```\nInput: nums = [1]\nOutput: 1\n```\n**Explanation:** The subarray [1] has the largest sum 1."
+        },
+        {
+            "content": "```\nInput: nums = [5,4,-1,7,8]\nOutput: 23\n```\n**Explanation:** The subarray [5,4,-1,7,8] has the largest sum 23."
+        }
+    ],
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `-10^4 <= nums[i] <= 10^4`",
+    "readme_additional": "**Follow up:** If you have figured out the `O(n)` solution, try coding another solution using the **divide and conquer** approach, which is more subtle.",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "max_sub_array",
+            "parameters": "nums: list[int]",
+            "return_type": "int",
+            "dummy_return": "0"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "MaximumSubarray",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_max_sub_array",
+            "parametrize": "nums, expected",
+            "parametrize_typed": "nums: list[int], expected: int",
+            "test_cases": "[([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6), ([1], 1), ([5, 4, -1, 7, 8], 23), ([-1], -1), ([-2, -1], -1), ([1, 2, 3, 4, 5], 15), ([-5, -2, -8, -1], -1)]",
+            "body": "result = self.solution.max_sub_array(nums)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nnums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]\nexpected = 6",
+    "playground_execution": "result = Solution().max_sub_array(nums)\nresult",
+    "playground_assertion": "assert result == expected"
+}
