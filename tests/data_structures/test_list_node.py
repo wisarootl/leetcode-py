@@ -163,3 +163,72 @@ class TestListNode:
         # Test cyclic vs non-cyclic
         linear_node = ListNode.from_list([1, 2])
         assert node1 != linear_node
+
+    def test_to_list_with_cycle(self) -> None:
+        # Test to_list breaks on cycle detection
+        node1 = ListNode(1)
+        node2 = ListNode(2)
+        node1.next = node2
+        node2.next = node1  # Create cycle
+
+        result = node1.to_list()
+        assert result == [1, 2]  # Should stop at cycle
+
+    def test_str_long_list(self) -> None:
+        # Test long list truncation
+        long_list = list(range(1001))  # More than 1000 items
+        node = ListNode.from_list(long_list)
+        assert node is not None
+        result = str(node)
+        assert "... (long list)" in result
+
+    def test_repr_html_no_graphviz(self, monkeypatch) -> None:
+        # Test _repr_html_ fallback when graphviz not available
+        node = ListNode.from_list([1, 2, 3])
+        assert node is not None
+
+        # Mock ImportError for graphviz
+        def mock_import(name, *args):
+            if name == "graphviz":
+                raise ImportError("No module named 'graphviz'")
+            return __import__(name, *args)
+
+        monkeypatch.setattr("builtins.__import__", mock_import)
+        result = node._repr_html_()
+        assert "<pre>" in result
+        assert "1 -> 2 -> 3" in result
+
+    def test_repr_html_with_graphviz(self) -> None:
+        # Test _repr_html_ with graphviz available
+        node = ListNode.from_list([1, 2])
+        assert node is not None
+
+        try:
+            import importlib.util
+
+            if importlib.util.find_spec("graphviz") is None:
+                pytest.skip("graphviz not available")
+
+            result = node._repr_html_()
+            assert isinstance(result, str)
+            # Should return SVG content
+        except ImportError:
+            pytest.skip("graphviz not available")
+
+    def test_repr_html_with_cycle(self) -> None:
+        # Test _repr_html_ handles cycles
+        node1 = ListNode(1)
+        node2 = ListNode(2)
+        node1.next = node2
+        node2.next = node1  # Create cycle
+
+        try:
+            import importlib.util
+
+            if importlib.util.find_spec("graphviz") is None:
+                pytest.skip("graphviz not available")
+
+            result = node1._repr_html_()
+            assert isinstance(result, str)
+        except ImportError:
+            pytest.skip("graphviz not available")

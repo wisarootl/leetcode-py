@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= k_closest_points_to_origin
+PROBLEM ?= accounts_merge
 FORCE ?= 0
 
 sync_submodules:

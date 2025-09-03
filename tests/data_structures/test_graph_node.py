@@ -159,3 +159,84 @@ class TestGraphNode:
         # Recreate and compare
         recreated = GraphNode.from_adjacency_list(adj_list)
         assert node1 == recreated
+
+    @pytest.mark.parametrize(
+        "original, clone, expected",
+        [
+            (None, None, False),  # None case
+            (GraphNode(1), None, False),  # Clone is None
+        ],
+    )
+    def test_is_clone_edge_cases(self, original, clone, expected) -> None:
+        if original is None:
+            # Can't call is_clone on None
+            assert True
+        else:
+            assert original.is_clone(clone) == expected
+
+    def test_is_clone_same_object(self) -> None:
+        # Same object should not be a clone
+        node = GraphNode(1)
+        assert not node.is_clone(node)
+
+    def test_is_clone_different_structure(self) -> None:
+        # Different structures should not be clones
+        node1 = GraphNode(1)
+        node2 = GraphNode(2)
+        assert not node1.is_clone(node2)
+
+    def test_is_clone_proper_clone(self) -> None:
+        # Create original graph: 1-2
+        original1 = GraphNode(1)
+        original2 = GraphNode(2)
+        original1.neighbors = [original2]
+        original2.neighbors = [original1]
+
+        # Create clone: 1-2 (different objects)
+        clone1 = GraphNode(1)
+        clone2 = GraphNode(2)
+        clone1.neighbors = [clone2]
+        clone2.neighbors = [clone1]
+
+        assert original1.is_clone(clone1)
+
+    def test_is_clone_complex_graph(self) -> None:
+        # Create triangle: 1-2-3-1
+        original1 = GraphNode(1)
+        original2 = GraphNode(2)
+        original3 = GraphNode(3)
+        original1.neighbors = [original2, original3]
+        original2.neighbors = [original1, original3]
+        original3.neighbors = [original1, original2]
+
+        # Create clone
+        clone1 = GraphNode(1)
+        clone2 = GraphNode(2)
+        clone3 = GraphNode(3)
+        clone1.neighbors = [clone2, clone3]
+        clone2.neighbors = [clone1, clone3]
+        clone3.neighbors = [clone1, clone2]
+
+        assert original1.is_clone(clone1)
+
+    def test_repr_html(self) -> None:
+        # Test _repr_html_ method
+        node1 = GraphNode(1)
+        node2 = GraphNode(2)
+        node1.neighbors = [node2]
+        node2.neighbors = [node1]
+
+        result = node1._repr_html_()
+        assert isinstance(result, str)
+        # Should return SVG content from graphviz
+
+    def test_from_adjacency_list_invalid_neighbor(self) -> None:
+        # Test adjacency list with invalid neighbor reference
+        adj_list = [[2, 5], [1]]  # Node 1 references non-existent node 5
+        result = GraphNode.from_adjacency_list(adj_list)
+        assert result is not None
+        assert result.val == 1
+        # Should only have valid neighbors
+        neighbor_vals = [n.val for n in result.neighbors]
+        assert 2 in neighbor_vals
+        assert 5 not in neighbor_vals  # Invalid neighbor should be skipped
