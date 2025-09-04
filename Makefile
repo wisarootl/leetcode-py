@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= reverse_linked_list
+PROBLEM ?= coin_change
 FORCE ?= 0
 COMMA := ,
 
