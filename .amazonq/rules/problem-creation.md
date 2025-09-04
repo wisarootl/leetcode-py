@@ -15,8 +15,8 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 4. **Create** JSON file in `.templates/leetcode/json/{problem_name}.json`
 5. **Update** Makefile with `PROBLEM ?= {problem_name}`
 6. **Generate** problem structure using `make p-gen`
-7. **Verify** with `make lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
-8. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make lint` until passes to ensure reproducibility
+7. **Verify** with `make p-lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
+8. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make p-lint` until passes to ensure reproducibility
 
 ## Scraping Commands
 
@@ -148,7 +148,10 @@ make p-gen PROBLEM={problem_name} FORCE=1
 # Test specific problem
 make p-test PROBLEM={problem_name}
 
-# Lint check
+# Lint problem only (faster)
+make p-lint PROBLEM={problem_name}
+
+# Lint entire project
 make lint
 ```
 

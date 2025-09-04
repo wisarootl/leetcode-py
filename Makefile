@@ -1,6 +1,7 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= longest_palindromic_substring
+PROBLEM ?= longest_palindrome
 FORCE ?= 0
+COMMA := ,
 
 sync_submodules:
 	git submodule update --init --recursive --remote
@@ -19,23 +20,31 @@ assert_setup_dev:
 	chmod +x scripts/shared/python/poetry/assert_setup_dev.sh
 	./scripts/shared/python/poetry/assert_setup_dev.sh
 
-lint:
-	poetry sort
-	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
-	poetry run black .
-	poetry run isort .
-	poetry run nbqa ruff . --nbqa-exclude=".templates" --ignore=F401,F821
-	poetry run ruff check . --exclude="**/*.ipynb"
-	poetry run mypy \
+define lint_target
+	poetry run black $(1)
+	poetry run isort $(1)
+	$(if $(filter .,$(1)), \
+		poetry run nbqa ruff . --nbqa-exclude=".templates" --ignore=F401$(COMMA)F821, \
+		poetry run nbqa ruff $(1) --ignore=F401$(COMMA)F821)
+	poetry run ruff check $(1) --exclude="**/*.ipynb"
+	poetry run mypy $(1) \
 		--explicit-package-bases \
 		--install-types \
 		--non-interactive \
-		--check-untyped-defs .
-	poetry run nbqa isort . --nbqa-exclude=".templates"
-	poetry run nbqa mypy . \
-		--nbqa-exclude=".templates" \
-		--ignore-missing-imports \
-		--disable-error-code=name-defined
+		--check-untyped-defs
+	$(if $(filter .,$(1)), \
+		poetry run nbqa isort . --nbqa-exclude=".templates", \
+		poetry run nbqa isort $(1))
+	$(if $(filter .,$(1)), \
+		poetry run nbqa mypy . --nbqa-exclude=".templates" \
+			--ignore-missing-imports --disable-error-code=name-defined, \
+		poetry run nbqa mypy $(1) --ignore-missing-imports --disable-error-code=name-defined)
+endef
+
+lint:
+	poetry sort
+	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
+	$(call lint_target,.)
 
 
 test:
@@ -46,7 +55,6 @@ test:
 		--ignore=.templates \
 		--ignore=leetcode/__pycache__
 
-# Test Problems
 p-test:
 	@echo "Testing problem: $(PROBLEM)"
 	@if [ ! -d "leetcode/$(PROBLEM)" ]; then \
@@ -55,10 +63,20 @@ p-test:
 	fi
 	poetry run pytest leetcode/$(PROBLEM)/tests.py -v -s
 
-# Generate Problem
+p-lint:
+	@echo "Linting problem: $(PROBLEM)"
+	@if [ ! -d "leetcode/$(PROBLEM)" ]; then \
+		echo "Error: Problem '$(PROBLEM)' not found in leetcode/ directory"; \
+		exit 1; \
+	fi
+	$(call lint_target,leetcode/$(PROBLEM))
+
 p-gen:
 	@echo "Generating problem: $(PROBLEM)"
 	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(PROBLEM).json $(if $(filter 1,$(FORCE)),--force)
+
+p-del:
+	rm -rf leetcode/$(PROBLEM)
 
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
@@ -72,13 +90,3 @@ gen-all-problems:
 		echo "Generating: $$problem"; \
 		poetry run python .templates/leetcode/gen.py "$$json_file" $(if $(filter 1,$(FORCE)),--force); \
 	done
-
-# Validate Problem - INTERNAL USE ONLY: For cookiecutter template creation/validation
-# Do not use during normal problem solving - only for template development
-p-validate:
-	@echo "Validating problem: $(PROBLEM)"
-	@if [ ! -d "leetcode/$(PROBLEM)" ]; then \
-		echo "Error: Generated problem '$(PROBLEM)' not found. Run: make p-gen PROBLEM=$(PROBLEM)"; \
-		exit 1; \
-	fi
-	poetry run python .amazonq/plan/compare_template_files.py generated --problem=$(PROBLEM)
