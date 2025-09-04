@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= merge_intervals
+PROBLEM ?= reverse_linked_list
 FORCE ?= 0
 COMMA := ,
 
