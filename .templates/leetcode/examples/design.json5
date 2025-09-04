@@ -75,7 +75,8 @@
     ],
 
     // === PLAYGROUND NOTEBOOK ===
-    // IMPORTANT: Design playground uses operation sequences like tests
+    // CRITICAL: Use single quotes for Python strings to avoid JSON escaping issues with Jupyter notebooks
+    // Double quotes in JSON + cookiecutter + Jupyter notebook = triple escaping issues
     playground_imports: "from solution import LRUCache",
     playground_test_case: "# Example test case\noperations = ['LRUCache', 'put', 'put', 'get', 'put', 'get', 'put', 'get', 'get', 'get']\ninputs = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]\nexpected = [None, None, None, 1, None, -1, None, -1, 3, 4]",
     playground_execution: "cache = None\nresults: list[int | None] = []\nfor i, op in enumerate(operations):\n    if op == 'LRUCache':\n        cache = LRUCache(inputs[i][0])\n        results.append(None)\n    elif op == 'get' and cache is not None:\n        results.append(cache.get(inputs[i][0]))\n    elif op == 'put' and cache is not None:\n        cache.put(inputs[i][0], inputs[i][1])\n        results.append(None)\nresults",

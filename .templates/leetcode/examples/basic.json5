@@ -37,13 +37,22 @@
   "readme_additional": "",                           // Optional: additional notes, follow-up questions
 
   // === SOLUTION TEMPLATE ===
-  "solution_imports": "",                            // Empty for basic problems, add imports if needed
+  "solution_imports": "",                            // Empty for basic problems
+                                                    // For tree: "from leetcode_py import TreeNode"
+                                                    // For linked list: "from leetcode_py import ListNode"
   "solution_methods": [
     {
       "name": "max_area",                           // snake_case method name
       "parameters": "height: list[int]",            // Modern Python type hints (list[int], not List[int])
+                                                    // For tree: "root: TreeNode | None"
+                                                    // For linked list: "head: ListNode | None"
+                                                    // For string: "s: str"
       "return_type": "int",                         // Return type annotation
-      "dummy_return": "0"                           // Default return value (auto-set by generator)
+      "dummy_return": "0"                           // Default return value
+                                                    // For string: "\"\""
+                                                    // For bool: "False"
+                                                    // For list: "[]"
+                                                    // For tree/linked list: "None"
     }
   ],
 
@@ -68,8 +77,12 @@
   ],
 
   // === PLAYGROUND NOTEBOOK ===
+  // CRITICAL: Use single quotes for Python strings to avoid JSON escaping issues with Jupyter notebooks
+  // Double quotes in JSON + cookiecutter + Jupyter notebook = triple escaping issues
   "playground_imports": "from solution import Solution",
   "playground_test_case": "# Example test case\nheight = [1,8,6,2,5,4,8,3,7]\nexpected = 49",
+                                                    // For string problems: "s = 'hello'\nexpected = 'olleh'"
+                                                    // For tree: "root_list = [3,9,20,None,None,15,7]\nroot = TreeNode.from_list(root_list)"
   "playground_execution": "result = Solution().max_area(height)\nresult",
   "playground_assertion": "assert result == expected"
 }

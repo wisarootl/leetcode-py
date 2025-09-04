@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= accounts_merge
+PROBLEM ?= longest_palindromic_substring
 FORCE ?= 0
 
 sync_submodules:
