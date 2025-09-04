@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= longest_palindrome
+PROBLEM ?= merge_intervals
 FORCE ?= 0
 COMMA := ,
 
