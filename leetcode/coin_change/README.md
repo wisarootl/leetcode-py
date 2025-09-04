@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Breadth-First Search
-**Tags:**
+**Tags:** grind-75
 
 **LeetCode:** [Problem 322](https://leetcode.com/problems/coin-change/description/)
 

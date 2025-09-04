@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= coin_change
+PROBLEM ?= largest_rectangle_in_histogram
 FORCE ?= 0
 COMMA := ,
 
