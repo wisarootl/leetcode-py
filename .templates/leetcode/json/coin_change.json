@@ -1,0 +1,46 @@
+{
+    "problem_name": "coin_change",
+    "solution_class_name": "Solution",
+    "problem_number": "322",
+    "problem_title": "Coin Change",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Breadth-First Search",
+    "tags": ["grind-75"],
+    "readme_description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.\n\nYou may assume that you have an infinite number of each kind of coin.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: coins = [1,2,5], amount = 11\nOutput: 3\n```\n**Explanation:** 11 = 5 + 5 + 1"
+        },
+        { "content": "```\nInput: coins = [2], amount = 3\nOutput: -1\n```" },
+        { "content": "```\nInput: coins = [1], amount = 0\nOutput: 0\n```" }
+    ],
+    "readme_constraints": "- `1 <= coins.length <= 12`\n- `1 <= coins[i] <= 2^31 - 1`\n- `0 <= amount <= 10^4`",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "coin_change",
+            "parameters": "coins: list[int], amount: int",
+            "return_type": "int",
+            "dummy_return": "-1"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "CoinChange",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_coin_change",
+            "parametrize": "coins, amount, expected",
+            "parametrize_typed": "coins: list[int], amount: int, expected: int",
+            "test_cases": "[([1, 2, 5], 11, 3), ([2], 3, -1), ([1], 0, 0), ([1, 3, 4], 6, 2), ([2, 5, 10, 1], 27, 4), ([5], 3, -1), ([1], 1, 1), ([1, 2], 2, 1), ([186, 419, 83, 408], 6249, 20)]",
+            "body": "result = self.solution.coin_change(coins, amount)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ncoins = [1, 2, 5]\namount = 11\nexpected = 3",
+    "playground_execution": "result = Solution().coin_change(coins, amount)\nresult",
+    "playground_assertion": "assert result == expected"
+}

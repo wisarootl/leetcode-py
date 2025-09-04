@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= longest_palindrome
+PROBLEM ?= maximum_profit_in_job_scheduling
 FORCE ?= 0
 COMMA := ,
 
