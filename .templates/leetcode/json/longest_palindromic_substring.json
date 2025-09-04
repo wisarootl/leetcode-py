@@ -1,0 +1,45 @@
+{
+    "problem_name": "longest_palindromic_substring",
+    "solution_class_name": "Solution",
+    "problem_number": "5",
+    "problem_title": "Longest Palindromic Substring",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String, Dynamic Programming",
+    "tags": ["grind-75"],
+    "readme_description": "Given a string `s`, return the longest palindromic substring in `s`.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: s = \"babad\"\nOutput: \"bab\"\n```\n**Explanation:** \"aba\" is also a valid answer."
+        },
+        { "content": "```\nInput: s = \"cbbd\"\nOutput: \"bb\"\n```" }
+    ],
+    "readme_constraints": "- `1 <= s.length <= 1000`\n- `s` consist of only digits and English letters.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "longest_palindrome",
+            "parameters": "s: str",
+            "return_type": "str",
+            "dummy_return": "\"\""
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "LongestPalindromicSubstring",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_longest_palindrome",
+            "parametrize": "s, expected",
+            "parametrize_typed": "s: str, expected: set[str]",
+            "test_cases": "[('babad', {'bab', 'aba'}), ('cbbd', {'bb'}), ('a', {'a'}), ('ac', {'a', 'c'}), ('racecar', {'racecar'}), ('abcdef', {'a', 'b', 'c', 'd', 'e', 'f'}), ('aabbaa', {'aabbaa'}), ('abacabad', {'abacaba'}), ('noon', {'noon'}), ('abccba', {'abccba'}), ('', {''}), ('aa', {'aa'}), ('aba', {'aba'}), ('abcba', {'abcba'}), ('forgeeksskeegfor', {'geeksskeeg'}), ('bananas', {'anana'}), ('abcdefghijklmnopqrstuvwxyz', {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'})]",
+            "body": "result = self.solution.longest_palindrome(s)\nassert result in expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ns = 'babad'\nexpected = {'bab', 'aba'}",
+    "playground_execution": "result = Solution().longest_palindrome(s)\nresult",
+    "playground_assertion": "assert result in expected"
+}

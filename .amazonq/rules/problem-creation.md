@@ -32,13 +32,19 @@ poetry run python .templates/leetcode/scrape.py -s "two-sum"
 
 Required fields for `.templates/leetcode/json/{problem_name}.json`:
 
+**CRITICAL: Use single quotes for Python strings in playground fields to avoid JSON escaping issues with Jupyter notebooks.**
+
+**JSON Escaping Rules:**
+
+- `playground_test_case`: Use single quotes for string literals (e.g., `s = 'hello'` not `s = "hello"`)
+- `playground_execution`: Use single quotes for string literals
+- `playground_assertion`: Use single quotes for string literals
+- Double quotes in JSON + cookiecutter + Jupyter notebook = triple escaping issues
+
 **Reference examples in `.templates/leetcode/examples/` for complete templates:**
 
-- `basic.json5` - Array, string, number problems
+- `basic.json5` - All standard problems (array, string, tree, linked list, etc.)
 - `design.json5` - Data structure design problems (LRU Cache, etc.)
-- `tree.json5` - Binary tree problems
-- `linked_list.json5` - Linked list problems
-- `matrix.json5` - 2D array/matrix problems
 
 ````json
 {
