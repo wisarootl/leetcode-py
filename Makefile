@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= largest_rectangle_in_histogram
+PROBLEM ?= trapping_rain_water
 FORCE ?= 0
 COMMA := ,
 
