@@ -3,7 +3,7 @@
 
 class Test{{cookiecutter.test_class_name}}:
     {%- for _, helper_methods in cookiecutter._test_helper_methods | dictsort %}
-    {%- for method in helper_methods %}
+    {%- for method in helper_methods %}{# TODO: add decorator // optional self. #}
     def {{method.name}}(self{% if method.parameters %}, {{method.parameters}}{% endif %}):
         {{method.body | indent(8, first=False)}}
 
