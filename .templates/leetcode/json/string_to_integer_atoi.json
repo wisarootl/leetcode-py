@@ -1,0 +1,51 @@
+{
+    "problem_name": "string_to_integer_atoi",
+    "solution_class_name": "Solution",
+    "problem_number": "8",
+    "problem_title": "String to Integer (atoi)",
+    "difficulty": "Medium",
+    "topics": "String",
+    "tags": ["grind-75"],
+    "readme_description": "Implement the `my_atoi(string s)` function, which converts a string to a 32-bit signed integer.\n\nThe algorithm for `my_atoi(string s)` is as follows:\n\n1. **Whitespace**: Ignore any leading whitespace (` `).\n2. **Signedness**: Determine the sign by checking if the next character is `-` or `+`, assuming positivity if neither present.\n3. **Conversion**: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.\n4. **Rounding**: If the integer is out of the 32-bit signed integer range `[-2^31, 2^31 - 1]`, then round the integer to remain in the range. Specifically, integers less than `-2^31` should be rounded to `-2^31`, and integers greater than `2^31 - 1` should be rounded to `2^31 - 1`.\n\nReturn the integer as the final result.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: s = \"42\"\nOutput: 42\n```\n**Explanation:**\n```\nThe underlined characters are what is read in and the caret is the current reader position.\nStep 1: \"42\" (no characters read because there is no leading whitespace)\n         ^\nStep 2: \"42\" (no characters read because there is neither a '-' nor '+')\n         ^\nStep 3: \"42\" (\"42\" is read in)\n           ^\n```"
+        },
+        {
+            "content": "```\nInput: s = \"   -042\"\nOutput: -42\n```\n**Explanation:**\n```\nStep 1: \"   -042\" (leading whitespace is read and ignored)\n            ^\nStep 2: \"   -042\" ('-' is read, so the result should be negative)\n             ^\nStep 3: \"   -042\" (\"042\" is read in, leading zeros ignored in the result)\n               ^\n```"
+        },
+        {
+            "content": "```\nInput: s = \"1337c0d3\"\nOutput: 1337\n```\n**Explanation:**\n```\nStep 1: \"1337c0d3\" (no characters read because there is no leading whitespace)\n         ^\nStep 2: \"1337c0d3\" (no characters read because there is neither a '-' nor '+')\n         ^\nStep 3: \"1337c0d3\" (\"1337\" is read in; reading stops because the next character is a non-digit)\n             ^\n```"
+        },
+        {
+            "content": "```\nInput: s = \"0-1\"\nOutput: 0\n```\n**Explanation:**\n```\nStep 1: \"0-1\" (no characters read because there is no leading whitespace)\n         ^\nStep 2: \"0-1\" (no characters read because there is neither a '-' nor '+')\n         ^\nStep 3: \"0-1\" (\"0\" is read in; reading stops because the next character is a non-digit)\n          ^\n```"
+        },
+        {
+            "content": "```\nInput: s = \"words and 987\"\nOutput: 0\n```\n**Explanation:** Reading stops at the first non-digit character 'w'."
+        }
+    ],
+    "readme_constraints": "- `0 <= s.length <= 200`\n- `s` consists of English letters (lower-case and upper-case), digits (0-9), ` `, `+`, `-`, and `.`.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        { "name": "my_atoi", "parameters": "s: str", "return_type": "int", "dummy_return": "0" }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "StringToIntegerAtoi",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_my_atoi",
+            "parametrize": "s, expected",
+            "parametrize_typed": "s: str, expected: int",
+            "test_cases": "[('42', 42), ('   -042', -42), ('1337c0d3', 1337), ('0-1', 0), ('words and 987', 0), ('', 0), ('   ', 0), ('+1', 1), ('-1', -1), ('2147483647', 2147483647), ('-2147483648', -2147483648), ('2147483648', 2147483647), ('-2147483649', -2147483648)]",
+            "body": "result = self.solution.my_atoi(s)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ns = '42'\nexpected = 42",
+    "playground_execution": "result = Solution().my_atoi(s)\nresult",
+    "playground_assertion": "assert result == expected"
+}

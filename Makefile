@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= implement_trie_prefix_tree
+PROBLEM ?= string_to_integer_atoi
 FORCE ?= 0
 COMMA := ,
 
