@@ -1,6 +1,6 @@
 {
     "problem_name": "implement_trie_prefix_tree",
-    "solution_class_name": "Trie",
+    "solution_class_name": "Trie(DictTree[str])",
     "problem_number": "208",
     "problem_title": "Implement Trie (Prefix Tree)",
     "difficulty": "Medium",
@@ -14,7 +14,7 @@
     ],
     "readme_constraints": "- `1 <= word.length, prefix.length <= 2000`\n- `word` and `prefix` consist only of lowercase English letters.\n- At most `3 * 10^4` calls **in total** will be made to `insert`, `search`, and `starts_with`.",
     "readme_additional": "",
-    "solution_imports": "",
+    "solution_imports": "from leetcode_py.data_structures import DictTree",
     "solution_methods": [
         { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
         { "name": "insert", "parameters": "word: str", "return_type": "None", "dummy_return": "" },
