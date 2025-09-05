@@ -1,0 +1,43 @@
+{
+    "problem_name": "product_of_array_except_self",
+    "solution_class_name": "Solution",
+    "problem_number": "238",
+    "problem_title": "Product of Array Except Self",
+    "difficulty": "Medium",
+    "topics": "Array, Prefix Sum",
+    "tags": ["grind-75"],
+    "readme_description": "Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.\n\nThe product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.\n\nYou must write an algorithm that runs in O(n) time and without using the division operation.",
+    "readme_examples": [
+        { "content": "```\nInput: nums = [1,2,3,4]\nOutput: [24,12,8,6]\n```" },
+        { "content": "```\nInput: nums = [-1,1,0,-3,3]\nOutput: [0,0,9,0,0]\n```" }
+    ],
+    "readme_constraints": "- 2 <= nums.length <= 10^5\n- -30 <= nums[i] <= 30\n- The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.",
+    "readme_additional": "**Follow up:** Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "product_except_self",
+            "parameters": "nums: list[int]",
+            "return_type": "list[int]",
+            "dummy_return": "[]"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "ProductOfArrayExceptSelf",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_product_except_self",
+            "parametrize": "nums, expected",
+            "parametrize_typed": "nums: list[int], expected: list[int]",
+            "test_cases": "[([1, 2, 3, 4], [24, 12, 8, 6]), ([-1, 1, 0, -3, 3], [0, 0, 9, 0, 0]), ([2, 3, 4, 5], [60, 40, 30, 24])]",
+            "body": "result = self.solution.product_except_self(nums)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nnums = [1, 2, 3, 4]\nexpected = [24, 12, 8, 6]",
+    "playground_execution": "result = Solution().product_except_self(nums)\nresult",
+    "playground_assertion": "assert result == expected"
+}

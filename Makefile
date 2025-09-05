@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= add_binary
+PROBLEM ?= product_of_array_except_self
 FORCE ?= 0
 COMMA := ,
 
