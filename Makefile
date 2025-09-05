@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= maximum_depth_of_binary_tree
+PROBLEM ?= add_binary
 FORCE ?= 0
 COMMA := ,
 

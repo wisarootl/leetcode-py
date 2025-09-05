@@ -1,0 +1,43 @@
+{
+    "problem_name": "add_binary",
+    "solution_class_name": "Solution",
+    "problem_number": "67",
+    "problem_title": "Add Binary",
+    "difficulty": "Easy",
+    "topics": "Math, String, Bit Manipulation, Simulation",
+    "tags": ["grind-75"],
+    "readme_description": "Given two binary strings `a` and `b`, return *their sum as a binary string*.",
+    "readme_examples": [
+        { "content": "```\nInput: a = \"11\", b = \"1\"\nOutput: \"100\"\n```" },
+        { "content": "```\nInput: a = \"1010\", b = \"1011\"\nOutput: \"10101\"\n```" }
+    ],
+    "readme_constraints": "- `1 <= a.length, b.length <= 10^4`\n- `a` and `b` consist only of `'0'` or `'1'` characters.\n- Each string does not contain leading zeros except for the zero itself.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "add_binary",
+            "parameters": "a: str, b: str",
+            "return_type": "str",
+            "dummy_return": "\"\""
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "AddBinary",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_add_binary",
+            "parametrize": "a, b, expected",
+            "parametrize_typed": "a: str, b: str, expected: str",
+            "test_cases": "[('11', '1', '100'), ('1010', '1011', '10101'), ('0', '0', '0'), ('1', '1', '10'), ('1111', '1111', '11110')]",
+            "body": "result = self.solution.add_binary(a, b)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\na = '11'\nb = '1'\nexpected = '100'",
+    "playground_execution": "result = Solution().add_binary(a, b)\nresult",
+    "playground_assertion": "assert result == expected"
+}
