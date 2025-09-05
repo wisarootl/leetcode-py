@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= maximum_profit_in_job_scheduling
+PROBLEM ?= implement_trie_prefix_tree
 FORCE ?= 0
 COMMA := ,
 
