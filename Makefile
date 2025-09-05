@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= string_to_integer_atoi
+PROBLEM ?= maximum_depth_of_binary_tree
 FORCE ?= 0
 COMMA := ,
 
