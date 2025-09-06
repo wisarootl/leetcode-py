@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= diameter_of_binary_tree
+PROBLEM ?= middle_of_the_linked_list
 FORCE ?= 0
 COMMA := ,
 
