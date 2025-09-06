@@ -109,5 +109,17 @@ class TreeNode(Generic[T]):
             return False
         return self.to_list() == other.to_list()
 
+    def find_node(self, val: T) -> "TreeNode[T] | None":
+        """Find node with given value."""
+        if self.val == val:
+            return self
+        if self.left:
+            left_result = self.left.find_node(val)
+            if left_result:
+                return left_result
+        if self.right:
+            return self.right.find_node(val)
+        return None
+
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.to_list()})"

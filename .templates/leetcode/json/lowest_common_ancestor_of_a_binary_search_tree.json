@@ -30,12 +30,7 @@
     "test_imports": "import pytest\nfrom leetcode_py import TreeNode\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
     "test_class_name": "LowestCommonAncestorOfABinarySearchTree",
     "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" },
-        {
-            "name": "_find_node",
-            "parameters": "root: TreeNode[int], val: int",
-            "body": "if not root:\n    return None\nif root.val == val:\n    return root\nleft = self._find_node(root.left, val)\nif left:\n    return left\nreturn self._find_node(root.right, val)"
-        }
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
     ],
     "test_methods": [
         {
@@ -43,11 +38,11 @@
             "parametrize": "root_list, p_val, q_val, expected_val",
             "parametrize_typed": "root_list: list[int | None], p_val: int, q_val: int, expected_val: int",
             "test_cases": "[([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 8, 6), ([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 4, 2), ([2, 1], 2, 1, 2), ([2, 1], 1, 2, 2), ([6, 2, 8, 0, 4, 7, 9], 0, 4, 2), ([6, 2, 8, 0, 4, 7, 9], 7, 9, 8)]",
-            "body": "root = TreeNode[int].from_list(root_list)\nassert root is not None\np = self._find_node(root, p_val)\nq = self._find_node(root, q_val)\nassert p is not None and q is not None\nresult = self.solution.lowest_common_ancestor(root, p, q)\nassert result is not None\nassert result.val == expected_val"
+            "body": "root = TreeNode[int].from_list(root_list)\nassert root is not None\np = root.find_node(p_val)\nq = root.find_node(q_val)\nassert p is not None and q is not None\nresult = self.solution.lowest_common_ancestor(root, p, q)\nassert result is not None\nassert result.val == expected_val"
         }
     ],
     "playground_imports": "from leetcode_py import TreeNode\nfrom solution import Solution",
     "playground_test_case": "# Example test case\nroot_list = [6, 2, 8, 0, 4, 7, 9, None, None, 3, 5]\np_val = 2\nq_val = 8\nexpected_val = 6",
-    "playground_execution": "root = TreeNode[int].from_list(root_list)\np = find_node(root, p_val)\nq = find_node(root, q_val)\nresult = Solution().lowest_common_ancestor(root, p, q)\nresult.val if result else None",
+    "playground_execution": "root = TreeNode[int].from_list(root_list)\nassert root is not None\np = root.find_node(p_val)\nq = root.find_node(q_val)\nassert p is not None and q is not None\nresult = Solution().lowest_common_ancestor(root, p, q)\nresult.val if result else None",
     "playground_assertion": "assert result and result.val == expected_val"
 }

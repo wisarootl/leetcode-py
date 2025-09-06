@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= product_of_array_except_self
+PROBLEM ?= lowest_common_ancestor_of_a_binary_search_tree
 FORCE ?= 0
 COMMA := ,
 
