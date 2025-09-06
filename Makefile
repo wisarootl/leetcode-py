@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= word_ladder
+PROBLEM ?= serialize_and_deserialize_binary_tree
 FORCE ?= 0
 COMMA := ,
 
