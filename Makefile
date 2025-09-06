@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= balanced_binary_tree
+PROBLEM ?= merge_two_sorted_lists
 FORCE ?= 0
 COMMA := ,
 
