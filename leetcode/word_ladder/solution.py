@@ -5,6 +5,9 @@ class Solution:
         if end_word not in word_list:
             return 0
 
+        if begin_word == end_word:
+            return 1
+
         word_set = set(word_list)
         begin_set = {begin_word}
         end_set = {end_word}

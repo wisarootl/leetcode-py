@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= serialize_and_deserialize_binary_tree
+PROBLEM ?= find_median_from_data_stream
 FORCE ?= 0
 COMMA := ,
 
