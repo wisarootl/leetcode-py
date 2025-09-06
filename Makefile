@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= ransom_note
+PROBLEM ?= first_bad_version
 FORCE ?= 0
 COMMA := ,
 
