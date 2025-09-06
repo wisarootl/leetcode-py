@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= merge_two_sorted_lists
+PROBLEM ?= best_time_to_buy_and_sell_stock
 FORCE ?= 0
 COMMA := ,
 
