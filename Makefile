@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= best_time_to_buy_and_sell_stock
+PROBLEM ?= implement_queue_using_stacks
 FORCE ?= 0
 COMMA := ,
 
