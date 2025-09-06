@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= flood_fill
+PROBLEM ?= valid_parentheses
 FORCE ?= 0
 COMMA := ,
 
