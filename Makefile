@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= basic_calculator
+PROBLEM ?= merge_k_sorted_lists
 FORCE ?= 0
 COMMA := ,
 
