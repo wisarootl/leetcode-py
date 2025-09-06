@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= first_bad_version
+PROBLEM ?= climbing_stairs
 FORCE ?= 0
 COMMA := ,
 
