@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= middle_of_the_linked_list
+PROBLEM ?= contains_duplicate
 FORCE ?= 0
 COMMA := ,
 
