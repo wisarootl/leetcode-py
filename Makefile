@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= contains_duplicate
+PROBLEM ?= flood_fill
 FORCE ?= 0
 COMMA := ,
 
