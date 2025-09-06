@@ -1,0 +1,47 @@
+{
+    "problem_name": "zero_one_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "542",
+    "problem_title": "01 Matrix",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Breadth-First Search, Matrix",
+    "tags": ["grind-75"],
+    "readme_description": "Given an `m x n` binary matrix `mat`, return the distance of the nearest `0` for each cell.\n\nThe distance between two cells sharing a common edge is `1`.",
+    "readme_examples": [
+        {
+            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/24/01-1-grid.jpg)\n\n```\nInput: mat = [[0,0,0],[0,1,0],[0,0,0]]\nOutput: [[0,0,0],[0,1,0],[0,0,0]]\n```"
+        },
+        {
+            "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/24/01-2-grid.jpg)\n\n```\nInput: mat = [[0,0,0],[0,1,0],[1,1,1]]\nOutput: [[0,0,0],[0,1,0],[1,2,1]]\n```"
+        }
+    ],
+    "readme_constraints": "- `m == mat.length`\n- `n == mat[i].length`\n- `1 <= m, n <= 10^4`\n- `1 <= m * n <= 10^4`\n- `mat[i][j]` is either `0` or `1`\n- There is at least one `0` in `mat`",
+    "readme_additional": "**Note:** This question is the same as 1765: [Map of Highest Peak](https://leetcode.com/problems/map-of-highest-peak/)",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "update_matrix",
+            "parameters": "mat: list[list[int]]",
+            "return_type": "list[list[int]]",
+            "dummy_return": "[]"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "ZeroOneMatrix",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_update_matrix",
+            "parametrize": "mat, expected",
+            "parametrize_typed": "mat: list[list[int]], expected: list[list[int]]",
+            "test_cases": "[([[0, 0, 0], [0, 1, 0], [0, 0, 0]], [[0, 0, 0], [0, 1, 0], [0, 0, 0]]), ([[0, 0, 0], [0, 1, 0], [1, 1, 1]], [[0, 0, 0], [0, 1, 0], [1, 2, 1]])]",
+            "body": "result = self.solution.update_matrix(mat)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nmat = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]\nexpected = [[0, 0, 0], [0, 1, 0], [1, 2, 1]]",
+    "playground_execution": "result = Solution().update_matrix(mat)\nresult",
+    "playground_assertion": "assert result == expected"
+}

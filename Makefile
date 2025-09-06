@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= implement_queue_using_stacks
+PROBLEM ?= zero_one_matrix
 FORCE ?= 0
 COMMA := ,
 
