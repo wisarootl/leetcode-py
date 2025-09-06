@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= majority_element
+PROBLEM ?= diameter_of_binary_tree
 FORCE ?= 0
 COMMA := ,
 
