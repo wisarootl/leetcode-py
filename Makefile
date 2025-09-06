@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= climbing_stairs
+PROBLEM ?= majority_element
 FORCE ?= 0
 COMMA := ,
 
