@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= maximum_profit_in_job_scheduling
+PROBLEM ?= product_of_array_except_self
 FORCE ?= 0
 COMMA := ,
 

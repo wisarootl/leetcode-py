@@ -1,0 +1,45 @@
+{
+    "problem_name": "implement_trie_prefix_tree",
+    "solution_class_name": "Trie(DictTree[str])",
+    "problem_number": "208",
+    "problem_title": "Implement Trie (Prefix Tree)",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Design, Trie",
+    "tags": ["grind-75"],
+    "readme_description": "A **trie** (pronounced as \"try\") or **prefix tree** is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n\n- `Trie()` Initializes the trie object.\n- `void insert(String word)` Inserts the string `word` into the trie.\n- `boolean search(String word)` Returns `true` if the string `word` is in the trie (i.e., was inserted before), and `false` otherwise.\n- `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.",
+    "readme_examples": [
+        {
+            "content": "```\nInput\n[\"Trie\", \"insert\", \"search\", \"search\", \"startsWith\", \"insert\", \"search\"]\n[[], [\"apple\"], [\"apple\"], [\"app\"], [\"app\"], [\"app\"], [\"app\"]]\nOutput\n[null, null, true, false, true, null, true]\n```\n\n**Explanation:**\n```python\ntrie = Trie()\ntrie.insert(\"apple\")\ntrie.search(\"apple\")    # return True\ntrie.search(\"app\")      # return False\ntrie.starts_with(\"app\") # return True\ntrie.insert(\"app\")\ntrie.search(\"app\")      # return True\n```"
+        }
+    ],
+    "readme_constraints": "- `1 <= word.length, prefix.length <= 2000`\n- `word` and `prefix` consist only of lowercase English letters.\n- At most `3 * 10^4` calls **in total** will be made to `insert`, `search`, and `starts_with`.",
+    "readme_additional": "",
+    "solution_imports": "from leetcode_py.data_structures import DictTree",
+    "solution_methods": [
+        { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
+        { "name": "insert", "parameters": "word: str", "return_type": "None", "dummy_return": "" },
+        { "name": "search", "parameters": "word: str", "return_type": "bool", "dummy_return": "False" },
+        {
+            "name": "starts_with",
+            "parameters": "prefix: str",
+            "return_type": "bool",
+            "dummy_return": "False"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Trie",
+    "test_class_name": "ImplementTriePrefixTree",
+    "test_helper_methods": [],
+    "test_methods": [
+        {
+            "name": "test_trie_operations",
+            "parametrize": "operations, inputs, expected",
+            "parametrize_typed": "operations: list[str], inputs: list[list[str]], expected: list[bool | None]",
+            "test_cases": "[(['Trie', 'insert', 'search', 'search', 'starts_with', 'insert', 'search'], [[], ['apple'], ['apple'], ['app'], ['app'], ['app'], ['app']], [None, None, True, False, True, None, True]), (['Trie', 'insert', 'insert', 'search', 'search', 'starts_with', 'starts_with'], [[], ['hello'], ['world'], ['hello'], ['hi'], ['hel'], ['wor']], [None, None, None, True, False, True, True]), (['Trie', 'insert', 'insert', 'search', 'search', 'starts_with', 'starts_with'], [[], ['a'], ['aa'], ['a'], ['aa'], ['a'], ['aa']], [None, None, None, True, True, True, True]), (['Trie', 'insert', 'search', 'starts_with', 'insert', 'search', 'starts_with'], [[], ['test'], ['testing'], ['test'], ['testing'], ['testing'], ['test']], [None, None, False, True, None, True, True]), (['Trie', 'search', 'starts_with'], [[], ['empty'], ['empty']], [None, False, False])]",
+            "body": "trie: Trie | None = None\nresults: list[bool | None] = []\nfor i, op in enumerate(operations):\n    if op == 'Trie':\n        trie = Trie()\n        results.append(None)\n    elif op == 'insert' and trie is not None:\n        trie.insert(inputs[i][0])\n        results.append(None)\n    elif op == 'search' and trie is not None:\n        results.append(trie.search(inputs[i][0]))\n    elif op == 'starts_with' and trie is not None:\n        results.append(trie.starts_with(inputs[i][0]))\nassert results == expected"
+        }
+    ],
+    "playground_imports": "from solution import Trie",
+    "playground_test_case": "# Example test case\noperations = ['Trie', 'insert', 'search', 'search', 'starts_with', 'insert', 'search']\ninputs = [[], ['apple'], ['apple'], ['app'], ['app'], ['app'], ['app']]\nexpected = [None, None, True, False, True, None, True]",
+    "playground_execution": "trie = None\nresults: list[bool | None] = []\nfor i, op in enumerate(operations):\n    if op == 'Trie':\n        trie = Trie()\n        results.append(None)\n    elif op == 'insert' and trie is not None:\n        trie.insert(inputs[i][0])\n        results.append(None)\n    elif op == 'search' and trie is not None:\n        results.append(trie.search(inputs[i][0]))\n    elif op == 'starts_with' and trie is not None:\n        results.append(trie.starts_with(inputs[i][0]))\nresults",
+    "playground_assertion": "assert results == expected"
+}

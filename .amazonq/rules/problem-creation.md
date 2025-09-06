@@ -136,6 +136,13 @@ When creating JSON properties that use PascalCase (solution_class_name, test_cla
 - Complex test setup with operation sequences
 - Import custom class in test_imports
 
+### Dict-based Tree Problems (Trie, etc.)
+
+- Add `"solution_imports": "from leetcode_py.data_structures import DictTree"`
+- Inherit from `DictTree[str]` for string-based trees like Trie
+- Provides automatic visualization capabilities
+- Use `dict[str, Any]` for internal tree structure
+
 ## Generation Commands
 
 ```bash
