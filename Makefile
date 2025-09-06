@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= lowest_common_ancestor_of_a_binary_search_tree
+PROBLEM ?= word_ladder
 FORCE ?= 0
 COMMA := ,
 
