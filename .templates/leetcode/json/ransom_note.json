@@ -1,0 +1,44 @@
+{
+    "problem_name": "ransom_note",
+    "solution_class_name": "Solution",
+    "problem_number": "383",
+    "problem_title": "Ransom Note",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "tags": ["grind-75"],
+    "readme_description": "Given two strings `ransomNote` and `magazine`, return `true` if `ransomNote` can be constructed by using the letters from `magazine` and `false` otherwise.\n\nEach letter in `magazine` can only be used once in `ransomNote`.",
+    "readme_examples": [
+        { "content": "```\nInput: ransomNote = \"a\", magazine = \"b\"\nOutput: false\n```" },
+        { "content": "```\nInput: ransomNote = \"aa\", magazine = \"ab\"\nOutput: false\n```" },
+        { "content": "```\nInput: ransomNote = \"aa\", magazine = \"aab\"\nOutput: true\n```" }
+    ],
+    "readme_constraints": "- 1 <= ransomNote.length, magazine.length <= 10^5\n- ransomNote and magazine consist of lowercase English letters.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "can_construct",
+            "parameters": "ransom_note: str, magazine: str",
+            "return_type": "bool",
+            "dummy_return": "False"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "RansomNote",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_can_construct",
+            "parametrize": "ransom_note, magazine, expected",
+            "parametrize_typed": "ransom_note: str, magazine: str, expected: bool",
+            "test_cases": "[('a', 'b', False), ('aa', 'ab', False), ('aa', 'aab', True), ('aab', 'baa', True)]",
+            "body": "result = self.solution.can_construct(ransom_note, magazine)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nransom_note = 'aa'\nmagazine = 'aab'\nexpected = True",
+    "playground_execution": "result = Solution().can_construct(ransom_note, magazine)\nresult",
+    "playground_assertion": "assert result == expected"
+}

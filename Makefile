@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= merge_k_sorted_lists
+PROBLEM ?= ransom_note
 FORCE ?= 0
 COMMA := ,
 

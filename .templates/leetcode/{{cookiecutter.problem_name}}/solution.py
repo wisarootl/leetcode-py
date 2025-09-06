@@ -1,5 +1,5 @@
 {{cookiecutter.solution_imports}}
-
+{# TODO: add helper class like class Node: .... #}
 class {{cookiecutter.solution_class_name}}:
     {%- for _, methods in cookiecutter._solution_methods | dictsort %}
     {%- for method in methods %}
