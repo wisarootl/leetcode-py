@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= valid_parentheses
+PROBLEM ?= balanced_binary_tree
 FORCE ?= 0
 COMMA := ,
 
