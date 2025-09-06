@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= find_median_from_data_stream
+PROBLEM ?= basic_calculator
 FORCE ?= 0
 COMMA := ,
 
