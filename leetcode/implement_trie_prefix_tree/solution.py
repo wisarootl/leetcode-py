@@ -1,6 +1,4 @@
-from typing import Any
-
-from leetcode_py.data_structures import DictTree
+from leetcode_py.data_structures import DictTree, RecursiveDict
 
 
 class Trie(DictTree[str]):
@@ -9,7 +7,7 @@ class Trie(DictTree[str]):
     # Time: O(1)
     # Space: O(1)
     def __init__(self) -> None:
-        self.root: dict[str, Any] = {}
+        self.root: RecursiveDict[str] = {}
 
     # Time: O(m) where m is word length
     # Space: O(m)
@@ -19,7 +17,7 @@ class Trie(DictTree[str]):
             if char not in node:
                 node[char] = {}
             node = node[char]
-        node[self.END_OF_WORD] = True  # End of word marker
+        node[self.END_OF_WORD] = True
 
     # Time: O(m) where m is word length
     # Space: O(1)

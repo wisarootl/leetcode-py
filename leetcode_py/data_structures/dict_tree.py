@@ -1,19 +1,20 @@
-from typing import Any, Generic, Hashable, TypeVar
+from typing import Any, Generic, Hashable, TypeAlias, TypeVar
 
 K = TypeVar("K", bound=Hashable)
+RecursiveDict: TypeAlias = dict[K, "RecursiveDict[K] | Any"]
 
 
 class DictTree(Generic[K]):
 
     def __init__(self) -> None:
-        self.root: dict[K, Any] = {}
+        self.root: RecursiveDict[K] = {}
 
     def __str__(self) -> str:
         if not hasattr(self, "root") or not self.root:
             return "Empty"
         return self._render_dict_tree(self.root)
 
-    def _render_dict_tree(self, node: dict[K, Any], prefix: str = "", depth: int = 0) -> str:
+    def _render_dict_tree(self, node: RecursiveDict[K], prefix: str = "", depth: int = 0) -> str:
         if not node:
             return ""
 
@@ -49,7 +50,9 @@ class DictTree(Generic[K]):
         self._add_dict_nodes(dot, self.root, "root")
         return dot.pipe(format="svg", encoding="utf-8")
 
-    def _add_dict_nodes(self, dot: Any, node: dict[K, Any], node_id: str, char: K | str = "") -> None:
+    def _add_dict_nodes(
+        self, dot: Any, node: RecursiveDict[K], node_id: str, char: K | str = ""
+    ) -> None:
         if not node:
             return
 
