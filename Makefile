@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= course_schedule
+PROBLEM ?= rotting_oranges
 FORCE ?= 0
 COMMA := ,
 
