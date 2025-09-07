@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= permutations
+PROBLEM ?= word_break
 FORCE ?= 0
 COMMA := ,
 

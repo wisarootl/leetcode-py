@@ -1,0 +1,49 @@
+{
+    "problem_name": "time_based_key_value_store",
+    "solution_class_name": "TimeMap",
+    "problem_number": "981",
+    "problem_title": "Time Based Key-Value Store",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Binary Search, Design",
+    "tags": ["grind-75"],
+    "readme_description": "Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.\n\nImplement the `TimeMap` class:\n\n- `TimeMap()` Initializes the object of the data structure.\n- `void set(String key, String value, int timestamp)` Stores the key `key` with the value `value` at the given time `timestamp`.\n- `String get(String key, int timestamp)` Returns a value such that `set` was called previously, with `timestamp_prev <= timestamp`. If there are multiple such values, it returns the value associated with the largest `timestamp_prev`. If there are no values, it returns `\"\"`.",
+    "readme_examples": [
+        {
+            "content": "```\nInput\n[\"TimeMap\", \"set\", \"get\", \"get\", \"set\", \"get\", \"get\"]\n[[], [\"foo\", \"bar\", 1], [\"foo\", 1], [\"foo\", 3], [\"foo\", \"bar2\", 4], [\"foo\", 4], [\"foo\", 5]]\nOutput\n[null, null, \"bar\", \"bar\", null, \"bar2\", \"bar2\"]\n```\n\n**Explanation:**\n```\nTimeMap timeMap = new TimeMap();\ntimeMap.set(\"foo\", \"bar\", 1);  // store the key \"foo\" and value \"bar\" along with timestamp = 1.\ntimeMap.get(\"foo\", 1);         // return \"bar\"\ntimeMap.get(\"foo\", 3);         // return \"bar\", since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is \"bar\".\ntimeMap.set(\"foo\", \"bar2\", 4); // store the key \"foo\" and value \"bar2\" along with timestamp = 4.\ntimeMap.get(\"foo\", 4);         // return \"bar2\"\ntimeMap.get(\"foo\", 5);         // return \"bar2\"\n```"
+        }
+    ],
+    "readme_constraints": "- `1 <= key.length, value.length <= 100`\n- `key` and `value` consist of lowercase English letters and digits.\n- `1 <= timestamp <= 10^7`\n- All the timestamps `timestamp` of `set` are strictly increasing.\n- At most `2 * 10^5` calls will be made to `set` and `get`.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
+        {
+            "name": "set",
+            "parameters": "key: str, value: str, timestamp: int",
+            "return_type": "None",
+            "dummy_return": ""
+        },
+        {
+            "name": "get",
+            "parameters": "key: str, timestamp: int",
+            "return_type": "str",
+            "dummy_return": "\"\""
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import TimeMap",
+    "test_class_name": "TimeBasedKeyValueStore",
+    "test_helper_methods": [],
+    "test_methods": [
+        {
+            "name": "test_time_map_operations",
+            "parametrize": "operations, inputs, expected",
+            "parametrize_typed": "operations: list[str], inputs: list[list], expected: list",
+            "test_cases": "[(['TimeMap', 'set', 'get', 'get', 'set', 'get', 'get'], [[], ['foo', 'bar', 1], ['foo', 1], ['foo', 3], ['foo', 'bar2', 4], ['foo', 4], ['foo', 5]], [None, None, 'bar', 'bar', None, 'bar2', 'bar2'])]",
+            "body": "time_map: TimeMap | None = None\nresult: list[str | None] = []\nfor i, op in enumerate(operations):\n    if op == 'TimeMap':\n        time_map = TimeMap()\n        result.append(None)\n    elif op == 'set' and time_map is not None:\n        time_map.set(*inputs[i])\n        result.append(None)\n    elif op == 'get' and time_map is not None:\n        result.append(time_map.get(*inputs[i]))\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import TimeMap",
+    "playground_test_case": "# Example test case\ntime_map = TimeMap()\ntime_map.set('foo', 'bar', 1)\nresult1 = time_map.get('foo', 1)\nresult2 = time_map.get('foo', 3)\ntime_map.set('foo', 'bar2', 4)\nresult3 = time_map.get('foo', 4)\nresult4 = time_map.get('foo', 5)",
+    "playground_execution": "print(f'get(foo, 1): {result1}')\nprint(f'get(foo, 3): {result2}')\nprint(f'get(foo, 4): {result3}')\nprint(f'get(foo, 5): {result4}')",
+    "playground_assertion": "assert result1 == 'bar'\nassert result2 == 'bar'\nassert result3 == 'bar2'\nassert result4 == 'bar2'"
+}
