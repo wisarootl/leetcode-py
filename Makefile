@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= zero_one_matrix
+PROBLEM ?= course_schedule
 FORCE ?= 0
 COMMA := ,
 
