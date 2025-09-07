@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= rotting_oranges
+PROBLEM ?= permutations
 FORCE ?= 0
 COMMA := ,
 
