@@ -1,0 +1,50 @@
+{
+    "problem_name": "three_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "15",
+    "problem_title": "3Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Sorting",
+    "tags": ["grind-75"],
+    "readme_description": "Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.\n\nNotice that the solution set must not contain duplicate triplets.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n```\n**Explanation:** \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter."
+        },
+        {
+            "content": "```\nInput: nums = [0,1,1]\nOutput: []\n```\n**Explanation:** The only possible triplet does not sum up to 0."
+        },
+        {
+            "content": "```\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]\n```\n**Explanation:** The only possible triplet sums up to 0."
+        }
+    ],
+    "readme_constraints": "- 3 <= nums.length <= 3000\n- -10^5 <= nums[i] <= 10^5",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "three_sum",
+            "parameters": "nums: list[int]",
+            "return_type": "list[list[int]]",
+            "dummy_return": "[]"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "ThreeSum",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_three_sum",
+            "parametrize": "nums, expected",
+            "parametrize_typed": "nums: list[int], expected: list[list[int]]",
+            "test_cases": "[([-1, 0, 1, 2, -1, -4], [[-1, -1, 2], [-1, 0, 1]]), ([0, 1, 1], []), ([0, 0, 0], [[0, 0, 0]]), ([-1, 0, 1], [[-1, 0, 1]]), ([1, 2, -2, -1], []), ([-2, 0, 1, 1, 2], [[-2, 0, 2], [-2, 1, 1]])]",
+            "body": "result = self.solution.three_sum(nums)\n# Sort both result and expected for comparison since order doesn't matter\nresult_sorted = [sorted(triplet) for triplet in result]\nexpected_sorted = [sorted(triplet) for triplet in expected]\nresult_sorted.sort()\nexpected_sorted.sort()\nassert result_sorted == expected_sorted"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nnums = [-1, 0, 1, 2, -1, -4]\nexpected = [[-1, -1, 2], [-1, 0, 1]]",
+    "playground_execution": "result = Solution().three_sum(nums)\nresult",
+    "playground_assertion": "# Sort for comparison since order doesn't matter\nresult_sorted = [sorted(triplet) for triplet in result]\nexpected_sorted = [sorted(triplet) for triplet in expected]\nresult_sorted.sort()\nexpected_sorted.sort()\nassert result_sorted == expected_sorted"
+}

@@ -1,0 +1,50 @@
+{
+    "problem_name": "longest_substring_without_repeating_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "3",
+    "problem_title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "tags": ["grind-75"],
+    "readme_description": "Given a string `s`, find the length of the **longest** **substring** without duplicate characters.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: s = \"abcabcbb\"\nOutput: 3\n```\n**Explanation:** The answer is \"abc\", with the length of 3."
+        },
+        {
+            "content": "```\nInput: s = \"bbbbb\"\nOutput: 1\n```\n**Explanation:** The answer is \"b\", with the length of 1."
+        },
+        {
+            "content": "```\nInput: s = \"pwwkew\"\nOutput: 3\n```\n**Explanation:** The answer is \"wke\", with the length of 3.\nNotice that the answer must be a substring, \"pwke\" is a subsequence and not a substring."
+        }
+    ],
+    "readme_constraints": "- 0 <= s.length <= 5 * 10^4\n- s consists of English letters, digits, symbols and spaces.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "length_of_longest_substring",
+            "parameters": "s: str",
+            "return_type": "int",
+            "dummy_return": "0"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "LongestSubstringWithoutRepeatingCharacters",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_length_of_longest_substring",
+            "parametrize": "s, expected",
+            "parametrize_typed": "s: str, expected: int",
+            "test_cases": "[('abcabcbb', 3), ('bbbbb', 1), ('pwwkew', 3), ('', 0), ('a', 1), ('au', 2), ('dvdf', 3)]",
+            "body": "result = self.solution.length_of_longest_substring(s)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\ns = 'abcabcbb'\nexpected = 3",
+    "playground_execution": "result = Solution().length_of_longest_substring(s)\nresult",
+    "playground_assertion": "assert result == expected"
+}

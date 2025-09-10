@@ -1,0 +1,41 @@
+{
+    "problem_name": "implement_queue_using_stacks",
+    "solution_class_name": "MyQueue",
+    "problem_number": "232",
+    "problem_title": "Implement Queue using Stacks",
+    "difficulty": "Easy",
+    "topics": "Stack, Design, Queue",
+    "tags": ["grind-75"],
+    "readme_description": "Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (`push`, `peek`, `pop`, and `empty`).\n\nImplement the `MyQueue` class:\n\n- `void push(int x)` Pushes element x to the back of the queue.\n- `int pop()` Removes the element from the front of the queue and returns it.\n- `int peek()` Returns the element at the front of the queue.\n- `boolean empty()` Returns `true` if the queue is empty, `false` otherwise.",
+    "readme_examples": [
+        {
+            "content": "```\nInput\n[\"MyQueue\", \"push\", \"push\", \"peek\", \"pop\", \"empty\"]\n[[], [1], [2], [], [], []]\nOutput\n[null, null, null, 1, 1, false]\n```\n**Explanation:**\n```\nMyQueue myQueue = new MyQueue();\nmyQueue.push(1); // queue is: [1]\nmyQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)\nmyQueue.peek(); // return 1\nmyQueue.pop(); // return 1, queue is [2]\nmyQueue.empty(); // return false\n```"
+        }
+    ],
+    "readme_constraints": "- 1 <= x <= 9\n- At most 100 calls will be made to push, pop, peek, and empty.\n- All the calls to pop and peek are valid.",
+    "readme_additional": "**Notes:**\n- You must use **only** standard operations of a stack, which means only `push to top`, `peek/pop from top`, `size`, and `is empty` operations are valid.\n- Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.\n\n**Follow-up:** Can you implement the queue such that each operation is amortized `O(1)` time complexity? In other words, performing `n` operations will take overall `O(n)` time even if one of those operations may take longer.",
+    "solution_imports": "",
+    "solution_methods": [
+        { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
+        { "name": "push", "parameters": "x: int", "return_type": "None", "dummy_return": "" },
+        { "name": "pop", "parameters": "", "return_type": "int", "dummy_return": "0" },
+        { "name": "peek", "parameters": "", "return_type": "int", "dummy_return": "0" },
+        { "name": "empty", "parameters": "", "return_type": "bool", "dummy_return": "True" }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import MyQueue",
+    "test_class_name": "ImplementQueueUsingStacks",
+    "test_helper_methods": [],
+    "test_methods": [
+        {
+            "name": "test_queue_operations",
+            "parametrize": "operations, inputs, expected",
+            "parametrize_typed": "operations: list[str], inputs: list[list[int]], expected: list[int | None | bool]",
+            "test_cases": "[(['MyQueue', 'push', 'push', 'peek', 'pop', 'empty'], [[], [1], [2], [], [], []], [None, None, None, 1, 1, False]), (['MyQueue', 'empty', 'push', 'peek', 'pop', 'empty'], [[], [], [1], [], [], []], [None, True, None, 1, 1, True]), (['MyQueue', 'push', 'push', 'push', 'pop', 'pop', 'peek', 'pop', 'empty'], [[], [1], [2], [3], [], [], [], [], []], [None, None, None, None, 1, 2, 3, 3, True])]",
+            "body": "queue = None\nresults: list[int | None | bool] = []\nfor i, op in enumerate(operations):\n    if op == 'MyQueue':\n        queue = MyQueue()\n        results.append(None)\n    elif op == 'push' and queue is not None:\n        queue.push(inputs[i][0])\n        results.append(None)\n    elif op == 'pop' and queue is not None:\n        results.append(queue.pop())\n    elif op == 'peek' and queue is not None:\n        results.append(queue.peek())\n    elif op == 'empty' and queue is not None:\n        results.append(queue.empty())\nassert results == expected"
+        }
+    ],
+    "playground_imports": "from solution import MyQueue",
+    "playground_test_case": "# Example test case\nqueue = MyQueue()\nqueue.push(1)\nqueue.push(2)",
+    "playground_execution": "result_peek = queue.peek()\nresult_pop = queue.pop()\nresult_empty = queue.empty()\nprint(f'peek: {result_peek}, pop: {result_pop}, empty: {result_empty}')",
+    "playground_assertion": "assert result_peek == 1\nassert result_pop == 1\nassert result_empty == False"
+}

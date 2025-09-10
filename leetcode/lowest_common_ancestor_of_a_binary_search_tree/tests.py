@@ -10,16 +10,6 @@ class TestLowestCommonAncestorOfABinarySearchTree:
     def setup_method(self):
         self.solution = Solution()
 
-    def _find_node(self, root: TreeNode[int] | None, val: int):
-        if not root:
-            return None
-        if root.val == val:
-            return root
-        left = self._find_node(root.left, val)
-        if left:
-            return left
-        return self._find_node(root.right, val)
-
     @pytest.mark.parametrize(
         "root_list, p_val, q_val, expected_val",
         [
@@ -37,8 +27,8 @@ class TestLowestCommonAncestorOfABinarySearchTree:
     ):
         root = TreeNode[int].from_list(root_list)
         assert root is not None
-        p = self._find_node(root, p_val)
-        q = self._find_node(root, q_val)
+        p = root.find_node(p_val)
+        q = root.find_node(q_val)
         assert p is not None and q is not None
         result = self.solution.lowest_common_ancestor(root, p, q)
         assert result is not None

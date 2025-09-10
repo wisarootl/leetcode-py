@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= product_of_array_except_self
+PROBLEM ?= word_break
 FORCE ?= 0
 COMMA := ,
 

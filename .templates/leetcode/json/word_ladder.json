@@ -1,0 +1,47 @@
+{
+    "problem_name": "word_ladder",
+    "solution_class_name": "Solution",
+    "problem_number": "127",
+    "problem_title": "Word Ladder",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Breadth-First Search",
+    "tags": ["grind-75"],
+    "readme_description": "A **transformation sequence** from word `beginWord` to word `endWord` using a dictionary `wordList` is a sequence of words `beginWord -> s1 -> s2 -> ... -> sk` such that:\n\n- Every adjacent pair of words differs by a single letter.\n- Every `si` for `1 <= i <= k` is in `wordList`. Note that `beginWord` does not need to be in `wordList`.\n- `sk == endWord`\n\nGiven two words, `beginWord` and `endWord`, and a dictionary `wordList`, return the **number of words** in the **shortest transformation sequence** from `beginWord` to `endWord`, or `0` if no such sequence exists.",
+    "readme_examples": [
+        {
+            "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]\nOutput: 5\n```\n**Explanation:** One shortest transformation sequence is \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> \"cog\", which is 5 words long."
+        },
+        {
+            "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]\nOutput: 0\n```\n**Explanation:** The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
+        }
+    ],
+    "readme_constraints": "- 1 <= beginWord.length <= 10\n- endWord.length == beginWord.length\n- 1 <= wordList.length <= 5000\n- wordList[i].length == beginWord.length\n- beginWord, endWord, and wordList[i] consist of lowercase English letters.\n- beginWord != endWord\n- All the words in wordList are unique.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "ladder_length",
+            "parameters": "begin_word: str, end_word: str, word_list: list[str]",
+            "return_type": "int",
+            "dummy_return": "0"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "WordLadder",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_ladder_length",
+            "parametrize": "begin_word, end_word, word_list, expected",
+            "parametrize_typed": "begin_word: str, end_word: str, word_list: list[str], expected: int",
+            "test_cases": "[('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'], 5), ('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'], 0), ('a', 'c', ['a', 'b', 'c'], 2)]",
+            "body": "result = self.solution.ladder_length(begin_word, end_word, word_list)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nbegin_word = 'hit'\nend_word = 'cog'\nword_list = ['hot', 'dot', 'dog', 'lot', 'log', 'cog']\nexpected = 5",
+    "playground_execution": "result = Solution().ladder_length(begin_word, end_word, word_list)\nresult",
+    "playground_assertion": "assert result == expected"
+}

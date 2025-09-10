@@ -1,0 +1,45 @@
+{
+    "problem_name": "diameter_of_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "543",
+    "problem_title": "Diameter of Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "tags": ["grind-75"],
+    "readme_description": "Given the `root` of a binary tree, return the length of the **diameter** of the tree.\n\nThe **diameter** of a binary tree is the **length** of the longest path between any two nodes in a tree. This path may or may not pass through the `root`.\n\nThe **length** of a path between two nodes is represented by the number of edges between them.",
+    "readme_examples": [
+        {
+            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg)\n\n```\nInput: root = [1,2,3,4,5]\nOutput: 3\n```\n**Explanation:** 3 is the length of the path [4,2,1,3] or [5,2,1,3]."
+        },
+        { "content": "```\nInput: root = [1,2]\nOutput: 1\n```" }
+    ],
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10^4].\n- -100 <= Node.val <= 100",
+    "readme_additional": "",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_methods": [
+        {
+            "name": "diameter_of_binary_tree",
+            "parameters": "root: TreeNode | None",
+            "return_type": "int",
+            "dummy_return": "0"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom leetcode_py import TreeNode\nfrom .solution import Solution",
+    "test_class_name": "DiameterOfBinaryTree",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_diameter_of_binary_tree",
+            "parametrize": "root_list, expected",
+            "parametrize_typed": "root_list: list[int | None], expected: int",
+            "test_cases": "[([1, 2, 3, 4, 5], 3), ([1, 2], 1)]",
+            "body": "root = TreeNode.from_list(root_list)\nresult = self.solution.diameter_of_binary_tree(root)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_test_case": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4, 5]\nexpected = 3",
+    "playground_execution": "root = TreeNode.from_list(root_list)\nresult = Solution().diameter_of_binary_tree(root)\nresult",
+    "playground_assertion": "assert result == expected"
+}

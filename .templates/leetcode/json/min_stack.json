@@ -1,0 +1,41 @@
+{
+    "problem_name": "min_stack",
+    "solution_class_name": "MinStack",
+    "problem_number": "155",
+    "problem_title": "Min Stack",
+    "difficulty": "Medium",
+    "topics": "Stack, Design",
+    "tags": ["grind-75"],
+    "readme_description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.\n\nImplement the `MinStack` class:\n\n- `MinStack()` initializes the stack object.\n- `void push(int val)` pushes the element `val` onto the stack.\n- `void pop()` removes the element on the top of the stack.\n- `int top()` gets the top element of the stack.\n- `int getMin()` retrieves the minimum element in the stack.\n\nYou must implement a solution with `O(1)` time complexity for each function.",
+    "readme_examples": [
+        {
+            "content": "```\nInput\n[\"MinStack\",\"push\",\"push\",\"push\",\"getMin\",\"pop\",\"top\",\"getMin\"]\n[[],[-2],[0],[-3],[],[],[],[]]\n\nOutput\n[null,null,null,null,-3,null,0,-2]\n```\n**Explanation:**\n```\nMinStack minStack = new MinStack();\nminStack.push(-2);\nminStack.push(0);\nminStack.push(-3);\nminStack.getMin(); // return -3\nminStack.pop();\nminStack.top();    // return 0\nminStack.getMin(); // return -2\n```"
+        }
+    ],
+    "readme_constraints": "- `-2^31 <= val <= 2^31 - 1`\n- Methods `pop`, `top` and `getMin` operations will always be called on **non-empty** stacks.\n- At most `3 * 10^4` calls will be made to `push`, `pop`, `top`, and `getMin`.",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
+        { "name": "push", "parameters": "val: int", "return_type": "None", "dummy_return": "" },
+        { "name": "pop", "parameters": "", "return_type": "None", "dummy_return": "" },
+        { "name": "top", "parameters": "", "return_type": "int", "dummy_return": "0" },
+        { "name": "get_min", "parameters": "", "return_type": "int", "dummy_return": "0" }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import MinStack",
+    "test_class_name": "MinStack",
+    "test_helper_methods": [],
+    "test_methods": [
+        {
+            "name": "test_min_stack",
+            "parametrize": "operations, inputs, expected",
+            "parametrize_typed": "operations: list[str], inputs: list[list[int]], expected: list[int | None]",
+            "test_cases": "[([\"MinStack\", \"push\", \"push\", \"push\", \"getMin\", \"pop\", \"top\", \"getMin\"], [[], [-2], [0], [-3], [], [], [], []], [None, None, None, None, -3, None, 0, -2]), ([\"MinStack\", \"push\", \"top\", \"getMin\", \"pop\"], [[], [5], [], [], []], [None, None, 5, 5, None]), ([\"MinStack\", \"push\", \"push\", \"push\", \"getMin\", \"pop\", \"getMin\", \"pop\", \"getMin\"], [[], [1], [1], [2], [], [], [], [], []], [None, None, None, None, 1, None, 1, None, 1]), ([\"MinStack\", \"push\", \"push\", \"getMin\", \"push\", \"getMin\", \"pop\", \"getMin\"], [[], [3], [1], [], [0], [], [], []], [None, None, None, 1, None, 0, None, 1])]",
+            "body": "stack: MinStack | None = None\nresults: list[int | None] = []\nfor i, op in enumerate(operations):\n    if op == \"MinStack\":\n        stack = MinStack()\n        results.append(None)\n    elif op == \"push\" and stack is not None:\n        stack.push(inputs[i][0])\n        results.append(None)\n    elif op == \"pop\" and stack is not None:\n        stack.pop()\n        results.append(None)\n    elif op == \"top\" and stack is not None:\n        results.append(stack.top())\n    elif op == \"getMin\" and stack is not None:\n        results.append(stack.get_min())\nassert results == expected"
+        }
+    ],
+    "playground_imports": "from solution import MinStack",
+    "playground_test_case": "# Example test case\noperations = ['MinStack', 'push', 'push', 'push', 'getMin', 'pop', 'top', 'getMin']\ninputs = [[], [-2], [0], [-3], [], [], [], []]",
+    "playground_execution": "stack = None\nresults: list[int | None] = []\nfor i, op in enumerate(operations):\n    if op == 'MinStack':\n        stack = MinStack()\n        results.append(None)\n    elif op == 'push' and stack is not None:\n        stack.push(inputs[i][0])\n        results.append(None)\n    elif op == 'pop' and stack is not None:\n        stack.pop()\n        results.append(None)\n    elif op == 'top' and stack is not None:\n        results.append(stack.top())\n    elif op == 'getMin' and stack is not None:\n        results.append(stack.get_min())\nresults",
+    "playground_assertion": "expected = [None, None, None, None, -3, None, 0, -2]\nassert results == expected"
+}

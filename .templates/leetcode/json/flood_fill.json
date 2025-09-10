@@ -1,0 +1,47 @@
+{
+    "problem_name": "flood_fill",
+    "solution_class_name": "Solution",
+    "problem_number": "733",
+    "problem_title": "Flood Fill",
+    "difficulty": "Easy",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Matrix",
+    "tags": ["grind-75"],
+    "readme_description": "You are given an image represented by an `m x n` grid of integers `image`, where `image[i][j]` represents the pixel value of the image. You are also given three integers `sr`, `sc`, and `color`. Your task is to perform a **flood fill** on the image starting from the pixel `image[sr][sc]`.\n\nTo perform a **flood fill**:\n\n1. Begin with the starting pixel and change its color to `color`.\n2. Perform the same process for each pixel that is **directly adjacent** (pixels that share a side with the original pixel, either horizontally or vertically) and shares the **same color** as the starting pixel.\n3. Keep **repeating** this process by checking neighboring pixels of the *updated* pixels and modifying their color if it matches the original color of the starting pixel.\n4. The process **stops** when there are **no more** adjacent pixels of the original color to update.\n\nReturn the **modified** image after performing the flood fill.",
+    "readme_examples": [
+        {
+            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/01/flood1-grid.jpg)\n\n```\nInput: image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2\nOutput: [[2,2,2],[2,2,0],[2,0,1]]\n```\n**Explanation:** From the center of the image with position `(sr, sc) = (1, 1)` (i.e., the red pixel), all pixels connected by a path of the same color as the starting pixel (i.e., the blue pixels) are colored with the new color. Note the bottom corner is not colored 2, because it is not horizontally or vertically connected to the starting pixel."
+        },
+        {
+            "content": "```\nInput: image = [[0,0,0],[0,0,0]], sr = 0, sc = 0, color = 0\nOutput: [[0,0,0],[0,0,0]]\n```\n**Explanation:** The starting pixel is already colored with 0, which is the same as the target color. Therefore, no changes are made to the image."
+        }
+    ],
+    "readme_constraints": "- `m == image.length`\n- `n == image[i].length`\n- `1 <= m, n <= 50`\n- `0 <= image[i][j], color < 2^16`\n- `0 <= sr < m`\n- `0 <= sc < n`",
+    "readme_additional": "",
+    "solution_imports": "",
+    "solution_methods": [
+        {
+            "name": "flood_fill",
+            "parameters": "image: list[list[int]], sr: int, sc: int, color: int",
+            "return_type": "list[list[int]]",
+            "dummy_return": "[]"
+        }
+    ],
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_class_name": "FloodFill",
+    "test_helper_methods": [
+        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
+    ],
+    "test_methods": [
+        {
+            "name": "test_flood_fill",
+            "parametrize": "image, sr, sc, color, expected",
+            "parametrize_typed": "image: list[list[int]], sr: int, sc: int, color: int, expected: list[list[int]]",
+            "test_cases": "[([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2, [[2, 2, 2], [2, 2, 0], [2, 0, 1]]), ([[0, 0, 0], [0, 0, 0]], 0, 0, 0, [[0, 0, 0], [0, 0, 0]]), ([[0, 0, 0], [0, 1, 1]], 1, 1, 1, [[0, 0, 0], [0, 1, 1]]), ([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 1, [[1, 1, 1], [1, 1, 0], [1, 0, 1]])]",
+            "body": "result = self.solution.flood_fill(image, sr, sc, color)\nassert result == expected"
+        }
+    ],
+    "playground_imports": "from solution import Solution",
+    "playground_test_case": "# Example test case\nimage = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]\nsr = 1\nsc = 1\ncolor = 2\nexpected = [[2, 2, 2], [2, 2, 0], [2, 0, 1]]",
+    "playground_execution": "result = Solution().flood_fill(image, sr, sc, color)\nresult",
+    "playground_assertion": "assert result == expected"
+}

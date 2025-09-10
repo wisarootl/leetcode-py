@@ -14,9 +14,14 @@
     ],
     "readme_constraints": "- `1 <= word.length, prefix.length <= 2000`\n- `word` and `prefix` consist only of lowercase English letters.\n- At most `3 * 10^4` calls **in total** will be made to `insert`, `search`, and `starts_with`.",
     "readme_additional": "",
-    "solution_imports": "from leetcode_py.data_structures import DictTree",
+    "solution_imports": "from leetcode_py.data_structures import DictTree, RecursiveDict",
     "solution_methods": [
-        { "name": "__init__", "parameters": "", "return_type": "None", "dummy_return": "" },
+        {
+            "name": "__init__",
+            "parameters": "",
+            "return_type": "None",
+            "dummy_return": "super().__init__()\n        self.root: RecursiveDict[str] = {}"
+        },
         { "name": "insert", "parameters": "word: str", "return_type": "None", "dummy_return": "" },
         { "name": "search", "parameters": "word: str", "return_type": "bool", "dummy_return": "False" },
         {
