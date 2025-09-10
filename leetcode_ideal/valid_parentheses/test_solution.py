@@ -3,9 +3,11 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_is_valid, run_is_valid
+from .solution import Solution
 
 
 class TestValidParentheses:
+    @logged_test
     @pytest.mark.parametrize(
         "s, expected",
         [
@@ -37,9 +39,6 @@ class TestValidParentheses:
             ("())", False),
         ],
     )
-    @logged_test
     def test_is_valid(self, s: str, expected: bool):
-        from .solution import Solution
-
         result = run_is_valid(Solution, s)
         assert_is_valid(result, expected)

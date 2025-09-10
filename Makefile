@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= partition_equal_subset_sum
+PROBLEM ?= clone_graph
 FORCE ?= 0
 COMMA := ,
 

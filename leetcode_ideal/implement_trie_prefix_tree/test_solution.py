@@ -3,9 +3,11 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_trie, run_trie
+from .solution import Trie
 
 
 class TestImplementTriePrefixTree:
+    @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",
         [
@@ -32,11 +34,8 @@ class TestImplementTriePrefixTree:
             (["Trie", "search", "starts_with"], [[], ["empty"], ["empty"]], [None, False, False]),
         ],
     )
-    @logged_test
     def test_trie_operations(
         self, operations: list[str], inputs: list[list[str]], expected: list[bool | None]
     ):
-        from .solution import Trie
-
         result, _ = run_trie(Trie, operations, inputs)
         assert_trie(result, expected)

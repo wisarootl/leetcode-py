@@ -8,6 +8,7 @@ from .solution import Solution
 
 class TestLinkedListCycle:
 
+    @logged_test
     @pytest.mark.parametrize(
         "values, pos, expected",
         [
@@ -31,7 +32,6 @@ class TestLinkedListCycle:
             ([100, 200, 300], 0, True),
         ],
     )
-    @logged_test
     def test_has_cycle(self, values: list[int], pos: int, expected: bool):
 
         result = run_has_cycle(Solution, values, pos)

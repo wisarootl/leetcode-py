@@ -3,9 +3,12 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_contains_duplicate, run_contains_duplicate
+from .solution import Solution
 
 
 class TestContainsDuplicate:
+
+    @logged_test
     @pytest.mark.parametrize(
         "nums, expected",
         [
@@ -23,9 +26,6 @@ class TestContainsDuplicate:
             ([1] * 1000, True),
         ],
     )
-    @logged_test
     def test_contains_duplicate(self, nums: list[int], expected: bool):
-        from .solution import Solution
-
         result = run_contains_duplicate(Solution, nums)
         assert_contains_duplicate(result, expected)

@@ -3,9 +3,11 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_serialize_deserialize, create_tree, run_serialize_deserialize
+from .solution import Codec
 
 
 class TestSerializeAndDeserializeBinaryTree:
+    @logged_test
     @pytest.mark.parametrize(
         "root_list",
         [
@@ -34,10 +36,7 @@ class TestSerializeAndDeserializeBinaryTree:
             ([50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45]),
         ],
     )
-    @logged_test
     def test_serialize_deserialize(self, root_list: list[int | None]):
-        from .solution import Codec
-
         result = run_serialize_deserialize(Codec, root_list)
         expected = create_tree(root_list)
         assert_serialize_deserialize(result, expected)

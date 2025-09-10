@@ -1,13 +1,30 @@
+{% if cookiecutter.solution_imports -%}
 {{cookiecutter.solution_imports}}
-{# TODO: add helper class like class Node: .... #}
-class {{cookiecutter.solution_class_name}}:
-    {%- for _, methods in cookiecutter._solution_methods | dictsort %}
-    {%- for method in methods %}
-    # Time: O(?)
-    # Space: O(?){# TODO: add decorator // optional self. // optional return type // optional return #}
-    def {{method.name}}(self, {{method.parameters}}) -> {{method.return_type}}:
-        # TODO: Implement {{method.name}}{# TODO: add body #}
-        return {{method.dummy_return}}
 
-    {%- endfor %}
-    {%- endfor %}
+
+{% endif -%}
+{% if cookiecutter.solution_contents -%}
+{{cookiecutter.solution_contents}}
+{% endif -%}
+{% if cookiecutter.solution_class_name -%}
+
+
+class {{cookiecutter.solution_class_name}}:
+{% if cookiecutter.solution_class_content -%}
+{{cookiecutter.solution_class_content}}
+
+{% endif -%}
+{% if cookiecutter.solution_methods -%}
+{% for method in cookiecutter.solution_methods -%}
+    # Time: O(?)
+    # Space: O(?)
+{% if method.decorator -%}
+    {{method.decorator}}
+{% endif -%}
+    def {{method.name}}{{method.signature}}:
+        # TODO: Implement {{method.name}}
+        {{method.body}}
+
+{% endfor -%}
+{% endif -%}
+{% endif -%}
