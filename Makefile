@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= word_break
+PROBLEM ?= partition_equal_subset_sum
 FORCE ?= 0
 COMMA := ,
 
