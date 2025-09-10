@@ -14,22 +14,24 @@ class Test{{cookiecutter.test_class_name}}:
     {{cookiecutter.test_class_content}}
 
 {% endif -%}
-{% for method in cookiecutter.test_methods -%}
-{% if method.decorator -%}
+{% for _, methods in cookiecutter._test_methods | dictsort %}
+{% for method in methods %}
+{% if method.decorator is defined %}
     {{method.decorator}}
-{% endif -%}
-{% if method.test_decorator is defined -%}
-{% if method.test_decorator -%}
+{% endif %}
+{% if method.test_decorator is defined %}
+{% if method.test_decorator %}
     {{method.test_decorator}}
-{% endif -%}
-{% else -%}
+{% endif %}
+{% else %}
     @logged_test
-{% endif -%}
-{% if method.parametrize -%}
+{% endif %}
+{% if method.parametrize %}
     @pytest.mark.parametrize("{{method.parametrize}}", {{method.test_cases}})
-{% endif -%}
+{% endif %}
     def {{method.name}}{{method.signature}}:
-        {{method.body}}
+{{method.body}}
 
-{% endfor -%}
+{% endfor %}
+{% endfor %}
 {% endif -%}

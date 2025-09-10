@@ -14,17 +14,16 @@ class {{cookiecutter.solution_class_name}}:
 {{cookiecutter.solution_class_content}}
 
 {% endif -%}
-{% if cookiecutter.solution_methods -%}
-{% for method in cookiecutter.solution_methods -%}
+{% if cookiecutter._solution_methods -%}
+{% for _, methods in cookiecutter._solution_methods | dictsort %}
+{% for method in methods %}
     # Time: O(?)
     # Space: O(?)
-{% if method.decorator -%}
-    {{method.decorator}}
-{% endif -%}
-    def {{method.name}}{{method.signature}}:
-        # TODO: Implement {{method.name}}
-        {{method.body}}
+{% if method.decorator is defined %}    {{method.decorator}}
+{% endif %}    def {{method.name}}{{method.signature}}:
+{{method.body}}
 
-{% endfor -%}
+{% endfor %}
+{% endfor %}
 {% endif -%}
 {% endif -%}

@@ -18,20 +18,32 @@
     "readme_constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
     "readme_additional": "",
 
+    "helpers_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "helpers_content": "",
+    "helpers_run_name": "two_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.two_sum(nums, target)",
+    "helpers_assert_name": "two_sum",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+
     "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_two_sum, run_two_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TwoSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
     "_solution_methods": {
         "list": [
             {
                 "name": "two_sum",
-                "parameters": "nums: list[int], target: int",
-                "return_type": "list[int]",
-                "dummy_return": "[]"
+                "signature": "(self, nums: list[int], target: int) -> list[int]",
+                "body": "        # TODO: Implement two_sum\n        return []"
             }
         ]
     },
-
-    "test_imports": "import pytest\nfrom loguru import logger\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
-    "test_class_name": "TwoSum",
     "_test_helper_methods": {
         "list": [
             {
@@ -45,16 +57,16 @@
         "list": [
             {
                 "name": "test_two_sum",
+                "signature": "(self, nums: list[int], target: int, expected: list[int])",
                 "parametrize": "nums, target, expected",
-                "parametrize_typed": "nums: list[int], target: int, expected: list[int]",
                 "test_cases": "[([2, 7, 11, 15], 9, [0, 1]), ([3, 2, 4], 6, [1, 2])]",
-                "body": "result = self.solution.two_sum(nums, target)\nassert result == expected"
+                "body": "        result = run_two_sum(Solution, nums, target)\n        assert_two_sum(result, expected)"
             }
         ]
     },
 
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\nnums = [2, 7, 11, 15]\ntarget = 9\nexpected = [0, 1]",
-    "playground_execution": "result = Solution().two_sum(nums, target)\nresult",
-    "playground_assertion": "assert result == expected"
+    "playground_imports": "from helpers import run_two_sum, assert_two_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 7, 11, 15]\ntarget = 9\nexpected = [0, 1]",
+    "playground_run": "result = run_two_sum(Solution, nums, target)\nresult",
+    "playground_assert": "assert_two_sum(result, expected)"
 }

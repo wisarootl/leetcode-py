@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= clone_graph
+PROBLEM ?= accounts_merge
 FORCE ?= 0
 COMMA := ,
 
@@ -61,7 +61,7 @@ p-test:
 		echo "Error: Problem '$(PROBLEM)' not found in leetcode/ directory"; \
 		exit 1; \
 	fi
-	poetry run pytest leetcode/$(PROBLEM)/tests.py -v -s
+	poetry run pytest leetcode/$(PROBLEM)/test_solution.py -v -s
 
 p-lint:
 	@echo "Linting problem: $(PROBLEM)"
