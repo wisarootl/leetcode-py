@@ -3,11 +3,9 @@ from leetcode_py import TreeNode
 
 class Solution:
 
-    # Time: O(?)
-    # Space: O(?)
+    # Time: O(n)
+    # Space: O(h)
     def max_depth(self, root: TreeNode[int] | None) -> int:
-        # Time: O(n)
-        # Space: O(h)
         if not root:
             return 0
 
