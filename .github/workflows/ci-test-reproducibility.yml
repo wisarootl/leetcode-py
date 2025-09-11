@@ -36,16 +36,16 @@ jobs:
               if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
               run: poetry install --no-interaction --no-ansi
 
-            - name: Cache Graphviz
-              id: cache-graphviz
-              uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
-              with:
-                  path: /usr/bin/dot
-                  key: graphviz-${{ runner.os }}
+            # - name: Cache Graphviz
+            #   id: cache-graphviz
+            #   uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+            #   with:
+            #       path: /usr/bin/dot
+            #       key: graphviz-${{ runner.os }}
 
-            - name: Install Graphviz
-              if: steps.cache-graphviz.outputs.cache-hit != 'true'
-              run: sudo apt-get update && sudo apt-get install -y graphviz
+            # - name: Install Graphviz
+            #   if: steps.cache-graphviz.outputs.cache-hit != 'true'
+            #   run: sudo apt-get update && sudo apt-get install -y graphviz
 
             - name: Delete existing problems
               run: rm -rf leetcode/*/
