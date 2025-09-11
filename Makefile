@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= add_binary
+PROBLEM ?= binary_tree_right_side_view
 FORCE ?= 0
 COMMA := ,
 
@@ -48,12 +48,12 @@ lint:
 
 
 test:
-	poetry run pytest leetcode_old/ leetcode_ideal/ tests/ \
+	poetry run pytest leetcode/ leetcode_old/ leetcode_ideal/ tests/ \
 		-v --cov=leetcode --cov=leetcode_py \
 		--cov-report=term-missing \
 		--cov-report=xml \
 		--ignore=.templates \
-		--ignore=leetcode/__pycache__
+		--ignore=leetcode/__pycache__,leetcode_ideal/__pycache__
 
 p-test:
 	@echo "Testing problem: $(PROBLEM)"
