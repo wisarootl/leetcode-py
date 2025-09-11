@@ -1,0 +1,60 @@
+{
+    "problem_name": "majority_element",
+    "solution_class_name": "Solution",
+    "problem_number": "169",
+    "problem_title": "Majority Element",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Divide and Conquer, Sorting, Counting",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given an array `nums` of size `n`, return the majority element.\n\nThe majority element is the element that appears more than `\u230an / 2\u230b` times. You may assume that the majority element always exists in the array.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: nums = [3,2,3]\nOutput: 3\n```" },
+            { "content": "```\nInput: nums = [2,2,1,1,1,2,2]\nOutput: 2\n```" }
+        ]
+    },
+    "readme_constraints": "- n == nums.length\n- 1 <= n <= 5 * 10^4\n- -10^9 <= nums[i] <= 10^9",
+    "readme_additional": "**Follow-up:** Could you solve the problem in linear time and in O(1) space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "majority_element",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.majority_element(nums)",
+    "helpers_assert_name": "majority_element",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_majority_element, run_majority_element\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MajorityElement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "majority_element",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement majority_element\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_majority_element",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": "[([3,2,3], 3), ([2,2,1,1,1,2,2], 2), ([1], 1), ([1,1,2], 1), ([2,2,2,1,1], 2), ([5,5,5,5,1,2,3], 5), ([1,2,3,4,4,4,4], 4), ([0,0,0], 0), ([-1,-1,-1,1,1], -1)]",
+                "body": "        result = run_majority_element(Solution, nums)\n        assert_majority_element(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_majority_element, assert_majority_element\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3,2,3]\nexpected = 3",
+    "playground_run": "result = run_majority_element(Solution, nums)\nresult",
+    "playground_assert": "assert_majority_element(result, expected)"
+}

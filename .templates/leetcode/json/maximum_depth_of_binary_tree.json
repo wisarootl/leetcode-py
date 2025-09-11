@@ -1,0 +1,62 @@
+{
+    "problem_name": "maximum_depth_of_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "104",
+    "problem_title": "Maximum Depth of Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given the `root` of a binary tree, return *its maximum depth*.\n\nA binary tree's **maximum depth** is the number of nodes along the longest path from the root node down to the farthest leaf node.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/26/tmp-tree.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: 3\n```"
+            },
+            { "content": "```\nInput: root = [1,null,2]\nOutput: 2\n```" }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 10^4]`.\n- `-100 <= Node.val <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "max_depth",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.max_depth(root)",
+    "helpers_assert_name": "max_depth",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_max_depth, run_max_depth\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumDepthOfBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_depth",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement max_depth\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_depth",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": "[([3, 9, 20, None, None, 15, 7], 3), ([1, None, 2], 2), ([], 0), ([1], 1), ([1, 2], 2), ([1, 2, 3], 2), ([1, 2, 3, 4], 3), ([1, None, 2, None, 3], 3)]",
+                "body": "        result = run_max_depth(Solution, root_list)\n        assert_max_depth(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_depth, assert_max_depth\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list = [3, 9, 20, None, None, 15, 7]\nexpected = 3",
+    "playground_run": "result = run_max_depth(Solution, root_list)\nresult",
+    "playground_assert": "assert_max_depth(result, expected)"
+}
