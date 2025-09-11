@@ -1,0 +1,60 @@
+{
+    "problem_name": "add_binary",
+    "solution_class_name": "Solution",
+    "problem_number": "67",
+    "problem_title": "Add Binary",
+    "difficulty": "Easy",
+    "topics": "Math, String, Bit Manipulation, Simulation",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given two binary strings `a` and `b`, return *their sum as a binary string*.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: a = \"11\", b = \"1\"\nOutput: \"100\"\n```" },
+            { "content": "```\nInput: a = \"1010\", b = \"1011\"\nOutput: \"10101\"\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= a.length, b.length <= 10^4`\n- `a` and `b` consist only of `'0'` or `'1'` characters.\n- Each string does not contain leading zeros except for the zero itself.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "add_binary",
+    "helpers_run_signature": "(solution_class: type, a: str, b: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.add_binary(a, b)",
+    "helpers_assert_name": "add_binary",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_add_binary, run_add_binary\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AddBinary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "add_binary",
+                "signature": "(self, a: str, b: str) -> str",
+                "body": "        # TODO: Implement add_binary\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_add_binary",
+                "signature": "(self, a: str, b: str, expected: str)",
+                "parametrize": "a, b, expected",
+                "test_cases": "[('11', '1', '100'), ('1010', '1011', '10101'), ('0', '0', '0'), ('1', '1', '10'), ('1111', '1111', '11110'), ('1', '0', '1'), ('0', '1', '1'), ('1', '111', '1000'), ('111', '1', '1000'), ('1010', '1', '1011'), ('1111', '1', '10000')]",
+                "body": "        result = run_add_binary(Solution, a, b)\n        assert_add_binary(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_add_binary, assert_add_binary\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = '11'\nb = '1'\nexpected = '100'",
+    "playground_run": "result = run_add_binary(Solution, a, b)\nresult",
+    "playground_assert": "assert_add_binary(result, expected)"
+}

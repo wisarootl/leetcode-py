@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= accounts_merge
+PROBLEM ?= add_binary
 FORCE ?= 0
 COMMA := ,
 
