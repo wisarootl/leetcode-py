@@ -1,0 +1,69 @@
+{
+    "problem_name": "find_median_from_data_stream",
+    "solution_class_name": "MedianFinder",
+    "problem_number": "295",
+    "problem_title": "Find Median from Data Stream",
+    "difficulty": "Hard",
+    "topics": "Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "The **median** is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.\n\n- For example, for `arr = [2,3,4]`, the median is `3`.\n- For example, for `arr = [2,3]`, the median is `(2 + 3) / 2 = 2.5`.\n\nImplement the MedianFinder class:\n\n- `MedianFinder()` initializes the `MedianFinder` object.\n- `void addNum(int num)` adds the integer `num` from the data stream to the data structure.\n- `double findMedian()` returns the median of all elements so far. Answers within `10^-5` of the actual answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]\n[[], [1], [2], [], [3], []]\nOutput\n[null, null, null, 1.5, null, 2.0]\n```\n\n**Explanation:**\n```\nMedianFinder medianFinder = new MedianFinder();\nmedianFinder.addNum(1);    // arr = [1]\nmedianFinder.addNum(2);    // arr = [1, 2]\nmedianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)\nmedianFinder.addNum(3);    // arr = [1, 2, 3]\nmedianFinder.findMedian(); // return 2.0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `-10^5 <= num <= 10^5`\n- There will be at least one element in the data structure before calling `findMedian`.\n- At most `5 * 10^4` calls will be made to `addNum` and `findMedian`.",
+    "readme_additional": "**Follow up:**\n\n- If all integer numbers from the stream are in the range `[0, 100]`, how would you optimize your solution?\n- If `99%` of all integer numbers from the stream are in the range `[0, 100]`, how would you optimize your solution?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "median_finder",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    mf = None\n    results: list[float | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MedianFinder':\n            mf = solution_class()\n            results.append(None)\n        elif op == 'addNum' and mf is not None:\n            mf.add_num(inputs[i][0])\n            results.append(None)\n        elif op == 'findMedian' and mf is not None:\n            results.append(mf.find_median())\n    return results, mf",
+    "helpers_assert_name": "median_finder",
+    "helpers_assert_signature": "(result: list[float | None], expected: list[float | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_median_finder, run_median_finder\nfrom .solution import MedianFinder",
+    "test_content": "",
+    "test_class_name": "FindMedianFromDataStream",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "add_num",
+                "signature": "(self, num: int) -> None",
+                "body": "        # TODO: Implement add_num\n        pass"
+            },
+            {
+                "name": "find_median",
+                "signature": "(self) -> float",
+                "body": "        # TODO: Implement find_median\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": { "list": [] },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_median_finder",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[float | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": "[(['MedianFinder', 'addNum', 'addNum', 'findMedian', 'addNum', 'findMedian'], [[], [1], [2], [], [3], []], [None, None, None, 1.5, None, 2.0])]",
+                "body": "        result, _ = run_median_finder(MedianFinder, operations, inputs)\n        assert_median_finder(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_median_finder, assert_median_finder\nfrom solution import MedianFinder",
+    "playground_setup": "# Example test case\noperations = ['MedianFinder', 'addNum', 'addNum', 'findMedian', 'addNum', 'findMedian']\ninputs = [[], [1], [2], [], [3], []]\nexpected = [None, None, None, 1.5, None, 2.0]",
+    "playground_run": "result, mf = run_median_finder(MedianFinder, operations, inputs)\nprint(result)\nmf",
+    "playground_assert": "assert_median_finder(result, expected)"
+}

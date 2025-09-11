@@ -1,0 +1,63 @@
+{
+    "problem_name": "coin_change",
+    "solution_class_name": "Solution",
+    "problem_number": "322",
+    "problem_title": "Coin Change",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Breadth-First Search",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.\n\nYou may assume that you have an infinite number of each kind of coin.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: coins = [1,2,5], amount = 11\nOutput: 3\n```\n**Explanation:** 11 = 5 + 5 + 1"
+            },
+            { "content": "```\nInput: coins = [2], amount = 3\nOutput: -1\n```" },
+            { "content": "```\nInput: coins = [1], amount = 0\nOutput: 0\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= coins.length <= 12`\n- `1 <= coins[i] <= 2^31 - 1`\n- `0 <= amount <= 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "coin_change",
+    "helpers_run_signature": "(solution_class: type, coins: list[int], amount: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.coin_change(coins, amount)",
+    "helpers_assert_name": "coin_change",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_coin_change, run_coin_change\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CoinChange",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "coin_change",
+                "signature": "(self, coins: list[int], amount: int) -> int",
+                "body": "        # TODO: Implement coin_change\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_coin_change",
+                "signature": "(self, coins: list[int], amount: int, expected: int)",
+                "parametrize": "coins, amount, expected",
+                "test_cases": "[([1, 2, 5], 11, 3), ([2], 3, -1), ([1], 0, 0), ([1, 3, 4], 6, 2), ([2, 5, 10, 1], 27, 4), ([5], 3, -1), ([1], 1, 1), ([1, 2], 2, 1), ([186, 419, 83, 408], 6249, 20)]",
+                "body": "        result = run_coin_change(Solution, coins, amount)\n        assert_coin_change(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_coin_change, assert_coin_change\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncoins = [1, 2, 5]\namount = 11\nexpected = 3",
+    "playground_run": "result = run_coin_change(Solution, coins, amount)\nresult",
+    "playground_assert": "assert_coin_change(result, expected)"
+}

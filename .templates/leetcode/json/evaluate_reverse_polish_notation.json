@@ -1,0 +1,67 @@
+{
+    "problem_name": "evaluate_reverse_polish_notation",
+    "solution_class_name": "Solution",
+    "problem_number": "150",
+    "problem_title": "Evaluate Reverse Polish Notation",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Stack",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "You are given an array of strings `tokens` that represents an arithmetic expression in a **Reverse Polish Notation**.\n\nEvaluate the expression. Return *an integer that represents the value of the expression*.\n\n**Note that:**\n\n- The valid operators are `'+'`, `'-'`, `'*'`, and `'/'`.\n- Each operand may be an integer or another expression.\n- The division between two integers always **truncates toward zero**.\n- There will not be any division by zero.\n- The input represents a valid arithmetic expression in a reverse polish notation.\n- The answer and all the intermediate calculations can be represented in a **32-bit** integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: tokens = [\"2\",\"1\",\"+\",\"3\",\"*\"]\nOutput: 9\n```\n**Explanation:** ((2 + 1) * 3) = 9"
+            },
+            {
+                "content": "```\nInput: tokens = [\"4\",\"13\",\"5\",\"/\",\"+\"]\nOutput: 6\n```\n**Explanation:** (4 + (13 / 5)) = 6"
+            },
+            {
+                "content": "```\nInput: tokens = [\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"]\nOutput: 22\n```\n**Explanation:** ((10 * (6 / ((9 + 3) * -11))) + 17) + 5 = 22"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= tokens.length <= 10^4`\n- `tokens[i]` is either an operator: `\"+\"`, `\"-\"`, `\"*\"`, or `\"/\"`, or an integer in the range `[-200, 200]`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "eval_rpn",
+    "helpers_run_signature": "(solution_class: type, tokens: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.eval_rpn(tokens)",
+    "helpers_assert_name": "eval_rpn",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_eval_rpn, run_eval_rpn\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EvaluateReversePolishNotation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "eval_rpn",
+                "signature": "(self, tokens: list[str]) -> int",
+                "body": "        # TODO: Implement eval_rpn\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_eval_rpn",
+                "signature": "(self, tokens: list[str], expected: int)",
+                "parametrize": "tokens, expected",
+                "test_cases": "[(['2', '1', '+', '3', '*'], 9), (['4', '13', '5', '/', '+'], 6), (['10', '6', '9', '3', '+', '-11', '*', '/', '*', '17', '+', '5', '+'], 22)]",
+                "body": "        result = run_eval_rpn(Solution, tokens)\n        assert_eval_rpn(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_eval_rpn, assert_eval_rpn\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntokens = ['2', '1', '+', '3', '*']\nexpected = 9",
+    "playground_run": "result = run_eval_rpn(Solution, tokens)\nresult",
+    "playground_assert": "assert_eval_rpn(result, expected)"
+}

@@ -1,0 +1,64 @@
+{
+    "problem_name": "climbing_stairs",
+    "solution_class_name": "Solution",
+    "problem_number": "70",
+    "problem_title": "Climbing Stairs",
+    "difficulty": "Easy",
+    "topics": "Math, Dynamic Programming, Memoization",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "You are climbing a staircase. It takes `n` steps to reach the top.\n\nEach time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: 2\n```\n**Explanation:** There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: 3\n```\n**Explanation:** There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 45",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "climb_stairs",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.climb_stairs(n)",
+    "helpers_assert_name": "climb_stairs",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_climb_stairs, run_climb_stairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ClimbingStairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "climb_stairs",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement climb_stairs\n        return 1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_climb_stairs",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": "[(1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (10, 89), (20, 10946), (45, 1836311903)]",
+                "body": "        result = run_climb_stairs(Solution, n)\n        assert_climb_stairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_climb_stairs, assert_climb_stairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = 3",
+    "playground_run": "result = run_climb_stairs(Solution, n)\nresult",
+    "playground_assert": "assert_climb_stairs(result, expected)"
+}

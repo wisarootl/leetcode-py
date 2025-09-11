@@ -1,0 +1,65 @@
+{
+    "problem_name": "combination_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "39",
+    "problem_title": "Combination Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Backtracking",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given an array of **distinct** integers `candidates` and a target integer `target`, return *a list of all **unique combinations** of* `candidates` *where the chosen numbers sum to* `target`. You may return the combinations in **any order**.\n\nThe **same** number may be chosen from `candidates` an **unlimited number of times**. Two combinations are unique if the frequency of at least one of the chosen numbers is different.\n\nThe test cases are generated such that the number of unique combinations that sum up to `target` is less than `150` combinations for the given input.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: candidates = [2,3,6,7], target = 7\nOutput: [[2,2,3],[7]]\n```\n**Explanation:** 2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times. 7 is a candidate, and 7 = 7. These are the only two combinations."
+            },
+            {
+                "content": "```\nInput: candidates = [2,3,5], target = 8\nOutput: [[2,2,2,2],[2,3,3],[3,5]]\n```"
+            },
+            { "content": "```\nInput: candidates = [2], target = 1\nOutput: []\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= candidates.length <= 30\n- 2 <= candidates[i] <= 40\n- All elements of candidates are distinct.\n- 1 <= target <= 40",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "combination_sum",
+    "helpers_run_signature": "(solution_class: type, candidates: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.combination_sum(candidates, target)",
+    "helpers_assert_name": "combination_sum",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison\n    result_sorted = [sorted(combo) for combo in result]\n    expected_sorted = [sorted(combo) for combo in expected]\n    result_sorted.sort()\n    expected_sorted.sort()\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_combination_sum, run_combination_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CombinationSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "combination_sum",
+                "signature": "(self, candidates: list[int], target: int) -> list[list[int]]",
+                "body": "        # TODO: Implement combination_sum\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_combination_sum",
+                "signature": "(self, candidates: list[int], target: int, expected: list[list[int]])",
+                "parametrize": "candidates, target, expected",
+                "test_cases": "[([2, 3, 6, 7], 7, [[2, 2, 3], [7]]), ([2, 3, 5], 8, [[2, 2, 2, 2], [2, 3, 3], [3, 5]]), ([2], 1, [])]",
+                "body": "        result = run_combination_sum(Solution, candidates, target)\n        assert_combination_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_combination_sum, assert_combination_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncandidates = [2, 3, 6, 7]\ntarget = 7\nexpected = [[2, 2, 3], [7]]",
+    "playground_run": "result = run_combination_sum(Solution, candidates, target)\nresult",
+    "playground_assert": "assert_combination_sum(result, expected)"
+}

@@ -53,7 +53,8 @@ test:
 		--cov-report=term-missing \
 		--cov-report=xml \
 		--ignore=.templates \
-		--ignore=leetcode/__pycache__,leetcode_ideal/__pycache__
+		--ignore=leetcode/__pycache__ \
+		$(shell if [ -d leetcode_ideal ]; then for dir in leetcode_ideal/*/; do problem=$$(basename "$$dir"); if [ -d "leetcode/$$problem" ]; then echo "--ignore=leetcode_ideal/$$problem"; fi; done; fi)
 
 p-test:
 	@echo "Testing problem: $(PROBLEM)"
