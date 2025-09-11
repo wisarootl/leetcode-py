@@ -81,7 +81,9 @@ p-del:
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
 	@echo "This will DELETE all existing problems and regenerate from JSON templates."
-	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] || exit 1
+	@if [ "$$CI" != "true" ]; then \
+		read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] || exit 1; \
+	fi
 	@echo "Deleting existing problems..."
 	@rm -rf leetcode/*/
 	@echo "Generating all problems..."
