@@ -1,0 +1,74 @@
+{
+    "problem_name": "implement_trie_prefix_tree",
+    "solution_class_name": "Trie(DictTree[str])",
+    "problem_number": "208",
+    "problem_title": "Implement Trie (Prefix Tree)",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Design, Trie",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "A **trie** (pronounced as \"try\") or **prefix tree** is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n\n- `Trie()` Initializes the trie object.\n- `void insert(String word)` Inserts the string `word` into the trie.\n- `boolean search(String word)` Returns `true` if the string `word` is in the trie (i.e., was inserted before), and `false` otherwise.\n- `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Trie\", \"insert\", \"search\", \"search\", \"startsWith\", \"insert\", \"search\"]\n[[], [\"apple\"], [\"apple\"], [\"app\"], [\"app\"], [\"app\"], [\"app\"]]\nOutput\n[null, null, true, false, true, null, true]\n```\n\n**Explanation:**\n```python\ntrie = Trie()\ntrie.insert(\"apple\")\ntrie.search(\"apple\")    # return True\ntrie.search(\"app\")      # return False\ntrie.starts_with(\"app\") # return True\ntrie.insert(\"app\")\ntrie.search(\"app\")      # return True\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= word.length, prefix.length <= 2000`\n- `word` and `prefix` consist only of lowercase English letters.\n- At most `3 * 10^4` calls **in total** will be made to `insert`, `search`, and `starts_with`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "trie_operations",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    trie = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Trie':\n            trie = solution_class()\n            results.append(None)\n        elif op == 'insert' and trie is not None:\n            trie.insert(inputs[i][0])\n            results.append(None)\n        elif op == 'search' and trie is not None:\n            results.append(trie.search(inputs[i][0]))\n        elif op == 'starts_with' and trie is not None:\n            results.append(trie.starts_with(inputs[i][0]))\n    return results, trie",
+    "helpers_assert_name": "trie_operations",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py.data_structures import DictTree, RecursiveDict",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_trie_operations, run_trie_operations\nfrom .solution import Trie",
+    "test_content": "",
+    "test_class_name": "ImplementTriePrefixTree",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        super().__init__()\n        self.root: RecursiveDict[str] = {}"
+            },
+            {
+                "name": "insert",
+                "signature": "(self, word: str) -> None",
+                "body": "        # TODO: Implement insert\n        pass"
+            },
+            {
+                "name": "search",
+                "signature": "(self, word: str) -> bool",
+                "body": "        # TODO: Implement search\n        return False"
+            },
+            {
+                "name": "starts_with",
+                "signature": "(self, prefix: str) -> bool",
+                "body": "        # TODO: Implement starts_with\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": { "list": [] },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_trie_operations",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": "[(['Trie', 'insert', 'search', 'search', 'starts_with', 'insert', 'search'], [[], ['apple'], ['apple'], ['app'], ['app'], ['app'], ['app']], [None, None, True, False, True, None, True]), (['Trie', 'insert', 'insert', 'search', 'search', 'starts_with', 'starts_with'], [[], ['hello'], ['world'], ['hello'], ['hi'], ['hel'], ['wor']], [None, None, None, True, False, True, True]), (['Trie', 'insert', 'insert', 'search', 'search', 'starts_with', 'starts_with'], [[], ['a'], ['aa'], ['a'], ['aa'], ['a'], ['aa']], [None, None, None, True, True, True, True]), (['Trie', 'insert', 'search', 'starts_with', 'insert', 'search', 'starts_with'], [[], ['test'], ['testing'], ['test'], ['testing'], ['testing'], ['test']], [None, None, False, True, None, True, True]), (['Trie', 'search', 'starts_with'], [[], ['empty'], ['empty']], [None, False, False])]",
+                "body": "        result, _ = run_trie_operations(Trie, operations, inputs)\n        assert_trie_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_trie_operations, assert_trie_operations\nfrom solution import Trie",
+    "playground_setup": "# Example test case\noperations = ['Trie', 'insert', 'search', 'search', 'starts_with', 'insert', 'search']\ninputs = [[], ['apple'], ['apple'], ['app'], ['app'], ['app'], ['app']]\nexpected = [None, None, True, False, True, None, True]",
+    "playground_run": "result, trie = run_trie_operations(Trie, operations, inputs)\nprint(result)\ntrie",
+    "playground_assert": "assert_trie_operations(result, expected)"
+}

@@ -1,0 +1,60 @@
+{
+    "problem_name": "valid_anagram",
+    "solution_class_name": "Solution",
+    "problem_number": "242",
+    "problem_title": "Valid Anagram",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Sorting",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"anagram\", t = \"nagaram\"\nOutput: true\n```" },
+            { "content": "```\nInput: s = \"rat\", t = \"car\"\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length, t.length <= 5 * 10^4\n- s and t consist of lowercase English letters.",
+    "readme_additional": "**Follow up:** What if the inputs contain Unicode characters? How would you adapt your solution to such a case?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_anagram",
+    "helpers_run_signature": "(solution_class: type, s: str, t: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_anagram(s, t)",
+    "helpers_assert_name": "is_anagram",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_is_anagram, run_is_anagram\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidAnagram",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_anagram",
+                "signature": "(self, s: str, t: str) -> bool",
+                "body": "        # TODO: Implement is_anagram\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_anagram",
+                "signature": "(self, s: str, t: str, expected: bool)",
+                "parametrize": "s, t, expected",
+                "test_cases": "[('anagram', 'nagaram', True), ('rat', 'car', False), ('listen', 'silent', True), ('hello', 'bello', False), ('', '', True), ('a', 'a', True), ('a', 'b', False), ('ab', 'ba', True), ('abc', 'bca', True), ('abc', 'def', False), ('aab', 'abb', False), ('aabbcc', 'abcabc', True), ('abcd', 'abcde', False), ('race', 'care', True), ('elbow', 'below', True), ('study', 'dusty', True), ('night', 'thing', True), ('stressed', 'desserts', True)]",
+                "body": "        result = run_is_anagram(Solution, s, t)\n        assert_is_anagram(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_anagram, assert_is_anagram\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'anagram'\nt = 'nagaram'\nexpected = True",
+    "playground_run": "result = run_is_anagram(Solution, s, t)\nresult",
+    "playground_assert": "assert_is_anagram(result, expected)"
+}
