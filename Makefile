@@ -77,6 +77,13 @@ p-gen:
 p-del:
 	rm -rf leetcode/$(PROBLEM)
 
+# Convert all notebooks to .py files and delete .ipynb for better version control
+nb-to-py:
+	@echo "Converting all .ipynb files in leetcode/ to .py files..."
+	@find leetcode -name "*.ipynb" -exec poetry run jupytext --to py:percent {} \;
+	@find leetcode -name "*.ipynb" -delete
+	@echo "Conversion complete. All .ipynb files converted to .py and deleted."
+
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
 	@echo "This will DELETE all existing problems and regenerate from JSON templates."
