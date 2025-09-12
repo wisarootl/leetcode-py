@@ -70,7 +70,7 @@ jobs:
                       echo "Caching binaries..."
                       cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null || echo "Some binaries not found"
                       echo "Caching libraries..."
-                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut}* ~/graphviz-cache/lib/ 2>/dev/null || echo "Some libraries not found"
+                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut,ann,gts}* ~/graphviz-cache/lib/ 2>/dev/null || echo "Some libraries not found"
                       echo "Caching plugin directory..."
                       cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null || echo "Plugin directory not found"
                       echo "Caching share files..."
