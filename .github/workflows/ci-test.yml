@@ -53,6 +53,8 @@ jobs:
                       sudo cp ~/graphviz-cache/lib/* /usr/lib/x86_64-linux-gnu/ 2>/dev/null || echo "Failed to copy libraries"
                       echo "Copying share files..."
                       sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null || echo "Failed to copy share files"
+                      echo "Copying plugin directory..."
+                      sudo cp -r ~/graphviz-cache/lib/graphviz /usr/lib/x86_64-linux-gnu/ 2>/dev/null || echo "Failed to copy plugins"
                       echo "Running ldconfig..."
                       sudo ldconfig || echo "ldconfig failed"
                       echo "Registering graphviz plugins..."
@@ -69,6 +71,8 @@ jobs:
                       cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null || echo "Some binaries not found"
                       echo "Caching libraries..."
                       cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut}* ~/graphviz-cache/lib/ 2>/dev/null || echo "Some libraries not found"
+                      echo "Caching plugin directory..."
+                      cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null || echo "Plugin directory not found"
                       echo "Caching share files..."
                       cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || echo "Share files not found"
                   fi
