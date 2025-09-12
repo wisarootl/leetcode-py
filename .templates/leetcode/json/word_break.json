@@ -55,7 +55,7 @@
                 "name": "test_word_break",
                 "signature": "(self, s: str, word_dict: list[str], expected: bool)",
                 "parametrize": "s, word_dict, expected",
-                "test_cases": "[('leetcode', ['leet', 'code'], True), ('applepenapple', ['apple', 'pen'], True), ('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'], False), ('', [], True), ('a', ['a'], True), ('ab', ['a', 'b'], True), ('abcd', ['a', 'abc', 'd'], True)]",
+                "test_cases": "[('leetcode', ['leet', 'code'], True), ('applepenapple', ['apple', 'pen'], True), ('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'], False), ('', [], True), ('a', ['a'], True), ('ab', ['a', 'b'], True), ('abcd', ['a', 'abc', 'd'], True), ('aaaaaaa', ['aaaa', 'aaa'], True), ('aaaaaaa', ['aaaa', 'aa'], False), ('cars', ['car', 'ca', 'rs'], True), ('raceacar', ['race', 'a', 'car'], True), ('abcdef', ['abc', 'def'], True), ('abcdef', ['ab', 'cd', 'ef'], True), ('goalspecial', ['go', 'goal', 'goals', 'special'], True), ('bb', ['a', 'b', 'bbb', 'bbbb'], True)]",
                 "body": "        result = run_word_break(Solution, s, word_dict)\n        assert_word_break(result, expected)"
             }
         ]

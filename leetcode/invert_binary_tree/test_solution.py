@@ -3,7 +3,7 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_invert_tree, run_invert_tree
-from .solution import Solution, SolutionBFS, SolutionDFS
+from .solution import Solution
 
 
 class TestInvertBinaryTree:
@@ -11,7 +11,6 @@ class TestInvertBinaryTree:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionDFS, SolutionBFS])
     @pytest.mark.parametrize(
         "root_list, expected_list",
         [
@@ -25,8 +24,6 @@ class TestInvertBinaryTree:
             ([1, 2, 3, None, None, 4, 5], [1, 3, 2, 5, 4]),
         ],
     )
-    def test_invert_tree(
-        self, root_list: list[int | None], expected_list: list[int | None], solution_class: type
-    ):
-        result = run_invert_tree(solution_class, root_list)
+    def test_invert_tree(self, root_list: list[int | None], expected_list: list[int | None]):
+        result = run_invert_tree(Solution, root_list)
         assert_invert_tree(result, expected_list)

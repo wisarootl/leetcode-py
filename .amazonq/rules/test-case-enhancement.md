@@ -2,6 +2,20 @@
 
 ## Assistant Workflow for Adding Comprehensive Test Cases
 
+### Automated Workflow (Recommended)
+
+For single problem enhancement:
+
+1. **Use automation script**: `./.amazonq/rules/test-case-enhancement/scripts/enhance_single_problem.sh <problem_name>`
+2. **Verify results**: `./.amazonq/rules/test-case-enhancement/scripts/verify_enhancement.sh <problem_name>`
+
+For batch enhancement:
+
+1. **Find problems**: `./.amazonq/rules/test-case-enhancement/scripts/find_problems_needing_enhancement.sh`
+2. **Batch enhance**: `./.amazonq/rules/test-case-enhancement/scripts/enhance_batch_problems.sh`
+
+### Manual Workflow (Fallback)
+
 When user requests to enhance test cases for a problem, the assistant will:
 
 ### 1. Problem Resolution (Priority Order)
@@ -98,7 +112,45 @@ When user requests to enhance test cases for a problem, the assistant will:
 - **NEVER include custom solution classes** in test_imports - only import the main solution class specified in solution_class_name
 - **PRESERVE existing solution class parametrization** - if original test had multiple solution classes, restore them after JSON regeneration
 
-## Commands Reference
+## Automation Scripts 🤖
+
+**RECOMMENDED APPROACH**: Use prebuilt scripts in `.amazonq/rules/test-case-enhancement/scripts/` to streamline the enhancement process:
+
+### Find Problems Needing Enhancement
+
+```bash
+# Find problems with ≤10 test cases (default)
+./.amazonq/rules/test-case-enhancement/scripts/find_problems_needing_enhancement.sh
+
+# Custom threshold and max results
+./.amazonq/rules/test-case-enhancement/scripts/find_problems_needing_enhancement.sh 8 15
+```
+
+### Enhance Single Problem
+
+```bash
+# Enhance specific problem (handles full workflow automatically)
+./.amazonq/rules/test-case-enhancement/scripts/enhance_single_problem.sh <problem_name>
+```
+
+### Batch Enhancement
+
+```bash
+# Enhance up to 10 problems with ≤10 test cases (default)
+./.amazonq/rules/test-case-enhancement/scripts/enhance_batch_problems.sh
+
+# Custom batch size and threshold
+./.amazonq/rules/test-case-enhancement/scripts/enhance_batch_problems.sh 5 8
+```
+
+### Verify Enhancement Results
+
+```bash
+# Verify enhancement was successful
+./.amazonq/rules/test-case-enhancement/scripts/verify_enhancement.sh <problem_name>
+```
+
+## Manual Commands Reference
 
 ```bash
 # Find problems needing more test cases
@@ -129,3 +181,33 @@ make p-lint PROBLEM={problem_name}
 - Original solution code preserved and working
 - JSON template updated for future regeneration
 - Clean final state with no temporary files
+
+## Automation Benefits
+
+Using the prebuilt scripts provides several advantages:
+
+### ⚡ **Speed & Efficiency**
+
+- **Single command execution** - No need to remember complex multi-step workflows
+- **Batch processing** - Enhance multiple problems simultaneously
+- **Automatic cleanup** - No manual file management required
+
+### 🛡️ **Safety & Reliability**
+
+- **Automatic backups** - Original code always preserved
+- **Error handling** - Graceful failure recovery
+- **Validation checks** - Syntax and structure verification
+
+### 📊 **Visibility & Tracking**
+
+- **Progress reporting** - Real-time status updates
+- **Result verification** - Automatic test case counting
+- **Success metrics** - Clear pass/fail indicators
+
+### 🔄 **Consistency**
+
+- **Standardized process** - Same workflow every time
+- **Quality assurance** - Built-in lint and validation checks
+- **Reproducible results** - Eliminates human error
+
+**Recommendation**: Always use automation scripts for test case enhancement unless debugging specific issues requires manual intervention.
