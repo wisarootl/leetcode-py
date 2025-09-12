@@ -1,5 +1,8 @@
+from typing import Any
+
+
 def run_min_stack_operations(solution_class: type, operations: list[str], inputs: list[list[int]]):
-    stack = None
+    stack: Any = None
     results: list[int | None] = []
     for i, op in enumerate(operations):
         if op == "MinStack":

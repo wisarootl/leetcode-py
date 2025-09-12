@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= binary_tree_right_side_view
+PROBLEM ?= min_stack
 FORCE ?= 0
 COMMA := ,
 

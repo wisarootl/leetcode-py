@@ -20,7 +20,7 @@
     "helpers_content": "",
     "helpers_run_name": "time_map_operations",
     "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
-    "helpers_run_body": "    time_map = None\n    results = []\n    for i, op in enumerate(operations):\n        if op == 'TimeMap':\n            time_map = solution_class()\n            results.append(None)\n        elif op == 'set' and time_map is not None:\n            time_map.set(*inputs[i])\n            results.append(None)\n        elif op == 'get' and time_map is not None:\n            results.append(time_map.get(*inputs[i]))\n    return results, time_map",
+    "helpers_run_body": "    time_map = None\n    results: list[str | None] = []\n    for i, op in enumerate(operations):\n        if op == 'TimeMap':\n            time_map = solution_class()\n            results.append(None)\n        elif op == 'set' and time_map is not None:\n            time_map.set(*inputs[i])\n            results.append(None)\n        elif op == 'get' and time_map is not None:\n            results.append(time_map.get(*inputs[i]))\n    return results, time_map",
     "helpers_assert_name": "time_map_operations",
     "helpers_assert_signature": "(result: list, expected: list) -> bool",
     "helpers_assert_body": "    results, _ = result\n    assert results == expected\n    return True",
