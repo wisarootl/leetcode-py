@@ -125,6 +125,11 @@ class TestWordLadder:
             ),
             ("cet", "ism", ["kid", "tag", "pup", "ail", "tun", "woo"], 0),
             ("lost", "miss", ["most", "mist", "miss", "lost", "fist", "fish"], 4),
+            ("cat", "dog", ["bat", "bag", "dag", "dog", "cat"], 5),
+            ("game", "thee", ["frye", "heat", "tree", "thee", "game", "free"], 0),
+            ("teach", "place", ["peale", "wilts", "place", "fetch"], 0),
+            ("sail", "boat", ["bail", "foil", "coat", "boat", "sail"], 0),
+            ("cold", "warm", ["cold", "cord", "word", "ward", "warm"], 5),
         ],
     )
     def test_ladder_length(self, begin_word: str, end_word: str, word_list: list[str], expected: int):
