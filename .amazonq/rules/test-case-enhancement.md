@@ -61,6 +61,7 @@ When user requests to enhance test cases for a problem, the assistant will:
 ### Coverage Requirements
 
 - **Minimum 10 test cases** per problem
+- **Total test cases after enhancement must exceed the threshold** used for detection (e.g., if threshold=10, final count must be >10)
 - **Edge cases**: 20-30% of total test cases
 - **Normal cases**: 50-60% of total test cases
 - **Corner cases**: 20-30% of total test cases
@@ -123,6 +124,7 @@ make p-lint PROBLEM={problem_name}
 ## Success Criteria
 
 - All tests pass with enhanced test cases
+- Total test cases exceed the threshold used for detection
 - Minimum 10 comprehensive test cases per problem
 - Original solution code preserved and working
 - JSON template updated for future regeneration
