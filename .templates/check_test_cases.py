@@ -82,7 +82,7 @@ def main(
             typer.echo(f"Invalid max_results value: {max_results}", err=True)
             raise typer.Exit(1)
 
-    typer.echo(f"Files with ≤{threshold} test cases ({len(filtered_files)} total):")
+    typer.echo(f"Problems with ≤{threshold} test cases ({len(filtered_files)} total):")
     for filename, count in filtered_files:
         typer.echo(f"{filename}: {count} test cases")
 

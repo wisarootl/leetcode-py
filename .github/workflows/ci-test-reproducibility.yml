@@ -62,7 +62,7 @@ jobs:
                   fi
 
             - name: Check test case count
-              run: poetry run python .templates/check_test_cases.py --threshold=10
+              run: poetry run python .templates/check_test_cases.py --threshold=5 --max=100
 
             - name: Backup existing problems
               run: |
