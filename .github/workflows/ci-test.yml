@@ -35,27 +35,39 @@ jobs:
             - name: Install dependencies
               run: poetry install --no-interaction --no-ansi
 
-            - name: Cache apt packages
-              id: cache-apt
+            - name: Cache Graphviz installation
+              id: cache-graphviz
               uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
               with:
-                  path: /var/cache/apt/archives
-                  key: apt-${{ runner.os }}-graphviz-v1
-                  restore-keys: |
-                      apt-${{ runner.os }}-graphviz-
+                  path: ~/graphviz-cache
+                  key: graphviz-installed-${{ runner.os }}-v3
 
             - name: Install Graphviz and Debug
               run: |
                   # ---- DEBUG - REMOVE AFTER FIXING ----
                   echo "=== CACHE STATUS ==="
-                  echo "APT Cache hit: ${{ steps.cache-apt.outputs.cache-hit }}"
+                  echo "Graphviz Cache hit: ${{ steps.cache-graphviz.outputs.cache-hit }}"
 
                   echo "\n=== BEFORE INSTALL ==="
                   which dot && echo "dot already exists" || echo "dot not found"
 
-                  echo "\n=== INSTALLING GRAPHVIZ ==="
-                  sudo apt-get update
-                  sudo apt-get install -y graphviz
+                  if [ "${{ steps.cache-graphviz.outputs.cache-hit }}" = "true" ]; then
+                      echo "\n=== RESTORING CACHED GRAPHVIZ ==="
+                      sudo cp -r ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null || echo "No binaries to restore"
+                      sudo cp -r ~/graphviz-cache/lib/* /usr/lib/ 2>/dev/null || echo "No libraries to restore"
+                      sudo cp -r ~/graphviz-cache/share/* /usr/share/ 2>/dev/null || echo "No shared files to restore"
+                      sudo ldconfig
+                  else
+                      echo "\n=== INSTALLING GRAPHVIZ ==="
+                      sudo apt-get update
+                      sudo apt-get install -y graphviz
+
+                      echo "\n=== CACHING GRAPHVIZ ==="
+                      mkdir -p ~/graphviz-cache/{bin,lib,share}
+                      cp /usr/bin/dot /usr/bin/neato /usr/bin/twopi /usr/bin/circo /usr/bin/fdp /usr/bin/sfdp /usr/bin/patchwork /usr/bin/osage ~/graphviz-cache/bin/ 2>/dev/null || echo "Some binaries not found"
+                      cp -r /usr/lib/x86_64-linux-gnu/*graphviz* ~/graphviz-cache/lib/ 2>/dev/null || echo "No graphviz libs found"
+                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || echo "No graphviz share found"
+                  fi
 
                   echo "\n=== AFTER INSTALL ==="
                   which dot && dot -V || echo "dot command not found"
