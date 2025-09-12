@@ -36,19 +36,60 @@ jobs:
               if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
               run: poetry install --no-interaction --no-ansi
 
-            - name: Cache Graphviz
+            - name: Cache Graphviz installation
               id: cache-graphviz
               uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
               with:
-                  path: /usr/bin/dot
-                  key: graphviz-${{ runner.os }}
+                  path: |
+                      /usr/bin/dot
+                      /usr/bin/neato
+                      /usr/bin/twopi
+                      /usr/bin/circo
+                      /usr/bin/fdp
+                      /usr/bin/sfdp
+                      /usr/bin/patchwork
+                      /usr/bin/osage
+                      /usr/lib/x86_64-linux-gnu/graphviz
+                      /usr/share/graphviz
+                  key: graphviz-${{ runner.os }}-v2
 
-            - name: Install Graphviz
-              if: steps.cache-graphviz.outputs.cache-hit != 'true'
-              run: sudo apt-get update && sudo apt-get install -y graphviz
+            - name: Install Graphviz and Debug
+              run: |
+                  # ---- DEBUG - REMOVE AFTER FIXING ----
+                  echo "=== CACHE STATUS ==="
+                  echo "Cache hit: ${{ steps.cache-graphviz.outputs.cache-hit }}"
 
-            - name: Run tests
-              run: make test
+                  echo "\n=== BEFORE INSTALL ==="
+                  ls -la /usr/bin/ | grep -E "(dot|graphviz)" || echo "No graphviz binaries found"
+
+                  if [ "${{ steps.cache-graphviz.outputs.cache-hit }}" != "true" ]; then
+                      echo "\n=== INSTALLING GRAPHVIZ ==="
+                      sudo apt-get update
+                      sudo apt-get install -y graphviz
+                  fi
+
+                  echo "\n=== AFTER INSTALL ==="
+                  ls -la /usr/bin/ | grep -E "(dot|graphviz)" || echo "No graphviz binaries found"
+                  which dot && dot -V || echo "dot command not found"
+
+                  echo "\n=== ENVIRONMENT DEBUG ==="
+                  echo "Python: $(python --version)"
+                  echo "Poetry: $(poetry --version)"
+                  echo "Virtual env: $VIRTUAL_ENV"
+
+                  echo "\n=== PROJECT STRUCTURE ==="
+                  ls -la | head -5
+                  ls -la leetcode/ | head -5 || echo "No leetcode directory"
+                  # ---- END DEBUG ----
+
+            - name: Run tests with debug
+              run: |
+                  # ---- DEBUG - REMOVE AFTER FIXING ----
+                  echo "=== PRE-TEST DEBUG ==="
+                  make -n test
+                  echo "\n=== RUNNING TESTS ==="
+                  # ---- END DEBUG ----
+                  make test
 
             - name: SonarQube Scan
               uses: SonarSource/sonarqube-scan-action@1a6d90ebcb0e6a6b1d87e37ba693fe453195ae25 # v5.3.1
