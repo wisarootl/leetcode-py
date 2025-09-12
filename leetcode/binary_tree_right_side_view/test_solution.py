@@ -3,7 +3,7 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_right_side_view, run_right_side_view
-from .solution import Solution
+from .solution import Solution, SolutionBFS, SolutionDFS
 
 
 class TestBinaryTreeRightSideView:
@@ -11,6 +11,7 @@ class TestBinaryTreeRightSideView:
         self.solution = Solution()
 
     @logged_test
+    @pytest.mark.parametrize("solution_class", [Solution, SolutionDFS, SolutionBFS])
     @pytest.mark.parametrize(
         "root_list, expected",
         [
@@ -30,6 +31,8 @@ class TestBinaryTreeRightSideView:
             ([10, 5, 15, None, 6, 12, 20], [10, 15, 20]),
         ],
     )
-    def test_right_side_view(self, root_list: list[int | None], expected: list[int]):
-        result = run_right_side_view(Solution, root_list)
+    def test_right_side_view(
+        self, solution_class: type, root_list: list[int | None], expected: list[int]
+    ):
+        result = run_right_side_view(solution_class, root_list)
         assert_right_side_view(result, expected)

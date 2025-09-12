@@ -22,6 +22,17 @@ repos:
             id: gitleaks
     - repo: local
       hooks:
+          - id: sync-submodules
+            name: Sync git submodules
+            entry: bash -c 'output=$(git submodule update --init --recursive --remote 2>&1); [ -z "$output" ]'
+            language: system
+            always_run: true
+            pass_filenames: false
+          - id: nb-to-py
+            name: convert notebooks to python
+            entry: make nb-to-py
+            language: system
+            pass_filenames: false
           - id: lint
             name: lint
             entry: make lint
