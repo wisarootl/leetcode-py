@@ -28,3 +28,16 @@ class MinStack:
     # Space: O(1)
     def get_min(self) -> int:
         return self.min_stack[-1]
+
+
+# Example walkthrough: push(-2), push(0), push(-3), getMin(), pop(), top(), getMin()
+#
+# Initial: stack=[], min_stack=[]
+#
+# push(-2): stack=[-2], min_stack=[-2]  (first element, add to both)
+# push(0):  stack=[-2,0], min_stack=[-2]  (0 > -2, don't add to min_stack)
+# push(-3): stack=[-2,0,-3], min_stack=[-2,-3]  (-3 <= -2, add to min_stack)
+# getMin(): return -3  (top of min_stack)
+# pop():    stack=[-2,0], min_stack=[-2]  (-3 was min, remove from both stacks)
+# top():    return 0  (top of main stack)
+# getMin(): return -2  (top of min_stack after pop)
