@@ -12,7 +12,23 @@ class TestCloneGraph:
 
     @logged_test
     @pytest.mark.parametrize("solution_class", [Solution, SolutionBFS, SolutionDFS])
-    @pytest.mark.parametrize("adj_list", [[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], []])
+    @pytest.mark.parametrize(
+        "adj_list",
+        [
+            [[2, 4], [1, 3], [2, 4], [1, 3]],
+            [[]],
+            [],
+            [[2], [1]],
+            [[2, 3], [1], [1]],
+            [[2], [3], [4], []],
+            [[2, 3, 4], [1], [1], [1]],
+            [[2, 3], [1, 3], [1, 2]],
+            [[2, 5], [1, 3], [2, 4], [3, 5], [1, 4]],
+            [[2, 3], [1, 4], [1, 4], [2, 3]],
+            [[2, 3, 4, 5], [1], [1], [1], [1]],
+            [[2], [3], [4], [5], []],
+        ],
+    )
     def test_clone_graph(self, solution_class: type, adj_list: list[list[int]]):
         result = run_clone_graph(solution_class, adj_list)
         assert_clone_graph(result, adj_list)

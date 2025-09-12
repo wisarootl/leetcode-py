@@ -55,7 +55,7 @@
                 "name": "test_clone_graph",
                 "signature": "(self, adj_list: list[list[int]])",
                 "parametrize": "adj_list",
-                "test_cases": "[[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], []]",
+                "test_cases": "[[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], [], [[2], [1]], [[2, 3], [1], [1]], [[2], [3], [4], []], [[2, 3, 4], [1], [1], [1]], [[2, 3], [1, 3], [1, 2]], [[2, 5], [1, 3], [2, 4], [3, 5], [1, 4]], [[2, 3], [1, 4], [1, 4], [2, 3]], [[2, 3, 4, 5], [1], [1], [1], [1]], [[2], [3], [4], [5], []]]",
                 "body": "        result = run_clone_graph(Solution, adj_list)\n        assert_clone_graph(result, adj_list)"
             }
         ]

@@ -52,6 +52,7 @@ When user requests to enhance test cases for a problem, the assistant will:
 - **CRITICAL**: Remove entire newly generated `leetcode/{problem_name}/` directory
 - **CRITICAL**: Restore original structure from `.cache/leetcode/{problem_name}/` backup
 - **CRITICAL**: Only THEN copy enhanced `test_solution.py` from generated files to restored structure
+- **CRITICAL**: Preserve existing solution class parametrization - if original test had multiple solution classes, restore them
 - Verify final state with `make p-test PROBLEM={problem_name}`
 - Clean up backup directory after successful verification
 
@@ -94,6 +95,7 @@ When user requests to enhance test cases for a problem, the assistant will:
 - Maintain type hints in parametrize_typed
 - Ensure test_cases string is valid Python list syntax
 - **NEVER include custom solution classes** in test_imports - only import the main solution class specified in solution_class_name
+- **PRESERVE existing solution class parametrization** - if original test had multiple solution classes, restore them after JSON regeneration
 
 ## Commands Reference
 
