@@ -55,10 +55,10 @@ jobs:
                       sudo apt-get update
                       sudo apt-get install -y graphviz
                       mkdir -p ~/graphviz-cache/{bin,lib,share}
-                      cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null
-                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut,ann,gts}* ~/graphviz-cache/lib/ 2>/dev/null
-                      cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null
-                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null
+                      cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null || true
+                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut,ann,gts}* ~/graphviz-cache/lib/ 2>/dev/null || true
+                      cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null || true
+                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || true
                   fi
 
             - name: Run tests
