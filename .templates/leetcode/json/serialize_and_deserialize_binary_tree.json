@@ -1,0 +1,70 @@
+{
+    "problem_name": "serialize_and_deserialize_binary_tree",
+    "solution_class_name": "Codec",
+    "problem_number": "297",
+    "problem_title": "Serialize and Deserialize Binary Tree",
+    "difficulty": "Hard",
+    "topics": "String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Tree",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.\n\nDesign an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.\n\n**Clarification:** The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/15/serdeser.jpg)\n\n```\nInput: root = [1,2,3,null,null,4,5]\nOutput: [1,2,3,null,null,4,5]\n```"
+            },
+            { "content": "```\nInput: root = []\nOutput: []\n```" }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 10^4].\n- -1000 <= Node.val <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "serialize_deserialize",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    codec = solution_class()\n    serialized = codec.serialize(root)\n    deserialized = codec.deserialize(serialized)\n    return deserialized",
+    "helpers_assert_name": "serialize_deserialize",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list) if expected_list else None\n    if expected is None:\n        assert result is None\n    else:\n        assert result is not None\n        assert result.to_list() == expected.to_list()\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_serialize_deserialize, run_serialize_deserialize\nfrom .solution import Codec",
+    "test_content": "",
+    "test_class_name": "SerializeAndDeserializeBinaryTree",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "serialize",
+                "signature": "(self, root: TreeNode[int] | None) -> str",
+                "body": "        # TODO: Implement serialize\n        return ''"
+            },
+            {
+                "name": "deserialize",
+                "signature": "(self, data: str) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement deserialize\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": { "list": [] },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_serialize_deserialize",
+                "signature": "(self, root_list: list[int | None])",
+                "parametrize": "root_list",
+                "test_cases": "[([1, 2, 3, None, None, 4, 5]), ([]), ([1]), ([1, 2]), ([1, None, 2]), ([1, 2, 3, 4, 5, 6, 7]), ([5, 2, 3, None, None, 2, 4, 3, 1])]",
+                "body": "        result = run_serialize_deserialize(Codec, root_list)\n        assert_serialize_deserialize(result, root_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_serialize_deserialize, assert_serialize_deserialize\nfrom solution import Codec\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list = [1, 2, 3, None, None, 4, 5]",
+    "playground_run": "result = run_serialize_deserialize(Codec, root_list)\nresult",
+    "playground_assert": "assert_serialize_deserialize(result, root_list)"
+}

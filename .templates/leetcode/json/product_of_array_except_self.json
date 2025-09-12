@@ -1,0 +1,60 @@
+{
+    "problem_name": "product_of_array_except_self",
+    "solution_class_name": "Solution",
+    "problem_number": "238",
+    "problem_title": "Product of Array Except Self",
+    "difficulty": "Medium",
+    "topics": "Array, Prefix Sum",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.\n\nThe product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.\n\nYou must write an algorithm that runs in O(n) time and without using the division operation.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: nums = [1,2,3,4]\nOutput: [24,12,8,6]\n```" },
+            { "content": "```\nInput: nums = [-1,1,0,-3,3]\nOutput: [0,0,9,0,0]\n```" }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 10^5\n- -30 <= nums[i] <= 30\n- The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.",
+    "readme_additional": "**Follow up:** Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "product_except_self",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.product_except_self(nums)",
+    "helpers_assert_name": "product_except_self",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_product_except_self, run_product_except_self\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ProductOfArrayExceptSelf",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "product_except_self",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement product_except_self\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_product_except_self",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": "[([1, 2, 3, 4], [24, 12, 8, 6]), ([-1, 1, 0, -3, 3], [0, 0, 9, 0, 0]), ([2, 3, 4, 5], [60, 40, 30, 24]), ([1, 1], [1, 1]), ([5, 2], [2, 5]), ([0, 1, 2, 3], [6, 0, 0, 0]), ([1, 0, 3, 4], [0, 12, 0, 0])]",
+                "body": "        result = run_product_except_self(Solution, nums)\n        assert_product_except_self(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_product_except_self, assert_product_except_self\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4]\nexpected = [24, 12, 8, 6]",
+    "playground_run": "result = run_product_except_self(Solution, nums)\nresult",
+    "playground_assert": "assert_product_except_self(result, expected)"
+}
