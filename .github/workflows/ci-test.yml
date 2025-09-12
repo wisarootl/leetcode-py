@@ -55,6 +55,8 @@ jobs:
                       sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null || echo "Failed to copy share files"
                       echo "Running ldconfig..."
                       sudo ldconfig || echo "ldconfig failed"
+                      echo "Registering graphviz plugins..."
+                      sudo dot -c || echo "Plugin registration failed"
                   else
                       echo "Installing fresh"
                       echo "Updating package list..."
