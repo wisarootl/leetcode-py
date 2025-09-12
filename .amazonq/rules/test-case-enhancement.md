@@ -49,9 +49,11 @@ When user requests to enhance test cases for a problem, the assistant will:
 
 ### 7. Cleanup and Restore
 
-- Remove newly generated files
-- Restore original structure from backup
+- **CRITICAL**: Remove entire newly generated `leetcode/{problem_name}/` directory
+- **CRITICAL**: Restore original structure from `.cache/leetcode/{problem_name}/` backup
+- **CRITICAL**: Only THEN copy enhanced `test_solution.py` from generated files to restored structure
 - Verify final state with `make p-test PROBLEM={problem_name}`
+- Clean up backup directory after successful verification
 
 ## Test Case Quality Standards
 
@@ -91,6 +93,7 @@ When user requests to enhance test cases for a problem, the assistant will:
 - Follow existing parametrize format
 - Maintain type hints in parametrize_typed
 - Ensure test_cases string is valid Python list syntax
+- **NEVER include custom solution classes** in test_imports - only import the main solution class specified in solution_class_name
 
 ## Commands Reference
 
