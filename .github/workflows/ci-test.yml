@@ -45,10 +45,10 @@ jobs:
             - name: Install Graphviz
               run: |
                   if [ "${{ steps.cache-graphviz.outputs.cache-hit }}" = "true" ]; then
-                      sudo cp ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null
-                      sudo cp ~/graphviz-cache/lib/* /usr/lib/x86_64-linux-gnu/ 2>/dev/null
-                      sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null
-                      sudo cp -r ~/graphviz-cache/lib/graphviz /usr/lib/x86_64-linux-gnu/ 2>/dev/null
+                      sudo cp ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null || true
+                      sudo cp ~/graphviz-cache/lib/* /usr/lib/x86_64-linux-gnu/ 2>/dev/null || true
+                      sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null || true
+                      sudo cp -r ~/graphviz-cache/lib/graphviz /usr/lib/x86_64-linux-gnu/ 2>/dev/null || true
                       sudo ldconfig
                       sudo dot -c
                   else
