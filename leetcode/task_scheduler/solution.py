@@ -1,10 +1,38 @@
-class Solution:
+import heapq
+from collections import Counter, deque
 
+
+class Solution:
+    # Time: O(T * n + m log m) where T = len(tasks), worst case with many idle periods
+    # Space: O(m) where m ≤ 26, so O(1)
+    def least_interval(self, tasks: list[str], n: int) -> int:
+        counts = Counter(tasks)
+        max_heap = [-count for count in counts.values()]
+        heapq.heapify(max_heap)
+
+        step_num = 0
+        queue: deque[tuple[int, int]] = deque()  # (count, available_time)
+
+        while max_heap or queue:
+            step_num += 1
+
+            while queue and queue[0][1] <= step_num:
+                count, _ = queue.popleft()
+                heapq.heappush(max_heap, count)
+
+            if max_heap:
+                count = heapq.heappop(max_heap)
+                count += 1  # Decrease count (was negative)
+                if count < 0:  # Still has tasks left
+                    queue.append((count, step_num + n + 1))
+
+        return step_num
+
+
+class SolutionGreedy:
     # Time: O(T + m) where T = len(tasks), m = unique tasks ≤ 26, so O(T)
     # Space: O(m) where m ≤ 26, so O(1)
     def least_interval(self, tasks: list[str], n: int) -> int:
-        from collections import Counter
-
         """
         Mathematical approach:
 

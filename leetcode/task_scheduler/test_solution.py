@@ -3,14 +3,13 @@ import pytest
 from leetcode_py.test_utils import logged_test
 
 from .helpers import assert_least_interval, run_least_interval
-from .solution import Solution
+from .solution import Solution, SolutionGreedy
 
 
 class TestTaskScheduler:
-    def setup_method(self):
-        self.solution = Solution()
 
     @logged_test
+    @pytest.mark.parametrize("solution_class", [Solution, SolutionGreedy])
     @pytest.mark.parametrize(
         "tasks, n, expected",
         [
@@ -22,6 +21,6 @@ class TestTaskScheduler:
             (["A", "B"], 0, 2),
         ],
     )
-    def test_least_interval(self, tasks: list[str], n: int, expected: int):
-        result = run_least_interval(Solution, tasks, n)
+    def test_least_interval(self, tasks: list[str], n: int, expected: int, solution_class: type):
+        result = run_least_interval(solution_class, tasks, n)
         assert_least_interval(result, expected)

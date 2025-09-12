@@ -20,3 +20,31 @@ class Solution:
             dp[i] = max(take, skip)
 
         return dp[-1] if jobs else 0
+
+
+# bisect and insort Explanation:
+#
+# Etymology: "bisect" = bi (two) + sect (cut) = cut into two parts
+# Bisection method = binary search algorithm that repeatedly cuts search space in half
+#
+# bisect module provides binary search for SORTED lists (O(log n)):
+# - bisect_left(arr, x): leftmost insertion position
+# - bisect_right(arr, x): rightmost insertion position (default)
+# - bisect(arr, x): alias for bisect_right
+#
+# insort module maintains sorted order while inserting:
+# - insort_left(arr, x): insert at leftmost position
+# - insort_right(arr, x): insert at rightmost position (default)
+# - insort(arr, x): alias for insort_right
+#
+# Examples:
+# arr = [1, 3, 3, 5]
+# bisect_left(arr, 3) → 1   (before existing 3s)
+# bisect_right(arr, 3) → 3  (after existing 3s)
+# bisect_right(arr, 4) → 3  (between 3 and 5)
+#
+# insort(arr, 4) → arr becomes [1, 3, 3, 4, 5]
+#
+# In our solution:
+# bisect_right([2,4,6], 5) = 2 (insertion position)
+# j = 2 - 1 = 1 (index of latest job ending ≤ start_time)
