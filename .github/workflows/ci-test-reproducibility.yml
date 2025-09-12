@@ -35,6 +35,40 @@ jobs:
             - name: Install dependencies
               run: poetry install --no-interaction --no-ansi
 
+            - name: Cache Graphviz installation
+              id: cache-graphviz
+              uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+              with:
+                  path: ~/graphviz-cache
+                  key: graphviz-installed-${{ runner.os }}
+
+            - name: Install Graphviz
+              run: |
+                  if [ "${{ steps.cache-graphviz.outputs.cache-hit }}" = "true" ]; then
+                      sudo cp ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null || true
+                      sudo cp ~/graphviz-cache/lib/* /usr/lib/x86_64-linux-gnu/ 2>/dev/null || true
+                      sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null || true
+                      sudo cp -r ~/graphviz-cache/lib/graphviz /usr/lib/x86_64-linux-gnu/ 2>/dev/null || true
+                      sudo ldconfig
+                      sudo dot -c
+                  else
+                      sudo apt-get update
+                      sudo apt-get install -y graphviz
+                      mkdir -p ~/graphviz-cache/{bin,lib,share}
+                      cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null || true
+                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut,ann,gts}* ~/graphviz-cache/lib/ 2>/dev/null || true
+                      cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null || true
+                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || true
+                  fi
+
+            - name: Check test case count
+              run: poetry run python .templates/check_test_cases.py --threshold=10
+
+            - name: Backup existing problems
+              run: |
+                  mkdir -p .cache
+                  cp -r leetcode .cache/
+
             - name: Delete existing problems
               run: rm -rf leetcode/*/
 
@@ -46,3 +80,15 @@ jobs:
 
             - name: Run linting to verify reproducibility
               run: make lint
+
+            - name: Copy solution files from backup
+              run: |
+                  for problem in .cache/leetcode/*/; do
+                      problem_name=$(basename "$problem")
+                      if [ -f "$problem/solution.py" ] && [ -d "leetcode/$problem_name" ]; then
+                          cp "$problem/solution.py" "leetcode/$problem_name/solution.py"
+                      fi
+                  done
+
+            - name: Run tests
+              run: make test

@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= min_stack
+PROBLEM ?= two_sum
 FORCE ?= 0
 COMMA := ,
 

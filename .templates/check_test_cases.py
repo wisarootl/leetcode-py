@@ -86,6 +86,10 @@ def main(
     for filename, count in filtered_files:
         typer.echo(f"{filename}: {count} test cases")
 
+    # Exit with non-zero code if any files found
+    if filtered_files:
+        raise typer.Exit(1)
+
 
 if __name__ == "__main__":
     typer.run(main)
