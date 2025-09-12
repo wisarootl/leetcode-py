@@ -42,54 +42,29 @@ jobs:
                   path: ~/graphviz-cache
                   key: graphviz-installed-${{ runner.os }}-v3
 
-            - name: Install Graphviz and Debug
+            - name: Install Graphviz
               run: |
-                  # ---- DEBUG - REMOVE AFTER FIXING ----
-                  echo "=== CACHE STATUS ==="
-                  echo "Graphviz Cache hit: ${{ steps.cache-graphviz.outputs.cache-hit }}"
-
-                  echo "\n=== BEFORE INSTALL ==="
-                  which dot && echo "dot already exists" || echo "dot not found"
-
+                  echo "Cache hit: ${{ steps.cache-graphviz.outputs.cache-hit }}"
                   if [ "${{ steps.cache-graphviz.outputs.cache-hit }}" = "true" ]; then
-                      echo "\n=== RESTORING CACHED GRAPHVIZ ==="
-                      sudo cp -r ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null || echo "No binaries to restore"
-                      sudo cp -r ~/graphviz-cache/lib/* /usr/lib/ 2>/dev/null || echo "No libraries to restore"
-                      sudo cp -r ~/graphviz-cache/share/* /usr/share/ 2>/dev/null || echo "No shared files to restore"
+                      echo "Restoring from cache"
+                      sudo cp ~/graphviz-cache/bin/* /usr/bin/ 2>/dev/null
+                      sudo cp ~/graphviz-cache/lib/* /usr/lib/x86_64-linux-gnu/ 2>/dev/null
+                      sudo cp -r ~/graphviz-cache/share/graphviz /usr/share/ 2>/dev/null
                       sudo ldconfig
                   else
-                      echo "\n=== INSTALLING GRAPHVIZ ==="
+                      echo "Installing fresh"
                       sudo apt-get update
                       sudo apt-get install -y graphviz
-
-                      echo "\n=== CACHING GRAPHVIZ ==="
                       mkdir -p ~/graphviz-cache/{bin,lib,share}
-                      cp /usr/bin/dot /usr/bin/neato /usr/bin/twopi /usr/bin/circo /usr/bin/fdp /usr/bin/sfdp /usr/bin/patchwork /usr/bin/osage ~/graphviz-cache/bin/ 2>/dev/null || echo "Some binaries not found"
-                      cp -r /usr/lib/x86_64-linux-gnu/*graphviz* ~/graphviz-cache/lib/ 2>/dev/null || echo "No graphviz libs found"
-                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || echo "No graphviz share found"
+                      cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null
+                      cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut}* ~/graphviz-cache/lib/ 2>/dev/null
+                      cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null
                   fi
+                  echo "Testing dot command:"
+                  which dot && dot -V || echo "dot failed"
 
-                  echo "\n=== AFTER INSTALL ==="
-                  which dot && dot -V || echo "dot command not found"
-
-                  echo "\n=== ENVIRONMENT DEBUG ==="
-                  echo "Python: $(python --version)"
-                  echo "Poetry: $(poetry --version)"
-                  echo "Virtual env: $VIRTUAL_ENV"
-
-                  echo "\n=== PROJECT STRUCTURE ==="
-                  ls -la | head -5
-                  ls -la leetcode/ | head -5 || echo "No leetcode directory"
-                  # ---- END DEBUG ----
-
-            - name: Run tests with debug
-              run: |
-                  # ---- DEBUG - REMOVE AFTER FIXING ----
-                  echo "=== PRE-TEST DEBUG ==="
-                  make -n test
-                  echo "\n=== RUNNING TESTS ==="
-                  # ---- END DEBUG ----
-                  make test
+            - name: Run tests
+              run: make test
 
             - name: SonarQube Scan
               uses: SonarSource/sonarqube-scan-action@1a6d90ebcb0e6a6b1d87e37ba693fe453195ae25 # v5.3.1
