@@ -22,6 +22,13 @@ class TestBalancedBinaryTree:
             ([1, None, 2], True),
             ([1, 2, 3, 4], True),
             ([1, 2, 2, 3, None, None, 3, 4, None, None, 4], False),
+            ([1, 2, 3], True),
+            ([1, 2, None, 3], False),
+            ([1, None, 2, None, 3], False),
+            ([1, 2, 3, 4, 5, 6, 7], True),
+            ([1, 2, 3, None, None, 4, None, None, 5], False),
+            ([5, 1, 4, None, None, 3, 6], True),
+            ([1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, None, None, 5, 5], True),
         ],
     )
     def test_is_balanced(self, root_list: list[int | None], expected: bool):

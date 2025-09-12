@@ -51,7 +51,7 @@
                 "name": "test_is_valid",
                 "signature": "(self, s: str, expected: bool)",
                 "parametrize": "s, expected",
-                "test_cases": "[('()', True), ('()[]{}', True), ('(]', False), ('([])', True), ('([)]', False), ('', True), ('(', False), (')', False), ('{[()]}', True), ('{[(])}', False)]",
+                "test_cases": "[('()', True), ('()[]{}', True), ('(]', False), ('([])', True), ('([)]', False), ('', True), ('(', False), (')', False), ('{[()]}', True), ('{[(])}', False), ('((', False), ('))', False), ('([{}])', True), ('([{]})', False), ('{[}]', False), ('((()))', True), ('((())', False), ('(){}[]', True), ('{[(', False), (']})', False)]",
                 "body": "        result = run_is_valid(Solution, s)\n        assert_is_valid(result, expected)"
             }
         ]

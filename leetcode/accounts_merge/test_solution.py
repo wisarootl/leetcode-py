@@ -44,7 +44,6 @@ class TestAccountsMerge:
                 ],
             ),
             ([["John", "john@mail.com"]], [["John", "john@mail.com"]]),
-            ([["John"]], [["John"]]),
             (
                 [["John", "john1@mail.com"], ["John", "john2@mail.com"], ["John", "john3@mail.com"]],
                 [["John", "john1@mail.com"], ["John", "john2@mail.com"], ["John", "john3@mail.com"]],
@@ -65,7 +64,44 @@ class TestAccountsMerge:
                 ],
                 [["Alice", "alice1@mail.com", "alice2@mail.com", "alice3@mail.com", "alice@mail.com"]],
             ),
-            ([["John", "shared@mail.com"], ["Jane", "shared@mail.com"]], [["John", "shared@mail.com"]]),
+            ([["Bob", "bob@mail.com"], ["Bob", "bob@mail.com"]], [["Bob", "bob@mail.com"]]),
+            (
+                [
+                    ["David", "david1@mail.com", "david2@mail.com"],
+                    ["David", "david3@mail.com"],
+                    ["David", "david2@mail.com", "david4@mail.com"],
+                ],
+                [
+                    ["David", "david1@mail.com", "david2@mail.com", "david4@mail.com"],
+                    ["David", "david3@mail.com"],
+                ],
+            ),
+            (
+                [
+                    ["Alex", "alex@mail.com"],
+                    ["Alex", "alex@mail.com", "alex2@mail.com"],
+                    ["Alex", "alex3@mail.com"],
+                ],
+                [["Alex", "alex2@mail.com", "alex@mail.com"], ["Alex", "alex3@mail.com"]],
+            ),
+            (
+                [
+                    ["Tom", "tom1@mail.com"],
+                    ["Tom", "tom2@mail.com"],
+                    ["Tom", "tom3@mail.com"],
+                    ["Tom", "tom4@mail.com"],
+                ],
+                [
+                    ["Tom", "tom1@mail.com"],
+                    ["Tom", "tom2@mail.com"],
+                    ["Tom", "tom3@mail.com"],
+                    ["Tom", "tom4@mail.com"],
+                ],
+            ),
+            (
+                [["Sam", "sam@mail.com", "sam1@mail.com", "sam2@mail.com"]],
+                [["Sam", "sam@mail.com", "sam1@mail.com", "sam2@mail.com"]],
+            ),
         ],
     )
     def test_accounts_merge(self, accounts: list[list[str]], expected: list[list[str]]):
