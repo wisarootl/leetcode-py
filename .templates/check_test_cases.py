@@ -2,6 +2,9 @@
 
 import json
 from pathlib import Path
+from typing import Optional
+import typer
+
 
 def count_test_cases(json_data):
     """Count total test cases across all test methods."""
@@ -15,13 +18,43 @@ def count_test_cases(json_data):
     for method in test_methods:
         test_cases = method.get("test_cases", "")
         if test_cases.strip():
-            # Count tuples/lists in test_cases string
-            total += max(test_cases.count("("), test_cases.count("["))
+            # Parse the test_cases string to count actual test cases
+            try:
+                # Remove outer brackets and split by top-level commas
+                cases_str = test_cases.strip()
+                if cases_str.startswith("[") and cases_str.endswith("]"):
+                    cases_str = cases_str[1:-1]  # Remove outer brackets
+
+                # Count test cases by counting commas at parenthesis depth 0
+                depth = 0
+                case_count = 1 if cases_str.strip() else 0
+
+                for char in cases_str:
+                    if char in "([{":
+                        depth += 1
+                    elif char in ")]}":
+                        depth -= 1
+                    elif char == "," and depth == 0:
+                        case_count += 1
+
+                total += case_count
+            except Exception:
+                # Fallback to old method if parsing fails
+                total += test_cases.count("(") - test_cases.count("([") + test_cases.count("[(")
     return total
 
-def main():
+
+def main(
+    threshold: int = typer.Option(
+        10, "--threshold", "-t", help="Show files with test cases <= threshold"
+    ),
+    max_results: str = typer.Option(
+        1, "--max", "-m", help="Maximum number of results to show ('none' for no limit)"
+    ),
+):
+    """Check test case counts in LeetCode JSON templates."""
     json_dir = Path(".templates/leetcode/json")
-    files_with_few_tests = []
+    all_files = []
 
     for json_file in json_dir.glob("*.json"):
         try:
@@ -29,17 +62,30 @@ def main():
                 data = json.load(f)
 
             test_count = count_test_cases(data)
-            if test_count <= 10:
-                files_with_few_tests.append((json_file.name, test_count))
+            all_files.append((json_file.name, test_count))
         except Exception as e:
-            print(f"Error reading {json_file.name}: {e}")
+            typer.echo(f"Error reading {json_file.name}: {e}", err=True)
 
     # Sort by test count
-    files_with_few_tests.sort(key=lambda x: x[1])
+    all_files.sort(key=lambda x: x[1])
 
-    print(f"Files with ≤10 test cases ({len(files_with_few_tests)} total):")
-    for filename, count in files_with_few_tests:
-        print(f"{filename}: {count} test cases")
+    # Filter by threshold
+    filtered_files = [f for f in all_files if f[1] <= threshold]
+
+    # Apply max results limit
+    if max_results.lower() not in ["none", "null", "-1"]:
+        try:
+            max_count = int(max_results)
+            if max_count > 0:
+                filtered_files = filtered_files[:max_count]
+        except ValueError:
+            typer.echo(f"Invalid max_results value: {max_results}", err=True)
+            raise typer.Exit(1)
+
+    typer.echo(f"Files with ≤{threshold} test cases ({len(filtered_files)} total):")
+    for filename, count in filtered_files:
+        typer.echo(f"{filename}: {count} test cases")
+
 
 if __name__ == "__main__":
-    main()
+    typer.run(main)
