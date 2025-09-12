@@ -61,7 +61,11 @@ jobs:
                       cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null
                   fi
                   echo "Testing dot command:"
-                  which dot && dot -V || echo "dot failed"
+                  if which dot; then
+                      dot -V || true
+                  else
+                      echo "dot command not found"
+                  fi
 
             - name: Run tests
               run: make test
