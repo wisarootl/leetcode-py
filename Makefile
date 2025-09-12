@@ -46,15 +46,13 @@ lint:
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	$(call lint_target,.)
 
-
 test:
-	poetry run pytest leetcode/ leetcode_old/ leetcode_ideal/ tests/ \
+	poetry run pytest leetcode/ tests/ \
 		-v --cov=leetcode --cov=leetcode_py \
 		--cov-report=term-missing \
 		--cov-report=xml \
 		--ignore=.templates \
-		--ignore=leetcode/__pycache__ \
-		$(shell if [ -d leetcode_ideal ]; then for dir in leetcode_ideal/*/; do problem=$$(basename "$$dir"); if [ -d "leetcode/$$problem" ]; then echo "--ignore=leetcode_ideal/$$problem"; fi; done; fi)
+		--ignore=leetcode/__pycache__
 
 p-test:
 	@echo "Testing problem: $(PROBLEM)"
