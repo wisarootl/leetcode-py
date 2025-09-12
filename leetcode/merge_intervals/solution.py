@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n log n)
     # Space: O(1)
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:

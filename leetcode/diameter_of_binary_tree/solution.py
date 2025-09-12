@@ -2,12 +2,13 @@ from leetcode_py import TreeNode
 
 
 class Solution:
+
     # Time: O(n)
     # Space: O(h)
-    def diameter_of_binary_tree(self, root: TreeNode | None) -> int:
+    def diameter_of_binary_tree(self, root: TreeNode[int] | None) -> int:
         self.max_diameter = 0
 
-        def dfs(node: TreeNode | None) -> int:
+        def dfs(node: TreeNode[int] | None) -> int:
             if not node:
                 return 0
 

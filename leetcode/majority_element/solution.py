@@ -1,8 +1,9 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(1)
+    # Boyer-Moore Voting Algorithm
     def majority_element(self, nums: list[int]) -> int:
-        # Boyer-Moore Voting Algorithm
         candidate = 0
         count = 0
 

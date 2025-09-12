@@ -5,43 +5,60 @@
     "problem_title": "Longest Palindrome",
     "difficulty": "Easy",
     "topics": "Hash Table, String, Greedy",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a string `s` which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.\n\nLetters are case sensitive, for example, \"Aa\" is not considered a palindrome.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: s = \"abccccdd\"\nOutput: 7\n```\n**Explanation:** One longest palindrome that can be built is \"dccaccd\", whose length is 7."
-        },
-        {
-            "content": "```\nInput: s = \"a\"\nOutput: 1\n```\n**Explanation:** The longest palindrome that can be built is \"a\", whose length is 1."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abccccdd\"\nOutput: 7\n```\n**Explanation:** One longest palindrome that can be built is \"dccaccd\", whose length is 7."
+            },
+            {
+                "content": "```\nInput: s = \"a\"\nOutput: 1\n```\n**Explanation:** The longest palindrome that can be built is \"a\", whose length is 1."
+            }
+        ]
+    },
     "readme_constraints": "- `1 <= s.length <= 2000`\n- `s` consists of lowercase and/or uppercase English letters only.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_palindrome",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_palindrome(s)",
+    "helpers_assert_name": "longest_palindrome",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "longest_palindrome",
-            "parameters": "s: str",
-            "return_type": "int",
-            "dummy_return": "0"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_longest_palindrome, run_longest_palindrome\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "LongestPalindrome",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_longest_palindrome",
-            "parametrize": "s, expected",
-            "parametrize_typed": "s: str, expected: int",
-            "test_cases": "[('abccccdd', 7), ('a', 1), ('Aa', 1), ('aabbcc', 6)]",
-            "body": "result = self.solution.longest_palindrome(s)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = 'abccccdd'\nexpected = 7",
-    "playground_execution": "result = Solution().longest_palindrome(s)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_palindrome",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement longest_palindrome\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_palindrome",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": "[('abccccdd', 7), ('a', 1), ('Aa', 1), ('aabbcc', 6), ('', 0), ('aA', 1), ('abcdef', 1), ('aabbccdd', 8), ('aaaa', 4), ('abcdefg', 1), ('AAaa', 4), ('racecar', 7), ('abcABC', 1)]",
+                "body": "        result = run_longest_palindrome(Solution, s)\n        assert_longest_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_palindrome, assert_longest_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abccccdd'\nexpected = 7",
+    "playground_run": "result = run_longest_palindrome(Solution, s)\nresult",
+    "playground_assert": "assert_longest_palindrome(result, expected)"
 }

@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(min(m, n)) where m is charset size
     def length_of_longest_substring(self, s: str) -> int:

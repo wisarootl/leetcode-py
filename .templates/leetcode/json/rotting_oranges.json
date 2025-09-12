@@ -5,46 +5,63 @@
     "problem_title": "Rotting Oranges",
     "difficulty": "Medium",
     "topics": "Array, Breadth-First Search, Matrix",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "You are given an `m x n` `grid` where each cell can have one of three values:\n\n- `0` representing an empty cell,\n- `1` representing a fresh orange, or\n- `2` representing a rotten orange.\n\nEvery minute, any fresh orange that is **4-directionally adjacent** to a rotten orange becomes rotten.\n\nReturn *the minimum number of minutes that must elapse until no cell has a fresh orange*. If *this is impossible, return* `-1`.",
-    "readme_examples": [
-        {
-            "content": "![Example 1](https://assets.leetcode.com/uploads/2019/02/16/oranges.png)\n\n```\nInput: grid = [[2,1,1],[1,1,0],[0,1,1]]\nOutput: 4\n```"
-        },
-        {
-            "content": "```\nInput: grid = [[2,1,1],[0,1,1],[1,0,1]]\nOutput: -1\n```\n**Explanation:** The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally."
-        },
-        {
-            "content": "```\nInput: grid = [[0,2]]\nOutput: 0\n```\n**Explanation:** Since there are already no fresh oranges at minute 0, the answer is just 0."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/02/16/oranges.png)\n\n```\nInput: grid = [[2,1,1],[1,1,0],[0,1,1]]\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[2,1,1],[0,1,1],[1,0,1]]\nOutput: -1\n```\n**Explanation:** The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally."
+            },
+            {
+                "content": "```\nInput: grid = [[0,2]]\nOutput: 0\n```\n**Explanation:** Since there are already no fresh oranges at minute 0, the answer is just 0."
+            }
+        ]
+    },
     "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 10`\n- `grid[i][j]` is `0`, `1`, or `2`.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "oranges_rotting",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.oranges_rotting(grid)",
+    "helpers_assert_name": "oranges_rotting",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "oranges_rotting",
-            "parameters": "grid: list[list[int]]",
-            "return_type": "int",
-            "dummy_return": "0"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
-    "test_class_name": "TestRottingOranges",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_oranges_rotting",
-            "parametrize": "grid, expected",
-            "parametrize_typed": "grid: list[list[int]], expected: int",
-            "test_cases": "[([[2, 1, 1], [1, 1, 0], [0, 1, 1]], 4), ([[2, 1, 1], [0, 1, 1], [1, 0, 1]], -1), ([[0, 2]], 0), ([[0]], 0), ([[1]], -1), ([[2]], 0), ([[1, 2]], 1), ([[2, 1]], 1), ([[0, 1, 2]], 1), ([[2, 2], [1, 1], [0, 0]], 1), ([[2, 1, 1], [1, 1, 1], [0, 1, 2]], 2)]",
-            "body": "result = self.solution.oranges_rotting(grid)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ngrid = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]\nexpected = 4",
-    "playground_execution": "result = Solution().oranges_rotting(grid)\nresult",
-    "playground_assertion": "assert result == expected"
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_oranges_rotting, run_oranges_rotting\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RottingOranges",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "oranges_rotting",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement oranges_rotting\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_oranges_rotting",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": "[([[2, 1, 1], [1, 1, 0], [0, 1, 1]], 4), ([[2, 1, 1], [0, 1, 1], [1, 0, 1]], -1), ([[0, 2]], 0), ([[0]], 0), ([[1]], -1), ([[2]], 0), ([[1, 2]], 1), ([[2, 1]], 1), ([[0, 1, 2]], 1), ([[2, 2], [1, 1], [0, 0]], 1), ([[2, 1, 1], [1, 1, 1], [0, 1, 2]], 2)]",
+                "body": "        result = run_oranges_rotting(Solution, grid)\n        assert_oranges_rotting(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_oranges_rotting, assert_oranges_rotting\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]\nexpected = 4",
+    "playground_run": "result = run_oranges_rotting(Solution, grid)\nresult",
+    "playground_assert": "assert_oranges_rotting(result, expected)"
 }

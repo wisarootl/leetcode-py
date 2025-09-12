@@ -2,11 +2,12 @@ from leetcode_py import TreeNode
 
 
 class Solution:
+
     # Inorder Recursive
     # Time: O(k)
     # Space: O(h)
-    def kth_smallest(self, root: TreeNode | None, k: int) -> int:
-        def inorder(node: TreeNode | None):
+    def kth_smallest(self, root: TreeNode[int] | None, k: int) -> int:
+        def inorder(node: TreeNode[int] | None):
             if not node:
                 return
             yield from inorder(node.left)

@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(N * M) where N is accounts, M is max emails per account
     # Space: O(N * M)
     def accounts_merge(self, accounts: list[list[str]]) -> list[list[str]]:

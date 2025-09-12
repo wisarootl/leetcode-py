@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(log n)
     # Space: O(1)
     def search(self, nums: list[int], target: int) -> int:

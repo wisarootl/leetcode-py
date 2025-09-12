@@ -1,0 +1,26 @@
+import pytest
+
+from leetcode_py.test_utils import logged_test
+
+from .helpers import assert_can_finish, run_can_finish
+from .solution import Solution
+
+
+class TestCourseSchedule:
+    def setup_method(self):
+        self.solution = Solution()
+
+    @logged_test
+    @pytest.mark.parametrize(
+        "num_courses, prerequisites, expected",
+        [
+            (2, [[1, 0]], True),
+            (2, [[1, 0], [0, 1]], False),
+            (1, [], True),
+            (3, [[1, 0], [2, 1]], True),
+            (4, [[1, 0], [2, 1], [3, 2], [1, 3]], False),
+        ],
+    )
+    def test_can_finish(self, num_courses: int, prerequisites: list[list[int]], expected: bool):
+        result = run_can_finish(Solution, num_courses, prerequisites)
+        assert_can_finish(result, expected)

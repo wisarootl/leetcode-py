@@ -5,7 +5,6 @@ class Solution:
     # Time: O(n log n)
     # Space: O(n)
     def job_scheduling(self, start_time: list[int], end_time: list[int], profit: list[int]) -> int:
-
         jobs = sorted(zip(end_time, start_time, profit))
         dp = [0] * len(jobs)
 

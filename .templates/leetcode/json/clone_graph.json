@@ -5,46 +5,63 @@
     "problem_title": "Clone Graph",
     "difficulty": "Medium",
     "topics": "Hash Table, Depth-First Search, Breadth-First Search, Graph",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a reference of a node in a **connected** undirected graph.\n\nReturn a **deep copy** (clone) of the graph.\n\nEach node in the graph contains a value (`int`) and a list (`List[Node]`) of its neighbors.\n\n```\nclass Node {\n    public int val;\n    public List<Node> neighbors;\n}\n```\n\n**Test case format:**\n\nFor simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with `val == 1`, the second node with `val == 2`, and so on. The graph is represented in the test case using an adjacency list.\n\n**An adjacency list** is a collection of unordered **lists** used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.\n\nThe given node will always be the first node with `val = 1`. You must return the **copy of the given node** as a reference to the cloned graph.",
-    "readme_examples": [
-        {
-            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png\" style=\"width: 454px; height: 500px;\" />\n\n```\nInput: adjList = [[2,4],[1,3],[2,4],[1,3]]\nOutput: [[2,4],[1,3],[2,4],[1,3]]\nExplanation: There are 4 nodes in the graph.\n1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n```"
-        },
-        {
-            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/01/07/graph.png\" style=\"width: 163px; height: 148px;\" />\n\n```\nInput: adjList = [[]]\nOutput: [[]]\nExplanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.\n```"
-        },
-        {
-            "content": "```\nInput: adjList = []\nOutput: []\nExplanation: This an empty graph, it does not have any nodes.\n```"
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png)\n\n```\nInput: adjList = [[2,4],[1,3],[2,4],[1,3]]\nOutput: [[2,4],[1,3],[2,4],[1,3]]\n```\n**Explanation:** There are 4 nodes in the graph.\n1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3)."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/01/07/graph.png)\n\n```\nInput: adjList = [[]]\nOutput: [[]]\n```\n**Explanation:** Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors."
+            },
+            {
+                "content": "```\nInput: adjList = []\nOutput: []\n```\n**Explanation:** This an empty graph, it does not have any nodes."
+            }
+        ]
+    },
     "readme_constraints": "- The number of nodes in the graph is in the range `[0, 100]`.\n- `1 <= Node.val <= 100`\n- `Node.val` is unique for each node.\n- There are no repeated edges and no self-loops in the graph.\n- The Graph is connected and all nodes can be visited starting from the given node.",
     "readme_additional": "",
+    "helpers_imports": "from leetcode_py import GraphNode",
+    "helpers_content": "",
+    "helpers_run_name": "clone_graph",
+    "helpers_run_signature": "(solution_class: type, adj_list: list[list[int]])",
+    "helpers_run_body": "    node = GraphNode.from_adjacency_list(adj_list)\n    implementation = solution_class()\n    return implementation.clone_graph(node)",
+    "helpers_assert_name": "clone_graph",
+    "helpers_assert_signature": "(result: GraphNode | None, adj_list: list[list[int]]) -> bool",
+    "helpers_assert_body": "    original = GraphNode.from_adjacency_list(adj_list)\n    if result is None:\n        assert original is None\n    else:\n        assert result.is_clone(original)\n    return True",
     "solution_imports": "from leetcode_py import GraphNode",
-    "solution_methods": [
-        {
-            "name": "clone_graph",
-            "parameters": "node: GraphNode | None",
-            "return_type": "GraphNode | None",
-            "dummy_return": "None"
-        }
-    ],
-    "test_imports": "import pytest\n\nfrom leetcode_py import GraphNode\nfrom leetcode_py.test_utils import logged_test\n\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_clone_graph, run_clone_graph\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "CloneGraph",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_clone_graph",
-            "parametrize": "adj_list",
-            "parametrize_typed": "adj_list: list[list[int]]",
-            "test_cases": "[[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], []]",
-            "body": "node = GraphNode.from_adjacency_list(adj_list)\nresult = self.solution.clone_graph(node)\nassert result.is_clone(node) if result else node is None"
-        }
-    ],
-    "playground_imports": "from solution import Solution\n\nfrom leetcode_py import GraphNode",
-    "playground_test_case": "# Example test case\nadj_list = [[2,4],[1,3],[2,4],[1,3]]\nnode = GraphNode.from_adjacency_list(adj_list)",
-    "playground_execution": "result = Solution().clone_graph(node)\nresult",
-    "playground_assertion": "assert result.is_clone(node) if result else node is None"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "clone_graph",
+                "signature": "(self, node: GraphNode | None) -> GraphNode | None",
+                "body": "        # TODO: Implement clone_graph\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_clone_graph",
+                "signature": "(self, adj_list: list[list[int]])",
+                "parametrize": "adj_list",
+                "test_cases": "[[[2, 4], [1, 3], [2, 4], [1, 3]], [[]], [], [[2], [1]], [[2, 3], [1], [1]], [[2], [3], [4], []], [[2, 3, 4], [1], [1], [1]], [[2, 3], [1, 3], [1, 2]], [[2, 5], [1, 3], [2, 4], [3, 5], [1, 4]], [[2, 3], [1, 4], [1, 4], [2, 3]], [[2, 3, 4, 5], [1], [1], [1], [1]], [[2], [3], [4], [5], []]]",
+                "body": "        result = run_clone_graph(Solution, adj_list)\n        assert_clone_graph(result, adj_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_clone_graph, assert_clone_graph\nfrom solution import Solution\nfrom leetcode_py import GraphNode",
+    "playground_setup": "# Example test case\nadj_list = [[2,4],[1,3],[2,4],[1,3]]",
+    "playground_run": "result = run_clone_graph(Solution, adj_list)\nresult",
+    "playground_assert": "assert_clone_graph(result, adj_list)"
 }

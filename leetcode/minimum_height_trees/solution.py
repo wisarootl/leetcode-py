@@ -2,6 +2,7 @@ from collections import defaultdict, deque
 
 
 class Solution:
+
     # Time: O(V)
     # Space: O(V)
     def find_min_height_trees(self, n: int, edges: list[list[int]]) -> list[int]:

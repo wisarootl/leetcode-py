@@ -5,43 +5,60 @@
     "problem_title": "Middle of the Linked List",
     "difficulty": "Easy",
     "topics": "Linked List, Two Pointers",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given the `head` of a singly linked list, return *the middle node of the linked list*.\n\nIf there are two middle nodes, return **the second middle** node.",
-    "readme_examples": [
-        {
-            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/23/lc-midlist1.jpg)\n\n```\nInput: head = [1,2,3,4,5]\nOutput: [3,4,5]\n```\n**Explanation:** The middle node of the list is node 3."
-        },
-        {
-            "content": "![Example 2](https://assets.leetcode.com/uploads/2021/07/23/lc-midlist2.jpg)\n\n```\nInput: head = [1,2,3,4,5,6]\nOutput: [4,5,6]\n```\n**Explanation:** Since the list has two middle nodes with values 3 and 4, we return the second one."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/23/lc-midlist1.jpg)\n\n```\nInput: head = [1,2,3,4,5]\nOutput: [3,4,5]\n```\n**Explanation:** The middle node of the list is node 3."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/07/23/lc-midlist2.jpg)\n\n```\nInput: head = [1,2,3,4,5,6]\nOutput: [4,5,6]\n```\n**Explanation:** Since the list has two middle nodes with values 3 and 4, we return the second one."
+            }
+        ]
+    },
     "readme_constraints": "- The number of nodes in the list is in the range `[1, 100]`.\n- `1 <= Node.val <= 100`",
     "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "middle_node",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.middle_node(head)",
+    "helpers_assert_name": "middle_node",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_list: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
     "solution_imports": "from leetcode_py import ListNode",
-    "solution_methods": [
-        {
-            "name": "middle_node",
-            "parameters": "head: ListNode | None",
-            "return_type": "ListNode | None",
-            "dummy_return": "None"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom leetcode_py import ListNode\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_middle_node, run_middle_node\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "MiddleOfTheLinkedList",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_middle_node",
-            "parametrize": "head_list, expected_list",
-            "parametrize_typed": "head_list: list[int], expected_list: list[int]",
-            "test_cases": "[([1, 2, 3, 4, 5], [3, 4, 5]), ([1, 2, 3, 4, 5, 6], [4, 5, 6]), ([1], [1]), ([1, 2], [2])]",
-            "body": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)\nresult = self.solution.middle_node(head)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution\nfrom leetcode_py import ListNode",
-    "playground_test_case": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nexpected_list = [3, 4, 5]",
-    "playground_execution": "head = ListNode.from_list(head_list)\nresult = Solution().middle_node(head)\nresult",
-    "playground_assertion": "expected = ListNode.from_list(expected_list)\nassert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "middle_node",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement middle_node\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_middle_node",
+                "signature": "(self, head_list: list[int], expected_list: list[int])",
+                "parametrize": "head_list, expected_list",
+                "test_cases": "[([1, 2, 3, 4, 5], [3, 4, 5]), ([1, 2, 3, 4, 5, 6], [4, 5, 6]), ([1], [1]), ([1, 2], [2]), ([1, 2, 3], [2, 3]), ([1, 2, 3, 4], [3, 4]), ([10, 20, 30, 40, 50, 60, 70], [40, 50, 60, 70])]",
+                "body": "        result = run_middle_node(Solution, head_list)\n        assert_middle_node(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_middle_node, assert_middle_node\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nexpected_list = [3, 4, 5]",
+    "playground_run": "result = run_middle_node(Solution, head_list)\nListNode[int].to_list(result) if result else []",
+    "playground_assert": "assert_middle_node(result, expected_list)"
 }

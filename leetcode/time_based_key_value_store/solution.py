@@ -1,9 +1,7 @@
 class TimeMap:
     # Time: O(1)
     # Space: O(n)
-    def __init__(
-        self,
-    ) -> None:
+    def __init__(self) -> None:
         self.store: dict[str, list[tuple[int, str]]] = {}
 
     # Time: O(1)

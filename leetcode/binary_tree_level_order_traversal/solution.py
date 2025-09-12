@@ -6,7 +6,7 @@ from leetcode_py import TreeNode
 class Solution:
     # Time: O(n)
     # Space: O(w) where w is max width of tree
-    def level_order(self, root: TreeNode | None) -> list[list[int]]:
+    def level_order(self, root: TreeNode[int] | None) -> list[list[int]]:
         if not root:
             return []
 

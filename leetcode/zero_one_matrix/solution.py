@@ -2,6 +2,7 @@ from collections import deque
 
 
 class Solution:
+
     # Time: O(m * n)
     # Space: O(m * n)
     def update_matrix(self, mat: list[list[int]]) -> list[list[int]]:

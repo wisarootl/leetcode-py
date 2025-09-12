@@ -5,44 +5,61 @@
     "problem_title": "Reverse Linked List",
     "difficulty": "Easy",
     "topics": "Linked List, Recursion",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given the `head` of a singly linked list, reverse the list, and return the reversed list.",
-    "readme_examples": [
-        {
-            "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg)\n\n```\nInput: head = [1,2,3,4,5]\nOutput: [5,4,3,2,1]\n```"
-        },
-        {
-            "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg)\n\n```\nInput: head = [1,2]\nOutput: [2,1]\n```"
-        },
-        { "content": "```\nInput: head = []\nOutput: []\n```" }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg)\n\n```\nInput: head = [1,2,3,4,5]\nOutput: [5,4,3,2,1]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg)\n\n```\nInput: head = [1,2]\nOutput: [2,1]\n```"
+            },
+            { "content": "```\nInput: head = []\nOutput: []\n```" }
+        ]
+    },
     "readme_constraints": "- The number of nodes in the list is the range `[0, 5000]`.\n- `-5000 <= Node.val <= 5000`",
     "readme_additional": "**Follow up:** A linked list can be reversed either iteratively or recursively. Could you implement both?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_list",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.reverse_list(head)",
+    "helpers_assert_name": "reverse_list",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_list: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
     "solution_imports": "from leetcode_py import ListNode",
-    "solution_methods": [
-        {
-            "name": "reverse_list",
-            "parameters": "head: ListNode[int] | None",
-            "return_type": "ListNode[int] | None",
-            "dummy_return": "None"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom leetcode_py import ListNode\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_reverse_list, run_reverse_list\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "ReverseLinkedList",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_reverse_list",
-            "parametrize": "head_list, expected_list",
-            "parametrize_typed": "head_list: list[int], expected_list: list[int]",
-            "test_cases": "[([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]), ([1, 2], [2, 1]), ([1], [1]), ([], []), ([1, 2, 3], [3, 2, 1]), ([1, 2, 3, 4], [4, 3, 2, 1]), ([-1, -2, -3], [-3, -2, -1]), ([0], [0]), ([5000, -5000], [-5000, 5000]), ([1, 1, 1], [1, 1, 1])]",
-            "body": "head = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)\nresult = self.solution.reverse_list(head)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from leetcode_py import ListNode\nfrom solution import Solution",
-    "playground_test_case": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nexpected_list = [5, 4, 3, 2, 1]\nhead = ListNode.from_list(head_list)\nexpected = ListNode.from_list(expected_list)",
-    "playground_execution": "result = Solution().reverse_list(head)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_list",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement reverse_list\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_list",
+                "signature": "(self, head_list: list[int], expected_list: list[int])",
+                "parametrize": "head_list, expected_list",
+                "test_cases": "[([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]), ([1, 2], [2, 1]), ([1], [1]), ([], []), ([1, 2, 3], [3, 2, 1]), ([1, 2, 3, 4], [4, 3, 2, 1]), ([-1, -2, -3], [-3, -2, -1]), ([0], [0]), ([5000, -5000], [-5000, 5000]), ([1, 1, 1], [1, 1, 1])]",
+                "body": "        result = run_reverse_list(Solution, head_list)\n        assert_reverse_list(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_list, assert_reverse_list\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nexpected_list = [5, 4, 3, 2, 1]",
+    "playground_run": "result = run_reverse_list(Solution, head_list)\nresult",
+    "playground_assert": "assert_reverse_list(result, expected_list)"
 }

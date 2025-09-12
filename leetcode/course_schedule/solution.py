@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(V + E) where V = num_courses, E = prerequisites
     # Space: O(V + E) for adjacency list and recursion stack
     def can_finish(self, num_courses: int, prerequisites: list[list[int]]) -> bool:

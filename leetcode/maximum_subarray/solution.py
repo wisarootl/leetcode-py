@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(1)
     def max_sub_array(self, nums: list[int]) -> int:

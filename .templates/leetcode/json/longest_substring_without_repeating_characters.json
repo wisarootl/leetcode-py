@@ -5,46 +5,63 @@
     "problem_title": "Longest Substring Without Repeating Characters",
     "difficulty": "Medium",
     "topics": "Hash Table, String, Sliding Window",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a string `s`, find the length of the **longest** **substring** without duplicate characters.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: s = \"abcabcbb\"\nOutput: 3\n```\n**Explanation:** The answer is \"abc\", with the length of 3."
-        },
-        {
-            "content": "```\nInput: s = \"bbbbb\"\nOutput: 1\n```\n**Explanation:** The answer is \"b\", with the length of 1."
-        },
-        {
-            "content": "```\nInput: s = \"pwwkew\"\nOutput: 3\n```\n**Explanation:** The answer is \"wke\", with the length of 3.\nNotice that the answer must be a substring, \"pwke\" is a subsequence and not a substring."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcabcbb\"\nOutput: 3\n```\n**Explanation:** The answer is \"abc\", with the length of 3."
+            },
+            {
+                "content": "```\nInput: s = \"bbbbb\"\nOutput: 1\n```\n**Explanation:** The answer is \"b\", with the length of 1."
+            },
+            {
+                "content": "```\nInput: s = \"pwwkew\"\nOutput: 3\n```\n**Explanation:** The answer is \"wke\", with the length of 3.\nNotice that the answer must be a substring, \"pwke\" is a subsequence and not a substring."
+            }
+        ]
+    },
     "readme_constraints": "- 0 <= s.length <= 5 * 10^4\n- s consists of English letters, digits, symbols and spaces.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "length_of_longest_substring",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.length_of_longest_substring(s)",
+    "helpers_assert_name": "length_of_longest_substring",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "length_of_longest_substring",
-            "parameters": "s: str",
-            "return_type": "int",
-            "dummy_return": "0"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_length_of_longest_substring, run_length_of_longest_substring\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "LongestSubstringWithoutRepeatingCharacters",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_length_of_longest_substring",
-            "parametrize": "s, expected",
-            "parametrize_typed": "s: str, expected: int",
-            "test_cases": "[('abcabcbb', 3), ('bbbbb', 1), ('pwwkew', 3), ('', 0), ('a', 1), ('au', 2), ('dvdf', 3)]",
-            "body": "result = self.solution.length_of_longest_substring(s)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = 'abcabcbb'\nexpected = 3",
-    "playground_execution": "result = Solution().length_of_longest_substring(s)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "length_of_longest_substring",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement length_of_longest_substring\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_length_of_longest_substring",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": "[('abcabcbb', 3), ('bbbbb', 1), ('pwwkew', 3), ('', 0), ('a', 1), ('au', 2), ('dvdf', 3), ('abcdef', 6), ('aab', 2), ('tmmzuxt', 5), (' ', 1), ('  ', 1), ('abba', 2)]",
+                "body": "        result = run_length_of_longest_substring(Solution, s)\n        assert_length_of_longest_substring(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_length_of_longest_substring, assert_length_of_longest_substring\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcabcbb'\nexpected = 3",
+    "playground_run": "result = run_length_of_longest_substring(Solution, s)\nresult",
+    "playground_assert": "assert_length_of_longest_substring(result, expected)"
 }

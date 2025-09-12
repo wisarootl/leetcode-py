@@ -5,37 +5,59 @@
     "problem_title": "Valid Parentheses",
     "difficulty": "Easy",
     "topics": "String, Stack",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.\n\nAn input string is valid if:\n\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.",
-    "readme_examples": [
-        { "content": "```\nInput: s = \"()\"\nOutput: true\n```" },
-        { "content": "```\nInput: s = \"()[]{}\"\nOutput: true\n```" },
-        { "content": "```\nInput: s = \"(]\"\nOutput: false\n```" },
-        { "content": "```\nInput: s = \"([])\"\nOutput: true\n```" },
-        { "content": "```\nInput: s = \"([)]\"\nOutput: false\n```" }
-    ],
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"()\"\nOutput: true\n```" },
+            { "content": "```\nInput: s = \"()[]{}\"\nOutput: true\n```" },
+            { "content": "```\nInput: s = \"(]\"\nOutput: false\n```" },
+            { "content": "```\nInput: s = \"([])\"\nOutput: true\n```" },
+            { "content": "```\nInput: s = \"([)]\"\nOutput: false\n```" }
+        ]
+    },
     "readme_constraints": "- `1 <= s.length <= 10^4`\n- `s` consists of parentheses only `'()[]{}'`.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_valid",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_valid(s)",
+    "helpers_assert_name": "is_valid",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        { "name": "is_valid", "parameters": "s: str", "return_type": "bool", "dummy_return": "False" }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_is_valid, run_is_valid\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "ValidParentheses",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_is_valid",
-            "parametrize": "s, expected",
-            "parametrize_typed": "s: str, expected: bool",
-            "test_cases": "[('()', True), ('()[]{}', True), ('(]', False), ('([])', True), ('([)]', False), ('', True), ('(', False), (')', False), ('{[()]}', True), ('{[(])}', False)]",
-            "body": "result = self.solution.is_valid(s)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = '()'\nexpected = True",
-    "playground_execution": "result = Solution().is_valid(s)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_valid",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement is_valid\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_valid",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": "[('()', True), ('()[]{}', True), ('(]', False), ('([])', True), ('([)]', False), ('', True), ('(', False), (')', False), ('{[()]}', True), ('{[(])}', False)]",
+                "body": "        result = run_is_valid(Solution, s)\n        assert_is_valid(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_valid, assert_is_valid\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '()'\nexpected = True",
+    "playground_run": "result = run_is_valid(Solution, s)\nresult",
+    "playground_assert": "assert_is_valid(result, expected)"
 }

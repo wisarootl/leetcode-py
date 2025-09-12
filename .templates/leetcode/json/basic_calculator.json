@@ -5,35 +5,57 @@
     "problem_title": "Basic Calculator",
     "difficulty": "Hard",
     "topics": "Math, String, Stack, Recursion",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a string `s` representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.\n\n**Note:** You are **not** allowed to use any built-in function which evaluates strings as mathematical expressions, such as `eval()`.",
-    "readme_examples": [
-        { "content": "```\nInput: s = \"1 + 1\"\nOutput: 2\n```" },
-        { "content": "```\nInput: s = \" 2-1 + 2 \"\nOutput: 3\n```" },
-        { "content": "```\nInput: s = \"(1+(4+5+2)-3)+(6+8)\"\nOutput: 23\n```" }
-    ],
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"1 + 1\"\nOutput: 2\n```" },
+            { "content": "```\nInput: s = \" 2-1 + 2 \"\nOutput: 3\n```" },
+            { "content": "```\nInput: s = \"(1+(4+5+2)-3)+(6+8)\"\nOutput: 23\n```" }
+        ]
+    },
     "readme_constraints": "- `1 <= s.length <= 3 * 10^5`\n- `s` consists of digits, `'+'`, `'-'`, `'('`, `')'`, and `' '`.\n- `s` represents a valid expression.\n- `'+'` is **not** used as a unary operation (i.e., `\"+1\"` and `\"+(2 + 3)\"` is invalid).\n- `'-'` could be used as a unary operation (i.e., `\"-1\"` and `\"-(2 + 3)\"` is valid).\n- There will be no two consecutive operators in the input.\n- Every number and running calculation will fit in a signed 32-bit integer.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "calculate",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.calculate(s)",
+    "helpers_assert_name": "calculate",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        { "name": "calculate", "parameters": "s: str", "return_type": "int", "dummy_return": "0" }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_calculate, run_calculate\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "BasicCalculator",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_calculate",
-            "parametrize": "s, expected",
-            "parametrize_typed": "s: str, expected: int",
-            "test_cases": "[(\"1 + 1\", 2), (\" 2-1 + 2 \", 3), (\"(1+(4+5+2)-3)+(6+8)\", 23), (\"1\", 1), (\"-1\", -1), (\"-(1+2)\", -3), (\"2147483647\", 2147483647), (\"1-1+1\", 1)]",
-            "body": "result = self.solution.calculate(s)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = '(1+(4+5+2)-3)+(6+8)'\nexpected = 23",
-    "playground_execution": "result = Solution().calculate(s)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "calculate",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement calculate\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_calculate",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": "[('1 + 1', 2), (' 2-1 + 2 ', 3), ('(1+(4+5+2)-3)+(6+8)', 23), ('1', 1), ('-1', -1), ('-(1+2)', -3), ('2147483647', 2147483647), ('1-1+1', 1), ('0', 0), ('-0', 0), ('1+(2+3)', 6), ('(1+2)+3', 6), ('1-(2+3)', -4), ('(1-2)+3', 2), ('-(-1)', 1), ('-(-(-1))', -1), ('1000000-999999', 1), ('10+20-30+40', 40), ('((1+2)+(3+4))', 10), ('1+(2-(3+4))', -4), ('-(1+(2+3))', -6), ('   1   +   2   ', 3), ('123+456', 579), ('-2147483648', -2147483648)]",
+                "body": "        result = run_calculate(Solution, s)\n        assert_calculate(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_calculate, assert_calculate\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '(1+(4+5+2)-3)+(6+8)'\nexpected = 23",
+    "playground_run": "result = run_calculate(Solution, s)\nresult",
+    "playground_assert": "assert_calculate(result, expected)"
 }

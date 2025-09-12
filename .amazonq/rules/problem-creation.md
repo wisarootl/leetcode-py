@@ -135,6 +135,7 @@ When creating JSON properties that use PascalCase (solution_class_name, test_cla
 - Multiple methods including `__init__`
 - Complex test setup with operation sequences
 - Import custom class in test_imports
+- **NEVER include custom solution classes** in test_imports - only import the main solution class specified in solution_class_name
 
 ### Dict-based Tree Problems (Trie, etc.)
 

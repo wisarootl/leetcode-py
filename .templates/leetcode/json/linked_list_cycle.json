@@ -5,51 +5,63 @@
     "problem_title": "Linked List Cycle",
     "difficulty": "Easy",
     "topics": "Hash Table, Linked List, Two Pointers",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given `head`, the head of a linked list, determine if the linked list has a cycle in it.\n\nThere is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the `next` pointer. Internally, `pos` is used to denote the index of the node that tail's `next` pointer is connected to. **Note that `pos` is not passed as a parameter**.\n\nReturn `true` *if there is a cycle in the linked list*. Otherwise, return `false`.",
-    "readme_examples": [
-        {
-            "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)\n\n```\nInput: head = [3,2,0,-4], pos = 1\nOutput: true\n```\n**Explanation:** There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
-        },
-        {
-            "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png)\n\n```\nInput: head = [1,2], pos = 0\nOutput: true\n```\n**Explanation:** There is a cycle in the linked list, where the tail connects to the 0th node."
-        },
-        {
-            "content": "![Example 3](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png)\n\n```\nInput: head = [1], pos = -1\nOutput: false\n```\n**Explanation:** There is no cycle in the linked list."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)\n\n```\nInput: head = [3,2,0,-4], pos = 1\nOutput: true\n```\n**Explanation:** There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png)\n\n```\nInput: head = [1,2], pos = 0\nOutput: true\n```\n**Explanation:** There is a cycle in the linked list, where the tail connects to the 0th node."
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png)\n\n```\nInput: head = [1], pos = -1\nOutput: false\n```\n**Explanation:** There is no cycle in the linked list."
+            }
+        ]
+    },
     "readme_constraints": "- The number of the nodes in the list is in the range `[0, 10^4]`.\n- `-10^5 <= Node.val <= 10^5`\n- `pos` is `-1` or a **valid index** in the linked-list.",
     "readme_additional": "**Follow up:** Can you solve it using `O(1)` (i.e. constant) memory?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "def create_cycle_list(values: list[int], pos: int) -> ListNode[int] | None:\n    if not values:\n        return None\n\n    nodes = []\n    head = ListNode(values[0])\n    nodes.append(head)\n    current = head\n\n    for i in range(1, len(values)):\n        current.next = ListNode(values[i])\n        current = current.next\n        nodes.append(current)\n\n    if pos != -1 and pos < len(nodes):\n        current.next = nodes[pos]\n\n    return head",
+    "helpers_run_name": "has_cycle",
+    "helpers_run_signature": "(solution_class: type, values: list[int], pos: int)",
+    "helpers_run_body": "    head = create_cycle_list(values, pos)\n    implementation = solution_class()\n    return implementation.has_cycle(head)",
+    "helpers_assert_name": "has_cycle",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "from leetcode_py import ListNode",
-    "solution_methods": [
-        {
-            "name": "has_cycle",
-            "parameters": "head: ListNode[int] | None",
-            "return_type": "bool",
-            "dummy_return": "False"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py import ListNode\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_has_cycle, run_has_cycle\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "LinkedListCycle",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" },
-        {
-            "name": "create_cycle_list",
-            "parameters": "values: list[int], pos: int",
-            "body": "if not values:\n    return None\n\nnodes = []\nhead = ListNode(values[0])\nnodes.append(head)\ncurrent = head\n\nfor i in range(1, len(values)):\n    current.next = ListNode(values[i])\n    current = current.next\n    nodes.append(current)\n\nif pos != -1 and pos < len(nodes):\n    current.next = nodes[pos]\n\nreturn head"
-        }
-    ],
-    "test_methods": [
-        {
-            "name": "test_has_cycle",
-            "parametrize": "values, pos, expected",
-            "parametrize_typed": "values: list[int], pos: int, expected: bool",
-            "test_cases": "[([3, 2, 0, -4], 1, True), ([1, 2], 0, True), ([1], -1, False), ([], -1, False), ([1, 2, 3], -1, False), ([1, 2, 3, 4, 5], 0, True), ([1, 2, 3, 4, 5], 2, True), ([1, 2, 3, 4, 5], 4, True), ([1], 0, True), ([1, 2], 1, True), ([1, 2, 3, 4, 5, 6, 7, 8], 3, True), ([1, 2, 3, 4, 5, 6, 7, 8], -1, False), ([1, 2], -1, False), ([5, 10], 0, True), ([5, 10], 1, True), ([0], -1, False), ([-1, -2, -3], 1, True), ([100, 200, 300], 0, True)]",
-            "body": "head = self.create_cycle_list(values, pos)\nresult = self.solution.has_cycle(head)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "import os\nimport sys\nsys.path.append(os.path.join(os.getcwd(), \\\"..\\\"))\nfrom linked_list_cycle.tests import TestLinkedListCycle\n\n# Example test case\nvalues = [3, 2, 0, -4]\npos = 1\nexpected = True",
-    "playground_execution": "head = TestLinkedListCycle().create_cycle_list(values, pos)\nresult = Solution().has_cycle(head)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "has_cycle",
+                "signature": "(self, head: ListNode[int] | None) -> bool",
+                "body": "        # TODO: Implement has_cycle\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_has_cycle",
+                "signature": "(self, values: list[int], pos: int, expected: bool)",
+                "parametrize": "values, pos, expected",
+                "test_cases": "[([3, 2, 0, -4], 1, True), ([1, 2], 0, True), ([1], -1, False), ([], -1, False), ([1, 2, 3], -1, False), ([1, 2, 3, 4, 5], 0, True), ([1, 2, 3, 4, 5], 2, True), ([1, 2, 3, 4, 5], 4, True), ([1], 0, True), ([1, 2], 1, True)]",
+                "body": "        result = run_has_cycle(Solution, values, pos)\n        assert_has_cycle(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_has_cycle, assert_has_cycle, create_cycle_list\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nvalues = [3, 2, 0, -4]\npos = 1\nexpected = True",
+    "playground_run": "result = run_has_cycle(Solution, values, pos)\nresult",
+    "playground_assert": "assert_has_cycle(result, expected)"
 }

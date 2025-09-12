@@ -5,43 +5,60 @@
     "problem_title": "Spiral Matrix",
     "difficulty": "Medium",
     "topics": "Array, Matrix, Simulation",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given an `m x n` matrix, return all elements of the matrix in spiral order.",
-    "readme_examples": [
-        {
-            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg\" style=\"width: 242px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [1,2,3,6,9,8,7,4,5]\n```"
-        },
-        {
-            "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg\" style=\"width: 322px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]\nOutput: [1,2,3,4,8,12,11,10,9,5,6,7]\n```"
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg\" style=\"width: 242px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [1,2,3,6,9,8,7,4,5]\n```"
+            },
+            {
+                "content": "<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg\" style=\"width: 322px; height: 242px;\" />\n\n```\nInput: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]\nOutput: [1,2,3,4,8,12,11,10,9,5,6,7]\n```"
+            }
+        ]
+    },
     "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 10\n- -100 <= matrix[i][j] <= 100",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "spiral_order",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.spiral_order(matrix)",
+    "helpers_assert_name": "spiral_order",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "spiral_order",
-            "parameters": "matrix: list[list[int]]",
-            "return_type": "list[int]",
-            "dummy_return": "[]"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_spiral_order, run_spiral_order\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "SpiralMatrix",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_spiral_order",
-            "parametrize": "matrix, expected",
-            "parametrize_typed": "matrix: list[list[int]], expected: list[int]",
-            "test_cases": "[([[1,2,3],[4,5,6],[7,8,9]], [1,2,3,6,9,8,7,4,5]), ([[1,2,3,4],[5,6,7,8],[9,10,11,12]], [1,2,3,4,8,12,11,10,9,5,6,7])]",
-            "body": "result = self.solution.spiral_order(matrix)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]\nexpected = [1,2,3,6,9,8,7,4,5]",
-    "playground_execution": "result = Solution().spiral_order(matrix)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "spiral_order",
+                "signature": "(self, matrix: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement spiral_order\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_spiral_order",
+                "signature": "(self, matrix: list[list[int]], expected: list[int])",
+                "parametrize": "matrix, expected",
+                "test_cases": "[([[1,2,3],[4,5,6],[7,8,9]], [1,2,3,6,9,8,7,4,5]), ([[1,2,3,4],[5,6,7,8],[9,10,11,12]], [1,2,3,4,8,12,11,10,9,5,6,7]), ([[1]], [1]), ([[1,2]], [1,2]), ([[1],[2]], [1,2]), ([[1,2,3]], [1,2,3]), ([[1],[2],[3]], [1,2,3])]",
+                "body": "        result = run_spiral_order(Solution, matrix)\n        assert_spiral_order(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_spiral_order, assert_spiral_order\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]\nexpected = [1,2,3,6,9,8,7,4,5]",
+    "playground_run": "result = run_spiral_order(Solution, matrix)\nresult",
+    "playground_assert": "assert_spiral_order(result, expected)"
 }

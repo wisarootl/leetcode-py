@@ -16,32 +16,36 @@
         }
     ],
     "readme_constraints": "- `1 <= accounts.length <= 1000`\n- `2 <= accounts[i].length <= 10`\n- `1 <= accounts[i][j].length <= 30`\n- `accounts[i][0]` consists of English letters.\n- `accounts[i][j] (for j > 0)` is a valid email.",
-    "readme_additional": "",
-    "solution_imports": "",
+    "helpers_imports": "",
+    "helpers_run_name": "accounts_merge",
+    "helpers_run_signature": "(solution_class: type, accounts: list[list[str]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.accounts_merge(accounts)",
+    "helpers_assert_name": "accounts_merge",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    result_sorted = [sorted(account) for account in sorted(result)]\n    expected_sorted = [sorted(account) for account in sorted(expected)]\n    assert result_sorted == expected_sorted\n    return True",
     "solution_methods": [
         {
             "name": "accounts_merge",
-            "parameters": "accounts: list[list[str]]",
-            "return_type": "list[list[str]]",
-            "dummy_return": "[]"
+            "signature": "(self, accounts: list[list[str]]) -> list[list[str]]",
+            "body": "        # TODO: Implement accounts_merge\n        return []"
         }
     ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_accounts_merge, run_accounts_merge\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "AccountsMerge",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "test_helper_methods": [],
     "test_methods": [
         {
             "name": "test_accounts_merge",
+            "signature": "(self, accounts: list[list[str]], expected: list[list[str]])",
             "parametrize": "accounts, expected",
-            "parametrize_typed": "accounts: list[list[str]], expected: list[list[str]]",
-            "test_cases": "[([[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]], [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]), ([[\"Gabe\", \"Gabe0@m.co\", \"Gabe3@m.co\", \"Gabe1@m.co\"], [\"Kevin\", \"Kevin3@m.co\", \"Kevin5@m.co\", \"Kevin0@m.co\"], [\"Ethan\", \"Ethan5@m.co\", \"Ethan4@m.co\", \"Ethan0@m.co\"], [\"Hanzo\", \"Hanzo3@m.co\", \"Hanzo1@m.co\", \"Hanzo0@m.co\"], [\"Fern\", \"Fern5@m.co\", \"Fern1@m.co\", \"Fern0@m.co\"]], [[\"Ethan\", \"Ethan0@m.co\", \"Ethan4@m.co\", \"Ethan5@m.co\"], [\"Gabe\", \"Gabe0@m.co\", \"Gabe1@m.co\", \"Gabe3@m.co\"], [\"Hanzo\", \"Hanzo0@m.co\", \"Hanzo1@m.co\", \"Hanzo3@m.co\"], [\"Kevin\", \"Kevin0@m.co\", \"Kevin3@m.co\", \"Kevin5@m.co\"], [\"Fern\", \"Fern0@m.co\", \"Fern1@m.co\", \"Fern5@m.co\"]])]",
-            "body": "result = self.solution.accounts_merge(accounts)\n# Sort both result and expected for comparison since order doesn't matter\nresult_sorted = [sorted(account) for account in sorted(result)]\nexpected_sorted = [sorted(account) for account in sorted(expected)]\nassert result_sorted == expected_sorted"
+            "test_cases": "[([[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]], [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]), ([[\"Gabe\", \"Gabe0@m.co\", \"Gabe3@m.co\", \"Gabe1@m.co\"], [\"Kevin\", \"Kevin3@m.co\", \"Kevin5@m.co\", \"Kevin0@m.co\"], [\"Ethan\", \"Ethan5@m.co\", \"Ethan4@m.co\", \"Ethan0@m.co\"], [\"Hanzo\", \"Hanzo3@m.co\", \"Hanzo1@m.co\", \"Hanzo0@m.co\"], [\"Fern\", \"Fern5@m.co\", \"Fern1@m.co\", \"Fern0@m.co\"]], [[\"Ethan\", \"Ethan0@m.co\", \"Ethan4@m.co\", \"Ethan5@m.co\"], [\"Gabe\", \"Gabe0@m.co\", \"Gabe1@m.co\", \"Gabe3@m.co\"], [\"Hanzo\", \"Hanzo0@m.co\", \"Hanzo1@m.co\", \"Hanzo3@m.co\"], [\"Kevin\", \"Kevin0@m.co\", \"Kevin3@m.co\", \"Kevin5@m.co\"], [\"Fern\", \"Fern0@m.co\", \"Fern1@m.co\", \"Fern5@m.co\"]]), ([[\"John\", \"john@mail.com\"]], [[\"John\", \"john@mail.com\"]]), ([[\"John\"]], [[\"John\"]]), ([[\"John\", \"john1@mail.com\"], [\"John\", \"john2@mail.com\"], [\"John\", \"john3@mail.com\"]], [[\"John\", \"john1@mail.com\"], [\"John\", \"john2@mail.com\"], [\"John\", \"john3@mail.com\"]]), ([[\"John\", \"a@mail.com\", \"b@mail.com\"], [\"John\", \"b@mail.com\", \"c@mail.com\"], [\"John\", \"d@mail.com\"]], [[\"John\", \"a@mail.com\", \"b@mail.com\", \"c@mail.com\"], [\"John\", \"d@mail.com\"]]), ([[\"Alice\", \"alice@mail.com\", \"alice1@mail.com\"], [\"Alice\", \"alice2@mail.com\", \"alice3@mail.com\"], [\"Alice\", \"alice1@mail.com\", \"alice2@mail.com\"]], [[\"Alice\", \"alice1@mail.com\", \"alice2@mail.com\", \"alice3@mail.com\", \"alice@mail.com\"]]), ([[\"John\", \"shared@mail.com\"], [\"Jane\", \"shared@mail.com\"]], [[\"John\", \"shared@mail.com\"]])]",
+            "body": "        result = run_accounts_merge(Solution, accounts)\n        assert_accounts_merge(result, expected)"
         }
     ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\naccounts = [[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]\nexpected = [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]",
-    "playground_execution": "result = Solution().accounts_merge(accounts)\nresult",
-    "playground_assertion": "# Sort for comparison since order doesn't matter\nresult_sorted = [sorted(account) for account in sorted(result)]\nexpected_sorted = [sorted(account) for account in sorted(expected)]\nassert result_sorted == expected_sorted"
+    "playground_imports": "from helpers import run_accounts_merge, assert_accounts_merge\nfrom solution import Solution",
+    "playground_setup": "# Example test case\naccounts = [[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]\nexpected = [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]",
+    "playground_run": "result = run_accounts_merge(Solution, accounts)\nresult",
+    "playground_assert": "assert_accounts_merge(result, expected)"
 }

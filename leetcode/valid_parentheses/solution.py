@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(n)
     def is_valid(self, s: str) -> bool:

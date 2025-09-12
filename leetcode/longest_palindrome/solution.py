@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(1)
     def longest_palindrome(self, s: str) -> int:

@@ -5,46 +5,63 @@
     "problem_title": "Word Break",
     "difficulty": "Medium",
     "topics": "Array, Hash Table, String, Dynamic Programming, Trie, Memoization",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.\n\n**Note** that the same word in the dictionary may be reused multiple times in the segmentation.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: s = \"leetcode\", wordDict = [\"leet\",\"code\"]\nOutput: true\n```\n**Explanation:** Return true because \"leetcode\" can be segmented as \"leet code\"."
-        },
-        {
-            "content": "```\nInput: s = \"applepenapple\", wordDict = [\"apple\",\"pen\"]\nOutput: true\n```\n**Explanation:** Return true because \"applepenapple\" can be segmented as \"apple pen apple\".\nNote that you are allowed to reuse a dictionary word."
-        },
-        {
-            "content": "```\nInput: s = \"catsandog\", wordDict = [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]\nOutput: false\n```"
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"leetcode\", wordDict = [\"leet\",\"code\"]\nOutput: true\n```\n**Explanation:** Return true because \"leetcode\" can be segmented as \"leet code\"."
+            },
+            {
+                "content": "```\nInput: s = \"applepenapple\", wordDict = [\"apple\",\"pen\"]\nOutput: true\n```\n**Explanation:** Return true because \"applepenapple\" can be segmented as \"apple pen apple\".\nNote that you are allowed to reuse a dictionary word."
+            },
+            {
+                "content": "```\nInput: s = \"catsandog\", wordDict = [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]\nOutput: false\n```"
+            }
+        ]
+    },
     "readme_constraints": "- `1 <= s.length <= 300`\n- `1 <= wordDict.length <= 1000`\n- `1 <= wordDict[i].length <= 20`\n- `s` and `wordDict[i]` consist of only lowercase English letters.\n- All the strings of `wordDict` are **unique**.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_break",
+    "helpers_run_signature": "(solution_class: type, s: str, word_dict: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_break(s, word_dict)",
+    "helpers_assert_name": "word_break",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "word_break",
-            "parameters": "s: str, word_dict: list[str]",
-            "return_type": "bool",
-            "dummy_return": "False"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_word_break, run_word_break\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "WordBreak",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_word_break",
-            "parametrize": "s, word_dict, expected",
-            "parametrize_typed": "s: str, word_dict: list[str], expected: bool",
-            "test_cases": "[('leetcode', ['leet', 'code'], True), ('applepenapple', ['apple', 'pen'], True), ('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'], False), ('', [], True), ('a', ['a'], True), ('ab', ['a', 'b'], True), ('abcd', ['a', 'abc', 'd'], True)]",
-            "body": "result = self.solution.word_break(s, word_dict)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = 'leetcode'\nword_dict = ['leet', 'code']\nexpected = True",
-    "playground_execution": "result = Solution().word_break(s, word_dict)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_break",
+                "signature": "(self, s: str, word_dict: list[str]) -> bool",
+                "body": "        # TODO: Implement word_break\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_break",
+                "signature": "(self, s: str, word_dict: list[str], expected: bool)",
+                "parametrize": "s, word_dict, expected",
+                "test_cases": "[('leetcode', ['leet', 'code'], True), ('applepenapple', ['apple', 'pen'], True), ('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'], False), ('', [], True), ('a', ['a'], True), ('ab', ['a', 'b'], True), ('abcd', ['a', 'abc', 'd'], True)]",
+                "body": "        result = run_word_break(Solution, s, word_dict)\n        assert_word_break(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_break, assert_word_break\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leetcode'\nword_dict = ['leet', 'code']\nexpected = True",
+    "playground_run": "result = run_word_break(Solution, s, word_dict)\nresult",
+    "playground_assert": "assert_word_break(result, expected)"
 }

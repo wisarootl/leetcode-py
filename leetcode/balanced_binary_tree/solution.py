@@ -4,8 +4,8 @@ from leetcode_py import TreeNode
 class Solution:
     # Time: O(n)
     # Space: O(h)
-    def is_balanced(self, root: TreeNode | None) -> bool:
-        def height(node: TreeNode | None) -> int:
+    def is_balanced(self, root: TreeNode[int] | None) -> bool:
+        def height(node: TreeNode[int] | None) -> int:
             if not node:
                 return 0
 

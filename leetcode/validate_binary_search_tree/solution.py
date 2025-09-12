@@ -4,6 +4,7 @@ from leetcode_py import TreeNode
 
 
 class Solution:
+
     @classmethod
     def validate(cls, node: TreeNode[int] | None, min_val: float, max_val: float) -> bool:
         if not node:

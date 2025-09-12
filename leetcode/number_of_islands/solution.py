@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(m * n) where m = rows, n = cols
     # Space: O(m * n) for recursion stack in worst case
     def num_islands(self, grid: list[list[str]]) -> int:

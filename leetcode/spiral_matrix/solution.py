@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(m*n)
     # Space: O(1)
     def spiral_order(self, matrix: list[list[int]]) -> list[int]:

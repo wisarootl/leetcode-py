@@ -33,35 +33,38 @@ The given node will always be the first node with `val = 1`. You must return the
 
 ### Example 1:
 
-<img alt="" src="https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png" style="width: 454px; height: 500px;" />
+![Example 1](https://assets.leetcode.com/uploads/2019/11/04/133_clone_graph_question.png)
 
 ```
 Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
 Output: [[2,4],[1,3],[2,4],[1,3]]
-Explanation: There are 4 nodes in the graph.
+```
+
+**Explanation:** There are 4 nodes in the graph.
 1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
-```
 
 ### Example 2:
 
-<img alt="" src="https://assets.leetcode.com/uploads/2020/01/07/graph.png" style="width: 163px; height: 148px;" />
+![Example 2](https://assets.leetcode.com/uploads/2020/01/07/graph.png)
 
 ```
 Input: adjList = [[]]
 Output: [[]]
-Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
 ```
+
+**Explanation:** Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
 
 ### Example 3:
 
 ```
 Input: adjList = []
 Output: []
-Explanation: This an empty graph, it does not have any nodes.
 ```
+
+**Explanation:** This an empty graph, it does not have any nodes.
 
 ## Constraints
 

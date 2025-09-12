@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n^2)
     # Space: O(n)
     def word_break(self, s: str, word_dict: list[str]) -> bool:

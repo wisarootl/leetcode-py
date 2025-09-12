@@ -2,6 +2,7 @@ from leetcode_py import ListNode
 
 
 class Solution:
+
     # Time: O(n)
     # Space: O(1)
     def reverse_list(self, head: ListNode[int] | None) -> ListNode[int] | None:

@@ -6,6 +6,7 @@ class Solution:
     # Time: O(m + n) where m = len(s), n = len(t)
     # Space: O(k) where k is unique chars in t
     def min_window(self, s: str, t: str) -> str:
+
         if not t or len(t) > len(s):
             return ""
 

@@ -5,10 +5,15 @@ class Codec:
     # Preorder with Null Markers
     # Time: O(n)
     # Space: O(n)
-    def serialize(self, root: TreeNode | None) -> str:
+    def __init__(self) -> None:
+        pass
+
+    # Time: O(n)
+    # Space: O(n)
+    def serialize(self, root: TreeNode[int] | None) -> str:
         vals = []
 
-        def dfs(node: TreeNode | None):
+        def dfs(node: TreeNode[int] | None):
             if not node:
                 vals.append("#")
                 return
@@ -21,14 +26,14 @@ class Codec:
 
     # Time: O(n)
     # Space: O(n)
-    def deserialize(self, data: str) -> TreeNode | None:
+    def deserialize(self, data: str) -> TreeNode[int] | None:
         vals = iter(data.split(","))
 
         def dfs():
             val = next(vals)
             if val == "#":
                 return None
-            node = TreeNode(int(val))
+            node = TreeNode[int](int(val))
             node.left = dfs()
             node.right = dfs()
             return node

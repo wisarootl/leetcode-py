@@ -5,43 +5,60 @@
     "problem_title": "Word Ladder",
     "difficulty": "Hard",
     "topics": "Hash Table, String, Breadth-First Search",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "A **transformation sequence** from word `beginWord` to word `endWord` using a dictionary `wordList` is a sequence of words `beginWord -> s1 -> s2 -> ... -> sk` such that:\n\n- Every adjacent pair of words differs by a single letter.\n- Every `si` for `1 <= i <= k` is in `wordList`. Note that `beginWord` does not need to be in `wordList`.\n- `sk == endWord`\n\nGiven two words, `beginWord` and `endWord`, and a dictionary `wordList`, return the **number of words** in the **shortest transformation sequence** from `beginWord` to `endWord`, or `0` if no such sequence exists.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]\nOutput: 5\n```\n**Explanation:** One shortest transformation sequence is \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> \"cog\", which is 5 words long."
-        },
-        {
-            "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]\nOutput: 0\n```\n**Explanation:** The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]\nOutput: 5\n```\n**Explanation:** One shortest transformation sequence is \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> \"cog\", which is 5 words long."
+            },
+            {
+                "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]\nOutput: 0\n```\n**Explanation:** The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
+            }
+        ]
+    },
     "readme_constraints": "- 1 <= beginWord.length <= 10\n- endWord.length == beginWord.length\n- 1 <= wordList.length <= 5000\n- wordList[i].length == beginWord.length\n- beginWord, endWord, and wordList[i] consist of lowercase English letters.\n- beginWord != endWord\n- All the words in wordList are unique.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "ladder_length",
+    "helpers_run_signature": "(solution_class: type, begin_word: str, end_word: str, word_list: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.ladder_length(begin_word, end_word, word_list)",
+    "helpers_assert_name": "ladder_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "ladder_length",
-            "parameters": "begin_word: str, end_word: str, word_list: list[str]",
-            "return_type": "int",
-            "dummy_return": "0"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_ladder_length, run_ladder_length\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "WordLadder",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_ladder_length",
-            "parametrize": "begin_word, end_word, word_list, expected",
-            "parametrize_typed": "begin_word: str, end_word: str, word_list: list[str], expected: int",
-            "test_cases": "[('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'], 5), ('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'], 0), ('a', 'c', ['a', 'b', 'c'], 2)]",
-            "body": "result = self.solution.ladder_length(begin_word, end_word, word_list)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\nbegin_word = 'hit'\nend_word = 'cog'\nword_list = ['hot', 'dot', 'dog', 'lot', 'log', 'cog']\nexpected = 5",
-    "playground_execution": "result = Solution().ladder_length(begin_word, end_word, word_list)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "ladder_length",
+                "signature": "(self, begin_word: str, end_word: str, word_list: list[str]) -> int",
+                "body": "        # TODO: Implement ladder_length\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_ladder_length",
+                "signature": "(self, begin_word: str, end_word: str, word_list: list[str], expected: int)",
+                "parametrize": "begin_word, end_word, word_list, expected",
+                "test_cases": "[('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'], 5), ('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'], 0), ('a', 'c', ['a', 'b', 'c'], 2), ('hot', 'dog', ['hot', 'dog'], 0), ('hot', 'dog', ['hot', 'hog', 'dog'], 3)]",
+                "body": "        result = run_ladder_length(Solution, begin_word, end_word, word_list)\n        assert_ladder_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_ladder_length, assert_ladder_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbegin_word = 'hit'\nend_word = 'cog'\nword_list = ['hot', 'dot', 'dog', 'lot', 'log', 'cog']\nexpected = 5",
+    "playground_run": "result = run_ladder_length(Solution, begin_word, end_word, word_list)\nresult",
+    "playground_assert": "assert_ladder_length(result, expected)"
 }

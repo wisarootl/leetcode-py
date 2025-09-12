@@ -1,0 +1,42 @@
+import pytest
+
+from leetcode_py.test_utils import logged_test
+
+from .helpers import assert_num_islands, run_num_islands
+from .solution import Solution
+
+
+class TestNumberOfIslands:
+    def setup_method(self):
+        self.solution = Solution()
+
+    @logged_test
+    @pytest.mark.parametrize(
+        "grid, expected",
+        [
+            (
+                [
+                    ["1", "1", "1", "1", "0"],
+                    ["1", "1", "0", "1", "0"],
+                    ["1", "1", "0", "0", "0"],
+                    ["0", "0", "0", "0", "0"],
+                ],
+                1,
+            ),
+            (
+                [
+                    ["1", "1", "0", "0", "0"],
+                    ["1", "1", "0", "0", "0"],
+                    ["0", "0", "1", "0", "0"],
+                    ["0", "0", "0", "1", "1"],
+                ],
+                3,
+            ),
+            ([["1"]], 1),
+            ([["0"]], 0),
+            ([["1", "0", "1"], ["0", "1", "0"], ["1", "0", "1"]], 5),
+        ],
+    )
+    def test_num_islands(self, grid: list[list[str]], expected: int):
+        result = run_num_islands(Solution, grid)
+        assert_num_islands(result, expected)

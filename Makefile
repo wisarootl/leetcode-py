@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= word_break
+PROBLEM ?= min_stack
 FORCE ?= 0
 COMMA := ,
 
@@ -46,7 +46,6 @@ lint:
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	$(call lint_target,.)
 
-
 test:
 	poetry run pytest leetcode/ tests/ \
 		-v --cov=leetcode --cov=leetcode_py \
@@ -61,7 +60,7 @@ p-test:
 		echo "Error: Problem '$(PROBLEM)' not found in leetcode/ directory"; \
 		exit 1; \
 	fi
-	poetry run pytest leetcode/$(PROBLEM)/tests.py -v -s
+	poetry run pytest leetcode/$(PROBLEM)/test_solution.py -v -s
 
 p-lint:
 	@echo "Linting problem: $(PROBLEM)"
@@ -81,7 +80,9 @@ p-del:
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
 	@echo "This will DELETE all existing problems and regenerate from JSON templates."
-	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] || exit 1
+	@if [ "$$CI" != "true" ]; then \
+		read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] || exit 1; \
+	fi
 	@echo "Deleting existing problems..."
 	@rm -rf leetcode/*/
 	@echo "Generating all problems..."

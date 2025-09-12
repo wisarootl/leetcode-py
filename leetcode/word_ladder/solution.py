@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(M^2 * N) where M is length of each word, N is total number of words
     # Space: O(M * N) for the visited sets
     def ladder_length(self, begin_word: str, end_word: str, word_list: list[str]) -> int:

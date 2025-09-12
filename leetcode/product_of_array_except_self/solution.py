@@ -1,4 +1,5 @@
 class Solution:
+
     # Time: O(n)
     # Space: O(1)
     def product_except_self(self, nums: list[int]) -> list[int]:

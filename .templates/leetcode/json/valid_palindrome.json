@@ -5,46 +5,63 @@
     "problem_title": "Valid Palindrome",
     "difficulty": "Easy",
     "topics": "Two Pointers, String",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "A phrase is a **palindrome** if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string `s`, return `true` if it is a **palindrome**, or `false` otherwise.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: s = \"A man, a plan, a canal: Panama\"\nOutput: true\n```\n**Explanation:** \"amanaplanacanalpanama\" is a palindrome."
-        },
-        {
-            "content": "```\nInput: s = \"race a car\"\nOutput: false\n```\n**Explanation:** \"raceacar\" is not a palindrome."
-        },
-        {
-            "content": "```\nInput: s = \" \"\nOutput: true\n```\n**Explanation:** s is an empty string \"\" after removing non-alphanumeric characters. Since an empty string reads the same forward and backward, it is a palindrome."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"A man, a plan, a canal: Panama\"\nOutput: true\n```\n**Explanation:** \"amanaplanacanalpanama\" is a palindrome."
+            },
+            {
+                "content": "```\nInput: s = \"race a car\"\nOutput: false\n```\n**Explanation:** \"raceacar\" is not a palindrome."
+            },
+            {
+                "content": "```\nInput: s = \" \"\nOutput: true\n```\n**Explanation:** s is an empty string \"\" after removing non-alphanumeric characters. Since an empty string reads the same forward and backward, it is a palindrome."
+            }
+        ]
+    },
     "readme_constraints": "- `1 <= s.length <= 2 * 10^5`\n- `s` consists only of printable ASCII characters.",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_palindrome",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_palindrome(s)",
+    "helpers_assert_name": "is_palindrome",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "is_palindrome",
-            "parameters": "s: str",
-            "return_type": "bool",
-            "dummy_return": "False"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_is_palindrome, run_is_palindrome\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "ValidPalindrome",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_is_palindrome",
-            "parametrize": "s, expected",
-            "parametrize_typed": "s: str, expected: bool",
-            "test_cases": "[(\"A man, a plan, a canal: Panama\", True), (\"race a car\", False), (\" \", True), (\"\", True), (\"a\", True), (\"Madam\", True), (\"No 'x' in Nixon\", True), (\"Mr. Owl ate my metal worm\", True)]",
-            "body": "result = self.solution.is_palindrome(s)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\ns = \"A man, a plan, a canal: Panama\"\nexpected = True",
-    "playground_execution": "result = Solution().is_palindrome(s)\nresult",
-    "playground_assertion": "assert result == expected"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_palindrome",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement is_palindrome\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_palindrome",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": "[(\"A man, a plan, a canal: Panama\", True), (\"race a car\", False), (\" \", True), (\"\", True), (\"a\", True), (\"Madam\", True), (\"No 'x' in Nixon\", True), (\"Mr. Owl ate my metal worm\", True)]",
+                "body": "        result = run_is_palindrome(Solution, s)\n        assert_is_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_palindrome, assert_is_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = \"A man, a plan, a canal: Panama\"\nexpected = True",
+    "playground_run": "result = run_is_palindrome(Solution, s)\nresult",
+    "playground_assert": "assert_is_palindrome(result, expected)"
 }

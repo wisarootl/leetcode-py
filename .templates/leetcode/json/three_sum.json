@@ -5,46 +5,63 @@
     "problem_title": "3Sum",
     "difficulty": "Medium",
     "topics": "Array, Two Pointers, Sorting",
-    "tags": ["grind-75"],
+    "_tags": { "list": ["grind-75"] },
     "readme_description": "Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.\n\nNotice that the solution set must not contain duplicate triplets.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n```\n**Explanation:** \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter."
-        },
-        {
-            "content": "```\nInput: nums = [0,1,1]\nOutput: []\n```\n**Explanation:** The only possible triplet does not sum up to 0."
-        },
-        {
-            "content": "```\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]\n```\n**Explanation:** The only possible triplet sums up to 0."
-        }
-    ],
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n```\n**Explanation:** \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter."
+            },
+            {
+                "content": "```\nInput: nums = [0,1,1]\nOutput: []\n```\n**Explanation:** The only possible triplet does not sum up to 0."
+            },
+            {
+                "content": "```\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]\n```\n**Explanation:** The only possible triplet sums up to 0."
+            }
+        ]
+    },
     "readme_constraints": "- 3 <= nums.length <= 3000\n- -10^5 <= nums[i] <= 10^5",
     "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "three_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.three_sum(nums)",
+    "helpers_assert_name": "three_sum",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    result_sorted = [sorted(triplet) for triplet in result]\n    expected_sorted = [sorted(triplet) for triplet in expected]\n    result_sorted.sort()\n    expected_sorted.sort()\n    assert result_sorted == expected_sorted\n    return True",
     "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "three_sum",
-            "parameters": "nums: list[int]",
-            "return_type": "list[list[int]]",
-            "dummy_return": "[]"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_three_sum, run_three_sum\nfrom .solution import Solution",
+    "test_content": "",
     "test_class_name": "ThreeSum",
-    "test_helper_methods": [
-        { "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }
-    ],
-    "test_methods": [
-        {
-            "name": "test_three_sum",
-            "parametrize": "nums, expected",
-            "parametrize_typed": "nums: list[int], expected: list[list[int]]",
-            "test_cases": "[([-1, 0, 1, 2, -1, -4], [[-1, -1, 2], [-1, 0, 1]]), ([0, 1, 1], []), ([0, 0, 0], [[0, 0, 0]]), ([-1, 0, 1], [[-1, 0, 1]]), ([1, 2, -2, -1], []), ([-2, 0, 1, 1, 2], [[-2, 0, 2], [-2, 1, 1]])]",
-            "body": "result = self.solution.three_sum(nums)\n# Sort both result and expected for comparison since order doesn't matter\nresult_sorted = [sorted(triplet) for triplet in result]\nexpected_sorted = [sorted(triplet) for triplet in expected]\nresult_sorted.sort()\nexpected_sorted.sort()\nassert result_sorted == expected_sorted"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\nnums = [-1, 0, 1, 2, -1, -4]\nexpected = [[-1, -1, 2], [-1, 0, 1]]",
-    "playground_execution": "result = Solution().three_sum(nums)\nresult",
-    "playground_assertion": "# Sort for comparison since order doesn't matter\nresult_sorted = [sorted(triplet) for triplet in result]\nexpected_sorted = [sorted(triplet) for triplet in expected]\nresult_sorted.sort()\nexpected_sorted.sort()\nassert result_sorted == expected_sorted"
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "three_sum",
+                "signature": "(self, nums: list[int]) -> list[list[int]]",
+                "body": "        # TODO: Implement three_sum\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_three_sum",
+                "signature": "(self, nums: list[int], expected: list[list[int]])",
+                "parametrize": "nums, expected",
+                "test_cases": "[([-1, 0, 1, 2, -1, -4], [[-1, -1, 2], [-1, 0, 1]]), ([0, 1, 1], []), ([0, 0, 0], [[0, 0, 0]]), ([-1, 0, 1], [[-1, 0, 1]]), ([1, 2, -2, -1], []), ([-2, 0, 1, 1, 2], [[-2, 0, 2], [-2, 1, 1]])]",
+                "body": "        result = run_three_sum(Solution, nums)\n        assert_three_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_three_sum, assert_three_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [-1, 0, 1, 2, -1, -4]\nexpected = [[-1, -1, 2], [-1, 0, 1]]",
+    "playground_run": "result = run_three_sum(Solution, nums)\nresult",
+    "playground_assert": "assert_three_sum(result, expected)"
 }
