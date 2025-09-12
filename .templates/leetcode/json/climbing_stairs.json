@@ -52,7 +52,7 @@
                 "name": "test_climb_stairs",
                 "signature": "(self, n: int, expected: int)",
                 "parametrize": "n, expected",
-                "test_cases": "[(1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (10, 89), (20, 10946), (45, 1836311903)]",
+                "test_cases": "[(1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21), (8, 34), (9, 55), (10, 89), (15, 987), (20, 10946), (25, 121393), (30, 1346269), (35, 14930352), (40, 165580141), (45, 1836311903)]",
                 "body": "        result = run_climb_stairs(Solution, n)\n        assert_climb_stairs(result, expected)"
             }
         ]

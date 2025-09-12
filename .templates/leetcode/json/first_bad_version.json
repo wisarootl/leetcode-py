@@ -55,7 +55,7 @@
                 "name": "test_first_bad_version",
                 "signature": "(self, n: int, bad: int, expected: int)",
                 "parametrize": "n, bad, expected",
-                "test_cases": "[(5, 4, 4), (1, 1, 1), (3, 1, 1), (10, 7, 7), (100, 50, 50), (2, 1, 1), (2, 2, 2), (1000, 1, 1), (1000, 999, 999), (1000, 500, 500)]",
+                "test_cases": "[(5, 4, 4), (1, 1, 1), (3, 1, 1), (10, 7, 7), (100, 50, 50), (2, 1, 1), (2, 2, 2), (1000, 1, 1), (1000, 999, 999), (1000, 500, 500), (20, 15, 15), (50, 25, 25), (8, 3, 3), (16, 9, 9), (200, 150, 150)]",
                 "body": "        result = run_first_bad_version(Solution, n, bad)\n        assert_first_bad_version(result, expected)"
             }
         ]

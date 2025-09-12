@@ -19,6 +19,14 @@ class TestSerializeAndDeserializeBinaryTree:
             ([1, None, 2]),
             ([1, 2, 3, 4, 5, 6, 7]),
             ([5, 2, 3, None, None, 2, 4, 3, 1]),
+            ([1, 2, 3]),
+            ([1, None, None]),
+            ([1, 2, None, 4]),
+            ([1, None, 2, None, 3]),
+            ([10, 5, 15, None, 6, 12, 20]),
+            ([0, -1, 1]),
+            ([100]),
+            ([1, 2, 3, 4, None, None, 7, 8]),
         ],
     )
     def test_serialize_deserialize(self, root_list: list[int | None]):

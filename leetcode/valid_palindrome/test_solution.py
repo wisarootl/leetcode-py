@@ -22,6 +22,14 @@ class TestValidPalindrome:
             ("Madam", True),
             ("No 'x' in Nixon", True),
             ("Mr. Owl ate my metal worm", True),
+            ("Was it a car or a cat I saw?", True),
+            ("Madam, I'm Adam", True),
+            ("Never odd or even", True),
+            ("Do geese see God?", True),
+            ("Step on no pets", True),
+            ("12321", True),
+            ("hello", False),
+            ("ab", False),
         ],
     )
     def test_is_palindrome(self, s: str, expected: bool):

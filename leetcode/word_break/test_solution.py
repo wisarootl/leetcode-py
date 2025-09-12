@@ -21,6 +21,14 @@ class TestWordBreak:
             ("a", ["a"], True),
             ("ab", ["a", "b"], True),
             ("abcd", ["a", "abc", "d"], True),
+            ("aaaaaaa", ["aaaa", "aaa"], True),
+            ("aaaaaaa", ["aaaa", "aa"], False),
+            ("cars", ["car", "ca", "rs"], True),
+            ("raceacar", ["race", "a", "car"], True),
+            ("abcdef", ["abc", "def"], True),
+            ("abcdef", ["ab", "cd", "ef"], True),
+            ("goalspecial", ["go", "goal", "goals", "special"], True),
+            ("bb", ["a", "b", "bbb", "bbbb"], True),
         ],
     )
     def test_word_break(self, s: str, word_dict: list[str], expected: bool):

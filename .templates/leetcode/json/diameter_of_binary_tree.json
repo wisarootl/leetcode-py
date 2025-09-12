@@ -50,7 +50,7 @@
                 "name": "test_diameter_of_binary_tree",
                 "signature": "(self, root_list: list[int | None], expected: int)",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([1, 2, 3, 4, 5], 3), ([1, 2], 1), ([], 0), ([1], 0), ([1, 2, 3], 2), ([1, None, 2], 1)]",
+                "test_cases": "[([1, 2, 3, 4, 5], 3), ([1, 2], 1), ([], 0), ([1], 0), ([1, 2, 3], 2), ([1, None, 2], 1), ([1, 2, 3, 4, 5, None, None, 6, 7], 4), ([4, 2, 6, 1, 3, 5, 7], 4), ([1, 2, None, 3, None, 4], 3), ([1, 2, 3, None, None, 4, 5, None, None, 6, 7], 4), ([10, 5, 15, 3, 7, 12, 20], 4), ([1, None, 2, None, 3, None, 4], 3)]",
                 "body": "        result = run_diameter_of_binary_tree(Solution, root_list)\n        assert_diameter_of_binary_tree(result, expected)"
             }
         ]

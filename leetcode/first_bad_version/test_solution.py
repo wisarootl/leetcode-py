@@ -24,6 +24,11 @@ class TestFirstBadVersion:
             (1000, 1, 1),
             (1000, 999, 999),
             (1000, 500, 500),
+            (20, 15, 15),
+            (50, 25, 25),
+            (8, 3, 3),
+            (16, 9, 9),
+            (200, 150, 150),
         ],
     )
     def test_first_bad_version(self, n: int, bad: int, expected: int):

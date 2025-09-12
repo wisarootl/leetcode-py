@@ -24,6 +24,16 @@ class TestValidParentheses:
             (")", False),
             ("{[()]}", True),
             ("{[(])}", False),
+            ("((", False),
+            ("))", False),
+            ("([{}])", True),
+            ("([{]})", False),
+            ("{[}]", False),
+            ("((()))", True),
+            ("((())", False),
+            ("(){}[]", True),
+            ("{[(", False),
+            ("]})", False),
         ],
     )
     def test_is_valid(self, s: str, expected: bool):

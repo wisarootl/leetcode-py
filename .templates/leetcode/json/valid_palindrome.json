@@ -55,7 +55,7 @@
                 "name": "test_is_palindrome",
                 "signature": "(self, s: str, expected: bool)",
                 "parametrize": "s, expected",
-                "test_cases": "[(\"A man, a plan, a canal: Panama\", True), (\"race a car\", False), (\" \", True), (\"\", True), (\"a\", True), (\"Madam\", True), (\"No 'x' in Nixon\", True), (\"Mr. Owl ate my metal worm\", True)]",
+                "test_cases": "[(\"A man, a plan, a canal: Panama\", True), (\"race a car\", False), (\" \", True), (\"\", True), (\"a\", True), (\"Madam\", True), (\"No 'x' in Nixon\", True), (\"Mr. Owl ate my metal worm\", True), (\"Was it a car or a cat I saw?\", True), (\"Madam, I'm Adam\", True), (\"Never odd or even\", True), (\"Do geese see God?\", True), (\"Step on no pets\", True), (\"12321\", True), (\"hello\", False), (\"ab\", False)]",
                 "body": "        result = run_is_palindrome(Solution, s)\n        assert_is_palindrome(result, expected)"
             }
         ]

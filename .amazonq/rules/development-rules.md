@@ -24,5 +24,7 @@ Each problem has:
 
 - `README.md` - Problem description
 - `solution.py` - Implementation with TODO placeholder
-- `tests.py` - Parametrized pytest tests
+- `test_solution.py` - Parametrized pytest tests
+- `helpers.py` - Test helper functions
+- `playground.ipynb` - Interactive Jupyter notebook
 - `__init__.py` - Empty package file

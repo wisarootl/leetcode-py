@@ -55,7 +55,7 @@
                 "name": "test_min_window",
                 "signature": "(self, s: str, t: str, expected: str)",
                 "parametrize": "s, t, expected",
-                "test_cases": "[(\"ADOBECODEBANC\", \"ABC\", \"BANC\"), (\"a\", \"a\", \"a\"), (\"a\", \"aa\", \"\"), (\"ab\", \"b\", \"b\"), (\"abc\", \"cba\", \"abc\")]",
+                "test_cases": "[(\"ADOBECODEBANC\", \"ABC\", \"BANC\"), (\"a\", \"a\", \"a\"), (\"a\", \"aa\", \"\"), (\"ab\", \"b\", \"b\"), (\"abc\", \"cba\", \"abc\"), (\"aa\", \"aa\", \"aa\"), (\"a\", \"b\", \"\"), (\"ab\", \"a\", \"a\"), (\"bba\", \"ab\", \"ba\"), (\"acbbaca\", \"aba\", \"baca\"), (\"cabwefgewcwaefgcf\", \"cae\", \"cwae\")]",
                 "body": "        result = run_min_window(Solution, s, t)\n        assert_min_window(result, expected)"
             }
         ]

@@ -53,7 +53,7 @@
                 "name": "test_lowest_common_ancestor",
                 "signature": "(self, root_list: list[int | None], p_val: int, q_val: int, expected_val: int)",
                 "parametrize": "root_list, p_val, q_val, expected_val",
-                "test_cases": "[([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 8, 6), ([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 4, 2), ([2, 1], 2, 1, 2), ([2, 1], 1, 2, 2), ([6, 2, 8, 0, 4, 7, 9], 0, 4, 2), ([6, 2, 8, 0, 4, 7, 9], 7, 9, 8)]",
+                "test_cases": "[([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 8, 6), ([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 4, 2), ([2, 1], 2, 1, 2), ([2, 1], 1, 2, 2), ([6, 2, 8, 0, 4, 7, 9], 0, 4, 2), ([6, 2, 8, 0, 4, 7, 9], 7, 9, 8), ([5, 3, 6, 2, 4, None, None, 1], 1, 4, 3), ([10, 5, 15, 3, 7, 12, 20], 3, 7, 5), ([1, None, 2], 1, 2, 1), ([3, 1, 4, None, 2], 1, 2, 1), ([20, 8, 22, 4, 12, None, None, None, None, 10, 14], 10, 14, 12), ([50, 30, 70, 20, 40, 60, 80], 20, 40, 30)]",
                 "body": "        result = run_lowest_common_ancestor(Solution, root_list, p_val, q_val)\n        assert_lowest_common_ancestor(result, expected_val)"
             }
         ]

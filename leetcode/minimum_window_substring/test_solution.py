@@ -19,6 +19,12 @@ class TestMinimumWindowSubstring:
             ("a", "aa", ""),
             ("ab", "b", "b"),
             ("abc", "cba", "abc"),
+            ("aa", "aa", "aa"),
+            ("a", "b", ""),
+            ("ab", "a", "a"),
+            ("bba", "ab", "ba"),
+            ("acbbaca", "aba", "baca"),
+            ("cabwefgewcwaefgcf", "cae", "cwae"),
         ],
     )
     def test_min_window(self, s: str, t: str, expected: str):
