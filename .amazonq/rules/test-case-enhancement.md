@@ -2,7 +2,7 @@
 
 ## Simple Enhancement Workflow
 
-When user requests test case enhancement:
+When user requests test case enhancement or **test reproducibility verification**:
 
 ### 1. Problem Resolution
 
@@ -69,6 +69,19 @@ make p-gen PROBLEM={problem_name} FORCE=1
 make p-lint PROBLEM={problem_name}
 ```
 
+## Test Reproducibility Verification
+
+Use this same workflow when CI tests fail due to reproducibility issues:
+
+**Process Name**: Test Reproducibility Verification
+
+**When to Use**:
+
+- CI test failures in reproducibility checks
+- Inconsistent test results between environments
+- Missing edge cases causing coverage gaps
+- Need to ensure 100% code coverage
+
 ## Success Criteria
 
 - All tests pass with enhanced test cases
@@ -76,3 +89,4 @@ make p-lint PROBLEM={problem_name}
 - Original solution code preserved
 - **Enhanced test cases in final test_solution.py**
 - JSON template updated for future regeneration
+- **100% code coverage including edge cases**
