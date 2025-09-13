@@ -1,0 +1,64 @@
+{
+    "problem_name": "unique_paths",
+    "solution_class_name": "Solution",
+    "problem_number": "62",
+    "problem_title": "Unique Paths",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Combinatorics",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "There is a robot on an `m x n` grid. The robot is initially located at the **top-left corner** (i.e., `grid[0][0]`). The robot tries to move to the **bottom-right corner** (i.e., `grid[m - 1][n - 1]`). The robot can only move either down or right at any point in time.\n\nGiven the two integers `m` and `n`, return *the number of possible unique paths that the robot can take to reach the bottom-right corner*.\n\nThe test cases are generated so that the answer will be less than or equal to `2 * 10^9`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png)\n\n```\nInput: m = 3, n = 7\nOutput: 28\n```"
+            },
+            {
+                "content": "```\nInput: m = 3, n = 2\nOutput: 3\n```\n**Explanation:** From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:\n1. Right -> Down -> Down\n2. Down -> Down -> Right\n3. Down -> Right -> Down"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= m, n <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "unique_paths",
+    "helpers_run_signature": "(solution_class: type, m: int, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.unique_paths(m, n)",
+    "helpers_assert_name": "unique_paths",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_unique_paths, run_unique_paths\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UniquePaths",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "unique_paths",
+                "signature": "(self, m: int, n: int) -> int",
+                "body": "        # TODO: Implement unique_paths\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_unique_paths",
+                "signature": "(self, m: int, n: int, expected: int)",
+                "parametrize": "m, n, expected",
+                "test_cases": "[(3, 7, 28), (3, 2, 3), (1, 1, 1), (1, 10, 1), (10, 1, 1), (2, 2, 2), (3, 3, 6), (4, 4, 20), (5, 5, 70), (2, 3, 3), (3, 4, 10), (4, 5, 35), (6, 3, 21), (7, 3, 28), (10, 10, 48620)]",
+                "body": "        result = run_unique_paths(Solution, m, n)\n        assert_unique_paths(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_unique_paths, assert_unique_paths\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nm = 3\nn = 7\nexpected = 28",
+    "playground_run": "result = run_unique_paths(Solution, m, n)\nresult",
+    "playground_assert": "assert_unique_paths(result, expected)"
+}

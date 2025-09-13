@@ -5,47 +5,60 @@
     "problem_title": "Accounts Merge",
     "difficulty": "Medium",
     "topics": "Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting",
-    "tags": ["grind-75"],
-    "readme_description": "Given a list of `accounts` where each element `accounts[i]` is a list of strings, where the first element `accounts[i][0]` is a name, and the rest of the elements are **emails** representing emails of the account.\n\nNow, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.\n\nAfter merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails **in sorted order**. The accounts themselves can be returned in **any order**.",
-    "readme_examples": [
-        {
-            "content": "```\nInput: accounts = [[\"John\",\"johnsmith@mail.com\",\"john_newyork@mail.com\"],[\"John\",\"johnsmith@mail.com\",\"john00@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]\nOutput: [[\"John\",\"john00@mail.com\",\"john_newyork@mail.com\",\"johnsmith@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]\n```\n**Explanation:** The first and second John's are the same person as they have the common email \"johnsmith@mail.com\". The third John and Mary are different people as none of their email addresses are used by other accounts."
-        },
-        {
-            "content": "```\nInput: accounts = [[\"Gabe\",\"Gabe0@m.co\",\"Gabe3@m.co\",\"Gabe1@m.co\"],[\"Kevin\",\"Kevin3@m.co\",\"Kevin5@m.co\",\"Kevin0@m.co\"],[\"Ethan\",\"Ethan5@m.co\",\"Ethan4@m.co\",\"Ethan0@m.co\"],[\"Hanzo\",\"Hanzo3@m.co\",\"Hanzo1@m.co\",\"Hanzo0@m.co\"],[\"Fern\",\"Fern5@m.co\",\"Fern1@m.co\",\"Fern0@m.co\"]]\nOutput: [[\"Ethan\",\"Ethan0@m.co\",\"Ethan4@m.co\",\"Ethan5@m.co\"],[\"Gabe\",\"Gabe0@m.co\",\"Gabe1@m.co\",\"Gabe3@m.co\"],[\"Hanzo\",\"Hanzo0@m.co\",\"Hanzo1@m.co\",\"Hanzo3@m.co\"],[\"Kevin\",\"Kevin0@m.co\",\"Kevin3@m.co\",\"Kevin5@m.co\"],[\"Fern\",\"Fern0@m.co\",\"Fern1@m.co\",\"Fern5@m.co\"]]\n```"
-        }
-    ],
-    "readme_constraints": "- `1 <= accounts.length <= 1000`\n- `2 <= accounts[i].length <= 10`\n- `1 <= accounts[i][j].length <= 30`\n- `accounts[i][0]` consists of English letters.\n- `accounts[i][j] (for j > 0)` is a valid email.",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given a list of `accounts` where each element `accounts[i]` is a list of strings, where the first element `accounts[i][0]` is a name, and the rest of the elements are emails representing emails of the account.\n\nNow, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.\n\nAfter merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in sorted order. The accounts themselves can be returned in any order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: accounts = [[\"John\",\"johnsmith@mail.com\",\"john_newyork@mail.com\"],[\"John\",\"johnsmith@mail.com\",\"john00@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]\nOutput: [[\"John\",\"john00@mail.com\",\"john_newyork@mail.com\",\"johnsmith@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]\n```\n**Explanation:** The first and second John's are the same person as they have the common email \"johnsmith@mail.com\". The third John and Mary are different people as none of their email addresses are used by other accounts."
+            },
+            {
+                "content": "```\nInput: accounts = [[\"Gabe\",\"Gabe0@m.co\",\"Gabe3@m.co\",\"Gabe1@m.co\"],[\"Kevin\",\"Kevin3@m.co\",\"Kevin5@m.co\",\"Kevin0@m.co\"],[\"Ethan\",\"Ethan5@m.co\",\"Ethan4@m.co\",\"Ethan0@m.co\"],[\"Hanzo\",\"Hanzo3@m.co\",\"Hanzo1@m.co\",\"Hanzo0@m.co\"],[\"Fern\",\"Fern5@m.co\",\"Fern1@m.co\",\"Fern0@m.co\"]]\nOutput: [[\"Ethan\",\"Ethan0@m.co\",\"Ethan4@m.co\",\"Ethan5@m.co\"],[\"Gabe\",\"Gabe0@m.co\",\"Gabe1@m.co\",\"Gabe3@m.co\"],[\"Hanzo\",\"Hanzo0@m.co\",\"Hanzo1@m.co\",\"Hanzo3@m.co\"],[\"Kevin\",\"Kevin0@m.co\",\"Kevin3@m.co\",\"Kevin5@m.co\"],[\"Fern\",\"Fern0@m.co\",\"Fern1@m.co\",\"Fern5@m.co\"]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= accounts.length <= 1000\n- 2 <= accounts[i].length <= 10\n- 1 <= accounts[i][j].length <= 30\n- accounts[i][0] consists of English letters.\n- accounts[i][j] (for j > 0) is a valid email.",
+    "readme_additional": "",
     "helpers_imports": "",
+    "helpers_content": "",
     "helpers_run_name": "accounts_merge",
     "helpers_run_signature": "(solution_class: type, accounts: list[list[str]])",
     "helpers_run_body": "    implementation = solution_class()\n    return implementation.accounts_merge(accounts)",
     "helpers_assert_name": "accounts_merge",
     "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
     "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    result_sorted = [sorted(account) for account in sorted(result)]\n    expected_sorted = [sorted(account) for account in sorted(expected)]\n    assert result_sorted == expected_sorted\n    return True",
-    "solution_methods": [
-        {
-            "name": "accounts_merge",
-            "signature": "(self, accounts: list[list[str]]) -> list[list[str]]",
-            "body": "        # TODO: Implement accounts_merge\n        return []"
-        }
-    ],
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
     "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_accounts_merge, run_accounts_merge\nfrom .solution import Solution",
     "test_content": "",
     "test_class_name": "AccountsMerge",
     "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
-    "test_helper_methods": [],
-    "test_methods": [
-        {
-            "name": "test_accounts_merge",
-            "signature": "(self, accounts: list[list[str]], expected: list[list[str]])",
-            "parametrize": "accounts, expected",
-            "test_cases": "[([[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]], [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]), ([[\"Gabe\", \"Gabe0@m.co\", \"Gabe3@m.co\", \"Gabe1@m.co\"], [\"Kevin\", \"Kevin3@m.co\", \"Kevin5@m.co\", \"Kevin0@m.co\"], [\"Ethan\", \"Ethan5@m.co\", \"Ethan4@m.co\", \"Ethan0@m.co\"], [\"Hanzo\", \"Hanzo3@m.co\", \"Hanzo1@m.co\", \"Hanzo0@m.co\"], [\"Fern\", \"Fern5@m.co\", \"Fern1@m.co\", \"Fern0@m.co\"]], [[\"Ethan\", \"Ethan0@m.co\", \"Ethan4@m.co\", \"Ethan5@m.co\"], [\"Gabe\", \"Gabe0@m.co\", \"Gabe1@m.co\", \"Gabe3@m.co\"], [\"Hanzo\", \"Hanzo0@m.co\", \"Hanzo1@m.co\", \"Hanzo3@m.co\"], [\"Kevin\", \"Kevin0@m.co\", \"Kevin3@m.co\", \"Kevin5@m.co\"], [\"Fern\", \"Fern0@m.co\", \"Fern1@m.co\", \"Fern5@m.co\"]]), ([[\"John\", \"john@mail.com\"]], [[\"John\", \"john@mail.com\"]]), ([[\"John\", \"john1@mail.com\"], [\"John\", \"john2@mail.com\"], [\"John\", \"john3@mail.com\"]], [[\"John\", \"john1@mail.com\"], [\"John\", \"john2@mail.com\"], [\"John\", \"john3@mail.com\"]]), ([[\"John\", \"a@mail.com\", \"b@mail.com\"], [\"John\", \"b@mail.com\", \"c@mail.com\"], [\"John\", \"d@mail.com\"]], [[\"John\", \"a@mail.com\", \"b@mail.com\", \"c@mail.com\"], [\"John\", \"d@mail.com\"]]), ([[\"Alice\", \"alice@mail.com\", \"alice1@mail.com\"], [\"Alice\", \"alice2@mail.com\", \"alice3@mail.com\"], [\"Alice\", \"alice1@mail.com\", \"alice2@mail.com\"]], [[\"Alice\", \"alice1@mail.com\", \"alice2@mail.com\", \"alice3@mail.com\", \"alice@mail.com\"]]), ([[\"Bob\", \"bob@mail.com\"], [\"Bob\", \"bob@mail.com\"]], [[\"Bob\", \"bob@mail.com\"]]), ([[\"David\", \"david1@mail.com\", \"david2@mail.com\"], [\"David\", \"david3@mail.com\"], [\"David\", \"david2@mail.com\", \"david4@mail.com\"]], [[\"David\", \"david1@mail.com\", \"david2@mail.com\", \"david4@mail.com\"], [\"David\", \"david3@mail.com\"]]), ([[\"Alex\", \"alex@mail.com\"], [\"Alex\", \"alex@mail.com\", \"alex2@mail.com\"], [\"Alex\", \"alex3@mail.com\"]], [[\"Alex\", \"alex2@mail.com\", \"alex@mail.com\"], [\"Alex\", \"alex3@mail.com\"]]), ([[\"Tom\", \"tom1@mail.com\"], [\"Tom\", \"tom2@mail.com\"], [\"Tom\", \"tom3@mail.com\"], [\"Tom\", \"tom4@mail.com\"]], [[\"Tom\", \"tom1@mail.com\"], [\"Tom\", \"tom2@mail.com\"], [\"Tom\", \"tom3@mail.com\"], [\"Tom\", \"tom4@mail.com\"]]), ([[\"Sam\", \"sam@mail.com\", \"sam1@mail.com\", \"sam2@mail.com\"]], [[\"Sam\", \"sam@mail.com\", \"sam1@mail.com\", \"sam2@mail.com\"]])]",
-            "body": "        result = run_accounts_merge(Solution, accounts)\n        assert_accounts_merge(result, expected)"
-        }
-    ],
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "accounts_merge",
+                "signature": "(self, accounts: list[list[str]]) -> list[list[str]]",
+                "body": "        # TODO: Implement accounts_merge\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_accounts_merge",
+                "signature": "(self, accounts: list[list[str]], expected: list[list[str]])",
+                "parametrize": "accounts, expected",
+                "test_cases": "[([['John', 'johnsmith@mail.com', 'john_newyork@mail.com'], ['John', 'johnsmith@mail.com', 'john00@mail.com'], ['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com']], [['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'], ['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com']]), ([['Gabe', 'Gabe0@m.co', 'Gabe3@m.co', 'Gabe1@m.co'], ['Kevin', 'Kevin3@m.co', 'Kevin5@m.co', 'Kevin0@m.co'], ['Ethan', 'Ethan5@m.co', 'Ethan4@m.co', 'Ethan0@m.co'], ['Hanzo', 'Hanzo3@m.co', 'Hanzo1@m.co', 'Hanzo0@m.co'], ['Fern', 'Fern5@m.co', 'Fern1@m.co', 'Fern0@m.co']], [['Ethan', 'Ethan0@m.co', 'Ethan4@m.co', 'Ethan5@m.co'], ['Gabe', 'Gabe0@m.co', 'Gabe1@m.co', 'Gabe3@m.co'], ['Hanzo', 'Hanzo0@m.co', 'Hanzo1@m.co', 'Hanzo3@m.co'], ['Kevin', 'Kevin0@m.co', 'Kevin3@m.co', 'Kevin5@m.co'], ['Fern', 'Fern0@m.co', 'Fern1@m.co', 'Fern5@m.co']]), ([['Alice', 'alice@mail.com']], [['Alice', 'alice@mail.com']]), ([['Bob', 'bob1@mail.com'], ['Bob', 'bob2@mail.com']], [['Bob', 'bob1@mail.com'], ['Bob', 'bob2@mail.com']]), ([['Alice', 'alice@mail.com', 'alice2@mail.com'], ['Alice', 'alice2@mail.com', 'alice3@mail.com']], [['Alice', 'alice2@mail.com', 'alice3@mail.com', 'alice@mail.com']]), ([['A', 'a@mail.com', 'b@mail.com'], ['B', 'b@mail.com', 'c@mail.com'], ['C', 'c@mail.com', 'd@mail.com']], [['A', 'a@mail.com', 'b@mail.com', 'c@mail.com', 'd@mail.com']]), ([['David', 'david@mail.com'], ['David', 'david@mail.com']], [['David', 'david@mail.com']]), ([['Alex', 'alex1@mail.com'], ['Bob', 'bob1@mail.com'], ['Charlie', 'charlie1@mail.com']], [['Alex', 'alex1@mail.com'], ['Bob', 'bob1@mail.com'], ['Charlie', 'charlie1@mail.com']]), ([['John', 'john1@mail.com', 'john2@mail.com'], ['John', 'john3@mail.com'], ['Jane', 'jane1@mail.com']], [['John', 'john1@mail.com', 'john2@mail.com'], ['John', 'john3@mail.com'], ['Jane', 'jane1@mail.com']]), ([['User', 'user@mail.com', 'user1@mail.com'], ['User', 'user2@mail.com', 'user@mail.com'], ['User', 'user3@mail.com', 'user1@mail.com']], [['User', 'user1@mail.com', 'user2@mail.com', 'user3@mail.com', 'user@mail.com']]), ([['Test', 'test1@mail.com'], ['Test', 'test2@mail.com'], ['Test', 'test1@mail.com', 'test3@mail.com']], [['Test', 'test2@mail.com'], ['Test', 'test1@mail.com', 'test3@mail.com']]), ([['Name', 'a@mail.com', 'b@mail.com', 'c@mail.com'], ['Name', 'd@mail.com', 'e@mail.com'], ['Name', 'c@mail.com', 'f@mail.com']], [['Name', 'd@mail.com', 'e@mail.com'], ['Name', 'a@mail.com', 'b@mail.com', 'c@mail.com', 'f@mail.com']])]",
+                "body": "        result = run_accounts_merge(Solution, accounts)\n        assert_accounts_merge(result, expected)"
+            }
+        ]
+    },
     "playground_imports": "from helpers import run_accounts_merge, assert_accounts_merge\nfrom solution import Solution",
-    "playground_setup": "# Example test case\naccounts = [[\"John\", \"johnsmith@mail.com\", \"john_newyork@mail.com\"], [\"John\", \"johnsmith@mail.com\", \"john00@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]\nexpected = [[\"John\", \"john00@mail.com\", \"john_newyork@mail.com\", \"johnsmith@mail.com\"], [\"Mary\", \"mary@mail.com\"], [\"John\", \"johnnybravo@mail.com\"]]",
+    "playground_setup": "# Example test case\naccounts = [['John', 'johnsmith@mail.com', 'john_newyork@mail.com'], ['John', 'johnsmith@mail.com', 'john00@mail.com'], ['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com']]\nexpected = [['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'], ['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com']]",
     "playground_run": "result = run_accounts_merge(Solution, accounts)\nresult",
     "playground_assert": "assert_accounts_merge(result, expected)"
 }

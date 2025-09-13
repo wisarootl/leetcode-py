@@ -18,6 +18,20 @@
 - Test all: `make test`
 - Beautiful logging with loguru
 
+### Multiple Solution Classes Pattern
+
+When implementing multiple approaches (e.g., Solution, SolutionMath), use parametrized testing:
+
+```python
+@pytest.mark.parametrize("solution_class", [Solution, SolutionMath])
+@pytest.mark.parametrize("input_params, expected", test_cases)
+def test_method(self, solution_class, input_params, expected):
+    result = run_helper(solution_class, *input_params)
+    assert_helper(result, expected)
+```
+
+This pattern tests all solution approaches with the same test cases, ensuring consistency across implementations.
+
 ## File Structure
 
 Each problem has:

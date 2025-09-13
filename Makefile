@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= two_sum
+PROBLEM ?= construct_binary_tree_from_preorder_and_inorder_traversal
 FORCE ?= 0
 COMMA := ,
 
