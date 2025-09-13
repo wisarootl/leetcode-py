@@ -7,24 +7,38 @@
 [![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
 
-Premium LeetCode practice repository with Python solutions, algorithm templates, data structure visualizations, and automated testing. Perfect for coding interview preparation, competitive programming, and mastering algorithms with Blind 75, Grind 75, and NeetCode 150 problems.
+A modern Python LeetCode practice environment that goes beyond basic problem solving. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 12+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
+
+**What makes this different:**
+
+- 🤖 **LLM-Assisted Workflow**: Generate new problems instantly with AI assistance
+- 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
+- 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
+- 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
+- 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
+
+Includes all **75 Grind problems** - the most essential coding interview questions curated for maximum impact.
+
+## 🎯 What's Included
+
+**Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview problems curated by the creator of Blind 75.
+
+**Future**: Planned expansion to all 169 Grind problems for comprehensive interview preparation.
 
 ## 🚀 Quick Start
 
 ```bash
-# Clone the repository
+# Clone and setup
 git clone https://github.com/wisarootl/leetcode-py.git
 cd leetcode-py
-
-# Install dependencies
 poetry install
 
-# Generate all problems to start practicing (fresh start - wipes all solutions)
-make gen-all-problems
+# Start with existing Grind 75 problems
+make gen-all-problems  # Regenerates all problems with TODO placeholders
 
-# Run existing problems
-make p-test PROBLEM=insert_interval
-make p-test PROBLEM=invert_binary_tree
+# Practice a specific problem
+make p-test PROBLEM=two_sum
+# Edit leetcode/two_sum/solution.py, then rerun tests
 
 # Run all tests
 make test
@@ -33,113 +47,148 @@ make test
 ## 📋 Prerequisites
 
 - Python 3.13+
-- make, git, Graphviz, poetry
+- Poetry, Make, Git, Graphviz
 
 ## 📁 Problem Structure
 
-Each problem follows a consistent template:
+Each problem follows a consistent, production-ready template:
 
 ```
 leetcode/two_sum/
-├── README.md          # Problem description and examples
-├── solution.py        # Your implementation with TODO placeholder
-├── tests.py          # Comprehensive test cases
-├── notebook.ipynb    # Interactive playground
-└── __init__.py       # Package marker
+├── README.md           # Problem description with examples and constraints
+├── solution.py         # Implementation with type hints and TODO placeholder
+├── test_solution.py    # Comprehensive parametrized tests (12+ test cases)
+├── helpers.py          # Test helper functions
+├── playground.py       # Interactive debugging environment (converted from .ipynb)
+└── __init__.py         # Package marker
 ```
 
-## 🎯 Supported Problem Categories (ongoing)
+## ✨ Key Features
 
-- **Arrays & Hashing** - Two Sum, Group Anagrams, Top K Elements
-- **Two Pointers** - Valid Palindrome, Container With Most Water
-- **Sliding Window** - Longest Substring, Minimum Window
-- **Stack** - Valid Parentheses, Daily Temperatures
-- **Binary Search** - Search Rotated Array, Find Minimum
-- **Linked Lists** - Reverse List, Merge Lists, Detect Cycle
-- **Trees** - Invert Tree, Maximum Depth, Serialize/Deserialize
-- **Tries** - Implement Trie, Word Search II
-- **Heap/Priority Queue** - Merge K Lists, Find Median
-- **Backtracking** - Combination Sum, Word Search, N-Queens
-- **Graphs** - Clone Graph, Course Schedule, Islands
-- **Advanced DP** - Climbing Stairs, Coin Change, LCS
-- **Greedy** - Jump Game, Gas Station
-- **Intervals** - Merge Intervals, Meeting Rooms
-- **Math & Geometry** - Rotate Image, Spiral Matrix
+### Production-Grade Development Environment
 
-Includes problems from **Blind 75**, **Grind 75**, **NeetCode 150**, and **Top Interview Questions**.
+- **Modern Python**: PEP 585/604 type hints, snake_case conventions
+- **Comprehensive Linting**: black, isort, ruff, mypy with nbqa for notebooks
+- **High Test Coverage**: 12+ test cases per problem including edge cases
+- **Beautiful Logging**: loguru integration for enhanced test debugging
+- **CI/CD Pipeline**: Automated testing, security scanning, and quality gates
 
-## 🎨 Visualizations
+### Enhanced Data Structure Visualization
 
-### Tree Visualization
+- **TreeNode**: Beautiful tree rendering with anytree and Graphviz
+- **ListNode**: Clean arrow-based visualization (`1 -> 2 -> 3`)
+- **Interactive Debugging**: Multi-cell playground environment
 
 ![Tree Visualization Placeholder](docs/images/tree-viz.png)
 _Beautiful tree rendering with anytree and Graphviz_
 
-### Linked List Visualization
-
 ![LinkedList Visualization Placeholder](docs/images/linkedlist-viz.png)
 _Clean arrow-based list visualization_
 
-### Jupyter Notebook Integration
+### Flexible Notebook Support
+
+- **Template Generation**: Creates Jupyter notebooks (`.ipynb`) by default
+- **Repository State**: This repo uses Python files (`.py`) for better version control
+- **User Choice**: Use `make nb-to-py` to convert notebooks to Python files, or keep as `.ipynb` for interactive development
 
 ![Notebook Placeholder](docs/images/notebook-example.png)
 _Interactive multi-cell playground for each problem_
 
-## ✨ Features
+## 🔄 Usage Patterns
 
-- **Template-driven development** - Consistent structure for every problem
-- **Beautiful visualizations** - TreeNode with anytree/Graphviz, ListNode with arrows
-- **Interactive notebooks** - Multi-cell playground for each problem
-- **One-command testing** - `make p-test PROBLEM=problem_name`
-- **Bulk regeneration** - `make gen-all-problems` from JSON templates
-- **Full linting** - black, isort, ruff, mypy with nbqa for notebooks
-- **Modern Python** - PEP 585/604 syntax with full type hints
+### For Current Grind 75 Problems
 
-## 🔄 Workflow Examples
-
-**Practice existing problems**:
+Perfect if you want to focus on the most essential interview problems:
 
 ```bash
-# Work on a specific problem
-make p-test PROBLEM=lru_cache
-# Edit leetcode/lru_cache/solution.py
-# Run tests to verify
-
-# Or use make p-test if default problem is set in Makefile
-make p-test
-```
-
-**Add new problems**:
-
-```bash
-# Ask your LLM assistant:
-# "Create LeetCode problem 146 (LRU Cache)"
-# The assistant handles everything automatically!
-```
-
-_Behind the scenes: Assistant follows `.amazonq/rules/problem-creation.md` to scrape problem data, create JSON template, generate structure with `make p-gen`, and verify with `make lint`._
-
-**Bulk operations**:
-
-```bash
-# Test all problems
-make test
-# Regenerate all from templates
+# Regenerate all 75 problems with fresh TODO placeholders
 make gen-all-problems
-# Check code quality
-make lint
+
+# Work through problems systematically
+make p-test PROBLEM=two_sum
+make p-test PROBLEM=valid_palindrome
+make p-test PROBLEM=merge_two_sorted_lists
 ```
 
-## 🧰 Helper Classes (ongoing)
+### For Additional Problems (LLM-Assisted)
+
+If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.):
+
+```bash
+# Example commands to give your LLM assistant:
+"Create LeetCode problem 146 (LRU Cache)"
+"Add problem 'Word Ladder' by number 127"
+"Generate problem 'Serialize and Deserialize Binary Tree'"
+
+# For test enhancement (when you need more comprehensive test coverage):
+"Enhance test cases for two_sum problem"
+"Fix test reproducibility for binary_tree_inorder_traversal"
+```
+
+**Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
+
+- [`.amazonq/rules/problem-creation.md`](.amazonq/rules/problem-creation.md) - Complete problem generation workflow
+- [`.amazonq/rules/test-case-enhancement.md`](.amazonq/rules/test-case-enhancement.md) - Test enhancement and reproducibility verification
+
+**Manual Check**: Find problems needing more test cases:
+
+```bash
+poetry run python .templates/check_test_cases.py --threshold=10
+```
+
+## 🧰 Helper Classes
 
 - **TreeNode**: `from leetcode_py import TreeNode`
-    - Beautiful tree visualization with anytree rendering
-    - Jupyter notebook support with Graphviz diagrams
-    - Easy array ↔ tree conversion for testing
-- **ListNode**: `from leetcode_py import ListNode`
-    - Clean arrow visualization (`1 -> 2 -> 3`)
-    - Simple array ↔ list conversion
-    - Perfect for debugging linked list problems
-- New helpers: Add to `leetcode_py/`
+    - Array ↔ tree conversion: `TreeNode.from_list([1,2,3])`, `tree.to_list()`
+    - Beautiful anytree text rendering and Graphviz SVG for Jupyter
+    - Node search: `tree.find_node(value)`
+    - Generic type support: `TreeNode[int]`, `TreeNode[str]`
 
-Perfect for interview preparation with professional-grade tooling and beautiful visualizations.
+- **ListNode**: `from leetcode_py import ListNode`
+    - Array ↔ list conversion: `ListNode.from_list([1,2,3])`, `node.to_list()`
+    - Cycle detection with Floyd's algorithm
+    - Graphviz visualization for Jupyter notebooks
+    - Generic type support: `ListNode[int]`, `ListNode[str]`
+
+- **GraphNode**: `from leetcode_py import GraphNode`
+    - Adjacency list conversion: `GraphNode.from_adjacency_list([[2,4],[1,3],[2,4],[1,3]])`
+    - Clone detection: `original.is_clone(cloned)`
+    - Graphviz visualization for undirected graphs
+    - DFS traversal utilities
+
+- **DictTree**: `from leetcode_py.data_structures import DictTree`
+    - Perfect for Trie implementations: `DictTree[str]()`
+    - Beautiful tree rendering with box-drawing characters
+    - Graphviz visualization for Jupyter notebooks
+    - Generic key type support
+
+## 🛠️ Development Commands
+
+```bash
+# Problem-specific operations
+make p-test PROBLEM=problem_name    # Test specific problem
+make p-gen PROBLEM=problem_name     # Generate problem from JSON template
+make p-lint PROBLEM=problem_name    # Lint specific problem
+
+# Bulk operations
+make test                           # Run all tests
+make lint                           # Lint entire codebase
+make gen-all-problems              # Regenerate all problems (destructive)
+```
+
+## 🏗️ Architecture
+
+- **Template-Driven**: JSON templates in `.templates/leetcode/json/` drive code generation
+- **Cookiecutter Integration**: Uses `.templates/leetcode/{{cookiecutter.problem_name}}/` template for consistent file structure
+- **Automated Scraping**: LLM-assisted problem data extraction from LeetCode
+- **Version Control Friendly**: Python files by default, optional notebook support
+
+## 📊 Quality Metrics
+
+- **Test Coverage**: 95%+ with comprehensive edge case testing (Codecov integration)
+- **Security**: SonarCloud quality gates, Trivy dependency scanning, Gitleaks secret detection
+- **Code Quality**: Automated linting with black, isort, ruff, mypy
+- **Test Reproducibility**: Automated verification that problems can be regenerated consistently
+- **CI/CD**: GitHub Actions for testing, security, pre-commit hooks, and release automation
+
+Perfect for systematic coding interview preparation with professional development practices and enhanced debugging capabilities.
