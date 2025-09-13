@@ -1,0 +1,63 @@
+{
+    "problem_name": "letter_combinations_of_a_phone_number",
+    "solution_class_name": "Solution",
+    "problem_number": "17",
+    "problem_title": "Letter Combinations of a Phone Number",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given a string containing digits from `2-9` inclusive, return all possible letter combinations that the number could represent. Return the answer in **any order**.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Phone Keypad](https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png)\n\n```\nInput: digits = \"23\"\nOutput: [\"ad\",\"ae\",\"af\",\"bd\",\"be\",\"bf\",\"cd\",\"ce\",\"cf\"]\n```"
+            },
+            { "content": "```\nInput: digits = \"\"\nOutput: []\n```" },
+            { "content": "```\nInput: digits = \"2\"\nOutput: [\"a\",\"b\",\"c\"]\n```" }
+        ]
+    },
+    "readme_constraints": "- `0 <= digits.length <= 4`\n- `digits[i]` is a digit in the range `['2', '9']`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "letter_combinations",
+    "helpers_run_signature": "(solution_class: type, digits: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.letter_combinations(digits)",
+    "helpers_assert_name": "letter_combinations",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    result.sort()\n    expected.sort()\n    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_letter_combinations, run_letter_combinations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LetterCombinationsOfAPhoneNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "letter_combinations",
+                "signature": "(self, digits: str) -> list[str]",
+                "body": "        # TODO: Implement letter_combinations\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_letter_combinations",
+                "signature": "(self, digits: str, expected: list[str])",
+                "parametrize": "digits, expected",
+                "test_cases": "[('23', ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']), ('', []), ('2', ['a', 'b', 'c']), ('234', ['adg', 'adh', 'adi', 'aeg', 'aeh', 'aei', 'afg', 'afh', 'afi', 'bdg', 'bdh', 'bdi', 'beg', 'beh', 'bei', 'bfg', 'bfh', 'bfi', 'cdg', 'cdh', 'cdi', 'ceg', 'ceh', 'cei', 'cfg', 'cfh', 'cfi']), ('7', ['p', 'q', 'r', 's']), ('9', ['w', 'x', 'y', 'z']), ('79', ['pw', 'px', 'py', 'pz', 'qw', 'qx', 'qy', 'qz', 'rw', 'rx', 'ry', 'rz', 'sw', 'sx', 'sy', 'sz']), ('22', ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']), ('3456', ['dgjm', 'dgjn', 'dgjo', 'dgkm', 'dgkn', 'dgko', 'dglm', 'dgln', 'dglo', 'dhjm', 'dhjn', 'dhjo', 'dhkm', 'dhkn', 'dhko', 'dhlm', 'dhln', 'dhlo', 'dijm', 'dijn', 'dijo', 'dikm', 'dikn', 'diko', 'dilm', 'diln', 'dilo', 'egjm', 'egjn', 'egjo', 'egkm', 'egkn', 'egko', 'eglm', 'egln', 'eglo', 'ehjm', 'ehjn', 'ehjo', 'ehkm', 'ehkn', 'ehko', 'ehlm', 'ehln', 'ehlo', 'eijm', 'eijn', 'eijo', 'eikm', 'eikn', 'eiko', 'eilm', 'eiln', 'eilo', 'fgjm', 'fgjn', 'fgjo', 'fgkm', 'fgkn', 'fgko', 'fglm', 'fgln', 'fglo', 'fhjm', 'fhjn', 'fhjo', 'fhkm', 'fhkn', 'fhko', 'fhlm', 'fhln', 'fhlo', 'fijm', 'fijn', 'fijo', 'fikm', 'fikn', 'fiko', 'film', 'filn', 'filo']), ('25', ['aj', 'ak', 'al', 'bj', 'bk', 'bl', 'cj', 'ck', 'cl']), ('78', ['pt', 'pu', 'pv', 'qt', 'qu', 'qv', 'rt', 'ru', 'rv', 'st', 'su', 'sv']), ('89', ['tw', 'tx', 'ty', 'tz', 'uw', 'ux', 'uy', 'uz', 'vw', 'vx', 'vy', 'vz'])]",
+                "body": "        result = run_letter_combinations(Solution, digits)\n        assert_letter_combinations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_letter_combinations, assert_letter_combinations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndigits = '23'\nexpected = ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']",
+    "playground_run": "result = run_letter_combinations(Solution, digits)\nresult",
+    "playground_assert": "assert_letter_combinations(result, expected)"
+}

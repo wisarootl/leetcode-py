@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= construct_binary_tree_from_preorder_and_inorder_traversal
+PROBLEM ?= find_all_anagrams_in_a_string
 FORCE ?= 0
 COMMA := ,
 
