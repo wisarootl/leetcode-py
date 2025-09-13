@@ -43,64 +43,69 @@ class TestAccountsMerge:
                     ["Fern", "Fern0@m.co", "Fern1@m.co", "Fern5@m.co"],
                 ],
             ),
-            ([["John", "john@mail.com"]], [["John", "john@mail.com"]]),
+            ([["Alice", "alice@mail.com"]], [["Alice", "alice@mail.com"]]),
             (
-                [["John", "john1@mail.com"], ["John", "john2@mail.com"], ["John", "john3@mail.com"]],
-                [["John", "john1@mail.com"], ["John", "john2@mail.com"], ["John", "john3@mail.com"]],
+                [["Bob", "bob1@mail.com"], ["Bob", "bob2@mail.com"]],
+                [["Bob", "bob1@mail.com"], ["Bob", "bob2@mail.com"]],
             ),
             (
                 [
-                    ["John", "a@mail.com", "b@mail.com"],
-                    ["John", "b@mail.com", "c@mail.com"],
-                    ["John", "d@mail.com"],
-                ],
-                [["John", "a@mail.com", "b@mail.com", "c@mail.com"], ["John", "d@mail.com"]],
-            ),
-            (
-                [
-                    ["Alice", "alice@mail.com", "alice1@mail.com"],
+                    ["Alice", "alice@mail.com", "alice2@mail.com"],
                     ["Alice", "alice2@mail.com", "alice3@mail.com"],
-                    ["Alice", "alice1@mail.com", "alice2@mail.com"],
                 ],
-                [["Alice", "alice1@mail.com", "alice2@mail.com", "alice3@mail.com", "alice@mail.com"]],
-            ),
-            ([["Bob", "bob@mail.com"], ["Bob", "bob@mail.com"]], [["Bob", "bob@mail.com"]]),
-            (
-                [
-                    ["David", "david1@mail.com", "david2@mail.com"],
-                    ["David", "david3@mail.com"],
-                    ["David", "david2@mail.com", "david4@mail.com"],
-                ],
-                [
-                    ["David", "david1@mail.com", "david2@mail.com", "david4@mail.com"],
-                    ["David", "david3@mail.com"],
-                ],
+                [["Alice", "alice2@mail.com", "alice3@mail.com", "alice@mail.com"]],
             ),
             (
                 [
-                    ["Alex", "alex@mail.com"],
-                    ["Alex", "alex@mail.com", "alex2@mail.com"],
-                    ["Alex", "alex3@mail.com"],
+                    ["A", "a@mail.com", "b@mail.com"],
+                    ["B", "b@mail.com", "c@mail.com"],
+                    ["C", "c@mail.com", "d@mail.com"],
                 ],
-                [["Alex", "alex2@mail.com", "alex@mail.com"], ["Alex", "alex3@mail.com"]],
+                [["A", "a@mail.com", "b@mail.com", "c@mail.com", "d@mail.com"]],
+            ),
+            ([["David", "david@mail.com"], ["David", "david@mail.com"]], [["David", "david@mail.com"]]),
+            (
+                [["Alex", "alex1@mail.com"], ["Bob", "bob1@mail.com"], ["Charlie", "charlie1@mail.com"]],
+                [["Alex", "alex1@mail.com"], ["Bob", "bob1@mail.com"], ["Charlie", "charlie1@mail.com"]],
             ),
             (
                 [
-                    ["Tom", "tom1@mail.com"],
-                    ["Tom", "tom2@mail.com"],
-                    ["Tom", "tom3@mail.com"],
-                    ["Tom", "tom4@mail.com"],
+                    ["John", "john1@mail.com", "john2@mail.com"],
+                    ["John", "john3@mail.com"],
+                    ["Jane", "jane1@mail.com"],
                 ],
                 [
-                    ["Tom", "tom1@mail.com"],
-                    ["Tom", "tom2@mail.com"],
-                    ["Tom", "tom3@mail.com"],
-                    ["Tom", "tom4@mail.com"],
+                    ["John", "john1@mail.com", "john2@mail.com"],
+                    ["John", "john3@mail.com"],
+                    ["Jane", "jane1@mail.com"],
                 ],
             ),
             (
-                [["Sam", "sam@mail.com", "sam1@mail.com", "sam2@mail.com"]],
-                [["Sam", "sam@mail.com", "sam1@mail.com", "sam2@mail.com"]],
+                [
+                    ["User", "user@mail.com", "user1@mail.com"],
+                    ["User", "user2@mail.com", "user@mail.com"],
+                    ["User", "user3@mail.com", "user1@mail.com"],
+                ],
+                [["User", "user1@mail.com", "user2@mail.com", "user3@mail.com", "user@mail.com"]],
+            ),
+            (
+                [
+                    ["Test", "test1@mail.com"],
+                    ["Test", "test2@mail.com"],
+                    ["Test", "test1@mail.com", "test3@mail.com"],
+                ],
+                [["Test", "test2@mail.com"], ["Test", "test1@mail.com", "test3@mail.com"]],
+            ),
+            (
+                [
+                    ["Name", "a@mail.com", "b@mail.com", "c@mail.com"],
+                    ["Name", "d@mail.com", "e@mail.com"],
+                    ["Name", "c@mail.com", "f@mail.com"],
+                ],
+                [
+                    ["Name", "d@mail.com", "e@mail.com"],
+                    ["Name", "a@mail.com", "b@mail.com", "c@mail.com", "f@mail.com"],
+                ],
             ),
         ],
     )

@@ -1,0 +1,67 @@
+{
+    "problem_name": "word_search",
+    "solution_class_name": "Solution",
+    "problem_number": "79",
+    "problem_title": "Word Search",
+    "difficulty": "Medium",
+    "topics": "Array, String, Backtracking, Depth-First Search, Matrix",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given an `m x n` grid of characters `board` and a string `word`, return `true` *if* `word` *exists in the grid*.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Word Search Example 1](https://assets.leetcode.com/uploads/2020/11/04/word2.jpg)\n\n```\nInput: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"\nOutput: true\n```"
+            },
+            {
+                "content": "![Word Search Example 2](https://assets.leetcode.com/uploads/2020/11/04/word-1.jpg)\n\n```\nInput: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"\nOutput: true\n```"
+            },
+            {
+                "content": "![Word Search Example 3](https://assets.leetcode.com/uploads/2020/10/15/word3.jpg)\n\n```\nInput: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == board.length`\n- `n = board[i].length`\n- `1 <= m, n <= 6`\n- `1 <= word.length <= 15`\n- `board` and `word` consists of only lowercase and uppercase English letters.",
+    "readme_additional": "**Follow up:** Could you use search pruning to make your solution faster with a larger `board`?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "exist",
+    "helpers_run_signature": "(solution_class: type, board: list[list[str]], word: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.exist(board, word)",
+    "helpers_assert_name": "exist",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_exist, run_exist\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordSearch",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "exist",
+                "signature": "(self, board: list[list[str]], word: str) -> bool",
+                "body": "        # TODO: Implement exist\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_exist",
+                "signature": "(self, board: list[list[str]], word: str, expected: bool)",
+                "parametrize": "board, word, expected",
+                "test_cases": "[([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCCED', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SEE', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCB', False), ([['A']], 'A', True), ([['A']], 'B', False), ([['A', 'B'], ['C', 'D']], 'ACDB', True), ([['A', 'B'], ['C', 'D']], 'ABDC', True), ([['A', 'B'], ['C', 'D']], 'ABCD', False), ([['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], 'AAB', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCESEEEFS', False), ([['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A']], 'AAAAAAAAAAAAAAB', False), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SFCS', True)]",
+                "body": "        result = run_exist(Solution, board, word)\n        assert_exist(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_exist, assert_exist\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']]\nword = 'ABCCED'\nexpected = True",
+    "playground_run": "result = run_exist(Solution, board, word)\nresult",
+    "playground_assert": "assert_exist(result, expected)"
+}

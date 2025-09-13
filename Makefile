@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= two_sum
+PROBLEM ?= find_all_anagrams_in_a_string
 FORCE ?= 0
 COMMA := ,
 

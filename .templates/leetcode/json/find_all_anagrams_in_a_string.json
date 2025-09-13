@@ -1,0 +1,64 @@
+{
+    "problem_name": "find_all_anagrams_in_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "438",
+    "problem_title": "Find All Anagrams in a String",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "Given two strings `s` and `p`, return an array of all the start indices of `p`'s anagrams in `s`. You may return the answer in any order.\n\nAn **anagram** is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"cbaebabacd\", p = \"abc\"\nOutput: [0,6]\n```\n**Explanation:**\nThe substring with start index = 0 is \"cba\", which is an anagram of \"abc\".\nThe substring with start index = 6 is \"bac\", which is an anagram of \"abc\"."
+            },
+            {
+                "content": "```\nInput: s = \"abab\", p = \"ab\"\nOutput: [0,1,2]\n```\n**Explanation:**\nThe substring with start index = 0 is \"ab\", which is an anagram of \"ab\".\nThe substring with start index = 1 is \"ba\", which is an anagram of \"ab\".\nThe substring with start index = 2 is \"ab\", which is an anagram of \"ab\"."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length, p.length <= 3 * 10^4\n- s and p consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_anagrams",
+    "helpers_run_signature": "(solution_class: type, s: str, p: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_anagrams(s, p)",
+    "helpers_assert_name": "find_anagrams",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_find_anagrams, run_find_anagrams\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindAllAnagramsInAString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_anagrams",
+                "signature": "(self, s: str, p: str) -> list[int]",
+                "body": "        # TODO: Implement find_anagrams\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_anagrams",
+                "signature": "(self, s: str, p: str, expected: list[int])",
+                "parametrize": "s, p, expected",
+                "test_cases": "[('cbaebabacd', 'abc', [0, 6]), ('abab', 'ab', [0, 1, 2]), ('a', 'aa', []), ('aa', 'aa', [0]), ('abcdefg', 'xyz', []), ('aab', 'ab', [1]), ('aaab', 'ab', [2]), ('baa', 'aa', [1]), ('abacabad', 'aaab', []), ('ababacb', 'abc', [3, 4]), ('abaacbabc', 'abc', [3, 4, 6]), ('abab', 'abab', [0])]",
+                "body": "        result = run_find_anagrams(Solution, s, p)\n        assert_find_anagrams(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_anagrams, assert_find_anagrams\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cbaebabacd'\np = 'abc'\nexpected = [0, 6]",
+    "playground_run": "result = run_find_anagrams(Solution, s, p)\nresult",
+    "playground_assert": "assert_find_anagrams(result, expected)"
+}
