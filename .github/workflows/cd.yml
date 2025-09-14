@@ -90,6 +90,6 @@ jobs:
               run: poetry build
 
             - name: Publish to PyPI
-              uses: pypa/gh-action-pypi-publish@15c56dba361d8335944d31a2ecd17d700fc7bcbc # v1.12.2
+              uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
               with:
                   verbose: true
