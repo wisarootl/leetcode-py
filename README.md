@@ -17,11 +17,9 @@ A modern Python LeetCode practice environment that goes beyond basic problem sol
 - 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
 - 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
 
-Includes all **75 Grind problems** - the most essential coding interview questions curated for maximum impact.
-
 ## 🎯 What's Included
 
-**Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview problems curated by the creator of Blind 75.
+**Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview questions curated by the creator of Blind 75.
 
 **Future**: Planned expansion to all 169 Grind problems for comprehensive interview preparation.
 

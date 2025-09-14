@@ -1,12 +1,28 @@
 [tool.poetry]
-name = "leetcode-py"
-version = "0.1.0"
-description = "LeetCode solutions in Python"
-authors = ["Your Name <your.email@example.com>"]
+name = "leetcode-py-sdk"
+version = "0.1.0" # use git tag instead
+description = "Modern Python LeetCode practice environment with automated problem generation, beautiful data structure visualizations, and comprehensive testing"
+authors = ["Wisaroot Lertthaweedech <l.wisaroot@gmail.com>"]
+license = "Apache-2.0"
 readme = "README.md"
+homepage = "https://github.com/wisarootl/leetcode-py"
+repository = "https://github.com/wisarootl/leetcode-py"
+keywords = ["leetcode", "algorithms", "data-structures", "interview-prep", "coding-practice"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Education",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+]
+packages = [{include = "leetcode_py"}]
 
 [tool.poetry.dependencies]
 python = "^3.13"
+graphviz = "^0.21"
 requests = "^2.32.5"
 typer = "^0.17.0"
 
@@ -17,7 +33,6 @@ loguru = "^0.7.3"
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
 cookiecutter = "^2.6.0"
-graphviz = "^0.21"
 ipykernel = "^6.30.1"
 isort = "^6.0.1"
 jupytext = "^1.16.6"
