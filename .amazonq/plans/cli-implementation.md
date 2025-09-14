@@ -402,21 +402,40 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
     - All CLI tests pass (8/8)
     - Template generation creates all expected files (solution.py, test_solution.py, etc.)
 
-### Phase 3: Command Implementation
+### Phase 3: Gen Command Implementation ✅ COMPLETED
 
-1. Implement `lcpy gen -n N` (with `--problem-num` long form)
-2. Implement `lcpy gen -s NAME` (with `--problem-slug` long form)
-3. Implement `lcpy gen -t TAG` (with `--problem-tag` long form)
-4. Implement `lcpy scrape -n N` and `lcpy scrape -s NAME`
-5. Add tag discovery utilities with `{"tag": "reference"}` support
+1. ✅ Implement `lcpy gen -n N` (with `--problem-num` long form)
+    - Created `leetcode_py/cli/commands/gen.py` with number-based generation
+    - Added `find_problem_by_number()` utility for number-to-name mapping
+2. ✅ Implement `lcpy gen -s NAME` (with `--problem-slug` long form)
+    - Direct slug-based generation using existing JSON files
+3. ✅ Implement `lcpy gen -t TAG` (with `--problem-tag` long form)
+    - Bulk generation by tag with progress feedback
+    - Shows count of problems found for the tag
+4. ✅ Add tag discovery utilities with centralized tags.json5
+    - Created `tags.json5` with grind-75, blind-75, easy tags
+    - Implemented `find_problems_by_tag()` using json5 parsing
+5. ✅ Add resource loading for packaged templates
+    - Created `leetcode_py/cli/utils/resources.py` for template access
+    - Supports both development and packaged resource paths
+6. ✅ Comprehensive testing
+    - 8 test cases covering all generation modes and error conditions
+    - All tests pass with proper error handling validation
 
-### Phase 4: List Commands
+### Phase 4: Scrape Command Implementation
+
+1. Implement `lcpy scrape -n N` (with `--problem-num` long form)
+2. Implement `lcpy scrape -s NAME` (with `--problem-slug` long form)
+3. Integrate existing `LeetCodeScraper` with CLI interface
+4. Output JSON to stdout with proper formatting
+
+### Phase 5: List Commands
 
 1. Implement `lcpy list` basic functionality
 2. Add filtering: `lcpy list -t grind-75` and `lcpy list -d easy`
 3. Format output for readability (table format with number, title, difficulty, tags)
 
-### Phase 5: Testing & Documentation
+### Phase 6: Testing & Documentation
 
 1. Add comprehensive CLI tests
 2. Update documentation
@@ -497,8 +516,9 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
 ## Timeline Estimate
 
 - **Phase 1-2**: 2-3 days (CLI structure + resource packaging)
-- **Phase 3**: 2-3 days (command implementation)
-- **Phase 4**: 1-2 days (list commands)
-- **Phase 5**: 2-3 days (testing + documentation)
+- **Phase 3**: 1-2 days (gen command implementation)
+- **Phase 4**: 1-2 days (scrape command implementation)
+- **Phase 5**: 1-2 days (list commands)
+- **Phase 6**: 2-3 days (testing + documentation)
 
 **Total**: ~1-2 weeks for complete implementation

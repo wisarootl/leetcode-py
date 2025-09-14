@@ -30,12 +30,6 @@ def test_cli_no_args():
     assert "Usage:" in result.stdout
 
 
-def test_gen_command():
-    result = runner.invoke(app, ["gen"])
-    assert result.exit_code == 0
-    assert "gen command - coming soon!" in result.stdout
-
-
 def test_scrape_command():
     result = runner.invoke(app, ["scrape"])
     assert result.exit_code == 0

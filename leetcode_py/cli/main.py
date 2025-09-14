@@ -2,9 +2,9 @@ from importlib.metadata import version
 
 import typer
 
-app = typer.Typer(
-    help="LeetCode problem generator - Generate and list LeetCode problems",
-)
+from .commands.gen import generate
+
+app = typer.Typer(help="LeetCode problem generator - Generate and list LeetCode problems")
 
 
 def show_version():
@@ -25,10 +25,7 @@ def main_callback(
         raise typer.Exit()
 
 
-# Placeholder commands for Phase 1 testing
-@app.command()
-def gen():
-    typer.echo("gen command - coming soon!")
+app.command(name="gen")(generate)
 
 
 @app.command()
