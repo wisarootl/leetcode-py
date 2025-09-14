@@ -30,12 +30,6 @@ def test_cli_no_args():
     assert "Usage:" in result.stdout
 
 
-def test_scrape_command():
-    result = runner.invoke(app, ["scrape"])
-    assert result.exit_code == 0
-    assert "scrape command - coming soon!" in result.stdout
-
-
 def test_list_command():
     result = runner.invoke(app, ["list"])
     assert result.exit_code == 0

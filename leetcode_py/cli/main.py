@@ -3,6 +3,7 @@ from importlib.metadata import version
 import typer
 
 from .commands.gen import generate
+from .commands.scrape import scrape
 
 app = typer.Typer(help="LeetCode problem generator - Generate and list LeetCode problems")
 
@@ -26,11 +27,7 @@ def main_callback(
 
 
 app.command(name="gen")(generate)
-
-
-@app.command()
-def scrape():
-    typer.echo("scrape command - coming soon!")
+app.command(name="scrape")(scrape)
 
 
 @app.command()

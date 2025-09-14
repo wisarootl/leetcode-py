@@ -422,12 +422,14 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
     - 8 test cases covering all generation modes and error conditions
     - All tests pass with proper error handling validation
 
-### Phase 4: Scrape Command Implementation
+### Phase 4: Scrape Command Implementation ✅ COMPLETED
 
-1. Implement `lcpy scrape -n N` (with `--problem-num` long form)
-2. Implement `lcpy scrape -s NAME` (with `--problem-slug` long form)
-3. Integrate existing `LeetCodeScraper` with CLI interface
-4. Output JSON to stdout with proper formatting
+1. ✅ Implement `lcpy scrape -n N` (with `--problem-num` long form)
+2. ✅ Implement `lcpy scrape -s NAME` (with `--problem-slug` long form)
+3. ✅ Integrate existing `LeetCodeScraper` with CLI interface
+4. ✅ Output JSON to stdout with proper formatting
+5. ✅ Comprehensive testing with 8 test cases covering all scenarios
+6. ✅ Proper error handling for invalid inputs and network failures
 
 ### Phase 5: List Commands
 

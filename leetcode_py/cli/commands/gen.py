@@ -7,6 +7,10 @@ from leetcode_py.tools.generator import generate_problem
 from ..utils.problem_finder import find_problem_by_number, find_problems_by_tag, get_problem_json_path
 from ..utils.resources import get_template_path
 
+ERROR_EXACTLY_ONE_OPTION = (
+    "Error: Exactly one of --problem-num, --problem-slug, or --problem-tag is required"
+)
+
 
 def resolve_problems(
     problem_num: int | None, problem_slug: str | None, problem_tag: str | None
@@ -27,9 +31,7 @@ def resolve_problems(
         typer.echo(f"Found {len(problems)} problems with tag '{problem_tag}'")
         return problems
 
-    typer.echo(
-        "Error: Exactly one of --problem-num, --problem-slug, or --problem-tag is required", err=True
-    )
+    typer.echo(ERROR_EXACTLY_ONE_OPTION, err=True)
     raise typer.Exit(1)
 
 
@@ -42,9 +44,7 @@ def generate(
 ):
     options_provided = sum(x is not None for x in [problem_num, problem_slug, problem_tag])
     if options_provided != 1:
-        typer.echo(
-            "Error: Exactly one of --problem-num, --problem-slug, or --problem-tag is required", err=True
-        )
+        typer.echo(ERROR_EXACTLY_ONE_OPTION, err=True)
         raise typer.Exit(1)
 
     template_dir = get_template_path()
