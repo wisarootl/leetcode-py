@@ -373,12 +373,20 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
 
 ## Migration Strategy
 
-### Phase 1: Core CLI Structure
+### Phase 1: Core CLI Structure ✅ COMPLETED
 
-1. Create `leetcode_py/cli/` package structure
-2. Implement basic CLI entry point with typer
-3. Add CLI script to `pyproject.toml`
-4. Test basic `lcpy --help` functionality
+1. ✅ Create `leetcode_py/cli/` package structure
+    - Created `leetcode_py/cli/main.py` with typer app
+    - Added `leetcode_py/cli/commands/` and `leetcode_py/cli/utils/` packages
+2. ✅ Implement basic CLI entry point with typer
+    - Dynamic version detection using `importlib.metadata.version()`
+    - Clean `--version/-V` flag without callback overhead
+    - Placeholder commands: `gen`, `scrape`, `list`
+3. ✅ Add CLI script to `pyproject.toml`
+    - Entry point: `lcpy = "leetcode_py.cli.main:main"`
+4. ✅ Test basic `lcpy --help` functionality
+    - Comprehensive test suite: 8 tests covering help, version, commands, error handling
+    - All tests pass (1438 total: 1430 existing + 8 new CLI tests)
 
 ### Phase 2: Resource Packaging
 
@@ -405,6 +413,34 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
 1. Add comprehensive CLI tests
 2. Update documentation
 3. Test PyPI packaging workflow
+
+## Implementation Notes
+
+### Phase 1 Key Decisions
+
+**Version Handling**:
+
+- Uses `importlib.metadata.version('leetcode-py')` for dynamic version detection
+- Works in both development (poetry install) and production (pip install) environments
+- Wrapped in `show_version()` function for clean separation of concerns
+
+**CLI Architecture**:
+
+- Avoided callback-based version handling to prevent unnecessary function calls on every command
+- Used `invoke_without_command=True` with manual help display for better control
+- Clean parameter naming: `version_flag` instead of `version` to avoid naming conflicts
+
+**Testing Strategy**:
+
+- Comprehensive test coverage for all CLI functionality
+- Tests expect exit code 0 for help display (not typer's default exit code 2)
+- Dynamic version testing (checks for "lcpy version" presence, not hardcoded version)
+
+**Code Quality**:
+
+- Removed noise docstrings following development rules
+- Minimal imports and clean function separation
+- No `if __name__ == "__main__"` block needed (handled by pyproject.toml entry point)
 
 ## Success Criteria
 

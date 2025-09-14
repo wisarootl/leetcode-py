@@ -20,6 +20,9 @@ classifiers = [
 ]
 packages = [{include = "leetcode_py"}]
 
+[tool.poetry.scripts]
+lcpy = "leetcode_py.cli.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.13"
 graphviz = "^0.21"

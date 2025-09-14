@@ -11,6 +11,7 @@
 - Use snake_case for Python methods
 - Include type hints: `list[str]`, `dict[str, int]`, `Type | None`
 - Follow linting rules (black, isort, ruff, mypy)
+- **NO noise docstrings**: Avoid docstrings that merely restate the function name (e.g., `"""Test CLI help command."""` for `test_cli_help()`). Only add docstrings when they provide meaningful context beyond what the code itself conveys
 
 ## Testing
 
