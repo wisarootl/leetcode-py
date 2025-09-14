@@ -19,13 +19,16 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 packages = [{include = "leetcode_py"}]
+include = ["leetcode_py/cli/resources/**/*"]
 
 [tool.poetry.scripts]
 lcpy = "leetcode_py.cli.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+cookiecutter = "^2.6.0"
 graphviz = "^0.21"
+json5 = "^0.9.0"
 requests = "^2.32.5"
 typer = "^0.17.0"
 
@@ -35,7 +38,6 @@ loguru = "^0.7.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
-cookiecutter = "^2.6.0"
 ipykernel = "^6.30.1"
 isort = "^6.0.1"
 jupytext = "^1.16.6"
@@ -59,7 +61,7 @@ target-version = ['py312']
 include = '.*\.(py|ipynb)$' # All .py and .ipynb files
 extend-exclude = '''
 /(
-    .templates
+    leetcode_py/cli/resources
 )/
 '''
 
@@ -71,12 +73,12 @@ force_grid_wrap = 0
 combine_as_imports = true
 use_parentheses = true
 ensure_newline_before_comments = true
-extend_skip_glob = [".templates/*"]
+extend_skip_glob = ["leetcode_py/cli/resources/*"]
 
 [tool.ruff]
 line-length = 105
 target-version = 'py312'
-extend-exclude = [".templates"]
+extend-exclude = ["leetcode_py/cli/resources"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
@@ -86,7 +88,7 @@ files = '**/*.py'
 warn_unused_configs = true
 ignore_missing_imports = true
 disable_error_code = ["return", "no-redef"]
-exclude = [".templates"]
+exclude = ["leetcode_py/cli/resources"]
 
 [tool.pytest.ini_options]
 testpaths = ["leetcode", "tests"]

@@ -24,7 +24,7 @@ define lint_target
 	poetry run black $(1)
 	poetry run isort $(1)
 	$(if $(filter .,$(1)), \
-		poetry run nbqa ruff . --nbqa-exclude=".templates" --ignore=F401$(COMMA)F821, \
+		poetry run nbqa ruff . --nbqa-exclude="leetcode_py/cli/resources/" --ignore=F401$(COMMA)F821, \
 		poetry run nbqa ruff $(1) --ignore=F401$(COMMA)F821)
 	poetry run ruff check $(1) --exclude="**/*.ipynb"
 	poetry run mypy $(1) \
@@ -33,10 +33,10 @@ define lint_target
 		--non-interactive \
 		--check-untyped-defs
 	$(if $(filter .,$(1)), \
-		poetry run nbqa isort . --nbqa-exclude=".templates", \
+		poetry run nbqa isort . --nbqa-exclude="leetcode_py/cli/resources/", \
 		poetry run nbqa isort $(1))
 	$(if $(filter .,$(1)), \
-		poetry run nbqa mypy . --nbqa-exclude=".templates" \
+		poetry run nbqa mypy . --nbqa-exclude="leetcode_py/cli/resources/" \
 			--ignore-missing-imports --disable-error-code=name-defined, \
 		poetry run nbqa mypy $(1) --ignore-missing-imports --disable-error-code=name-defined)
 endef

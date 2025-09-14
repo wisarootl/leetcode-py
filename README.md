@@ -77,10 +77,10 @@ leetcode/two_sum/
 - **ListNode**: Clean arrow-based visualization (`1 -> 2 -> 3`)
 - **Interactive Debugging**: Multi-cell playground environment
 
-![Tree Visualization Placeholder](docs/images/tree-viz.png)
+![Tree Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-viz.png)
 _Beautiful tree rendering with anytree and Graphviz_
 
-![LinkedList Visualization Placeholder](docs/images/linkedlist-viz.png)
+![LinkedList Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-viz.png)
 _Clean arrow-based list visualization_
 
 ### Flexible Notebook Support
@@ -89,7 +89,7 @@ _Clean arrow-based list visualization_
 - **Repository State**: This repo uses Python files (`.py`) for better version control
 - **User Choice**: Use `make nb-to-py` to convert notebooks to Python files, or keep as `.ipynb` for interactive development
 
-![Notebook Placeholder](docs/images/notebook-example.png)
+![Notebook Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/notebook-example.png)
 _Interactive multi-cell playground for each problem_
 
 ## 🔄 Usage Patterns

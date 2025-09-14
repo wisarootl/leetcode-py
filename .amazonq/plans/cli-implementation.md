@@ -388,11 +388,19 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
     - Comprehensive test suite: 8 tests covering help, version, commands, error handling
     - All tests pass (1438 total: 1430 existing + 8 new CLI tests)
 
-### Phase 2: Resource Packaging
+### Phase 2: Resource Packaging ✅ COMPLETED
 
-1. Move templates and JSON files to package resources
-2. Update resource loading in existing tools
-3. Test template generation from package resources
+1. ✅ Move templates and JSON files to package resources
+    - Copied `.templates/leetcode/` → `leetcode_py/cli/resources/leetcode/`
+    - Updated `pyproject.toml` to include resources with `include = ["leetcode_py/cli/resources/**/*"]`
+2. ✅ Update resource loading in existing tools
+    - Created `leetcode_py/cli/utils/resources.py` for resource access
+    - Updated `TemplateGenerator` to use packaged resources with fallback to local development
+    - Moved `cookiecutter` and `json5` to main dependencies
+3. ✅ Test template generation from package resources
+    - Verified template generation works with both local and packaged resources
+    - All CLI tests pass (8/8)
+    - Template generation creates all expected files (solution.py, test_solution.py, etc.)
 
 ### Phase 3: Command Implementation
 
@@ -441,6 +449,26 @@ json5 = "^0.9.0"  # For parsing tags.json5 with comments
 - Removed noise docstrings following development rules
 - Minimal imports and clean function separation
 - No `if __name__ == "__main__"` block needed (handled by pyproject.toml entry point)
+
+### Phase 2 Key Decisions
+
+**Resource Packaging Strategy**:
+
+- Used `importlib.resources` for cross-platform package resource access
+- Implemented fallback mechanism: local development → packaged resources → final fallback
+- Added `include` directive in `pyproject.toml` to package non-Python files
+
+**Dependency Management**:
+
+- Moved `cookiecutter` from dev to main dependencies (needed for CLI functionality)
+- Added `json5` for future tags.json5 support with comments
+- Maintained backward compatibility with existing tools
+
+**Template Generation**:
+
+- Updated `TemplateGenerator` to accept optional `template_dir` and `output_dir` parameters
+- Maintained existing API while adding package resource support
+- Verified generation works in both development and packaged environments
 
 ## Success Criteria
 
