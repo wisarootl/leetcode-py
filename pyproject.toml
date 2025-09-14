@@ -32,6 +32,7 @@ cookiecutter = "^2.6.0"
 graphviz = "^0.21"
 json5 = "^0.12.1"
 requests = "^2.32.5"
+rich = "^14.1.0"
 typer = "^0.17.0"
 
 [tool.poetry.group.base.dependencies]

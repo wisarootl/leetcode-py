@@ -1,7 +1,7 @@
 """HTML parsing utilities for LeetCode problem content."""
 
 import re
-from typing import Any, Dict, List
+from typing import Any
 
 
 class HTMLParser:
@@ -13,7 +13,7 @@ class HTMLParser:
         return re.sub(r"<[^>]+>", "", text).strip()
 
     @staticmethod
-    def parse_content(html_content: str) -> Dict[str, Any]:
+    def parse_content(html_content: str) -> dict[str, Any]:
         """Parse HTML content to extract description, examples, and constraints."""
         # Extract description (everything before first example)
         desc_match = re.search(
@@ -43,7 +43,7 @@ class HTMLParser:
         return {"description": description, "examples": examples, "constraints": constraints}
 
     @staticmethod
-    def parse_test_cases(test_cases_str: str) -> List[List[str]]:
+    def parse_test_cases(test_cases_str: str) -> list[list[str]]:
         """Parse test cases from the exampleTestcases string."""
         if not test_cases_str:
             return []

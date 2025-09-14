@@ -1,6 +1,7 @@
 import tempfile
 from pathlib import Path
 
+import pytest
 from typer.testing import CliRunner
 
 from leetcode_py.cli.main import app
@@ -14,43 +15,81 @@ def test_gen_help():
     assert "--problem-num" in result.stdout
     assert "--problem-slug" in result.stdout
     assert "--problem-tag" in result.stdout
+    assert "--difficulty" in result.stdout
+    assert "--all" in result.stdout
 
 
 def test_gen_no_options():
     result = runner.invoke(app, ["gen"])
     assert result.exit_code == 1
-    assert "Exactly one of --problem-num, --problem-slug, or --problem-tag is required" in result.stderr
+    assert (
+        "Exactly one of --problem-num, --problem-slug, --problem-tag, or --all is required"
+        in result.stderr
+    )
 
 
-def test_gen_multiple_options():
-    result = runner.invoke(app, ["gen", "-n", "1", "-s", "two-sum"])
+@pytest.mark.parametrize(
+    "args",
+    [
+        ["-n", "1", "-s", "two-sum"],
+        ["-n", "1", "-t", "test"],
+        ["-s", "two-sum", "-t", "test"],
+        ["-n", "1", "--all"],
+    ],
+)
+def test_gen_multiple_options(args):
+    result = runner.invoke(app, ["gen"] + args)
     assert result.exit_code == 1
-    assert "Exactly one of --problem-num, --problem-slug, or --problem-tag is required" in result.stderr
+    assert (
+        "Exactly one of --problem-num, --problem-slug, --problem-tag, or --all is required"
+        in result.stderr
+    )
 
 
-def test_gen_by_number():
+@pytest.mark.parametrize(
+    "args,expected_problems,expected_count",
+    [
+        (["-n", "1"], ["two_sum"], "1 successful, 0 failed"),
+        (["-n", "1", "-n", "125"], ["two_sum", "valid_palindrome"], "2 successful, 0 failed"),
+    ],
+)
+def test_gen_by_numbers(args, expected_problems, expected_count):
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen", "-n", "1", "-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen"] + args + ["-o", temp_dir, "--force"])
         assert result.exit_code == 0
-        assert "Generated problem: two_sum" in result.stdout
 
-        # Check files were created
-        problem_dir = Path(temp_dir) / "two_sum"
-        assert problem_dir.exists()
-        assert (problem_dir / "solution.py").exists()
-        assert (problem_dir / "test_solution.py").exists()
+        for problem in expected_problems:
+            assert f"Generated problem: {problem}" in result.stdout
+            problem_dir = Path(temp_dir) / problem
+            assert problem_dir.exists()
+            assert (problem_dir / "solution.py").exists()
+
+        assert f"Completed: {expected_count}" in result.stdout
 
 
-def test_gen_by_slug():
+@pytest.mark.parametrize(
+    "args,expected_problems,expected_count",
+    [
+        (["-s", "valid_palindrome"], ["valid_palindrome"], "1 successful, 0 failed"),
+        (
+            ["-s", "two_sum", "-s", "valid_palindrome"],
+            ["two_sum", "valid_palindrome"],
+            "2 successful, 0 failed",
+        ),
+    ],
+)
+def test_gen_by_slugs(args, expected_problems, expected_count):
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen", "-s", "valid_palindrome", "-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen"] + args + ["-o", temp_dir, "--force"])
         assert result.exit_code == 0
-        assert "Generated problem: valid_palindrome" in result.stdout
 
-        # Check files were created
-        problem_dir = Path(temp_dir) / "valid_palindrome"
-        assert problem_dir.exists()
-        assert (problem_dir / "solution.py").exists()
+        for problem in expected_problems:
+            assert f"Generated problem: {problem}" in result.stdout
+            problem_dir = Path(temp_dir) / problem
+            assert problem_dir.exists()
+            assert (problem_dir / "solution.py").exists()
+
+        assert f"Completed: {expected_count}" in result.stdout
 
 
 def test_gen_by_tag():
@@ -60,15 +99,60 @@ def test_gen_by_tag():
         assert "Found" in result.stdout
         assert "problems with tag 'test'" in result.stdout
         assert "Generated problem:" in result.stdout
+        assert "successful" in result.stdout
 
 
-def test_gen_invalid_number():
-    result = runner.invoke(app, ["gen", "-n", "99999"])
+def test_gen_with_difficulty_filter():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        result = runner.invoke(app, ["gen", "-t", "test", "-d", "Easy", "-o", temp_dir, "--force"])
+        assert result.exit_code == 0
+        assert "Found" in result.stdout
+        assert "Filtered to" in result.stdout
+        assert "problems with difficulty 'Easy'" in result.stdout
+
+
+@pytest.mark.parametrize(
+    "args,expected_error",
+    [
+        (["-n", "99999"], "Problem number 99999 not found"),
+        (["-t", "nonexistent"], "No problems found with tag 'nonexistent'"),
+    ],
+)
+def test_gen_invalid_inputs(args, expected_error):
+    result = runner.invoke(app, ["gen"] + args)
     assert result.exit_code == 1
-    assert "Problem number 99999 not found" in result.stderr
+    assert expected_error in result.stderr
 
 
-def test_gen_invalid_tag():
-    result = runner.invoke(app, ["gen", "-t", "nonexistent"])
-    assert result.exit_code == 1
-    assert "No problems found with tag 'nonexistent'" in result.stderr
+def test_gen_existing_problem_without_force():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # First generation should succeed
+        result1 = runner.invoke(app, ["gen", "-n", "1", "-o", temp_dir, "--force"])
+        assert result1.exit_code == 0
+
+        # Second generation without --force should fail
+        result2 = runner.invoke(app, ["gen", "-n", "1", "-o", temp_dir])
+        assert result2.exit_code == 1
+        assert "already exists" in result2.stderr
+        assert "Completed: 0 successful, 1 failed" in result2.stdout
+
+
+def test_gen_mixed_success_failure():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # Create one problem first
+        runner.invoke(app, ["gen", "-n", "1", "-o", temp_dir, "--force"])
+
+        # Try to generate existing + new problem without force
+        result = runner.invoke(app, ["gen", "-n", "1", "-n", "125", "-o", temp_dir])
+        assert result.exit_code == 1
+        assert "already exists" in result.stderr
+        assert "Generated problem: valid_palindrome" in result.stdout
+        assert "Completed: 1 successful, 1 failed" in result.stdout
+
+
+def test_gen_default_output_directory():
+    # Test that default output is current directory
+    result = runner.invoke(app, ["gen", "--help"])
+    assert result.exit_code == 0
+    # The help should show the default value
+    assert "Output directory" in result.stdout

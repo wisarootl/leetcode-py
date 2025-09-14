@@ -30,12 +30,6 @@ def test_cli_no_args():
     assert "Usage:" in result.stdout
 
 
-def test_list_command():
-    result = runner.invoke(app, ["list"])
-    assert result.exit_code == 0
-    assert "list command - coming soon!" in result.stdout
-
-
 def test_invalid_command():
     result = runner.invoke(app, ["invalid"])
     assert result.exit_code == 2
