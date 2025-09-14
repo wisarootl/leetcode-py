@@ -653,7 +653,7 @@ version = "0.21"
 description = "Simple Python interface for Graphviz"
 optional = false
 python-versions = ">=3.9"
-groups = ["dev"]
+groups = ["main"]
 files = [
     {file = "graphviz-0.21-py3-none-any.whl", hash = "sha256:54f33de9f4f911d7e84e4191749cac8cc5653f815b06738c54db9a15ab8b1e42"},
     {file = "graphviz-0.21.tar.gz", hash = "sha256:20743e7183be82aaaa8ad6c93f8893c923bd6658a04c32ee115edb3c8a835f78"},
@@ -2251,4 +2251,4 @@ dev = ["black (>=19.3b0) ; python_version >= \"3.6\"", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "436edf031cba51092142ade6fa349b92e21874b6a48f54a2ea3928a88aa5a9c0"
+content-hash = "e8769741fb13e346d2f8b7a6bc97b1a3042f1b2a0cfafbaa2125279ab454c9af"
