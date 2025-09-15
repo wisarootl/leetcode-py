@@ -84,6 +84,11 @@ nb-to-py:
 	@find leetcode -name "*.ipynb" -delete
 	@echo "Conversion complete. All .ipynb files converted to .py and deleted."
 
+# Find problems with few test cases
+check-test-cases:
+	@echo "Checking test case coverage..."
+	poetry run python leetcode_py/tools/check_test_cases.py --threshold=$(or $(THRESHOLD),10) --max=$(or $(MAX),1)
+
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
 	@echo "This will DELETE all existing problems and regenerate from JSON templates."

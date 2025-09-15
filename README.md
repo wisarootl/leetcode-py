@@ -163,7 +163,7 @@ If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cur
 **Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
 
 - [`.amazonq/rules/problem-creation.md`](.amazonq/rules/problem-creation.md) - Complete problem generation workflow
-- [`.amazonq/rules/test-case-enhancement.md`](.amazonq/rules/test-case-enhancement.md) - Test enhancement and reproducibility verification
+- [`.amazonq/rules/test-quality-assurance.md`](.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
 
 **Manual Check**: Find problems needing more test cases:
 
