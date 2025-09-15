@@ -1,3 +1,4 @@
+import re
 import tempfile
 from pathlib import Path
 
@@ -12,11 +13,13 @@ runner = CliRunner()
 def test_gen_help():
     result = runner.invoke(app, ["gen", "--help"])
     assert result.exit_code == 0
-    assert "--problem-num" in result.stdout
-    assert "--problem-slug" in result.stdout
-    assert "--problem-tag" in result.stdout
-    assert "--difficulty" in result.stdout
-    assert "--all" in result.stdout
+    # Remove ANSI color codes for reliable string matching
+    clean_output = re.sub(r"\x1b\[[0-9;]*m", "", result.stdout)
+    assert "--problem-num" in clean_output
+    assert "--problem-slug" in clean_output
+    assert "--problem-tag" in clean_output
+    assert "--difficulty" in clean_output
+    assert "--all" in clean_output
 
 
 def test_gen_no_options():

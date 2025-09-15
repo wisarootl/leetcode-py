@@ -1,4 +1,4 @@
-"""Tests for list command."""
+import re
 
 from typer.testing import CliRunner
 
@@ -10,8 +10,10 @@ runner = CliRunner()
 def test_list_help():
     result = runner.invoke(app, ["list", "--help"])
     assert result.exit_code == 0
-    assert "--tag" in result.stdout
-    assert "--difficulty" in result.stdout
+    # Remove ANSI color codes for reliable string matching
+    clean_output = re.sub(r"\x1b\[[0-9;]*m", "", result.stdout)
+    assert "--tag" in clean_output
+    assert "--difficulty" in clean_output
 
 
 def test_list_all_problems():

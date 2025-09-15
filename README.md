@@ -168,7 +168,7 @@ If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cur
 **Manual Check**: Find problems needing more test cases:
 
 ```bash
-poetry run python .templates/check_test_cases.py --threshold=10
+poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
 ```
 
 ## 🧰 Helper Classes

@@ -1,4 +1,5 @@
 import json
+import re
 
 import pytest
 from typer.testing import CliRunner
@@ -11,8 +12,10 @@ runner = CliRunner()
 def test_scrape_help():
     result = runner.invoke(app, ["scrape", "--help"])
     assert result.exit_code == 0
-    assert "--problem-num" in result.stdout
-    assert "--problem-slug" in result.stdout
+    # Remove ANSI color codes for reliable string matching
+    clean_output = re.sub(r"\x1b\[[0-9;]*m", "", result.stdout)
+    assert "--problem-num" in clean_output
+    assert "--problem-slug" in clean_output
 
 
 def test_scrape_no_options():
