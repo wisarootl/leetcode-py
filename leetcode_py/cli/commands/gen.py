@@ -27,13 +27,12 @@ def _get_problem_difficulty(problem_name: str) -> str | None:
         return None
 
 
-def resolve_problems(
+def _validate_single_option(
     problem_nums: list[int],
     problem_slugs: list[str],
     problem_tag: str | None,
-    difficulty: str | None,
     all_problems: bool,
-) -> list[str]:
+) -> None:
     options_count = sum(
         [
             len(problem_nums) > 0,
@@ -50,36 +49,58 @@ def resolve_problems(
         )
         raise typer.Exit(1)
 
+
+def _resolve_by_numbers(problem_nums: list[int]) -> list[str]:
     problems = []
+    for num in problem_nums:
+        problem_name = find_problem_by_number(num)
+        if not problem_name:
+            typer.echo(f"Error: Problem number {num} not found", err=True)
+            raise typer.Exit(1)
+        problems.append(problem_name)
+    return problems
+
+
+def _resolve_by_tag(problem_tag: str) -> list[str]:
+    problems = find_problems_by_tag(problem_tag)
+    if not problems:
+        typer.echo(f"Error: No problems found with tag '{problem_tag}'", err=True)
+        raise typer.Exit(1)
+    typer.echo(f"Found {len(problems)} problems with tag '{problem_tag}'")
+    return problems
+
+
+def _filter_by_difficulty(problems: list[str], difficulty: str) -> list[str]:
+    filtered_problems = []
+    for problem_name in problems:
+        problem_difficulty = _get_problem_difficulty(problem_name)
+        if problem_difficulty and problem_difficulty.lower() == difficulty.lower():
+            filtered_problems.append(problem_name)
+    typer.echo(f"Filtered to {len(filtered_problems)} problems with difficulty '{difficulty}'")
+    return filtered_problems
+
+
+def resolve_problems(
+    problem_nums: list[int],
+    problem_slugs: list[str],
+    problem_tag: str | None,
+    difficulty: str | None,
+    all_problems: bool,
+) -> list[str]:
+    _validate_single_option(problem_nums, problem_slugs, problem_tag, all_problems)
 
     if problem_nums:
-        for num in problem_nums:
-            problem_name = find_problem_by_number(num)
-            if not problem_name:
-                typer.echo(f"Error: Problem number {num} not found", err=True)
-                raise typer.Exit(1)
-            problems.append(problem_name)
+        problems = _resolve_by_numbers(problem_nums)
     elif problem_slugs:
         problems = problem_slugs
     elif problem_tag:
-        problems = find_problems_by_tag(problem_tag)
-        if not problems:
-            typer.echo(f"Error: No problems found with tag '{problem_tag}'", err=True)
-            raise typer.Exit(1)
-        typer.echo(f"Found {len(problems)} problems with tag '{problem_tag}'")
-    elif all_problems:
+        problems = _resolve_by_tag(problem_tag)
+    else:  # all_problems
         problems = get_all_problems()
         typer.echo(f"Found {len(problems)} problems")
 
-    # Apply difficulty filter if specified
     if difficulty:
-        filtered_problems = []
-        for problem_name in problems:
-            problem_difficulty = _get_problem_difficulty(problem_name)
-            if problem_difficulty and problem_difficulty.lower() == difficulty.lower():
-                filtered_problems.append(problem_name)
-        problems = filtered_problems
-        typer.echo(f"Filtered to {len(problems)} problems with difficulty '{difficulty}'")
+        problems = _filter_by_difficulty(problems, difficulty)
 
     return problems
 
