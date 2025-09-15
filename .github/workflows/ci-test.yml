@@ -37,18 +37,6 @@ jobs:
                   poetry install --no-interaction --no-ansi
                   poetry run pip install -e .
 
-            # DEBUG: Check package installation
-            - name: Debug package installation
-              run: |
-                  echo "=== Installed packages ==="
-                  poetry run pip list | grep -i leetcode || true
-                  echo "=== Package metadata ==="
-                  poetry run python -c "import importlib.metadata; print([p for p in importlib.metadata.distributions() if 'leetcode' in p.metadata['Name'].lower()])" || true
-                  echo "=== Direct version check ==="
-                  poetry run python -c "from importlib.metadata import version; print(version('leetcode-py'))" || echo "leetcode-py not found"
-                  poetry run python -c "from importlib.metadata import version; print(version('leetcodepy'))" || echo "leetcodepy not found"
-                  poetry run python -c "from importlib.metadata import version; print(version('leetcode_py'))" || echo "leetcode_py not found"
-
             - name: Cache Graphviz installation
               id: cache-graphviz
               uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
