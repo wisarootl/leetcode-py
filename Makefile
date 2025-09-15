@@ -72,7 +72,7 @@ p-lint:
 
 p-gen:
 	@echo "Generating problem: $(PROBLEM)"
-	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(PROBLEM).json $(if $(filter 1,$(FORCE)),--force)
+	poetry run lcpy gen -s $(PROBLEM) -o leetcode $(if $(filter 1,$(FORCE)),--force)
 
 p-del:
 	rm -rf leetcode/$(PROBLEM)
@@ -93,8 +93,4 @@ gen-all-problems:
 	@echo "Deleting existing problems..."
 	@rm -rf leetcode/*/
 	@echo "Generating all problems..."
-	@for json_file in .templates/leetcode/json/*.json; do \
-		problem=$$(basename "$$json_file" .json); \
-		echo "Generating: $$problem"; \
-		poetry run python .templates/leetcode/gen.py "$$json_file" $(if $(filter 1,$(FORCE)),--force); \
-	done
+	poetry run lcpy gen -t grind-75 -o leetcode $(if $(filter 1,$(FORCE)),--force)

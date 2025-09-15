@@ -55,18 +55,27 @@ mv .cache/leetcode/{problem_name} leetcode/{problem_name}
 
 ## Quick Commands
 
+### CLI Commands (Recommended)
+
 ```bash
-# Find problems needing enhancement
-poetry run python .templates/check_test_cases.py --threshold=10
+# Generate enhanced problem
+lcpy gen -s {problem_name} -o leetcode --force
 
 # Test specific problem
 make p-test PROBLEM={problem_name}
 
-# Generate from JSON template
-make p-gen PROBLEM={problem_name} FORCE=1
-
 # Lint check
 make p-lint PROBLEM={problem_name}
+```
+
+### Development Commands
+
+```bash
+# Find problems needing enhancement
+poetry run python .templates/check_test_cases.py --threshold=10
+
+# Generate from JSON template (uses lcpy internally)
+make p-gen PROBLEM={problem_name} FORCE=1
 ```
 
 ## Test Reproducibility Verification

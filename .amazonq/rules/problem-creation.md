@@ -4,7 +4,7 @@
 
 When user requests a problem by **number** or **name/slug**, the assistant will:
 
-1. **Scrape** problem data using `.templates/leetcode/scrape.py`
+1. **Scrape** problem data using `lcpy scrape`
 2. **Transform** data into proper JSON template format
 3. **CRITICAL: Include images** - Extract image URLs from scraped data and add to readme_examples with format: `![Example N](image_url)\n\n` before code blocks
     - Check scraped data for image URLs in the `raw_content` field
@@ -12,7 +12,7 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
     - Common patterns: `kthtree1.jpg`, `kthtree2.jpg`, `clone_graph.png`, `container.jpg`
     - Images provide crucial visual context, especially for tree and graph problems
     - Always verify images are included in `readme_examples` and accessible
-4. **Create** JSON file in `.templates/leetcode/json/{problem_name}.json`
+4. **Create** JSON file in `leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json`
 5. **Update** Makefile with `PROBLEM ?= {problem_name}`
 6. **Generate** problem structure using `make p-gen`
 7. **Verify** with `make p-lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
@@ -22,15 +22,15 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 
 ```bash
 # Fetch by number
-poetry run python .templates/leetcode/scrape.py -n 1
+lcpy scrape -n 1
 
 # Fetch by slug
-poetry run python .templates/leetcode/scrape.py -s "two-sum"
+lcpy scrape -s "two-sum"
 ```
 
 ## JSON Template Format
 
-Required fields for `.templates/leetcode/json/{problem_name}.json`:
+Required fields for `leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json`:
 
 **CRITICAL: Use single quotes for Python strings in playground fields to avoid JSON escaping issues with Jupyter notebooks.**
 
@@ -41,61 +41,15 @@ Required fields for `.templates/leetcode/json/{problem_name}.json`:
 - `playground_assertion`: Use single quotes for string literals
 - Double quotes in JSON + cookiecutter + Jupyter notebook = triple escaping issues
 
-**Reference examples in `.templates/leetcode/examples/` for complete templates:**
+**Reference the complete template example:**
 
-- `basic.json5` - All standard problems (array, string, tree, linked list, etc.)
-- `design.json5` - Data structure design problems (LRU Cache, etc.)
+See `leetcode_py/cli/resources/leetcode/examples/example.json5` for a comprehensive template with:
 
-````json
-{
-    "problem_name": "two_sum",
-    "solution_class_name": "Solution",
-    "problem_number": "1",
-    "problem_title": "Two Sum",
-    "difficulty": "Easy",
-    "topics": "Array, Hash Table",
-    "tags": ["grind-75"],
-    "readme_description": "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.",
-    "readme_examples": [
-        {
-            "content": "![Example 1](https://example.com/image1.jpg)\n\n```\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\n```\n**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1]."
-        }
-    ],
-    "readme_constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
-    "readme_additional": "",
-    "solution_imports": "",
-    "solution_methods": [
-        {
-            "name": "two_sum",
-            "parameters": "nums: list[int], target: int",
-            "return_type": "list[int]",
-            "dummy_return": "[]"
-        }
-    ],
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .solution import Solution",
-    "test_class_name": "TwoSum",
-    "test_helper_methods": [
-        {
-            "name": "setup_method",
-            "parameters": "",
-            "body": "self.solution = Solution()"
-        }
-    ],
-    "test_methods": [
-        {
-            "name": "test_two_sum",
-            "parametrize": "nums, target, expected",
-            "parametrize_typed": "nums: list[int], target: int, expected: list[int]",
-            "test_cases": "[([2, 7, 11, 15], 9, [0, 1]), ([3, 2, 4], 6, [1, 2])]",
-            "body": "result = self.solution.two_sum(nums, target)\nassert result == expected"
-        }
-    ],
-    "playground_imports": "from solution import Solution",
-    "playground_test_case": "# Example test case\nnums = [2, 7, 11, 15]\ntarget = 9\nexpected = [0, 1]",
-    "playground_execution": "result = Solution().two_sum(nums, target)\nresult",
-    "playground_assertion": "assert result == expected"
-}
-````
+- All field definitions and variations
+- Comments explaining each field
+- Examples for different problem types (basic, tree, linked list, design, trie)
+- Proper JSON escaping rules for playground fields
+- Multiple solution class patterns
 
 ## Naming Conventions
 

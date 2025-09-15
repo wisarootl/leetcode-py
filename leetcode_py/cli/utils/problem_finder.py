@@ -23,19 +23,27 @@ def get_problem_json_path(problem_name: str) -> Path:
     return json_path / f"{problem_name}.json"
 
 
-def find_problem_by_number(number: int) -> str | None:
+@lru_cache(maxsize=1)
+def _build_problem_number_cache() -> dict[int, str]:
     json_path = get_problems_json_path()
+    number_to_name_map: dict[int, str] = {}
 
     for json_file in json_path.glob("*.json"):
         try:
             with open(json_file) as f:
                 data = json.load(f)
-                if data.get("problem_number") == str(number):
-                    return data.get("problem_name", json_file.stem)
+                problem_number = data.get("problem_number")
+                if problem_number and problem_number.isdigit():
+                    number_to_name_map[int(problem_number)] = data.get("problem_name", json_file.stem)
         except (json.JSONDecodeError, KeyError, OSError):
             continue
 
-    return None
+    return number_to_name_map
+
+
+def find_problem_by_number(number: int) -> str | None:
+    cache = _build_problem_number_cache()
+    return cache.get(number)
 
 
 def get_all_problems() -> list[str]:
