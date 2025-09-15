@@ -13,7 +13,7 @@ Use an LLM assistant (Cursor, GitHub Copilot Chat, Amazon Q) with the rule files
 
 ### 2. Enhance Test Cases
 
-- Include `.amazonq/rules/test-case-enhancement.md` in your LLM context
+- Include `.amazonq/rules/test-quality-assurance.md` in your LLM context
 - Ask: "Enhance test cases for [problem_name] problem"
 
 ### 3. Improve Helper Classes

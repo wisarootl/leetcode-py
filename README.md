@@ -25,8 +25,23 @@ A modern Python LeetCode practice environment that goes beyond basic problem sol
 
 ## 🚀 Quick Start
 
+### CLI Installation (Recommended)
+
 ```bash
-# Clone and setup
+# Install globally via pip
+pip install leetcode-py
+
+# Generate problems anywhere
+lcpy gen -n 1                    # Generate Two Sum
+lcpy gen -t grind-75             # Generate all Grind 75 problems
+lcpy list -t grind-75            # List available problems
+lcpy scrape -n 1                 # Fetch problem data
+```
+
+### Development Setup
+
+```bash
+# Clone and setup for development
 git clone https://github.com/wisarootl/leetcode-py.git
 cd leetcode-py
 poetry install
@@ -77,10 +92,10 @@ leetcode/two_sum/
 - **ListNode**: Clean arrow-based visualization (`1 -> 2 -> 3`)
 - **Interactive Debugging**: Multi-cell playground environment
 
-![Tree Visualization Placeholder](docs/images/tree-viz.png)
+![Tree Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-viz.png)
 _Beautiful tree rendering with anytree and Graphviz_
 
-![LinkedList Visualization Placeholder](docs/images/linkedlist-viz.png)
+![LinkedList Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-viz.png)
 _Clean arrow-based list visualization_
 
 ### Flexible Notebook Support
@@ -89,14 +104,36 @@ _Clean arrow-based list visualization_
 - **Repository State**: This repo uses Python files (`.py`) for better version control
 - **User Choice**: Use `make nb-to-py` to convert notebooks to Python files, or keep as `.ipynb` for interactive development
 
-![Notebook Placeholder](docs/images/notebook-example.png)
+![Notebook Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/notebook-example.png)
 _Interactive multi-cell playground for each problem_
 
 ## 🔄 Usage Patterns
 
-### For Current Grind 75 Problems
+### CLI Usage (Global Installation)
 
-Perfect if you want to focus on the most essential interview problems:
+Perfect for quick problem generation anywhere:
+
+```bash
+# Generate specific problems
+lcpy gen -n 1 -n 125 -n 206      # Multiple problems by number
+lcpy gen -s two-sum -s valid-palindrome  # Multiple problems by slug
+
+# Bulk generation
+lcpy gen -t grind-75              # All Grind 75 problems
+lcpy gen -t grind-75 -d Easy     # Only Easy problems from Grind 75
+
+# Explore available problems
+lcpy list                         # All problems
+lcpy list -t grind-75            # Filter by tag
+lcpy list -d Medium              # Filter by difficulty
+
+# Fetch problem data
+lcpy scrape -n 1 > two_sum.json  # Save problem data
+```
+
+### Development Workflow
+
+For repository development and customization:
 
 ```bash
 # Regenerate all 75 problems with fresh TODO placeholders
@@ -108,7 +145,7 @@ make p-test PROBLEM=valid_palindrome
 make p-test PROBLEM=merge_two_sorted_lists
 ```
 
-### For Additional Problems (LLM-Assisted)
+### LLM-Assisted Problem Creation
 
 If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.):
 
@@ -126,12 +163,12 @@ If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cur
 **Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
 
 - [`.amazonq/rules/problem-creation.md`](.amazonq/rules/problem-creation.md) - Complete problem generation workflow
-- [`.amazonq/rules/test-case-enhancement.md`](.amazonq/rules/test-case-enhancement.md) - Test enhancement and reproducibility verification
+- [`.amazonq/rules/test-quality-assurance.md`](.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
 
 **Manual Check**: Find problems needing more test cases:
 
 ```bash
-poetry run python .templates/check_test_cases.py --threshold=10
+poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
 ```
 
 ## 🧰 Helper Classes
@@ -160,7 +197,30 @@ poetry run python .templates/check_test_cases.py --threshold=10
     - Graphviz visualization for Jupyter notebooks
     - Generic key type support
 
-## 🛠️ Development Commands
+## 🛠️ Commands
+
+### CLI Commands (Global)
+
+```bash
+# Generate problems
+lcpy gen -n 1                       # Single problem by number
+lcpy gen -s two-sum                 # Single problem by slug
+lcpy gen -t grind-75                # Bulk generation by tag
+lcpy gen -n 1 -n 2 -n 3            # Multiple problems
+lcpy gen -t grind-75 -d Easy       # Filter by difficulty
+lcpy gen -n 1 -o my-problems       # Custom output directory
+
+# List problems
+lcpy list                           # All available problems
+lcpy list -t grind-75              # Filter by tag
+lcpy list -d Medium                # Filter by difficulty
+
+# Scrape problem data
+lcpy scrape -n 1                   # Fetch by number
+lcpy scrape -s two-sum             # Fetch by slug
+```
+
+### Development Commands (Repository)
 
 ```bash
 # Problem-specific operations

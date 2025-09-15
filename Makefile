@@ -24,7 +24,7 @@ define lint_target
 	poetry run black $(1)
 	poetry run isort $(1)
 	$(if $(filter .,$(1)), \
-		poetry run nbqa ruff . --nbqa-exclude=".templates" --ignore=F401$(COMMA)F821, \
+		poetry run nbqa ruff . --nbqa-exclude="leetcode_py/cli/resources/" --ignore=F401$(COMMA)F821, \
 		poetry run nbqa ruff $(1) --ignore=F401$(COMMA)F821)
 	poetry run ruff check $(1) --exclude="**/*.ipynb"
 	poetry run mypy $(1) \
@@ -33,10 +33,10 @@ define lint_target
 		--non-interactive \
 		--check-untyped-defs
 	$(if $(filter .,$(1)), \
-		poetry run nbqa isort . --nbqa-exclude=".templates", \
+		poetry run nbqa isort . --nbqa-exclude="leetcode_py/cli/resources/", \
 		poetry run nbqa isort $(1))
 	$(if $(filter .,$(1)), \
-		poetry run nbqa mypy . --nbqa-exclude=".templates" \
+		poetry run nbqa mypy . --nbqa-exclude="leetcode_py/cli/resources/" \
 			--ignore-missing-imports --disable-error-code=name-defined, \
 		poetry run nbqa mypy $(1) --ignore-missing-imports --disable-error-code=name-defined)
 endef
@@ -72,7 +72,7 @@ p-lint:
 
 p-gen:
 	@echo "Generating problem: $(PROBLEM)"
-	poetry run python .templates/leetcode/gen.py .templates/leetcode/json/$(PROBLEM).json $(if $(filter 1,$(FORCE)),--force)
+	poetry run lcpy gen -s $(PROBLEM) -o leetcode $(if $(filter 1,$(FORCE)),--force)
 
 p-del:
 	rm -rf leetcode/$(PROBLEM)
@@ -84,6 +84,11 @@ nb-to-py:
 	@find leetcode -name "*.ipynb" -delete
 	@echo "Conversion complete. All .ipynb files converted to .py and deleted."
 
+# Find problems with few test cases
+check-test-cases:
+	@echo "Checking test case coverage..."
+	poetry run python leetcode_py/tools/check_test_cases.py --threshold=$(or $(THRESHOLD),10) --max=$(or $(MAX),1)
+
 # Generate All Problems - useful for people who fork this repo
 gen-all-problems:
 	@echo "This will DELETE all existing problems and regenerate from JSON templates."
@@ -93,8 +98,4 @@ gen-all-problems:
 	@echo "Deleting existing problems..."
 	@rm -rf leetcode/*/
 	@echo "Generating all problems..."
-	@for json_file in .templates/leetcode/json/*.json; do \
-		problem=$$(basename "$$json_file" .json); \
-		echo "Generating: $$problem"; \
-		poetry run python .templates/leetcode/gen.py "$$json_file" $(if $(filter 1,$(FORCE)),--force); \
-	done
+	poetry run lcpy gen -t grind-75 -o leetcode $(if $(filter 1,$(FORCE)),--force)

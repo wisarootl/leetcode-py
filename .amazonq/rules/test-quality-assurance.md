@@ -1,4 +1,4 @@
-# Test Case Enhancement Rules
+# Test Quality Assurance Rules
 
 ## Simple Enhancement Workflow
 
@@ -7,7 +7,7 @@ When user requests test case enhancement or **test reproducibility verification*
 ### 1. Problem Resolution
 
 - Use active file context or user-provided problem name
-- If unclear, run: `poetry run python .templates/check_test_cases.py --threshold=10 --max=1`
+- If unclear, run: `poetry run python -m leetcode_py.tools.check_test_cases --threshold=10 --max=1`
 
 ### 2. Enhancement Process
 
@@ -55,18 +55,33 @@ mv .cache/leetcode/{problem_name} leetcode/{problem_name}
 
 ## Quick Commands
 
+### CLI Commands (Recommended)
+
 ```bash
-# Find problems needing enhancement
-poetry run python .templates/check_test_cases.py --threshold=10
+# Generate enhanced problem
+lcpy gen -s {problem_name} -o leetcode --force
 
 # Test specific problem
 make p-test PROBLEM={problem_name}
 
-# Generate from JSON template
-make p-gen PROBLEM={problem_name} FORCE=1
-
 # Lint check
 make p-lint PROBLEM={problem_name}
+```
+
+### Development Commands
+
+```bash
+# Find problems needing enhancement
+poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
+
+# Check all problems (no limit)
+poetry run python -m leetcode_py.tools.check_test_cases --threshold=10 --max=none
+
+# Check with custom threshold
+poetry run python -m leetcode_py.tools.check_test_cases --threshold=12
+
+# Generate from JSON template (uses lcpy internally)
+make p-gen PROBLEM={problem_name} FORCE=1
 ```
 
 ## Test Reproducibility Verification
