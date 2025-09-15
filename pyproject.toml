@@ -22,7 +22,7 @@ packages = [{include = "leetcode_py"}]
 include = ["leetcode_py/cli/resources/**/*"]
 
 [tool.poetry.scripts]
-lcpy = "leetcode_py.cli.main:main"
+lcpy = "leetcode_py.cli.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.13"

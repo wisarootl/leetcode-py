@@ -30,7 +30,3 @@ def main_callback(
 app.command(name="gen")(generate)
 app.command(name="scrape")(scrape)
 app.command(name="list")(list_problems)
-
-
-def main():
-    app()
