@@ -10,7 +10,18 @@ app = typer.Typer(help="LeetCode problem generator - Generate and list LeetCode 
 
 
 def show_version():
-    typer.echo(f"lcpy version {version('leetcode-py')}")
+    # Try different package name variations
+    package_names = ["leetcode-py-sdk", "leetcode-py", "leetcodepy", "leetcode_py"]
+    for name in package_names:
+        try:
+            ver = version(name)
+            typer.echo(f"lcpy version {ver}")
+            raise typer.Exit()
+        except Exception:
+            continue
+
+    # Fallback if no package found
+    typer.echo("lcpy version unknown (package not found)")
     raise typer.Exit()
 
 
