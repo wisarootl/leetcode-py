@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_min_stack_operations, run_min_stack_operations
 from .solution import MinStack

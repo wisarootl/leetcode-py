@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_first_bad_version, run_first_bad_version
 from .solution import Solution

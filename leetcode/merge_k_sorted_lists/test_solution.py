@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_merge_k_lists, run_merge_k_lists
 from .solution import Solution

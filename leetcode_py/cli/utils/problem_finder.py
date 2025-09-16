@@ -51,22 +51,34 @@ def get_all_problems() -> list[str]:
     return [json_file.stem for json_file in json_path.glob("*.json")]
 
 
+def _add_problem_to_tag_map(
+    problem_tags_map: dict[str, list[str]], problem_name: str, tag_name: str
+) -> None:
+    if problem_name not in problem_tags_map:
+        problem_tags_map[problem_name] = []
+    problem_tags_map[problem_name].append(tag_name)
+
+
 @lru_cache(maxsize=1)
 def _build_problem_tags_cache() -> dict[str, list[str]]:
-    tags_file = get_tags_path()
-    problem_tags_map: dict[str, list[str]] = {}
-
     try:
-        with open(tags_file) as f:
+        with open(get_tags_path()) as f:
             tags_data = json5.load(f)
 
-        # Build reverse mapping: problem -> list of tags
+        problem_tags_map: dict[str, list[str]] = {}
+
         for tag_name, problems in tags_data.items():
-            if isinstance(problems, list):
-                for problem_name in problems:
-                    if problem_name not in problem_tags_map:
-                        problem_tags_map[problem_name] = []
-                    problem_tags_map[problem_name].append(tag_name)
+            if not isinstance(problems, list):
+                continue
+
+            for item in problems:
+                if isinstance(item, dict) and "tag" in item:
+                    # Include all problems from referenced tag
+                    for problem_name in tags_data.get(item["tag"], []):
+                        if isinstance(problem_name, str):
+                            _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
+                elif isinstance(item, str):
+                    _add_problem_to_tag_map(problem_tags_map, item, tag_name)
 
         return problem_tags_map
     except (ValueError, OSError, KeyError):

@@ -28,7 +28,7 @@
     "solution_imports": "from leetcode_py import TreeNode",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_serialize_deserialize, run_serialize_deserialize\nfrom .solution import Codec",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_serialize_deserialize, run_serialize_deserialize\nfrom .solution import Codec",
     "test_content": "",
     "test_class_name": "SerializeAndDeserializeBinaryTree",
     "test_class_content": "",

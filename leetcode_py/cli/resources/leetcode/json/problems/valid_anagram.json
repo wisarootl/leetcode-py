@@ -26,7 +26,7 @@
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_is_anagram, run_is_anagram\nfrom .solution import Solution",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_anagram, run_is_anagram\nfrom .solution import Solution",
     "test_content": "",
     "test_class_name": "ValidAnagram",
     "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",

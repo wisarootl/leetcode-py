@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_is_valid_bst, run_is_valid_bst
 from .solution import Solution, SolutionBFS, SolutionDFS

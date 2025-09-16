@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_is_valid, run_is_valid
 from .solution import Solution

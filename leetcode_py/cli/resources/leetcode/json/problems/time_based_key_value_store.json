@@ -27,7 +27,7 @@
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_time_map_operations, run_time_map_operations\nfrom .solution import TimeMap",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_time_map_operations, run_time_map_operations\nfrom .solution import TimeMap",
     "test_content": "",
     "test_class_name": "TimeBasedKeyValueStore",
     "test_class_content": "",

@@ -1,0 +1,63 @@
+{
+    "problem_name": "daily_temperatures",
+    "solution_class_name": "Solution",
+    "problem_number": "739",
+    "problem_title": "Daily Temperatures",
+    "difficulty": "Medium",
+    "topics": "Array, Stack, Monotonic Stack",
+    "_tags": { "list": [] },
+    "readme_description": "Given an array of integers `temperatures` represents the daily temperatures, return an array `answer` such that `answer[i]` is the number of days you have to wait after the `ith` day to get a warmer temperature. If there is no future day for which this is possible, keep `answer[i] == 0` instead.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: temperatures = [73,74,75,71,69,72,76,73]\nOutput: [1,1,4,2,1,1,0,0]\n```\n**Explanation:**\n- For input `[73,74,75,71,69,72,76,73]`, the output should be `[1,1,4,2,1,1,0,0]`.\n- For example, the first temperature is 73. The next warmer temperature is 74, which is 1 day later, so we put 1.\n- The second temperature is 74. The next warmer temperature is 75, which is 1 day later, so we put 1.\n- The third temperature is 75. The next warmer temperature is 76, which is 4 days later, so we put 4."
+            },
+            { "content": "```\nInput: temperatures = [30,40,50,60]\nOutput: [1,1,1,0]\n```" },
+            { "content": "```\nInput: temperatures = [30,60,90]\nOutput: [1,1,0]\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= temperatures.length <= 10^5`\n- `30 <= temperatures[i] <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "daily_temperatures",
+    "helpers_run_signature": "(solution_class: type, temperatures: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.daily_temperatures(temperatures)",
+    "helpers_assert_name": "daily_temperatures",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_daily_temperatures, run_daily_temperatures\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DailyTemperatures",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "daily_temperatures",
+                "signature": "(self, temperatures: list[int]) -> list[int]",
+                "body": "        # TODO: Implement daily_temperatures\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_daily_temperatures",
+                "signature": "(self, temperatures: list[int], expected: list[int])",
+                "parametrize": "temperatures, expected",
+                "test_cases": "[([73,74,75,71,69,72,76,73], [1,1,4,2,1,1,0,0]), ([30,40,50,60], [1,1,1,0]), ([30,60,90], [1,1,0]), ([89,62,70,58,47,47,46,76,100,70], [8,1,5,4,3,2,1,1,0,0]), ([55,38,53,81,61,93,97,32,43,78], [3,1,1,2,1,1,0,1,1,0]), ([34,80,80,34,34,80,80,80,80,34], [1,0,0,2,1,0,0,0,0,0]), ([73], [0]), ([100], [0]), ([30,31,32,33,34], [1,1,1,1,0]), ([90,80,70,60,50], [0,0,0,0,0]), ([50,50,50,50], [0,0,0,0]), ([30,100,30,100], [1,0,1,0]), ([75,71,69,72,76], [4,2,1,1,0]), ([40,35,32,37,50], [4,2,1,1,0]), ([30,40,50,60,70,80,90,100], [1,1,1,1,1,1,1,0]), ([30,30], [0,0]), ([100,100], [0,0]), ([30,100], [1,0]), ([100,30], [0,0]), ([30,31,100], [1,1,0]), ([30,99,100], [1,1,0]), ([50,40,60,30,70], [2,1,2,1,0]), ([60,50,70,40,80], [2,1,2,1,0]), ([40,50,60,50,40], [1,1,0,0,0]), ([30,40,50,40,30], [1,1,0,0,0]), ([60,50,40,50,60], [0,3,1,1,0]), ([70,60,50,60,70], [0,3,1,1,0]), ([45,50,40,60,55,65], [1,2,1,2,1,0]), ([35,45,30,50,40,60], [1,2,1,2,1,0]), ([30,31,32,33,34,35,36,37,38,39], [1,1,1,1,1,1,1,1,1,0]), ([50,49,48,47,46,45,44,43,42,41], [0,0,0,0,0,0,0,0,0,0]), ([40,40,50,50,60,60], [2,1,2,1,0,0]), ([60,60,50,50,40,40], [0,0,0,0,0,0]), ([30,31,30,32], [1,2,1,0]), ([99,100,99,100], [1,0,1,0])]",
+                "body": "        result = run_daily_temperatures(Solution, temperatures)\n        assert_daily_temperatures(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_daily_temperatures, assert_daily_temperatures\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntemperatures = [73,74,75,71,69,72,76,73]\nexpected = [1,1,4,2,1,1,0,0]",
+    "playground_run": "result = run_daily_temperatures(Solution, temperatures)\nresult",
+    "playground_assert": "assert_daily_temperatures(result, expected)"
+}

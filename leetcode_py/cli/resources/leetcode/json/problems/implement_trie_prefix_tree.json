@@ -27,7 +27,7 @@
     "solution_imports": "from leetcode_py.data_structures import DictTree, RecursiveDict",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_trie_operations, run_trie_operations\nfrom .solution import Trie",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_trie_operations, run_trie_operations\nfrom .solution import Trie",
     "test_content": "",
     "test_class_name": "ImplementTriePrefixTree",
     "test_class_content": "",

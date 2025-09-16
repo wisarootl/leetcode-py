@@ -75,13 +75,11 @@
         "word_break",
         "word_ladder",
         "word_search",
-        "zero_one_matrix"
+        "zero_one_matrix",
     ],
 
+    grind: [{ tag: "grind-75" }, "daily_temperatures"],
+
     // Test tag for development and testing
-    "test": [
-        "two_sum",
-        "valid_palindrome",
-        "binary_search"
-    ]
+    test: ["binary_search", "two_sum", "valid_palindrome"],
 }

@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_right_side_view, run_right_side_view
 from .solution import Solution, SolutionBFS, SolutionDFS
