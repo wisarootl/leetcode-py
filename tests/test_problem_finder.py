@@ -12,6 +12,7 @@ def test_build_problem_tags_cache_with_real_tags():
     assert "two_sum" in result
     assert "grind-75" in result["two_sum"]
     assert "grind" in result["two_sum"]
+    assert "test" in result["two_sum"]
 
 
 def test_get_tags_for_problem():
@@ -23,3 +24,4 @@ def test_get_tags_for_problem():
     tags = get_tags_for_problem("two_sum")
     assert "grind-75" in tags
     assert "grind" in tags
+    assert "test" in tags

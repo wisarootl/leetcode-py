@@ -59,7 +59,7 @@ mv .cache/leetcode/{problem_name} leetcode/{problem_name}
 
 ```bash
 # Generate enhanced problem
-lcpy gen -s {problem_name} -o leetcode --force
+poetry run lcpy gen -s {problem_name} -o leetcode --force
 
 # Test specific problem
 make p-test PROBLEM={problem_name}
@@ -80,7 +80,7 @@ poetry run python -m leetcode_py.tools.check_test_cases --threshold=10 --max=non
 # Check with custom threshold
 poetry run python -m leetcode_py.tools.check_test_cases --threshold=12
 
-# Generate from JSON template (uses lcpy internally)
+# Generate from JSON template (uses poetry run lcpy internally)
 make p-gen PROBLEM={problem_name} FORCE=1
 ```
 
