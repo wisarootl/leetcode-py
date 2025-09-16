@@ -13,7 +13,19 @@ def find_problems_by_tag(tag: str) -> list[str]:
     try:
         with open(tags_file) as f:
             tags_data = json5.load(f)
-            return tags_data.get(tag, [])
+
+        problems = []
+        tag_items = tags_data.get(tag, [])
+
+        for item in tag_items:
+            if isinstance(item, dict) and "tag" in item:
+                # Resolve tag reference
+                referenced_problems = find_problems_by_tag(item["tag"])
+                problems.extend(referenced_problems)
+            elif isinstance(item, str):
+                problems.append(item)
+
+        return problems
     except (ValueError, OSError, KeyError):
         return []
 
@@ -62,9 +74,10 @@ def _add_problem_to_tag_map(
 def _process_tag_reference(
     tags_data: dict, item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]
 ) -> None:
-    for problem_name in tags_data.get(item["tag"], []):
-        if isinstance(problem_name, str):
-            _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
+    # Recursively resolve tag references
+    referenced_problems = find_problems_by_tag(item["tag"])
+    for problem_name in referenced_problems:
+        _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
 
 
 def _process_tag_item(

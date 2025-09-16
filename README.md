@@ -1,4 +1,4 @@
-# LeetCode Practice Repository 🚀
+# LeetCode Practice Environment Generator 🚀
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
@@ -7,11 +7,11 @@
 [![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
 
-A modern Python LeetCode practice environment that goes beyond basic problem solving. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 12+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
+A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
 
 **What makes this different:**
 
-- 🤖 **LLM-Assisted Workflow**: Generate new problems instantly with AI assistance
+- 🤖 **[LLM-Assisted Workflow](#llm-assisted-problem-creation)**: Generate new problems instantly with AI assistance
 - 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
 - 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
 - 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
@@ -21,14 +21,20 @@ A modern Python LeetCode practice environment that goes beyond basic problem sol
 
 **Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview questions curated by the creator of Blind 75.
 
-**Future**: Planned expansion to all 169 Grind problems for comprehensive interview preparation.
+**Future**: Planned expansion to all free Grind problems for comprehensive interview preparation.
 
 ## 🚀 Quick Start
 
-### CLI Installation (Recommended)
+### System Requirements
+
+- **Python 3.13+** - Modern Python runtime with latest type system features
+- **Poetry** - Dependency management and packaging
+- **Make** - Build automation (development workflows)
+- **Git** - Version control system
+- **Graphviz** - Graph visualization library (for data structure rendering)
 
 ```bash
-# Install globally via pip
+# Install the package
 pip install leetcode-py
 
 # Generate problems anywhere
@@ -36,31 +42,26 @@ lcpy gen -n 1                    # Generate Two Sum
 lcpy gen -t grind-75             # Generate all Grind 75 problems
 lcpy list -t grind-75            # List available problems
 lcpy scrape -n 1                 # Fetch problem data
+
+# Start practicing
+cd leetcode/two_sum
+python -m pytest test_solution.py  # Run tests
+# Edit solution.py, then rerun tests
 ```
 
-### Development Setup
+### Example
 
 ```bash
-# Clone and setup for development
-git clone https://github.com/wisarootl/leetcode-py.git
-cd leetcode-py
-poetry install
-
-# Start with existing Grind 75 problems
-make gen-all-problems  # Regenerates all problems with TODO placeholders
-
-# Practice a specific problem
-make p-test PROBLEM=two_sum
-# Edit leetcode/two_sum/solution.py, then rerun tests
-
-# Run all tests
-make test
+lcpy gen --problem-tag grind-75 --output leetcode  # Generate all Grind 75 problems
 ```
 
-## 📋 Prerequisites
+![Problem Generation](docs/images/problems-generation.png)
 
-- Python 3.13+
-- Poetry, Make, Git, Graphviz
+_Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
+
+![Problem Generation 2](docs/images/problems-generation-2.png)
+
+_Generated folder structure showing all 75 problem directories after command execution_
 
 ## 📁 Problem Structure
 
@@ -70,11 +71,27 @@ Each problem follows a consistent, production-ready template:
 leetcode/two_sum/
 ├── README.md           # Problem description with examples and constraints
 ├── solution.py         # Implementation with type hints and TODO placeholder
-├── test_solution.py    # Comprehensive parametrized tests (12+ test cases)
+├── test_solution.py    # Comprehensive parametrized tests (10+ test cases)
 ├── helpers.py          # Test helper functions
 ├── playground.py       # Interactive debugging environment (converted from .ipynb)
 └── __init__.py         # Package marker
 ```
+
+![README Example](docs/images/readme-example.png)
+
+_README format that mirrors LeetCode's problem description layout_
+
+![Solution Boilerplate](docs/images/solution-boilerplate.png)
+
+_Solution boilerplate with type hints and TODO placeholder_
+
+![Test Example](docs/images/test-example.png)
+
+_Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
+
+![Test Logging](docs/images/logs-in-test-solution.png)
+
+_Beautiful colorful test output with loguru integration for enhanced debugging and test result visualization_
 
 ## ✨ Key Features
 
@@ -82,30 +99,49 @@ leetcode/two_sum/
 
 - **Modern Python**: PEP 585/604 type hints, snake_case conventions
 - **Comprehensive Linting**: black, isort, ruff, mypy with nbqa for notebooks
-- **High Test Coverage**: 12+ test cases per problem including edge cases
+- **High Test Coverage**: 10+ test cases per problem including edge cases
 - **Beautiful Logging**: loguru integration for enhanced test debugging
 - **CI/CD Pipeline**: Automated testing, security scanning, and quality gates
 
 ### Enhanced Data Structure Visualization
 
-- **TreeNode**: Beautiful tree rendering with anytree and Graphviz
-- **ListNode**: Clean arrow-based visualization (`1 -> 2 -> 3`)
-- **Interactive Debugging**: Multi-cell playground environment
+Professional-grade visualization for debugging complex data structures with dual rendering modes:
 
-![Tree Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-viz.png)
-_Beautiful tree rendering with anytree and Graphviz_
+- **TreeNode**: Beautiful tree rendering with anytree and Graphviz integration
+- **ListNode**: Clean arrow-based visualization with cycle detection
+- **GraphNode**: Interactive graph rendering for adjacency list problems
+- **DictTree**: Box-drawing character trees perfect for Trie implementations
 
-![LinkedList Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-viz.png)
-_Clean arrow-based list visualization_
+#### Jupyter Notebook Integration (HTML Rendering)
+
+![Tree Visualization](docs/images/tree-viz.png)
+
+_Interactive tree visualization using Graphviz SVG rendering in Jupyter notebooks_
+
+![LinkedList Visualization](docs/images/linkedlist-viz.png)
+
+_Professional linked list visualization with Graphviz in Jupyter environment_
+
+#### Terminal/Console Output (String Rendering)
+
+![Tree String Visualization](docs/images/tree-str-viz.png)
+
+_Clean ASCII tree rendering using anytree for terminal debugging and logging_
+
+![LinkedList String Visualization](docs/images/linkedlist-str-viz.png)
+
+_Simple arrow-based list representation for console output and test debugging_
 
 ### Flexible Notebook Support
 
-- **Template Generation**: Creates Jupyter notebooks (`.ipynb`) by default
-- **Repository State**: This repo uses Python files (`.py`) for better version control
-- **User Choice**: Use `make nb-to-py` to convert notebooks to Python files, or keep as `.ipynb` for interactive development
+- **Template Generation**: Creates Jupyter notebooks (`.ipynb`) by default with rich data structure rendering
+- **User Choice**: Use `jupytext` to convert notebooks to Python files, or keep as `.ipynb` for interactive exploration
+- **Repository State**: This repo converts them to Python files (`.py`) for better version control
+- **Dual Rendering**: Automatic HTML visualization in notebooks, clean string output in terminals
 
-![Notebook Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/notebook-example.png)
-_Interactive multi-cell playground for each problem_
+![Notebook Example](docs/images/notebook-example.png)
+
+_Interactive multi-cell playground with rich data structure visualization for each problem_
 
 ## 🔄 Usage Patterns
 
@@ -131,31 +167,34 @@ lcpy list -d Medium              # Filter by difficulty
 lcpy scrape -n 1 > two_sum.json  # Save problem data
 ```
 
-### Development Workflow
+## 🛠️ Development Setup
 
-For repository development and customization:
+For working within this repository to generate additional LeetCode problems using LLM assistance:
 
 ```bash
-# Regenerate all 75 problems with fresh TODO placeholders
-make gen-all-problems
+# Clone repository for development
+git clone https://github.com/wisarootl/leetcode-py.git
+cd leetcode-py
+poetry install
 
-# Work through problems systematically
-make p-test PROBLEM=two_sum
-make p-test PROBLEM=valid_palindrome
-make p-test PROBLEM=merge_two_sorted_lists
+# Generate problems from JSON templates
+make p-gen PROBLEM=problem_name
+make p-test PROBLEM=problem_name
+
+# Regenerate all existing problems
+make gen-all-problems
 ```
 
 ### LLM-Assisted Problem Creation
 
-If you need more problems beyond Grind 75, use an LLM assistant in your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.):
+To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.):
 
 ```bash
-# Example commands to give your LLM assistant:
-"Create LeetCode problem 146 (LRU Cache)"
-"Add problem 'Word Ladder' by number 127"
-"Generate problem 'Serialize and Deserialize Binary Tree'"
+# Problem generation commands:
+"Add problem 198. House Robber"
+"Add problem 198. House Robber. tag: grind"
 
-# For test enhancement (when you need more comprehensive test coverage):
+# Test enhancement commands:
 "Enhance test cases for two_sum problem"
 "Fix test reproducibility for binary_tree_inorder_traversal"
 ```
