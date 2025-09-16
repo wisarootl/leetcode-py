@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= daily_temperatures
+PROBLEM ?= house_robber
 FORCE ?= 0
 COMMA := ,
 

@@ -187,7 +187,11 @@ make gen-all-problems
 
 ### LLM-Assisted Problem Creation
 
-To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.):
+To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.).
+
+📖 **[Complete LLM-Assisted Problem Creation Guide](docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
+
+**Quick Start:**
 
 ```bash
 # Problem generation commands:
@@ -239,6 +243,8 @@ poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
 ## 🛠️ Commands
 
 ### CLI Commands (Global)
+
+📖 **[Complete CLI Usage Guide](docs/cli-usage.md)** - Detailed documentation with all options and examples.
 
 ```bash
 # Generate problems
