@@ -4,7 +4,7 @@
 
 When user requests a problem by **number** or **name/slug**, the assistant will:
 
-1. **Scrape** problem data using `lcpy scrape`
+1. **Scrape** problem data using `poetry run lcpy scrape`
 2. **Transform** data into proper JSON template format
 3. **CRITICAL: Include images** - Extract image URLs from scraped data and add to readme_examples with format: `![Example N](image_url)\n\n` before code blocks
     - Check scraped data for image URLs in the `raw_content` field
@@ -23,10 +23,10 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 
 ```bash
 # Fetch by number
-lcpy scrape -n 1
+poetry run lcpy scrape -n 1
 
 # Fetch by slug
-lcpy scrape -s "two-sum"
+poetry run lcpy scrape -s "two-sum"
 ```
 
 ## JSON Template Format
