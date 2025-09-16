@@ -11,7 +11,7 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 **What makes this different:**
 
-- 🤖 **[LLM-Assisted Workflow](#llm-assisted-problem-creation)**: Generate new problems instantly with AI assistance
+- 🤖 **[LLM-Assisted Workflow](https://github.com/wisarootl/leetcode-py#llm-assisted-problem-creation)**: Generate new problems instantly with AI assistance
 - 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
 - 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
 - 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
@@ -55,11 +55,11 @@ python -m pytest test_solution.py  # Run tests
 lcpy gen --problem-tag grind-75 --output leetcode  # Generate all Grind 75 problems
 ```
 
-![Problem Generation](docs/images/problems-generation.png)
+![Problem Generation](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation.png)
 
 _Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
 
-![Problem Generation 2](docs/images/problems-generation-2.png)
+![Problem Generation 2](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation-2.png)
 
 _Generated folder structure showing all 75 problem directories after command execution_
 
@@ -77,19 +77,19 @@ leetcode/two_sum/
 └── __init__.py         # Package marker
 ```
 
-![README Example](docs/images/readme-example.png)
+![README Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/readme-example.png)
 
 _README format that mirrors LeetCode's problem description layout_
 
-![Solution Boilerplate](docs/images/solution-boilerplate.png)
+![Solution Boilerplate](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/solution-boilerplate.png)
 
 _Solution boilerplate with type hints and TODO placeholder_
 
-![Test Example](docs/images/test-example.png)
+![Test Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/test-example.png)
 
 _Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
 
-![Test Logging](docs/images/logs-in-test-solution.png)
+![Test Logging](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/logs-in-test-solution.png)
 
 _Beautiful colorful test output with loguru integration for enhanced debugging and test result visualization_
 
@@ -114,21 +114,21 @@ Professional-grade visualization for debugging complex data structures with dual
 
 #### Jupyter Notebook Integration (HTML Rendering)
 
-![Tree Visualization](docs/images/tree-viz.png)
+![Tree Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-viz.png)
 
 _Interactive tree visualization using Graphviz SVG rendering in Jupyter notebooks_
 
-![LinkedList Visualization](docs/images/linkedlist-viz.png)
+![LinkedList Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-viz.png)
 
 _Professional linked list visualization with Graphviz in Jupyter environment_
 
 #### Terminal/Console Output (String Rendering)
 
-![Tree String Visualization](docs/images/tree-str-viz.png)
+![Tree String Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-str-viz.png)
 
 _Clean ASCII tree rendering using anytree for terminal debugging and logging_
 
-![LinkedList String Visualization](docs/images/linkedlist-str-viz.png)
+![LinkedList String Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-str-viz.png)
 
 _Simple arrow-based list representation for console output and test debugging_
 
@@ -139,7 +139,7 @@ _Simple arrow-based list representation for console output and test debugging_
 - **Repository State**: This repo converts them to Python files (`.py`) for better version control
 - **Dual Rendering**: Automatic HTML visualization in notebooks, clean string output in terminals
 
-![Notebook Example](docs/images/notebook-example.png)
+![Notebook Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/notebook-example.png)
 
 _Interactive multi-cell playground with rich data structure visualization for each problem_
 
@@ -189,7 +189,7 @@ make gen-all-problems
 
 To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.).
 
-📖 **[Complete LLM-Assisted Problem Creation Guide](docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
+📖 **[Complete LLM-Assisted Problem Creation Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
 
 **Quick Start:**
 
@@ -205,8 +205,8 @@ To extend the problem collection beyond the current catalog, leverage an LLM ass
 
 **Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
 
-- [`.amazonq/rules/problem-creation.md`](.amazonq/rules/problem-creation.md) - Complete problem generation workflow
-- [`.amazonq/rules/test-quality-assurance.md`](.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
+- [`.amazonq/rules/problem-creation.md`](https://github.com/wisarootl/leetcode-py/blob/main/.amazonq/rules/problem-creation.md) - Complete problem generation workflow
+- [`.amazonq/rules/test-quality-assurance.md`](https://github.com/wisarootl/leetcode-py/blob/main/.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
 
 **Manual Check**: Find problems needing more test cases:
 
@@ -244,7 +244,7 @@ poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
 
 ### CLI Commands (Global)
 
-📖 **[Complete CLI Usage Guide](docs/cli-usage.md)** - Detailed documentation with all options and examples.
+📖 **[Complete CLI Usage Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)** - Detailed documentation with all options and examples.
 
 ```bash
 # Generate problems
