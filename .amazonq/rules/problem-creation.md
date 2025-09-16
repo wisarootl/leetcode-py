@@ -13,10 +13,11 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
     - Images provide crucial visual context, especially for tree and graph problems
     - Always verify images are included in `readme_examples` and accessible
 4. **Create** JSON file in `leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json`
-5. **Update** Makefile with `PROBLEM ?= {problem_name}`
-6. **Generate** problem structure using `make p-gen`
-7. **Verify** with `make p-lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
-8. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make p-lint` until passes to ensure reproducibility
+5. **Update tags.json5** - If user specifies tags, manually add problem name to corresponding tag arrays in `leetcode_py/cli/resources/leetcode/json/tags.json5`
+6. **Update** Makefile with `PROBLEM ?= {problem_name}`
+7. **Generate** problem structure using `make p-gen`
+8. **Verify** with `make p-lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
+9. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make p-lint` until passes to ensure reproducibility
 
 ## Scraping Commands
 

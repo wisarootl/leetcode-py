@@ -59,6 +59,23 @@ def _add_problem_to_tag_map(
     problem_tags_map[problem_name].append(tag_name)
 
 
+def _process_tag_reference(
+    tags_data: dict, item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]
+) -> None:
+    for problem_name in tags_data.get(item["tag"], []):
+        if isinstance(problem_name, str):
+            _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
+
+
+def _process_tag_item(
+    tags_data: dict, item: str | dict, tag_name: str, problem_tags_map: dict[str, list[str]]
+) -> None:
+    if isinstance(item, dict) and "tag" in item:
+        _process_tag_reference(tags_data, item, tag_name, problem_tags_map)
+    elif isinstance(item, str):
+        _add_problem_to_tag_map(problem_tags_map, item, tag_name)
+
+
 @lru_cache(maxsize=1)
 def _build_problem_tags_cache() -> dict[str, list[str]]:
     try:
@@ -68,17 +85,9 @@ def _build_problem_tags_cache() -> dict[str, list[str]]:
         problem_tags_map: dict[str, list[str]] = {}
 
         for tag_name, problems in tags_data.items():
-            if not isinstance(problems, list):
-                continue
-
-            for item in problems:
-                if isinstance(item, dict) and "tag" in item:
-                    # Include all problems from referenced tag
-                    for problem_name in tags_data.get(item["tag"], []):
-                        if isinstance(problem_name, str):
-                            _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
-                elif isinstance(item, str):
-                    _add_problem_to_tag_map(problem_tags_map, item, tag_name)
+            if isinstance(problems, list):
+                for item in problems:
+                    _process_tag_item(tags_data, item, tag_name, problem_tags_map)
 
         return problem_tags_map
     except (ValueError, OSError, KeyError):
