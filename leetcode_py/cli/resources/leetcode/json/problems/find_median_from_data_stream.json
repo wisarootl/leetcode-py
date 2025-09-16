@@ -27,7 +27,7 @@
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_median_finder, run_median_finder\nfrom .solution import MedianFinder",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_median_finder, run_median_finder\nfrom .solution import MedianFinder",
     "test_content": "",
     "test_class_name": "FindMedianFromDataStream",
     "test_class_content": "",

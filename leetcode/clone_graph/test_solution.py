@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode_py.test_utils import logged_test
+from leetcode_py import logged_test
 
 from .helpers import assert_clone_graph, run_clone_graph
 from .solution import Solution, SolutionBFS, SolutionDFS

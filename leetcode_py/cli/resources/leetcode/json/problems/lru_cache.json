@@ -27,7 +27,7 @@
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_lru_cache, run_lru_cache\nfrom .solution import LRUCache",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_lru_cache, run_lru_cache\nfrom .solution import LRUCache",
     "test_content": "",
     "test_class_name": "LRUCache",
     "test_class_content": "",

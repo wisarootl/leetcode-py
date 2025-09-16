@@ -33,7 +33,7 @@
     "solution_imports": "from leetcode_py import GraphNode",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_clone_graph, run_clone_graph\nfrom .solution import Solution",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_clone_graph, run_clone_graph\nfrom .solution import Solution",
     "test_content": "",
     "test_class_name": "CloneGraph",
     "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",

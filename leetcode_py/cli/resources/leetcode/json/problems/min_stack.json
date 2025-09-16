@@ -27,7 +27,7 @@
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_min_stack_operations, run_min_stack_operations\nfrom .solution import MinStack",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_stack_operations, run_min_stack_operations\nfrom .solution import MinStack",
     "test_content": "",
     "test_class_name": "TestMinStack",
     "test_class_content": "",

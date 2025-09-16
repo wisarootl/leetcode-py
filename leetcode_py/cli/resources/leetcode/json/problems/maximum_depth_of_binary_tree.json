@@ -28,7 +28,7 @@
     "solution_imports": "from leetcode_py import TreeNode",
     "solution_contents": "",
     "solution_class_content": "",
-    "test_imports": "import pytest\nfrom leetcode_py.test_utils import logged_test\nfrom .helpers import assert_max_depth, run_max_depth\nfrom .solution import Solution",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_depth, run_max_depth\nfrom .solution import Solution",
     "test_content": "",
     "test_class_name": "MaximumDepthOfBinaryTree",
     "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",

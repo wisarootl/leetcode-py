@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= find_all_anagrams_in_a_string
+PROBLEM ?= daily_temperatures
 FORCE ?= 0
 COMMA := ,
 
@@ -42,6 +42,7 @@ define lint_target
 endef
 
 lint:
+	poetry run python scripts/sort_tags.py
 	poetry sort
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	$(call lint_target,.)

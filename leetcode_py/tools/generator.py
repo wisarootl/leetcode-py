@@ -5,6 +5,8 @@ import black
 import typer
 from cookiecutter.main import cookiecutter
 
+from leetcode_py.cli.utils.problem_finder import get_tags_for_problem
+
 
 def load_json_data(json_path: Path) -> dict:
     if not json_path.exists():
@@ -44,9 +46,34 @@ def format_python_files(problem_dir: Path) -> None:
             pass
 
 
+def merge_tags(data: dict) -> dict:
+    """Merge tags from get_tags_for_problem with existing JSON tags."""
+    problem_name = data.get("problem_name", "")
+    if not problem_name:
+        return data
+
+    # Get tags from tag system
+    system_tags = get_tags_for_problem(problem_name)
+
+    # Get existing tags from JSON
+    existing_tags = data.get("_tags", {}).get("list", [])
+
+    # Merge and deduplicate tags
+    all_tags = list(set(system_tags + existing_tags))
+
+    # Update data with merged tags
+    if all_tags:
+        data["_tags"] = {"list": all_tags}
+
+    return data
+
+
 def generate_from_template(data: dict, template_dir: Path, output_dir: Path) -> None:
     """Generate problem files using cookiecutter template."""
     try:
+        # Merge tags before generating
+        data = merge_tags(data)
+
         cookiecutter(
             str(template_dir),
             extra_context=data,
