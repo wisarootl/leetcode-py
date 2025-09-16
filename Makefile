@@ -42,7 +42,7 @@ define lint_target
 endef
 
 lint:
-	python scripts/sort_tags.py
+	poetry run python scripts/sort_tags.py
 	poetry sort
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	$(call lint_target,.)
