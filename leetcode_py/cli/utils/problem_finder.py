@@ -71,20 +71,15 @@ def _add_problem_to_tag_map(
     problem_tags_map[problem_name].append(tag_name)
 
 
-def _process_tag_reference(
-    tags_data: dict, item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]
-) -> None:
-    # Recursively resolve tag references
+def _process_tag_reference(item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]) -> None:
     referenced_problems = find_problems_by_tag(item["tag"])
     for problem_name in referenced_problems:
         _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
 
 
-def _process_tag_item(
-    tags_data: dict, item: str | dict, tag_name: str, problem_tags_map: dict[str, list[str]]
-) -> None:
+def _process_tag_item(item: str | dict, tag_name: str, problem_tags_map: dict[str, list[str]]) -> None:
     if isinstance(item, dict) and "tag" in item:
-        _process_tag_reference(tags_data, item, tag_name, problem_tags_map)
+        _process_tag_reference(item, tag_name, problem_tags_map)
     elif isinstance(item, str):
         _add_problem_to_tag_map(problem_tags_map, item, tag_name)
 
@@ -100,7 +95,7 @@ def _build_problem_tags_cache() -> dict[str, list[str]]:
         for tag_name, problems in tags_data.items():
             if isinstance(problems, list):
                 for item in problems:
-                    _process_tag_item(tags_data, item, tag_name, problem_tags_map)
+                    _process_tag_item(item, tag_name, problem_tags_map)
 
         return problem_tags_map
     except (ValueError, OSError, KeyError):
