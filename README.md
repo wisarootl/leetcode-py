@@ -6,22 +6,25 @@
 [![codecov](https://codecov.io/gh/wisarootl/leetcode-py/graph/badge.svg?token=TI97VUIA4Z)](https://codecov.io/gh/wisarootl/leetcode-py)
 [![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
+[![downloads](https://static.pepy.tech/personalized-badge/leetcode-py-sdk?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=pypi%20downloads)](https://pepy.tech/projects/leetcode-py-sdk)
+[![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-brightgreen?logo=python)](https://pypi.org/project/leetcode-py-sdk/)
 
 A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
 
 **What makes this different:**
 
-- 🤖 **[LLM-Assisted Workflow](https://github.com/wisarootl/leetcode-py#llm-assisted-problem-creation)**: Generate new problems instantly with AI assistance
+- 🤖 **[LLM-Assisted Workflow](https://github.com/wisarootl/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)**: Generate new problems instantly with AI assistance
 - 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
 - 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
 - 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
 - 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
+- ⚡ **[Powerful CLI](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)**: Generate problems anywhere with `lcpy` command
 
 ## 🎯 What's Included
 
 **Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview questions curated by the creator of Blind 75.
 
-**Future**: Planned expansion to all free Grind problems for comprehensive interview preparation.
+**Future**: Planned expansion to all free Grind problems for comprehensive interview preparation. [Contributions welcome!](CONTRIBUTING.md)
 
 ## 🚀 Quick Start
 

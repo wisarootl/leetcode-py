@@ -6,26 +6,34 @@ Thank you for your interest in contributing! This repository welcomes contributi
 
 ### 1. Add New Problems
 
-Use an LLM assistant (Cursor, GitHub Copilot Chat, Amazon Q) with the rule files:
+For adding new LeetCode problems, please refer to the comprehensive guide:
 
-- Include `.amazonq/rules/problem-creation.md` in your LLM context
-- Ask: "Create LeetCode problem [number] ([name])"
+📖 **[LLM-Assisted Problem Creation Guide](docs/llm-assisted-problem-creation.md)**
 
-### 2. Enhance Test Cases
+This document provides detailed instructions for using LLM assistants to generate new problems with proper templates, test cases, and documentation.
 
-- Include `.amazonq/rules/test-quality-assurance.md` in your LLM context
-- Ask: "Enhance test cases for [problem_name] problem"
+**Acceptance Criteria:**
 
-### 3. Improve Helper Classes
+- All GitHub Actions CI checks must pass (includes linting, testing, security scanning, reproducibility verification, and minimum 10 test cases per problem)
+- Proper type hints and code formatting
+- Complete the solution (documentation is auto-generated)
 
-- Add new data structure helpers in `leetcode_py/data_structures/`
-- Follow existing patterns with generic types and visualization support
+### 2. Other Contributions
 
-### 4. Bug Fixes & Improvements
+All other contributions are welcome! This includes:
 
-- Fix issues in existing problems
-- Improve documentation
-- Enhance CI/CD workflows
+- Bug fixes and improvements
+- Documentation enhancements
+- Helper class improvements
+- CI/CD workflow enhancements
+- Test case enhancements
+- New data structure visualizations
+
+**For small changes:** Feel free to open a pull request directly.
+
+**For larger changes:** Please open an issue for discussion first.
+
+I'm also open to feedback and suggestions for improving the project!
 
 ## Development Setup
 
@@ -36,20 +44,14 @@ poetry install
 make test
 ```
 
-## Code Standards
-
-- Follow [PEP 8](https://peps.python.org/pep-0008/) Python style guide
-- Use modern type hints per [PEP 585](https://peps.python.org/pep-0585/)/[PEP 604](https://peps.python.org/pep-0604/): `list[str]`, `dict[str, int]`, `Type | None`
-- Automated linting enforced by CI (black, isort, ruff, mypy)
-- Minimum 12 test cases per problem
-
 ## Pull Request Process
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Run `make lint` and `make test`
-5. Submit a pull request with clear description
+5. Ensure all GitHub Actions CI checks pass
+6. Submit a pull request with clear description
 
 ## Questions?
 

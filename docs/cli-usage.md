@@ -156,10 +156,7 @@ problem_name/
 Available tags for bulk operations:
 
 - `grind-75` - Essential 75 coding interview problems
-- `blind-75` - Original Blind 75 problems
-- `neetcode-150` - NeetCode 150 problems
-- `top-interview` - Top interview questions
-- `easy`, `medium`, `hard` - Difficulty-based tags
+- `grind` - Original Blind 75 problems
 
 ## Output Directory
 
