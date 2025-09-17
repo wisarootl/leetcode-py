@@ -75,27 +75,25 @@ Each problem includes 10+ test cases covering edge cases (note: generated test c
 
 _Generated test_solution.py with parametrized tests and comprehensive test cases_
 
-## Test Enhancement Workflow
+## Test Enhancement & Verification
 
-### Enhancing Existing Problems
+### Enhancing and Verifying Test Cases
 
-Improve test coverage for existing problems:
+Improve test coverage and verify correctness for existing or newly generated problems:
+
+**1. Run the tests:**
 
 ```bash
-"Enhance test cases for two_sum problem"
-"Add more edge cases to binary_tree_inorder_traversal"
-"Fix test reproducibility for valid_palindrome"
+make p-test PROBLEM={problem_name}
 ```
 
-### Quality Assurance
-
-The assistant can identify problems needing more test cases and verify test case correctness and reproducibility:
+**2. Ask LLM to enhance or verify:**
 
 ```bash
+"Enhance test cases for {problem_name} problem"
+"Fix test reproducibility for {problem_name}"
 "Check which problems need more test cases"
 "Find problems with less than 12 test cases"
-"Verify test case correctness for house_robber"
-"Fix test reproducibility for binary_tree_inorder_traversal"
 ```
 
 ## Best Practices
@@ -107,11 +105,13 @@ The assistant can identify problems needing more test cases and verify test case
 - "Add problem 198. House Robber with grind tag"
 - "Create problem 70. Climbing Stairs for grind-75"
 - "Enhance test cases for two_sum problem"
+- "Verify and fix test cases for binary_search problem"
 
 **Avoid:**
 
 - Vague requests without problem numbers
 - Requests for non-existent problems
+- Assuming generated test cases are always correct
 
 ## Troubleshooting
 

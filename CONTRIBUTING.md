@@ -6,50 +6,97 @@ Thank you for your interest in contributing! This repository welcomes contributi
 
 ### 1. Add New Problems
 
-Use an LLM assistant (Cursor, GitHub Copilot Chat, Amazon Q) with the rule files:
+For adding new LeetCode problems, please refer to the comprehensive guide:
 
-- Include `.amazonq/rules/problem-creation.md` in your LLM context
-- Ask: "Create LeetCode problem [number] ([name])"
+📖 **[LLM-Assisted Problem Creation Guide](docs/llm-assisted-problem-creation.md)**
 
-### 2. Enhance Test Cases
+This document provides detailed instructions for using LLM assistants to generate new problems with proper templates, test cases, and documentation.
 
-- Include `.amazonq/rules/test-quality-assurance.md` in your LLM context
-- Ask: "Enhance test cases for [problem_name] problem"
+**Acceptance Criteria:**
 
-### 3. Improve Helper Classes
+- All GitHub Actions CI checks must pass (includes linting, testing, security scanning, reproducibility verification, and minimum 10 test cases per problem)
+- Proper type hints and code formatting
+- Complete the solution (documentation is auto-generated)
 
-- Add new data structure helpers in `leetcode_py/data_structures/`
-- Follow existing patterns with generic types and visualization support
+### 2. Other Contributions
 
-### 4. Bug Fixes & Improvements
+All other contributions are welcome! This includes:
 
-- Fix issues in existing problems
-- Improve documentation
-- Enhance CI/CD workflows
+- Bug fixes and improvements
+- Documentation enhancements
+- Helper class improvements
+- CI/CD workflow enhancements
+- Test case enhancements
+- New data structure visualizations
+
+**For small changes:** Feel free to open a pull request directly.
+
+**For larger changes:** Please open an issue for discussion first.
+
+I'm also open to feedback and suggestions for improving the project!
 
 ## Development Setup
 
+### Prerequisites
+
+- **Python 3.10+** - Modern Python runtime
+- **Poetry** - Dependency management ([install guide](https://python-poetry.org/docs/#installation))
+- **Make** - Build automation (usually pre-installed on Unix systems)
+- **Git** - Version control
+- **Graphviz** - Graph visualization ([install guide](https://graphviz.org/download/))
+
+## Development Workflow
+
+### 1. Fork and Setup
+
 ```bash
-git clone https://github.com/wisarootl/leetcode-py.git
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/leetcode-py.git
 cd leetcode-py
 poetry install
+
+# Add upstream remote
+git remote add upstream https://github.com/wisarootl/leetcode-py.git
+
+# Verify setup
 make test
+make lint
 ```
 
-## Code Standards
+### 2. Create Feature Branch
 
-- Follow [PEP 8](https://peps.python.org/pep-0008/) Python style guide
-- Use modern type hints per [PEP 585](https://peps.python.org/pep-0585/)/[PEP 604](https://peps.python.org/pep-0604/): `list[str]`, `dict[str, int]`, `Type | None`
-- Automated linting enforced by CI (black, isort, ruff, mypy)
-- Minimum 12 test cases per problem
+```bash
+git checkout -b your-feature-name
+```
 
-## Pull Request Process
+### 3. Make Changes and Test
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run `make lint` and `make test`
-5. Submit a pull request with clear description
+```bash
+# Test specific problem
+make p-test PROBLEM=problem_name
+
+# Test all
+make test
+
+# Lint your changes
+make lint
+
+# Generate/regenerate problems (if needed)
+make p-gen PROBLEM=problem_name
+```
+
+### 4. Submit Pull Request
+
+```bash
+# Commit and push to your fork
+git add .
+git commit -m "feat: your descriptive commit message"
+git push origin your-feature-name
+
+# Then create a pull request on GitHub from your fork to the main repository
+```
+
+**Ensure all GitHub Actions CI checks pass before requesting review.**
 
 ## Questions?
 

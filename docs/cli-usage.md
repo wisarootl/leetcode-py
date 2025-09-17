@@ -65,8 +65,22 @@ lcpy gen -s two-sum
 # Multiple problems by slug
 lcpy gen -s two-sum -s valid-palindrome
 
-# All problems with specific tag
+# All problems with specific tag (bulk generation)
 lcpy gen -t grind-75
+
+# Example: Generate all Grind 75 problems
+lcpy gen --problem-tag grind-75 --output leetcode
+```
+
+![Problem Generation](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation.png)
+
+_Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
+
+![Problem Generation 2](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation-2.png)
+
+_Generated folder structure showing all 75 problem directories after command execution_
+
+```bash
 
 # Filter by difficulty
 lcpy gen -t grind-75 -d Easy
@@ -151,15 +165,24 @@ problem_name/
 └── __init__.py         # Package marker
 ```
 
+![README Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/readme-example.png)
+
+_README format that mirrors LeetCode's problem description layout_
+
+![Solution Boilerplate](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/solution-boilerplate.png)
+
+_Solution boilerplate with type hints and TODO placeholder_
+
+![Test Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/test-example.png)
+
+_Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
+
 ## Tags
 
 Available tags for bulk operations:
 
 - `grind-75` - Essential 75 coding interview problems
-- `blind-75` - Original Blind 75 problems
-- `neetcode-150` - NeetCode 150 problems
-- `top-interview` - Top interview questions
-- `easy`, `medium`, `hard` - Difficulty-based tags
+- `grind` - Original Blind 75 problems
 
 ## Output Directory
 
