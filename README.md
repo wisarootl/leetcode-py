@@ -4,12 +4,25 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
 [![codecov](https://codecov.io/gh/wisarootl/leetcode-py/graph/badge.svg?token=TI97VUIA4Z)](https://codecov.io/gh/wisarootl/leetcode-py)
-[![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/ci-test.yml)
-[![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/zerv/actions/workflows/cd.yml)
+[![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/leetcode-py/actions/workflows/ci-test.yml)
+[![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/leetcode-py/actions/workflows/cd.yml)
 [![downloads](https://static.pepy.tech/personalized-badge/leetcode-py-sdk?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=pypi%20downloads)](https://pepy.tech/projects/leetcode-py-sdk)
 [![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-brightgreen?logo=python)](https://pypi.org/project/leetcode-py-sdk/)
 
 A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
+
+## Table of Contents
+
+- [What's Included](#-whats-included)
+- [Quick Start](#-quick-start)
+- [Problem Structure](#-problem-structure)
+- [Key Features](#-key-features)
+- [Usage Patterns](#-usage-patterns)
+- [Helper Classes](#-helper-classes)
+- [Commands](#️-commands)
+- [Development Setup](#️-development-setup)
+- [Architecture](#️-architecture)
+- [Quality Metrics](#-quality-metrics)
 
 **What makes this different:**
 
@@ -30,15 +43,12 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 ### System Requirements
 
-- **Python 3.13+** - Modern Python runtime with latest type system features
-- **Poetry** - Dependency management and packaging
-- **Make** - Build automation (development workflows)
-- **Git** - Version control system
-- **Graphviz** - Graph visualization library (for data structure rendering)
+- **Python 3.10+** - Python runtime
+- **Graphviz** - Graph visualization library ([install guide](https://graphviz.org/download/))
 
 ```bash
 # Install the package
-pip install leetcode-py
+pip install leetcode-py-sdk
 
 # Generate problems anywhere
 lcpy gen -n 1                    # Generate Two Sum
@@ -150,29 +160,19 @@ _Interactive multi-cell playground with rich data structure visualization for ea
 
 ### CLI Usage (Global Installation)
 
-Perfect for quick problem generation anywhere:
-
-```bash
-# Generate specific problems
-lcpy gen -n 1 -n 125 -n 206      # Multiple problems by number
-lcpy gen -s two-sum -s valid-palindrome  # Multiple problems by slug
-
-# Bulk generation
-lcpy gen -t grind-75              # All Grind 75 problems
-lcpy gen -t grind-75 -d Easy     # Only Easy problems from Grind 75
-
-# Explore available problems
-lcpy list                         # All problems
-lcpy list -t grind-75            # Filter by tag
-lcpy list -d Medium              # Filter by difficulty
-
-# Fetch problem data
-lcpy scrape -n 1 > two_sum.json  # Save problem data
-```
+Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)** for detailed documentation with all options and examples.
 
 ## 🛠️ Development Setup
 
 For working within this repository to generate additional LeetCode problems using LLM assistance:
+
+### Development Requirements
+
+- **Python 3.10+** - Modern Python runtime with latest type system features
+- **Poetry** - Dependency management and packaging
+- **Make** - Build automation (development workflows)
+- **Git** - Version control system
+- **Graphviz** - Graph visualization library ([install guide](https://graphviz.org/download/))
 
 ```bash
 # Clone repository for development
