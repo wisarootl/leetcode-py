@@ -13,16 +13,16 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 ## Table of Contents
 
-- [What's Included](#-whats-included)
-- [Quick Start](#-quick-start)
-- [Problem Structure](#-problem-structure)
-- [Key Features](#-key-features)
-- [Usage Patterns](#-usage-patterns)
-- [Helper Classes](#-helper-classes)
-- [Commands](#️-commands)
-- [Development Setup](#️-development-setup)
-- [Architecture](#️-architecture)
-- [Quality Metrics](#-quality-metrics)
+- [What's Included](#whats-included)
+- [Quick Start](#quick-start)
+- [Problem Structure](#problem-structure)
+- [Key Features](#key-features)
+- [Usage Patterns](#usage-patterns)
+- [Development Setup](#development-setup)
+- [Helper Classes](#helper-classes)
+- [Commands](#commands)
+- [Architecture](#architecture)
+- [Quality Metrics](#quality-metrics)
 
 **What makes this different:**
 
@@ -33,13 +33,13 @@ A Python package to generate professional LeetCode practice environments. Featur
 - 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
 - ⚡ **[Powerful CLI](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)**: Generate problems anywhere with `lcpy` command
 
-## 🎯 What's Included
+## <a id="whats-included"></a>🎯 What's Included
 
 **Current**: All 75 problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) - the most essential coding interview questions curated by the creator of Blind 75.
 
 **Future**: Planned expansion to all free Grind problems for comprehensive interview preparation. [Contributions welcome!](CONTRIBUTING.md)
 
-## 🚀 Quick Start
+## <a id="quick-start"></a>🚀 Quick Start
 
 ### System Requirements
 
@@ -75,7 +75,7 @@ _Bulk generation output showing "Generated problem:" messages for all 75 Grind p
 
 _Generated folder structure showing all 75 problem directories after command execution_
 
-## 📁 Problem Structure
+## <a id="problem-structure"></a>📁 Problem Structure
 
 Each problem follows a consistent, production-ready template:
 
@@ -105,7 +105,7 @@ _Comprehensive parametrized tests with 10+ test cases - executable and debuggabl
 
 _Beautiful colorful test output with loguru integration for enhanced debugging and test result visualization_
 
-## ✨ Key Features
+## <a id="key-features"></a>✨ Key Features
 
 ### Production-Grade Development Environment
 
@@ -155,13 +155,13 @@ _Simple arrow-based list representation for console output and test debugging_
 
 _Interactive multi-cell playground with rich data structure visualization for each problem_
 
-## 🔄 Usage Patterns
+## <a id="usage-patterns"></a>🔄 Usage Patterns
 
 ### CLI Usage (Global Installation)
 
 Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)** for detailed documentation with all options and examples.
 
-## 🛠️ Development Setup
+## <a id="development-setup"></a>🛠️ Development Setup
 
 For working within this repository to generate additional LeetCode problems using LLM assistance:
 
