@@ -54,7 +54,6 @@ pip install leetcode-py-sdk
 lcpy gen -n 1                    # Generate Two Sum
 lcpy gen -t grind-75             # Generate all Grind 75 problems
 lcpy list -t grind-75            # List available problems
-lcpy scrape -n 1                 # Fetch problem data
 
 # Start practicing
 cd leetcode/two_sum
@@ -62,7 +61,7 @@ python -m pytest test_solution.py  # Run tests
 # Edit solution.py, then rerun tests
 ```
 
-### Example
+### Bulk Generation Example
 
 ```bash
 lcpy gen --problem-tag grind-75 --output leetcode  # Generate all Grind 75 problems

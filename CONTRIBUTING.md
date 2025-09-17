@@ -37,21 +37,66 @@ I'm also open to feedback and suggestions for improving the project!
 
 ## Development Setup
 
+### Prerequisites
+
+- **Python 3.10+** - Modern Python runtime
+- **Poetry** - Dependency management ([install guide](https://python-poetry.org/docs/#installation))
+- **Make** - Build automation (usually pre-installed on Unix systems)
+- **Git** - Version control
+- **Graphviz** - Graph visualization ([install guide](https://graphviz.org/download/))
+
+## Development Workflow
+
+### 1. Fork and Setup
+
 ```bash
-git clone https://github.com/wisarootl/leetcode-py.git
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/leetcode-py.git
 cd leetcode-py
 poetry install
+
+# Add upstream remote
+git remote add upstream https://github.com/wisarootl/leetcode-py.git
+
+# Verify setup
 make test
+make lint
 ```
 
-## Pull Request Process
+### 2. Create Feature Branch
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run `make lint` and `make test`
-5. Ensure all GitHub Actions CI checks pass
-6. Submit a pull request with clear description
+```bash
+git checkout -b your-feature-name
+```
+
+### 3. Make Changes and Test
+
+```bash
+# Test specific problem
+make p-test PROBLEM=problem_name
+
+# Test all
+make test
+
+# Lint your changes
+make lint
+
+# Generate/regenerate problems (if needed)
+make p-gen PROBLEM=problem_name
+```
+
+### 4. Submit Pull Request
+
+```bash
+# Commit and push to your fork
+git add .
+git commit -m "feat: your descriptive commit message"
+git push origin your-feature-name
+
+# Then create a pull request on GitHub from your fork to the main repository
+```
+
+**Ensure all GitHub Actions CI checks pass before requesting review.**
 
 ## Questions?
 
