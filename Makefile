@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= house_robber
+PROBLEM ?= gas_station
 FORCE ?= 0
 COMMA := ,
 
