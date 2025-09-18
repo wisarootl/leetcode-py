@@ -43,6 +43,7 @@ endef
 
 lint:
 	poetry run python scripts/sort_tags.py
+	poetry run python scripts/check_tag_problems.py
 	poetry sort
 	npx prettier --write "**/*.{ts,tsx,css,json,yaml,yml,md}"
 	$(call lint_target,.)
