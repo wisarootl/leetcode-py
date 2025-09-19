@@ -14,7 +14,6 @@ class TestValidSudoku:
     @pytest.mark.parametrize(
         "board, expected",
         [
-            # Valid sudoku example 1
             (
                 [
                     ["5", "3", ".", ".", "7", ".", ".", ".", "."],
@@ -29,7 +28,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Invalid sudoku example 2 (duplicate 8 in top-left box)
             (
                 [
                     ["8", "3", ".", ".", "7", ".", ".", ".", "."],
@@ -44,7 +42,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Empty board (valid)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -59,7 +56,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Duplicate in row (invalid)
             (
                 [
                     ["1", "1", ".", ".", ".", ".", ".", ".", "."],
@@ -74,7 +70,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Duplicate in column (invalid)
             (
                 [
                     ["1", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -89,7 +84,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Duplicate in 3x3 box (invalid)
             (
                 [
                     ["1", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -104,7 +98,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Valid single row filled
             (
                 [
                     ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
@@ -119,7 +112,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Valid single column filled
             (
                 [
                     ["1", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -134,7 +126,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Valid 3x3 box filled (top-left)
             (
                 [
                     ["1", "2", "3", ".", ".", ".", ".", ".", "."],
@@ -149,7 +140,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Duplicate in middle 3x3 box (invalid)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -164,7 +154,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Duplicate in bottom-right 3x3 box (invalid)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -179,7 +168,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Multiple duplicates in same row (invalid)
             (
                 [
                     ["3", "3", "3", ".", ".", ".", ".", ".", "."],
@@ -194,7 +182,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Duplicate in last row (invalid)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -209,7 +196,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Duplicate in last column (invalid)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "4"],
@@ -224,7 +210,6 @@ class TestValidSudoku:
                 ],
                 False,
             ),
-            # Valid with all digits 1-9 in different positions
             (
                 [
                     ["1", ".", ".", ".", ".", ".", ".", ".", "."],
@@ -239,7 +224,6 @@ class TestValidSudoku:
                 ],
                 True,
             ),
-            # Valid board with multiple possible solutions (demonstrates "not necessarily solvable" constraint)
             (
                 [
                     [".", ".", ".", ".", ".", ".", ".", ".", "."],

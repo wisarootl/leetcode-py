@@ -1,0 +1,74 @@
+{
+    "problem_name": "pacific_atlantic_water_flow",
+    "solution_class_name": "Solution",
+    "problem_number": "417",
+    "problem_title": "Pacific Atlantic Water Flow",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Matrix",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "There is an `m x n` rectangular island that borders both the **Pacific Ocean** and **Atlantic Ocean**. The **Pacific Ocean** touches the island's left and top edges, and the **Atlantic Ocean** touches the island's right and bottom edges.\n\nThe island is partitioned into a grid of square cells. You are given an `m x n` integer matrix `heights` where `heights[r][c]` represents the **height above sea level** of the cell at coordinate `(r, c)`.\n\nThe island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, and west if the neighboring cell's height is **less than or equal to** the current cell's height. Water can flow from any cell adjacent to an ocean into the ocean.\n\nReturn *a **2D list** of grid coordinates* `result` *where* `result[i] = [ri, ci]` *denotes that rain water can flow from cell* `(ri, ci)` *to **both** the Pacific and Atlantic oceans*.",
+
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/08/waterflow-grid.jpg)\n\n```\nInput: heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]\nOutput: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]\nExplanation: The following cells can flow to the Pacific and Atlantic oceans, as shown below:\n[0,4]: [0,4] -> Pacific Ocean \n       [0,4] -> Atlantic Ocean\n[1,3]: [1,3] -> [0,3] -> Pacific Ocean \n       [1,3] -> [1,4] -> Atlantic Ocean\n[1,4]: [1,4] -> [1,3] -> [0,3] -> Pacific Ocean \n       [1,4] -> Atlantic Ocean\n[2,2]: [2,2] -> [1,2] -> [0,2] -> Pacific Ocean \n       [2,2] -> [2,3] -> [2,4] -> Atlantic Ocean\n[3,0]: [3,0] -> Pacific Ocean \n       [3,0] -> [4,0] -> Atlantic Ocean\n[3,1]: [3,1] -> [3,0] -> Pacific Ocean \n       [3,1] -> [4,1] -> Atlantic Ocean\n[4,0]: [4,0] -> Pacific Ocean \n       [4,0] -> Atlantic Ocean\nNote that there are other possible paths for these cells to flow to the Pacific and Atlantic oceans.\n```"
+            },
+            {
+                "content": "```\nInput: heights = [[1]]\nOutput: [[0,0]]\nExplanation: The water can flow from the only cell to the Pacific and Atlantic oceans.\n```"
+            }
+        ]
+    },
+
+    "readme_constraints": "- `m == heights.length`\n- `n == heights[r].length`\n- `1 <= m, n <= 200`\n- `0 <= heights[r][c] <= 10^5`",
+    "readme_additional": "",
+
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "pacific_atlantic",
+    "helpers_run_signature": "(solution_class: type, heights: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.pacific_atlantic(heights)",
+    "helpers_assert_name": "pacific_atlantic",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pacific_atlantic, run_pacific_atlantic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PacificAtlanticWaterFlow",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pacific_atlantic",
+                "signature": "(self, heights: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement pacific_atlantic\n        return []"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pacific_atlantic",
+                "signature": "(self, heights: list[list[int]], expected: list[list[int]])",
+                "parametrize": "heights, expected",
+                "test_cases": "[([[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]], [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]), ([[1]], [[0,0]]), ([[2,1],[1,2]], [[0,0],[0,1],[1,0],[1,1]]), ([[1,2,3],[8,9,4],[7,6,5]], [[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]), ([[3,3,3],[3,1,3],[0,2,4]], [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]]), ([[1,1],[1,1],[1,1]], [[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]]), ([[10,10,10],[10,1,10],[10,10,10]], [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]]), ([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]], [[0,3],[1,0],[1,1],[1,2],[1,3],[2,0],[2,1],[2,2],[2,3],[3,0],[3,1],[3,2],[3,3]]), ([[5,4,3],[4,3,2],[3,2,1]], [[0,0],[0,1],[0,2],[1,0],[2,0]]), ([[1,3,2,4],[6,8,7,3],[5,7,6,2],[4,4,5,1]], [[0,3],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2],[3,0],[3,1],[3,2]]), ([[4,2,7,3,4],[2,1,1,3,2],[1,1,2,2,1],[2,1,2,2,1],[2,1,1,1,1]], [[0,0],[0,1],[0,2],[0,3],[0,4],[1,0],[1,1],[1,2],[1,3],[1,4],[2,0],[2,1],[2,2],[2,3],[2,4],[3,0],[3,1],[3,2],[3,3],[3,4],[4,0],[4,1],[4,2],[4,3],[4,4]]), ([[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]], [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10],[0,11],[0,12],[0,13],[0,14],[0,15],[0,16],[0,17],[0,18],[0,19],[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8],[1,9],[1,10],[1,11],[1,12],[1,13],[1,14],[1,15],[1,16],[1,17],[1,18],[1,19]])]",
+                "body": "        result = run_pacific_atlantic(Solution, heights)\n        assert_pacific_atlantic(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_pacific_atlantic, assert_pacific_atlantic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]\nexpected = [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]",
+    "playground_run": "result = run_pacific_atlantic(Solution, heights)\nresult",
+    "playground_assert": "assert_pacific_atlantic(result, expected)"
+}

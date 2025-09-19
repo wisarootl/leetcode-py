@@ -21,9 +21,15 @@ def count_test_cases_for_problem(json_data: dict[str, Any]) -> int:
     for method in test_methods:
         test_cases = method.get("test_cases", "")
         if test_cases.strip():
-            # Parse Python list literal using ast.literal_eval
-            cases_list = ast.literal_eval(test_cases)
-            total += len(cases_list)
+            try:
+                # Parse Python list literal using ast.literal_eval
+                cases_list = ast.literal_eval(test_cases)
+                total += len(cases_list)
+            except (ValueError, SyntaxError) as e:
+                # Re-raise with more context
+                raise ValueError(
+                    f"Failed to parse test_cases in method '{method.get('name', 'unknown')}': {e}"
+                )
     return total
 
 
@@ -38,6 +44,7 @@ def check_test_cases(
     """Check test case counts in LeetCode problems."""
     problems_dir = get_problems_json_path()
     all_problems: list[tuple[str, int]] = []
+    errors_found = False
 
     for problem_file in problems_dir.glob("*.json"):
         try:
@@ -48,6 +55,12 @@ def check_test_cases(
             all_problems.append((problem_file.name, test_count))
         except Exception as e:
             typer.echo(f"Error reading problem {problem_file.name}: {e}", err=True)
+            errors_found = True
+            # Continue processing other files instead of stopping
+
+    # Don't exit immediately - show results for files that worked
+    if errors_found:
+        typer.echo("\nNote: Some files had errors and were skipped.", err=True)
 
     # Sort by test count
     all_problems.sort(key=lambda x: x[1])
@@ -69,8 +82,8 @@ def check_test_cases(
     for problem_name, count in filtered_problems:
         typer.echo(f"{problem_name}: {count} test cases")
 
-    # Exit with non-zero code if any problems found
-    if filtered_problems:
+    # Exit with non-zero code if any problems found or if there were errors
+    if filtered_problems or errors_found:
         raise typer.Exit(1)
 
 
