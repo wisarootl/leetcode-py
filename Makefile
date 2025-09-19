@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= design_add_and_search_words_data_structure
+PROBLEM ?= valid_sudoku
 FORCE ?= 0
 COMMA := ,
 
@@ -100,4 +100,4 @@ gen-all-problems:
 	@echo "Deleting existing problems..."
 	@rm -rf leetcode/*/
 	@echo "Generating all problems..."
-	poetry run lcpy gen -t grind-75 -o leetcode $(if $(filter 1,$(FORCE)),--force)
+	poetry run lcpy gen --all -o leetcode $(if $(filter 1,$(FORCE)),--force)
