@@ -78,7 +78,7 @@
         "zero_one_matrix",
     ],
 
-    grind: [{ tag: "grind-75" }, "daily_temperatures", "gas_station", "house_robber"],
+    grind: [{ tag: "grind-75" }, "daily_temperatures", "design_add_and_search_words_data_structure", "gas_station", "group_anagrams", "house_robber", "maximum_product_subarray", "next_permutation", "valid_sudoku"],
 
     // Test tag for development and testing
     test: ["binary_search", "two_sum", "valid_palindrome"],
