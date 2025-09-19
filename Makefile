@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= gas_station
+PROBLEM ?= design_add_and_search_words_data_structure
 FORCE ?= 0
 COMMA := ,
 

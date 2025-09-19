@@ -1,0 +1,72 @@
+{
+    "problem_name": "group_anagrams",
+    "solution_class_name": "Solution",
+    "problem_number": "49",
+    "problem_title": "Group Anagrams",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Sorting",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Given an array of strings `strs`, group the anagrams together. You can return the answer in **any order**.\n\nAn **anagram** is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]\nOutput: [[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]\nExplanation:\n- There is no string in strs that can be rearranged to form \"bat\".\n- The strings \"nat\" and \"tan\" are anagrams as they can be rearranged to form each other.\n- The strings \"ate\", \"eat\", and \"tea\" are anagrams as they can be rearranged to form each other.\n```"
+            },
+            { "content": "```\nInput: strs = [\"\"]\nOutput: [[\"\"]]\n```" },
+            { "content": "```\nInput: strs = [\"a\"]\nOutput: [[\"a\"]]\n```" }
+        ]
+    },
+
+    "readme_constraints": "- `1 <= strs.length <= 10^4`\n- `0 <= strs[i].length <= 100`\n- `strs[i]` consists of lowercase English letters.",
+
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "group_anagrams",
+    "helpers_run_signature": "(solution_class: type, strs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.group_anagrams(strs)",
+    "helpers_assert_name": "group_anagrams",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    result_sorted = [sorted(group) for group in result]\n    expected_sorted = [sorted(group) for group in expected]\n    result_sorted.sort()\n    expected_sorted.sort()\n    assert result_sorted == expected_sorted\n    return True",
+
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_group_anagrams, run_group_anagrams\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GroupAnagrams",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "group_anagrams",
+                "signature": "(self, strs: list[str]) -> list[list[str]]",
+                "body": "        # TODO: Implement group_anagrams\n        return []"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_group_anagrams",
+                "signature": "(self, strs: list[str], expected: list[list[str]])",
+                "parametrize": "strs, expected",
+                "test_cases": "[(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'], [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']]), ([''], [['']]), (['a'], [['a']]), (['abc', 'bca', 'cab', 'xyz'], [['abc', 'bca', 'cab'], ['xyz']]), (['ab', 'ba'], [['ab', 'ba']]), (['abc'], [['abc']]), (['listen', 'silent', 'hello'], [['listen', 'silent'], ['hello']]), (['aab', 'aba', 'baa'], [['aab', 'aba', 'baa']]), (['race', 'care', 'acre'], [['race', 'care', 'acre']]), (['', 'b'], [[''], ['b']]), (['a', 'aa', 'aaa'], [['a'], ['aa'], ['aaa']]), (['abc', 'def', 'ghi'], [['abc'], ['def'], ['ghi']]), (['abcd', 'dcba', 'lls', 'sll'], [['abcd', 'dcba'], ['lls', 'sll']]), (['ac', 'c'], [['ac'], ['c']]), (['huh', 'tit'], [['huh'], ['tit']])]",
+                "body": "        result = run_group_anagrams(Solution, strs)\n        assert_group_anagrams(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_group_anagrams, assert_group_anagrams\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstrs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']\nexpected = [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']]",
+    "playground_run": "result = run_group_anagrams(Solution, strs)\nresult",
+    "playground_assert": "assert_group_anagrams(result, expected)"
+}

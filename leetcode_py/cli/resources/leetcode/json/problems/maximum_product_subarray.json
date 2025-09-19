@@ -1,0 +1,73 @@
+{
+    "problem_name": "maximum_product_subarray",
+    "solution_class_name": "Solution",
+    "problem_number": "152",
+    "problem_title": "Maximum Product Subarray",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Given an integer array `nums`, find a subarray that has the largest product, and return the product.\n\nThe test cases are generated so that the answer will fit in a **32-bit** integer.",
+
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,3,-2,4]\nOutput: 6\nExplanation: [2,3] has the largest product 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [-2,0,-1]\nOutput: 0\nExplanation: The result cannot be 2, because [-2,-1] is not a subarray.\n```"
+            }
+        ]
+    },
+
+    "readme_constraints": "- `1 <= nums.length <= 2 * 10^4`\n- `-10 <= nums[i] <= 10`\n- The product of any subarray of `nums` is **guaranteed** to fit in a **32-bit** integer.",
+
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_product",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_product(nums)",
+    "helpers_assert_name": "max_product",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_product, run_max_product\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumProductSubarray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_product",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement max_product\n        return 0"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_product",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": "[([2, 3, -2, 4], 6), ([-2, 0, -1], 0), ([1], 1), ([0], 0), ([-1], -1), ([2, -1, 3], 3), ([-2, -3], 6), ([1, 2, 3, 4], 24), ([-1, -2, -3], 6), ([0, 2], 2), ([3, -1, 4], 4), ([-2, 3, -4], 24), ([2, 3, -2, 4, -1], 48), ([1, 0, -1, 2, 3], 6), ([-3, 0, 1, -2], 1)]",
+                "body": "        result = run_max_product(Solution, nums)\n        assert_max_product(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_max_product, assert_max_product\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 3, -2, 4]\nexpected = 6",
+    "playground_run": "result = run_max_product(Solution, nums)\nresult",
+    "playground_assert": "assert_max_product(result, expected)"
+}

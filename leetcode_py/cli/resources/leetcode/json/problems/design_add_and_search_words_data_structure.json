@@ -1,0 +1,80 @@
+{
+    "problem_name": "design_add_and_search_words_data_structure",
+    "solution_class_name": "WordDictionary",
+    "problem_number": "211",
+    "problem_title": "Design Add and Search Words Data Structure",
+    "difficulty": "Medium",
+    "topics": "String, Depth-First Search, Design, Trie",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Design a data structure that supports adding new words and finding if a string matches any previously added string.\n\nImplement the `WordDictionary` class:\n\n- `WordDictionary()` Initializes the object.\n- `void addWord(word)` Adds `word` to the data structure, it can be matched later.\n- `bool search(word)` Returns `true` if there is any string in the data structure that matches `word` or `false` otherwise. `word` may contain dots `'.'` where dots can be matched with any letter.",
+
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"WordDictionary\",\"addWord\",\"addWord\",\"addWord\",\"search\",\"search\",\"search\",\"search\"]\n[[],[\"bad\"],[\"dad\"],[\"mad\"],[\"pad\"],[\"bad\"],[\".ad\"],[\"b..\"]]\nOutput\n[null,null,null,null,false,true,true,true]\n\nExplanation\nWordDictionary wordDictionary = new WordDictionary();\nwordDictionary.addWord(\"bad\");\nwordDictionary.addWord(\"dad\");\nwordDictionary.addWord(\"mad\");\nwordDictionary.search(\"pad\"); // return False\nwordDictionary.search(\"bad\"); // return True\nwordDictionary.search(\".ad\"); // return True\nwordDictionary.search(\"b..\"); // return True\n```"
+            }
+        ]
+    },
+
+    "readme_constraints": "- `1 <= word.length <= 25`\n- `word` in `addWord` consists of lowercase English letters.\n- `word` in `search` consist of `'.'` or lowercase English letters.\n- There will be at most `2` dots in `word` for `search` queries.\n- At most `10^4` calls will be made to `addWord` and `search`.",
+
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "word_dictionary",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    wd: Any = None\n    results: list[bool | None] = []\n    \n    for op, args in zip(operations, inputs):\n        if op == 'WordDictionary':\n            wd = solution_class()\n            results.append(None)\n        elif op == 'addWord':\n            assert wd is not None\n            wd.add_word(args[0])\n            results.append(None)\n        elif op == 'search':\n            assert wd is not None\n            results.append(wd.search(args[0]))\n    \n    return results",
+    "helpers_assert_name": "word_dictionary",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_dictionary, run_word_dictionary\nfrom .solution import WordDictionary",
+    "test_content": "",
+    "test_class_name": "DesignAddAndSearchWordsDataStructure",
+    "test_class_content": "",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize data structure\n        pass"
+            },
+            {
+                "name": "add_word",
+                "signature": "(self, word: str) -> None",
+                "body": "        # TODO: Implement add_word\n        pass"
+            },
+            {
+                "name": "search",
+                "signature": "(self, word: str) -> bool",
+                "body": "        # TODO: Implement search\n        return False"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": []
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_dictionary",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": "[(['WordDictionary', 'addWord', 'addWord', 'addWord', 'search', 'search', 'search', 'search'], [[], ['bad'], ['dad'], ['mad'], ['pad'], ['bad'], ['.ad'], ['b..']], [None, None, None, None, False, True, True, True]), (['WordDictionary', 'addWord', 'search', 'search', 'search'], [[], ['a'], ['a'], ['.'], ['aa']], [None, None, True, True, False]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['at'], ['and'], ['an'], ['.at'], ['an.']], [None, None, None, False, False, True]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search'], [[], ['word'], ['world'], ['word'], ['wor.']], [None, None, None, True, True]), (['WordDictionary', 'addWord', 'search', 'search'], [[], ['test'], ['test'], ['t..t']], [None, None, True, True]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['a'], ['b'], ['a'], ['.'], ['c']], [None, None, None, True, True, False]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['abc'], ['def'], ['...'], ['a..'], ['..f']], [None, None, None, True, True, True]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['programming'], ['algorithm'], ['prog.......'], ['algo.....'], ['........ing']], [None, None, None, True, True, True]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search'], [[], ['x'], ['xy'], ['.'], ['..']], [None, None, None, True, True]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['hello'], ['world'], ['hi'], ['word'], ['......']], [None, None, None, False, False, False]), (['WordDictionary', 'addWord', 'addWord', 'addWord', 'search', 'search', 'search', 'search'], [[], ['cat'], ['car'], ['card'], ['c..'], ['ca.'], ['c..d'], ['.....']], [None, None, None, None, True, True, True, False]), (['WordDictionary', 'addWord', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['run'], ['runner'], ['running'], ['run'], ['run...'], ['run.....']], [None, None, None, None, True, True, False]), (['WordDictionary', 'addWord', 'addWord', 'search', 'search', 'search'], [[], ['abc'], ['xyz'], ['...'], ['..'], ['....']], [None, None, None, True, False, False])]",
+                "body": "        result = run_word_dictionary(WordDictionary, operations, inputs)\n        assert_word_dictionary(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_word_dictionary, assert_word_dictionary\nfrom solution import WordDictionary",
+    "playground_setup": "# Example test case\noperations = ['WordDictionary', 'addWord', 'addWord', 'addWord', 'search', 'search', 'search', 'search']\ninputs = [[], ['bad'], ['dad'], ['mad'], ['pad'], ['bad'], ['.ad'], ['b..']]\nexpected = [None, None, None, None, False, True, True, True]",
+    "playground_run": "result = run_word_dictionary(WordDictionary, operations, inputs)\nresult",
+    "playground_assert": "assert_word_dictionary(result, expected)"
+}
