@@ -5,12 +5,15 @@ from rich.console import Console
 from rich.table import Table
 
 from ..utils.problem_finder import find_problems_by_tag, get_all_problems, get_tags_for_problem
+from ..utils.tag_helpers import get_available_tags_help
 
 console = Console()
 
 
 def list_problems(
-    tag: str | None = typer.Option(None, "-t", "--tag", help="Filter by tag (e.g., 'grind-75')"),
+    tag: str | None = typer.Option(
+        None, "-t", "--tag", help="Filter by tag. Available tags: " + get_available_tags_help()
+    ),
     difficulty: str | None = typer.Option(
         None, "-d", "--difficulty", help="Filter by difficulty (Easy/Medium/Hard)"
     ),

@@ -12,6 +12,7 @@ from ..utils.problem_finder import (
     get_problem_json_path,
 )
 from ..utils.resources import get_template_path
+from ..utils.tag_helpers import get_available_tags_help
 
 
 def _get_problem_difficulty(problem_name: str) -> str | None:
@@ -112,7 +113,12 @@ def generate(
     problem_slugs: list[str] = typer.Option(
         [], "-s", "--problem-slug", help="Problem slug(s) (use multiple -s flags)"
     ),
-    problem_tag: str | None = typer.Option(None, "-t", "--problem-tag", help="Problem tag (bulk)"),
+    problem_tag: str | None = typer.Option(
+        None,
+        "-t",
+        "--problem-tag",
+        help="Problem tag (bulk). Available tags: " + get_available_tags_help(),
+    ),
     difficulty: str | None = typer.Option(
         None, "-d", "--difficulty", help="Filter by difficulty (Easy/Medium/Hard)"
     ),

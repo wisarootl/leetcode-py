@@ -35,8 +35,8 @@ def test_gen_no_options():
     "args",
     [
         ["-n", "1", "-s", "two-sum"],
-        ["-n", "1", "-t", "test"],
-        ["-s", "two-sum", "-t", "test"],
+        ["-n", "1", "-t", "grind-75"],
+        ["-s", "two-sum", "-t", "grind-75"],
         ["-n", "1", "--all"],
     ],
 )
@@ -97,17 +97,17 @@ def test_gen_by_slugs(args, expected_problems, expected_count):
 
 def test_gen_by_tag():
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen", "-t", "test", "-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen", "-t", "grind-75", "-o", temp_dir, "--force"])
         assert result.exit_code == 0
         assert "Found" in result.stdout
-        assert "problems with tag 'test'" in result.stdout
+        assert "problems with tag 'grind-75'" in result.stdout
         assert "Generated problem:" in result.stdout
         assert "successful" in result.stdout
 
 
 def test_gen_with_difficulty_filter():
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen", "-t", "test", "-d", "Easy", "-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen", "-t", "grind-75", "-d", "Easy", "-o", temp_dir, "--force"])
         assert result.exit_code == 0
         assert "Found" in result.stdout
         assert "Filtered to" in result.stdout
