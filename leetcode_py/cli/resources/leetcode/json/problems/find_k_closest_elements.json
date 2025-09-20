@@ -1,0 +1,60 @@
+{
+    "problem_name": "find_k_closest_elements",
+    "solution_class_name": "Solution",
+    "problem_number": "658",
+    "problem_title": "Find K Closest Elements",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Binary Search, Sliding Window, Sorting, Heap (Priority Queue)",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given a **sorted** integer array `arr`, two integers `k` and `x`, return the `k` closest integers to `x` in the array. The result should also be sorted in ascending order.\n\nAn integer `a` is closer to `x` than an integer `b` if:\n\n- `|a - x| < |b - x|`, or\n- `|a - x| == |b - x|` and `a < b`",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: arr = [1,2,3,4,5], k = 4, x = 3\nOutput: [1,2,3,4]\n```" },
+            { "content": "```\nInput: arr = [1,1,2,3,4,5], k = 4, x = -1\nOutput: [1,1,2,3]\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= k <= arr.length`\n- `1 <= arr.length <= 10^4`\n- `arr` is sorted in **ascending** order.\n- `-10^4 <= arr[i], x <= 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_closest_elements",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], k: int, x: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_closest_elements(arr, k, x)",
+    "helpers_assert_name": "find_closest_elements",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_closest_elements, run_find_closest_elements\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindKClosestElements",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_closest_elements",
+                "signature": "(self, arr: list[int], k: int, x: int) -> list[int]",
+                "body": "        # TODO: Implement find_closest_elements\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_closest_elements",
+                "signature": "(self, arr: list[int], k: int, x: int, expected: list[int])",
+                "parametrize": "arr, k, x, expected",
+                "test_cases": "[([1, 2, 3, 4, 5], 4, 3, [1, 2, 3, 4]), ([1, 1, 2, 3, 4, 5], 4, -1, [1, 1, 2, 3]), ([1, 2, 3, 4, 5], 4, -1, [1, 2, 3, 4]), ([1, 2, 3, 4, 5], 1, 3, [3]), ([1, 2, 3, 4, 5], 2, 3, [2, 3]), ([1, 2, 3, 4, 5], 3, 3, [2, 3, 4]), ([1, 2, 3, 4, 5], 5, 3, [1, 2, 3, 4, 5]), ([0, 0, 1, 2, 3, 3, 4, 7, 7, 8], 3, 5, [3, 3, 4]), ([1, 3], 1, 2, [1]), ([1, 3], 1, 3, [3]), ([1, 3], 2, 2, [1, 3]), ([0, 1, 1, 1, 2, 3, 6, 7, 8, 9], 9, 4, [0, 1, 1, 1, 2, 3, 6, 7, 8]), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, 5, [3, 4, 5, 6, 7]), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 1, [1, 2, 3]), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 10, [8, 9, 10]), ([-5, -3, -1, 0, 2, 4, 6], 4, 1, [-1, 0, 2, 4]), ([10], 1, 5, [10]), ([1, 2, 4, 5, 6, 6, 8, 9], 4, 6, [4, 5, 6, 6])]",
+                "body": "        result = run_find_closest_elements(Solution, arr, k, x)\n        assert_find_closest_elements(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_closest_elements, assert_find_closest_elements\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 2, 3, 4, 5]\nk = 4\nx = 3\nexpected = [1, 2, 3, 4]",
+    "playground_run": "result = run_find_closest_elements(Solution, arr, k, x)\nresult",
+    "playground_assert": "assert_find_closest_elements(result, expected)"
+}

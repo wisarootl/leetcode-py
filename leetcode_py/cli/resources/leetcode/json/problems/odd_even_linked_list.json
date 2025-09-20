@@ -1,0 +1,64 @@
+{
+    "problem_name": "odd_even_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "328",
+    "problem_title": "Odd Even Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given the `head` of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return *the reordered list*.\n\nThe **first** node is considered **odd**, and the **second** node is **even**, and so on.\n\nNote that the relative order inside both the even and odd groups should remain as it was in the input.\n\nYou must solve the problem in `O(1)` extra space complexity and `O(n)` time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/10/oddeven-linked-list.jpg)\n\n```\nInput: head = [1,2,3,4,5]\nOutput: [1,3,5,2,4]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/03/10/oddeven2-linked-list.jpg)\n\n```\nInput: head = [2,1,3,5,6,4,7]\nOutput: [2,3,6,7,1,5,4]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the linked list is in the range [0, 10^4]\n- -10^6 <= Node.val <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "odd_even_list",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    result = implementation.odd_even_list(head)\n    return result.to_list() if result else []",
+    "helpers_assert_name": "odd_even_list",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_odd_even_list, run_odd_even_list\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OddEvenLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "odd_even_list",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement odd_even_list\n        return head"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_odd_even_list",
+                "signature": "(self, head_list: list[int], expected: list[int])",
+                "parametrize": "head_list, expected",
+                "test_cases": "[([1, 2, 3, 4, 5], [1, 3, 5, 2, 4]), ([2, 1, 3, 5, 6, 4, 7], [2, 3, 6, 7, 1, 5, 4]), ([], []), ([1], [1]), ([1, 2], [1, 2]), ([1, 2, 3], [1, 3, 2]), ([1, 2, 3, 4], [1, 3, 2, 4]), ([5, 4, 3, 2, 1], [5, 3, 1, 4, 2]), ([10, 20, 30, 40, 50, 60], [10, 30, 50, 20, 40, 60]), ([7, 6, 5, 4, 3, 2, 1], [7, 5, 3, 1, 6, 4, 2]), ([100], [100]), ([1, 3, 5, 7, 9], [1, 5, 9, 3, 7]), ([2, 4, 6, 8], [2, 6, 4, 8]), ([9, 8, 7, 6, 5, 4, 3, 2, 1], [9, 7, 5, 3, 1, 8, 6, 4, 2]), ([1, 1, 1, 1, 1], [1, 1, 1, 1, 1]), ([-1, -2, -3, -4, -5], [-1, -3, -5, -2, -4])]",
+                "body": "        result = run_odd_even_list(Solution, head_list)\n        assert_odd_even_list(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_odd_even_list, assert_odd_even_list\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 2, 3, 4, 5]\nexpected = [1, 3, 5, 2, 4]",
+    "playground_run": "result = run_odd_even_list(Solution, head_list)\nresult",
+    "playground_assert": "assert_odd_even_list(result, expected)"
+}

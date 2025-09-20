@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= valid_sudoku
+PROBLEM ?= find_k_closest_elements
 FORCE ?= 0
 COMMA := ,
 

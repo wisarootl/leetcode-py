@@ -1,0 +1,64 @@
+{
+    "problem_name": "top_k_frequent_words",
+    "solution_class_name": "Solution",
+    "problem_number": "692",
+    "problem_title": "Top K Frequent Words",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an array of strings `words` and an integer `k`, return *the* `k` *most frequent strings*.\n\nReturn the answer **sorted** by **the frequency** from highest to lowest. Sort the words with the same frequency by their **lexicographical order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"i\",\"love\",\"leetcode\",\"i\",\"love\",\"coding\"], k = 2\nOutput: [\"i\",\"love\"]\nExplanation: \"i\" and \"love\" are the two most frequent words.\nNote that \"i\" comes before \"love\" due to a lower alphabetical order.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"the\",\"day\",\"is\",\"sunny\",\"the\",\"the\",\"the\",\"sunny\",\"is\",\"is\"], k = 4\nOutput: [\"the\",\"is\",\"sunny\",\"day\"]\nExplanation: \"the\", \"is\", \"sunny\" and \"day\" are the four most frequent words, with the number of occurrence being 4, 3, 2 and 1 respectively.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 500`\n- `1 <= words[i].length <= 10`\n- `words[i]` consists of lowercase English letters.\n- `k` is in the range `[1, The number of unique words[i]]`",
+    "readme_additional": "**Follow-up:** Could you solve it in `O(n log(k))` time and `O(n)` extra space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "top_k_frequent",
+    "helpers_run_signature": "(solution_class: type, words: list[str], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.top_k_frequent(words, k)",
+    "helpers_assert_name": "top_k_frequent",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_top_k_frequent, run_top_k_frequent\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TopKFrequentWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "top_k_frequent",
+                "signature": "(self, words: list[str], k: int) -> list[str]",
+                "body": "        # TODO: Implement top_k_frequent\n        return words[:k]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_top_k_frequent",
+                "signature": "(self, words: list[str], k: int, expected: list[str])",
+                "parametrize": "words, k, expected",
+                "test_cases": "[(['i', 'love', 'leetcode', 'i', 'love', 'coding'], 2, ['i', 'love']), (['the', 'day', 'is', 'sunny', 'the', 'the', 'the', 'sunny', 'is', 'is'], 4, ['the', 'is', 'sunny', 'day']), (['a', 'aa', 'aaa'], 1, ['a']), (['a', 'aa', 'aaa'], 2, ['a', 'aa']), (['a', 'aa', 'aaa'], 3, ['a', 'aa', 'aaa']), (['apple', 'banana', 'apple'], 1, ['apple']), (['apple', 'banana', 'apple'], 2, ['apple', 'banana']), (['word', 'word', 'word'], 1, ['word']), (['a', 'b', 'c', 'd', 'e'], 3, ['a', 'b', 'c']), (['hello', 'world', 'hello'], 2, ['hello', 'world']), (['cat', 'dog', 'cat', 'dog', 'bird'], 2, ['cat', 'dog']), (['x', 'y', 'z', 'x', 'y', 'x'], 2, ['x', 'y']), (['test'], 1, ['test']), (['a', 'b', 'a', 'c', 'b', 'a'], 3, ['a', 'b', 'c']), (['python', 'java', 'python', 'cpp', 'java', 'python'], 3, ['python', 'java', 'cpp']), (['one', 'two', 'three', 'one', 'two', 'one'], 2, ['one', 'two']), (['red', 'blue', 'green', 'red', 'blue', 'red'], 3, ['red', 'blue', 'green']), (['same', 'same', 'same', 'same'], 1, ['same'])]",
+                "body": "        result = run_top_k_frequent(Solution, words, k)\n        assert_top_k_frequent(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_top_k_frequent, assert_top_k_frequent\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords: list[str] = ['i', 'love', 'leetcode', 'i', 'love', 'coding']\nk = 2\nexpected: list[str] = ['i', 'love']",
+    "playground_run": "result = run_top_k_frequent(Solution, words, k)\nresult",
+    "playground_assert": "assert_top_k_frequent(result, expected)"
+}
