@@ -1,0 +1,72 @@
+{
+    "problem_name": "swap_nodes_in_pairs",
+    "solution_class_name": "Solution",
+    "problem_number": "24",
+    "problem_title": "Swap Nodes in Pairs",
+    "difficulty": "Medium",
+    "topics": "Linked List, Recursion",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/03/swap_ex1.jpg)\n\n```\nInput: head = [1,2,3,4]\nOutput: [2,1,4,3]\n```"
+            },
+            { "content": "```\nInput: head = []\nOutput: []\n```" },
+            { "content": "```\nInput: head = [1]\nOutput: [1]\n```" },
+            { "content": "```\nInput: head = [1,2,3]\nOutput: [2,1,3]\n```" }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range `[0, 100]`.\n- `0 <= Node.val <= 100`",
+    "readme_additional": "",
+
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "swap_pairs",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    result = implementation.swap_pairs(head)\n    return result.to_list() if result else []",
+    "helpers_assert_name": "swap_pairs",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_swap_pairs, run_swap_pairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SwapNodesInPairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "swap_pairs",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement swap_pairs\n        return head"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_swap_pairs",
+                "signature": "(self, head_list: list[int], expected: list[int])",
+                "parametrize": "head_list, expected",
+                "test_cases": "[([1, 2, 3, 4], [2, 1, 4, 3]), ([], []), ([1], [1]), ([1, 2, 3], [2, 1, 3]), ([1, 2], [2, 1]), ([1, 2, 3, 4, 5], [2, 1, 4, 3, 5]), ([1, 2, 3, 4, 5, 6], [2, 1, 4, 3, 6, 5]), ([5, 4, 3, 2, 1], [4, 5, 2, 3, 1]), ([10, 20], [20, 10]), ([100], [100]), ([0, 1, 2, 3], [1, 0, 3, 2]), ([7, 8, 9, 10, 11, 12, 13], [8, 7, 10, 9, 12, 11, 13])]",
+                "body": "        result = run_swap_pairs(Solution, head_list)\n        assert_swap_pairs(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_swap_pairs, assert_swap_pairs\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 2, 3, 4]\nexpected = [2, 1, 4, 3]",
+    "playground_run": "result = run_swap_pairs(Solution, head_list)\nresult",
+    "playground_assert": "assert_swap_pairs(result, expected)"
+}

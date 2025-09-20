@@ -1,0 +1,64 @@
+{
+    "problem_name": "rotate_array",
+    "solution_class_name": "Solution",
+    "problem_number": "189",
+    "problem_title": "Rotate Array",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Two Pointers",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an integer array `nums`, rotate the array to the right by `k` steps, where `k` is non-negative.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5,6,7], k = 3\nOutput: [5,6,7,1,2,3,4]\nExplanation:\nrotate 1 steps to the right: [7,1,2,3,4,5,6]\nrotate 2 steps to the right: [6,7,1,2,3,4,5]\nrotate 3 steps to the right: [5,6,7,1,2,3,4]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [-1,-100,3,99], k = 2\nOutput: [3,99,-1,-100]\nExplanation:\nrotate 1 steps to the right: [99,-1,-100,3]\nrotate 2 steps to the right: [3,99,-1,-100]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- -2^31 <= nums[i] <= 2^31 - 1\n- 0 <= k <= 10^5",
+    "readme_additional": "**Follow up:**\n\n- Try to come up with as many solutions as you can. There are at least **three** different ways to solve this problem.\n- Could you do it in-place with `O(1)` extra space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rotate",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    nums_copy = nums[:]\n    implementation.rotate(nums_copy, k)\n    return nums_copy",
+    "helpers_assert_name": "rotate",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rotate, run_rotate\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RotateArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rotate",
+                "signature": "(self, nums: list[int], k: int) -> None",
+                "body": "        # TODO: Implement rotate\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rotate",
+                "signature": "(self, nums: list[int], k: int, expected: list[int])",
+                "parametrize": "nums, k, expected",
+                "test_cases": "[([1, 2, 3, 4, 5, 6, 7], 3, [5, 6, 7, 1, 2, 3, 4]), ([-1, -100, 3, 99], 2, [3, 99, -1, -100]), ([1, 2], 1, [2, 1]), ([1], 1, [1]), ([1, 2, 3], 0, [1, 2, 3]), ([1, 2, 3], 3, [1, 2, 3]), ([1, 2, 3], 4, [3, 1, 2]), ([1, 2, 3, 4, 5], 2, [4, 5, 1, 2, 3]), ([1, 2, 3, 4, 5, 6], 4, [3, 4, 5, 6, 1, 2]), ([-1, -2, -3, -4], 1, [-4, -1, -2, -3]), ([1, 2, 3, 4, 5, 6, 7, 8, 9], 5, [5, 6, 7, 8, 9, 1, 2, 3, 4]), ([10, 20, 30], 6, [10, 20, 30]), ([5, 4, 3, 2, 1], 10, [5, 4, 3, 2, 1]), ([1, 2, 3, 4, 5, 6, 7, 8], 3, [6, 7, 8, 1, 2, 3, 4, 5]), ([100], 0, [100])]",
+                "body": "        result = run_rotate(Solution, nums, k)\n        assert_rotate(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rotate, assert_rotate\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4, 5, 6, 7]\nk = 3\nexpected = [5, 6, 7, 1, 2, 3, 4]",
+    "playground_run": "result = run_rotate(Solution, nums, k)\nresult",
+    "playground_assert": "assert_rotate(result, expected)"
+}

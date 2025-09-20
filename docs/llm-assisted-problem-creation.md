@@ -121,7 +121,6 @@ make p-test PROBLEM={problem_name}
 
 - Assistant will automatically fix JSON template issues
 - Re-runs generation until linting passes
-- If JSON template fails after many iterations, ask agent to review the example template carefully as mentioned in the rules
 
 **Test failures:**
 

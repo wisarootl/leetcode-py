@@ -1,0 +1,61 @@
+{
+    "problem_name": "decode_string",
+    "solution_class_name": "Solution",
+    "problem_number": "394",
+    "problem_title": "Decode String",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Recursion",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an encoded string, return its decoded string.\n\nThe encoding rule is: `k[encoded_string]`, where the `encoded_string` inside the square brackets is being repeated exactly `k` times. Note that `k` is guaranteed to be a positive integer.\n\nYou may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, `k`. For example, there will not be input like `3a` or `2[4]`.\n\nThe test cases are generated so that the length of the output will never exceed 10^5.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"3[a]2[bc]\"\nOutput: \"aaabcbc\"\n```" },
+            { "content": "```\nInput: s = \"3[a2[c]]\"\nOutput: \"accaccacc\"\n```" },
+            { "content": "```\nInput: s = \"2[abc]3[cd]ef\"\nOutput: \"abcabccdcdcdef\"\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 30\n- s consists of lowercase English letters, digits, and square brackets '[]'\n- s is guaranteed to be a valid input\n- All the integers in s are in the range [1, 300]",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "decode_string",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.decode_string(s)",
+    "helpers_assert_name": "decode_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_decode_string, run_decode_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DecodeString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "decode_string",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement decode_string\n        return s"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_decode_string",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": "[('3[a]2[bc]', 'aaabcbc'), ('3[a2[c]]', 'accaccacc'), ('2[abc]3[cd]ef', 'abcabccdcdcdef'), ('abc', 'abc'), ('2[a]', 'aa'), ('10[a]', 'aaaaaaaaaa'), ('2[b3[a]]', 'baaabaaa'), ('3[a]2[b2[c]]', 'aaabccbcc'), ('100[leetcode]', 'leetcode' * 100), ('2[2[y]pq4[2[jk]e1[f]]]ef', 'yypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef'), ('', ''), ('a', 'a'), ('2[3[a]b]', 'aaabaaab'), ('3[2[ad]3[pf]]xyz', 'adadpfpfpfadadpfpfpfadadpfpfpfxyz'), ('sd2[f2[e]g]i', 'sdfeegfeegi')]",
+                "body": "        result = run_decode_string(Solution, s)\n        assert_decode_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_decode_string, assert_decode_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '3[a]2[bc]'\nexpected = 'aaabcbc'",
+    "playground_run": "result = run_decode_string(Solution, s)\nresult",
+    "playground_assert": "assert_decode_string(result, expected)"
+}

@@ -1,0 +1,71 @@
+{
+    "problem_name": "longest_increasing_subsequence",
+    "solution_class_name": "Solution",
+    "problem_number": "300",
+    "problem_title": "Longest Increasing Subsequence",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Dynamic Programming",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Given an integer array `nums`, return the length of the longest **strictly increasing** **subsequence**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [10,9,2,5,3,7,101,18]\nOutput: 4\nExplanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.\n```"
+            },
+            { "content": "```\nInput: nums = [0,1,0,3,2,3]\nOutput: 4\n```" },
+            { "content": "```\nInput: nums = [7,7,7,7,7,7,7]\nOutput: 1\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 2500`\n- `-10^4 <= nums[i] <= 10^4`",
+    "readme_additional": "**Follow up:** Can you come up with an algorithm that runs in `O(n log(n))` time complexity?",
+
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "length_of_lis",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.length_of_lis(nums)",
+    "helpers_assert_name": "length_of_lis",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_length_of_lis, run_length_of_lis\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestIncreasingSubsequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "length_of_lis",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement length_of_lis\n        return 0"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_length_of_lis",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": "[([10, 9, 2, 5, 3, 7, 101, 18], 4), ([0, 1, 0, 3, 2, 3], 4), ([7, 7, 7, 7, 7, 7, 7], 1), ([1, 3, 6, 7, 9, 4, 10, 5, 6], 6), ([10, 22, 9, 33, 21, 50, 41, 60], 5), ([1], 1), ([1, 2], 2), ([2, 1], 1), ([1, 2, 3, 4, 5], 5), ([5, 4, 3, 2, 1], 1), ([4, 10, 4, 3, 8, 9], 3), ([2, 2], 1), ([1, 3, 2, 4], 3), ([10, 9, 2, 5, 3, 4], 3), ([1, 2, 3, 2, 3, 4, 5], 5)]",
+                "body": "        result = run_length_of_lis(Solution, nums)\n        assert_length_of_lis(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_length_of_lis, assert_length_of_lis\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [10, 9, 2, 5, 3, 7, 101, 18]\nexpected = 4",
+    "playground_run": "result = run_length_of_lis(Solution, nums)\nresult",
+    "playground_assert": "assert_length_of_lis(result, expected)"
+}

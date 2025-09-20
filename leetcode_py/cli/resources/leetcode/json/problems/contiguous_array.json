@@ -1,0 +1,67 @@
+{
+    "problem_name": "contiguous_array",
+    "solution_class_name": "Solution",
+    "problem_number": "525",
+    "problem_title": "Contiguous Array",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Prefix Sum",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given a binary array `nums`, return *the maximum length of a contiguous subarray with an equal number of* `0` *and* `1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [0,1]\nOutput: 2\nExplanation: [0, 1] is the longest contiguous subarray with an equal number of 0 and 1.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,0]\nOutput: 2\nExplanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,1,1,1,1,0,0,0]\nOutput: 6\nExplanation: [1,1,1,0,0,0] is the longest contiguous subarray with equal number of 0 and 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `nums[i]` is either `0` or `1`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_max_length",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_max_length(nums)",
+    "helpers_assert_name": "find_max_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_max_length, run_find_max_length\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ContiguousArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_max_length",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement find_max_length\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_max_length",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": "[([0, 1], 2), ([0, 1, 0], 2), ([0, 1, 1, 1, 1, 1, 0, 0, 0], 6), ([0], 0), ([1], 0), ([0, 0], 0), ([1, 1], 0), ([0, 0, 1, 0, 0, 1, 1, 0], 6), ([1, 0, 1, 0, 1], 4), ([0, 1, 1, 0, 1, 1, 1, 0], 4), ([1, 1, 1, 1, 1, 1, 1, 1], 0), ([0, 0, 0, 0, 0, 0, 0, 0], 0), ([1, 0, 1, 1, 0, 0, 1, 0, 1], 8), ([0, 1, 0, 1, 0, 1, 0, 1], 8), ([1, 0, 0, 1, 1, 0, 1, 0, 0, 1], 10), ([0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0], 10), ([1, 1, 0, 0, 1, 1, 0, 0, 1, 1], 8)]",
+                "body": "        result = run_find_max_length(Solution, nums)\n        assert_find_max_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_max_length, assert_find_max_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [0, 1]\nexpected = 2",
+    "playground_run": "result = run_find_max_length(Solution, nums)\nresult",
+    "playground_assert": "assert_find_max_length(result, expected)"
+}

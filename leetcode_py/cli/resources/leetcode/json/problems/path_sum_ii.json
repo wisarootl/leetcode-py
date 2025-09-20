@@ -1,0 +1,73 @@
+{
+    "problem_name": "path_sum_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "113",
+    "problem_title": "Path Sum II",
+    "difficulty": "Medium",
+    "topics": "Backtracking, Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["grind"] },
+
+    "readme_description": "Given the `root` of a binary tree and an integer `targetSum`, return all **root-to-leaf** paths where the sum of the node values in the path equals `targetSum`. Each path should be returned as a list of the node **values**, not node references.\n\nA **root-to-leaf** path is a path starting from the root and ending at any leaf node. A **leaf** is a node with no children.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/18/pathsumii1.jpg)\n\n```\nInput: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22\nOutput: [[5,4,11,2],[5,8,4,5]]\nExplanation: There are two paths whose sum equals targetSum:\n5 + 4 + 11 + 2 = 22\n5 + 8 + 4 + 5 = 22\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/01/18/pathsum2.jpg)\n\n```\nInput: root = [1,2,3], targetSum = 5\nOutput: []\n```"
+            },
+            { "content": "```\nInput: root = [1,2], targetSum = 0\nOutput: []\n```" }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 5000]`.\n- `-1000 <= Node.val <= 1000`\n- `-1000 <= targetSum <= 1000`",
+    "readme_additional": "",
+
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "path_sum",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], target_sum: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.path_sum(root, target_sum)",
+    "helpers_assert_name": "path_sum",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order may vary\n    result_sorted = sorted([sorted(path) for path in result])\n    expected_sorted = sorted([sorted(path) for path in expected])\n    assert result_sorted == expected_sorted\n    return True",
+
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_path_sum, run_path_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PathSumII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "path_sum",
+                "signature": "(self, root: TreeNode[int] | None, target_sum: int) -> list[list[int]]",
+                "body": "        # TODO: Implement path_sum\n        return []"
+            }
+        ]
+    },
+
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_path_sum",
+                "signature": "(self, root_list: list[int | None], target_sum: int, expected: list[list[int]])",
+                "parametrize": "root_list, target_sum, expected",
+                "test_cases": "[([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1], 22, [[5, 4, 11, 2], [5, 8, 4, 5]]), ([1, 2, 3], 5, []), ([1, 2], 0, []), ([], 0, []), ([1], 1, [[1]]), ([1], 0, []), ([1, 2, 3], 4, [[1, 3]]), ([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1], 22, [[5, 4, 11, 2]]), ([1, -2, -3, 1, 3, -2, None, -1], -1, [[1, -2, 1, -1]]), ([1, 2, 3, 4, 5], 7, [[1, 2, 4]]), ([2, 1, 3], 3, [[2, 1]]), ([1, 2, 3, 4, 5, 6, 7], 8, [[1, 2, 5]])]",
+                "body": "        result = run_path_sum(Solution, root_list, target_sum)\n        assert_path_sum(result, expected)"
+            }
+        ]
+    },
+
+    "playground_imports": "from helpers import run_path_sum, assert_path_sum\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list = [5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]\ntarget_sum = 22\nexpected = [[5, 4, 11, 2], [5, 8, 4, 5]]",
+    "playground_run": "result = run_path_sum(Solution, root_list, target_sum)\nresult",
+    "playground_assert": "assert_path_sum(result, expected)"
+}
