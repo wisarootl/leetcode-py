@@ -22,14 +22,20 @@ def count_test_cases_for_problem(json_data: dict[str, Any]) -> int:
         test_cases = method.get("test_cases", "")
         if test_cases.strip():
             try:
-                # Parse Python list literal using ast.literal_eval
+                # Try ast.literal_eval first (safer)
                 cases_list = ast.literal_eval(test_cases)
                 total += len(cases_list)
-            except (ValueError, SyntaxError) as e:
-                # Re-raise with more context
-                raise ValueError(
-                    f"Failed to parse test_cases in method '{method.get('name', 'unknown')}': {e}"
-                )
+            except (ValueError, SyntaxError):
+                try:
+                    # Fallback to eval for expressions like 'string' * 100
+                    # This is safe since we're only evaluating test case data
+                    cases_list = eval(test_cases)
+                    total += len(cases_list)
+                except Exception as e:
+                    # Re-raise with more context
+                    raise ValueError(
+                        f"Failed to parse test_cases in method '{method.get('name', 'unknown')}': {e}"
+                    )
     return total
 
 
