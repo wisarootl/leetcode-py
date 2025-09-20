@@ -25,7 +25,7 @@ def test_find_problem_by_number_not_found():
 
 def test_find_problems_by_tag():
     # Test existing tag
-    result = find_problems_by_tag("test")
+    result = find_problems_by_tag("grind-75")
     assert isinstance(result, list)
     assert len(result) > 0
 
@@ -78,7 +78,7 @@ def test_find_problem_by_number_parametrized(number, expected):
     "tag,should_exist",
     [
         ("grind-75", True),
-        ("test", True),
+        ("grind-75", True),
         ("nonexistent", False),
     ],
 )
@@ -101,6 +101,6 @@ def test_problem_finder_consistency():
             assert problem in all_problems
 
     # Test that problems found by tag are in all_problems
-    test_problems = find_problems_by_tag("test")
-    for problem in test_problems:
+    grind_problems = find_problems_by_tag("grind-75")
+    for problem in grind_problems:
         assert problem in all_problems
