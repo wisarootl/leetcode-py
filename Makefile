@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= find_k_closest_elements
+PROBLEM ?= alien_dictionary
 FORCE ?= 0
 COMMA := ,
 

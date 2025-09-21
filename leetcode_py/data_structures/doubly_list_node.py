@@ -1,5 +1,9 @@
 from typing import Generic, TypeVar
 
+import graphviz
+
+from ._utils import handle_graphviz_fallback
+
 # TODO: Remove TypeVar when minimum Python version is 3.12+ (use class DoublyListNode[T]: syntax)
 T = TypeVar("T")
 
@@ -79,44 +83,42 @@ class DoublyListNode(Generic[T]):
     def _repr_html_(self) -> str:
         """Generate HTML representation with bidirectional arrows."""
         try:
-            import graphviz
-        except ImportError:
-            return f"<pre>{self.__str__()}</pre>"
+            dot = graphviz.Digraph(comment="DoublyLinkedList")
+            dot.attr(rankdir="LR")
+            dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightgreen")
+            dot.attr("edge", color="black")
 
-        dot = graphviz.Digraph(comment="DoublyLinkedList")
-        dot.attr(rankdir="LR")
-        dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightgreen")
-        dot.attr("edge", color="black")
+            current: "DoublyListNode[T] | None" = self
+            visited: dict[int, int] = {}
+            node_id = 0
 
-        current: "DoublyListNode[T] | None" = self
-        visited: dict[int, int] = {}
-        node_id = 0
+            while current:
+                if id(current) in visited:
+                    cycle_target = visited[id(current)]
+                    dot.edge(
+                        f"node_{node_id - 1}",
+                        f"node_{cycle_target}",
+                        color="red",
+                        style="dashed",
+                        label="cycle",
+                    )
+                    break
 
-        while current:
-            if id(current) in visited:
-                cycle_target = visited[id(current)]
-                dot.edge(
-                    f"node_{node_id - 1}",
-                    f"node_{cycle_target}",
-                    color="red",
-                    style="dashed",
-                    label="cycle",
-                )
-                break
+                visited[id(current)] = node_id
+                dot.node(f"node_{node_id}", str(current.val))
 
-            visited[id(current)] = node_id
-            dot.node(f"node_{node_id}", str(current.val))
+                if current.next and id(current.next) not in visited:
+                    # Forward edge
+                    dot.edge(f"node_{node_id}", f"node_{node_id + 1}", label="next")
+                    # Backward edge
+                    dot.edge(f"node_{node_id + 1}", f"node_{node_id}", label="prev", color="blue")
 
-            if current.next and id(current.next) not in visited:
-                # Forward edge
-                dot.edge(f"node_{node_id}", f"node_{node_id + 1}", label="next")
-                # Backward edge
-                dot.edge(f"node_{node_id + 1}", f"node_{node_id}", label="prev", color="blue")
+                current = current.next
+                node_id += 1
 
-            current = current.next
-            node_id += 1
-
-        return dot.pipe(format="svg", encoding="utf-8")
+            return dot.pipe(format="svg", encoding="utf-8")
+        except (ImportError, AttributeError, graphviz.ExecutableNotFound) as e:
+            return handle_graphviz_fallback(e, self.__str__())
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, DoublyListNode):

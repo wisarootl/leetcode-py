@@ -1,3 +1,4 @@
+import graphviz
 import pytest
 
 from leetcode_py.data_structures import DictTree
@@ -33,33 +34,32 @@ class TestDictTree:
         assert result == ""
 
     def test_html_without_graphviz(self, monkeypatch):
-        monkeypatch.setattr(
-            "builtins.__import__",
-            lambda name, *args: (
-                exec("raise ImportError") if name == "graphviz" else __import__(name, *args)
-            ),
-        )
+        # Mock graphviz.Digraph to raise ImportError
+        def mock_digraph(*args, **kwargs):
+            raise ImportError("No module named 'graphviz'")
+
+        monkeypatch.setattr("leetcode_py.data_structures.dict_tree.graphviz.Digraph", mock_digraph)
         self.tree.root = {"a": {}}
         html = self.tree._repr_html_()
         assert "<pre>" in html
         assert "└── a" in html
 
     def test_html_with_real_graphviz(self):
-        try:
-            self.tree.root = {"a": {"#": True}, "b": 42}
-            html = self.tree._repr_html_()
-            assert "<svg" in html or "svg" in html.lower()
-        except ImportError:
-            pytest.skip("graphviz not available")
+        self.tree.root = {"a": {"#": True}, "b": 42}
+        html = self.tree._repr_html_()
+        # Either SVG rendering works or fallback to text
+        if "<svg" in html or "svg" in html.lower():
+            # Graphviz worked successfully
+            assert True
+        elif "<pre>" in html:
+            # Fallback was used (graphviz executable not found) - this is expected
+            assert "└── a" in html or "├── a" in html
+        else:
+            pytest.fail("Unexpected HTML output format")
 
     def test_add_dict_nodes_empty(self):
-        try:
-            import graphviz
-
-            dot = graphviz.Digraph()
-            self.tree._add_dict_nodes(dot, {}, "test")
-        except ImportError:
-            pytest.skip("graphviz not available")
+        dot = graphviz.Digraph()
+        self.tree._add_dict_nodes(dot, {}, "test")
 
     def test_empty_tree_html(self):
         html = self.tree._repr_html_()

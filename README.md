@@ -9,6 +9,8 @@
 [![pypi](https://img.shields.io/pypi/v/leetcode-py-sdk.svg?color=blue)](https://pypi.python.org/pypi/leetcode-py-sdk)
 [![downloads](https://static.pepy.tech/personalized-badge/leetcode-py-sdk?period=total&units=international_system&left_color=grey&right_color=blue&left_text=pypi%20downloads)](https://pepy.tech/projects/leetcode-py-sdk)
 [![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?logo=python)](https://github.com/wisarootl/leetcode-py/)
+[![Star ⭐](https://img.shields.io/github/stars/wisarootl/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wisarootl/leetcode-py)
+[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wisarootl)
 
 A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
 
@@ -298,3 +300,11 @@ make gen-all-problems              # Regenerate all problems (destructive)
 - **CI/CD**: GitHub Actions for testing, security, pre-commit hooks, and release automation
 
 Perfect for systematic coding interview preparation with professional development practices and enhanced debugging capabilities.
+
+## 💖 Support This Project
+
+[![Star ⭐](https://img.shields.io/github/stars/wisarootl/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wisarootl/leetcode-py)
+[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wisarootl)
+
+If you find this project helpful, please consider **starring the repo ⭐** or **sponsoring my work 💖**.
+Your support helps me maintain and improve this project. Thank you!

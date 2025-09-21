@@ -1,5 +1,9 @@
 from typing import Any, Generic, Hashable, TypeAlias, TypeVar
 
+import graphviz
+
+from ._utils import handle_graphviz_fallback
+
 K = TypeVar("K", bound=Hashable)
 RecursiveDict: TypeAlias = dict[K, "RecursiveDict[K] | Any"]
 
@@ -35,20 +39,18 @@ class DictTree(Generic[K]):
         return "\n".join(lines)
 
     def _repr_html_(self) -> str:
-        try:
-            import graphviz
-        except ImportError:
-            return f"<pre>{self.__str__()}</pre>"
-
         if not hasattr(self, "root") or not self.root:
             return "<pre>Empty</pre>"
 
-        dot = graphviz.Digraph()
-        dot.attr(rankdir="TB")
-        dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightblue")
+        try:
+            dot = graphviz.Digraph()
+            dot.attr(rankdir="TB")
+            dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightblue")
 
-        self._add_dict_nodes(dot, self.root, "root")
-        return dot.pipe(format="svg", encoding="utf-8")
+            self._add_dict_nodes(dot, self.root, "root")
+            return dot.pipe(format="svg", encoding="utf-8")
+        except (ImportError, AttributeError, graphviz.ExecutableNotFound) as e:
+            return handle_graphviz_fallback(e, self.__str__())
 
     def _add_dict_nodes(
         self, dot: Any, node: RecursiveDict[K], node_id: str, char: K | str = ""

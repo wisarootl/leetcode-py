@@ -1,0 +1,81 @@
+{
+    "problem_name": "design_in_memory_file_system",
+    "solution_class_name": "FileSystem",
+    "problem_number": "588",
+    "problem_title": "Design In-Memory File System",
+    "difficulty": "Hard",
+    "topics": "Design, Trie, Hash Table, String",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Design an in-memory file system to simulate the following functions:\n\n`ls`: Given a path in string format. If it is a file path, return a list that only contains this file's name. If it is a directory path, return the list of file and directory names **in this directory**. Your output (file and directory names together) should in **lexicographic order**.\n\n`mkdir`: Given a **directory path** that does not exist, you should make a new directory according to the path. If the middle directories in the path don't exist either, you should create them as well. This function has void return type.\n\n`addContentToFile`: Given a **file path** and **file content** in string format. If the file doesn't exist, you need to create that file containing given content. If the file already exists, you need to **append** given content to original content. This function has void return type.\n\n`readContentFromFile`: Given a **file path**, return its **content** in string format.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![filesystem](https://assets.leetcode.com/uploads/2018/10/12/filesystem.png)\n\n```\nInput:\n[\"FileSystem\",\"ls\",\"mkdir\",\"addContentToFile\",\"ls\",\"readContentFromFile\"]\n[[],[\"/\"],[\"a/b/c\"],[\"/a/b/c/d\",\"hello\"],[\"/\"],[\"/a/b/c/d\"]]\n\nOutput:\n[null,[],null,null,[\"a\"],\"hello\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- You can assume all file or directory paths are absolute paths which begin with `/` and do not end with `/` except that the path is just `\"/\"`.\n- You can assume that all operations will be passed valid parameters and users will not attempt to retrieve file content or list a directory or file that does not exist.\n- You can assume that all directory names and file names only contain lower-case letters, and same names won't exist in the same directory.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "file_system",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    from typing import Any\n    \n    fs: Any = None\n    results: list[str | list[str] | None] = []\n    for i, operation in enumerate(operations):\n        if operation == 'FileSystem':\n            fs = solution_class()\n            results.append(None)\n        elif operation == 'ls':\n            assert fs is not None\n            result = fs.ls(inputs[i][0])\n            results.append(result)\n        elif operation == 'mkdir':\n            assert fs is not None\n            fs.mkdir(inputs[i][0])\n            results.append(None)\n        elif operation == 'addContentToFile':\n            assert fs is not None\n            fs.add_content_to_file(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif operation == 'readContentFromFile':\n            assert fs is not None\n            result = fs.read_content_from_file(inputs[i][0])\n            results.append(result)\n    return results, fs",
+    "helpers_assert_name": "file_system",
+    "helpers_assert_signature": "(result: list[str | list[str] | None], expected: list[str | list[str] | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_file_system, run_file_system\nfrom .solution import FileSystem",
+    "test_content": "",
+    "test_class_name": "DesignInMemoryFileSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "ls",
+                "signature": "(self, path: str) -> list[str]",
+                "body": "        # TODO: Implement ls\n        return []"
+            },
+            {
+                "name": "mkdir",
+                "signature": "(self, path: str) -> None",
+                "body": "        # TODO: Implement mkdir\n        pass"
+            },
+            {
+                "name": "add_content_to_file",
+                "signature": "(self, file_path: str, content: str) -> None",
+                "body": "        # TODO: Implement add_content_to_file\n        pass"
+            },
+            {
+                "name": "read_content_from_file",
+                "signature": "(self, file_path: str) -> str",
+                "body": "        # TODO: Implement read_content_from_file\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_file_system",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[str | list[str] | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": "[(['FileSystem', 'ls', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/'], ['/a/b/c'], ['/a/b/c/d', 'hello'], ['/'], ['/a/b/c/d']], [None, [], None, None, ['a'], 'hello']), (['FileSystem', 'ls', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/'], ['/a'], ['/'], ['/a/b'], ['/']], [None, [], None, ['a'], None, ['a']]), (['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/x/y'], ['/x/y/z', 'content'], ['/x/y'], ['/x/y/z']], [None, None, None, ['z'], 'content']), (['FileSystem', 'addContentToFile', 'readContentFromFile', 'addContentToFile', 'readContentFromFile'], [[], ['/file', 'hello'], ['/file'], ['/file', ' world'], ['/file']], [None, None, 'hello', None, 'hello world']), (['FileSystem', 'mkdir', 'mkdir', 'ls', 'addContentToFile', 'ls'], [[], ['/a'], ['/a/b'], ['/a'], ['/a/file', 'test'], ['/a']], [None, None, None, ['b'], None, ['b', 'file']]), (['FileSystem', 'ls'], [[], ['/']], [None, []]), (['FileSystem', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/dir1'], ['/'], ['/dir2'], ['/']], [None, None, ['dir1'], None, ['dir1', 'dir2']]), (['FileSystem', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/root/file', 'data'], ['/root'], ['/root/file']], [None, None, ['file'], 'data']), (['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/folder'], ['/folder/doc', 'text'], ['/folder'], ['/folder/doc']], [None, None, None, ['doc'], 'text']), (['FileSystem', 'addContentToFile', 'addContentToFile', 'readContentFromFile'], [[], ['/log', 'line1'], ['/log', 'line2'], ['/log']], [None, None, None, 'line1line2']), (['FileSystem', 'mkdir', 'mkdir', 'mkdir', 'ls'], [[], ['/a/b/c'], ['/a/b/d'], ['/a/e'], ['/a']], [None, None, None, None, ['b', 'e']]), (['FileSystem', 'mkdir', 'addContentToFile', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/docs'], ['/docs/readme', 'intro'], ['/docs/config', 'settings'], ['/docs'], ['/docs/readme']], [None, None, None, None, ['config', 'readme'], 'intro'])]",
+                "body": "        result, _ = run_file_system(FileSystem, operations, inputs)\n        assert_file_system(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_file_system, assert_file_system\nfrom solution import FileSystem",
+    "playground_setup": "# Example test case\noperations = ['FileSystem', 'ls', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile']\ninputs = [[], ['/'], ['/a/b/c'], ['/a/b/c/d', 'hello'], ['/'], ['/a/b/c/d']]\nexpected = [None, [], None, None, ['a'], 'hello']",
+    "playground_run": "result, fs = run_file_system(FileSystem, operations, inputs)\nprint(result)\nfs",
+    "playground_assert": "assert_file_system(result, expected)"
+}

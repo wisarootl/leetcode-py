@@ -228,7 +228,15 @@ class TestGraphNode:
 
         result = node1._repr_html_()
         assert isinstance(result, str)
-        # Should return SVG content from graphviz
+        # Either SVG rendering works or fallback to text
+        if "<svg" in result or "svg" in result.lower():
+            # Graphviz worked successfully
+            assert True
+        elif "<pre>" in result:
+            # Fallback was used (graphviz executable not found) - this is expected
+            assert "{1: [2], 2: [1]}" in result
+        else:
+            pytest.fail("Unexpected HTML output format")
 
     def test_from_adjacency_list_invalid_neighbor(self) -> None:
         # Test adjacency list with invalid neighbor reference
