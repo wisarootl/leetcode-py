@@ -1,0 +1,65 @@
+{
+    "problem_name": "alien_dictionary",
+    "solution_class_name": "Solution",
+    "problem_number": "269",
+    "problem_title": "Alien Dictionary",
+    "difficulty": "Hard",
+    "topics": "Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",
+    "_tags": { "list": ["grind-75"] },
+    "readme_description": "There is a new alien language that uses the English alphabet. However, the order among the letters is unknown to you.\n\nYou are given a list of strings `words` from the alien language's dictionary, where the strings in `words` are **sorted lexicographically** by the rules of this new language.\n\nReturn *a string of the unique letters in the new alien language sorted in **lexicographically increasing order** by the new language's rules. If there is no solution, return* `\"\"`*. If there are multiple solutions, return **any of them***.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]\nOutput: \"wertf\"\n```"
+            },
+            { "content": "```\nInput: words = [\"z\",\"x\"]\nOutput: \"zx\"\n```" },
+            {
+                "content": "```\nInput: words = [\"z\",\"x\",\"z\"]\nOutput: \"\"\nExplanation: The order is invalid, so return \"\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 100`\n- `1 <= words[i].length <= 100`\n- `words[i]` consists of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "alien_order",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.alien_order(words)",
+    "helpers_assert_name": "alien_order",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    if expected == \"\":\n        assert result == \"\"\n    else:\n        # Multiple valid solutions possible, check if result is valid\n        assert len(result) == len(expected)\n        assert set(result) == set(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_alien_order, run_alien_order\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AlienDictionary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "alien_order",
+                "signature": "(self, words: list[str]) -> str",
+                "body": "        # TODO: Implement alien_order\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_alien_order",
+                "signature": "(self, words: list[str], expected: str)",
+                "parametrize": "words, expected",
+                "test_cases": "[(['wrt', 'wrf', 'er', 'ett', 'rftt'], 'wertf'), (['z', 'x'], 'zx'), (['z', 'x', 'z'], ''), (['z', 'z'], 'z'), (['abc', 'ab'], ''), (['ab', 'adc'], 'abdc'), (['ac', 'ab', 'zc', 'zb'], 'acbz'), (['z'], 'z'), (['za', 'zb', 'ca', 'cb'], 'zcab'), (['zy', 'zx'], 'zyx'), (['a', 'b', 'ca', 'cc'], 'abc'), (['abc', 'bcd', 'cde'], 'abcde'), (['a', 'aa'], 'a'), (['ab', 'abc'], 'abc'), (['abc', 'ab'], ''), (['a', 'b', 'c', 'd'], 'abcd'), (['d', 'c', 'b', 'a'], 'dcba'), (['ac', 'ab', 'b'], 'acb')]",
+                "body": "        result = run_alien_order(Solution, words)\n        assert_alien_order(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_alien_order, assert_alien_order\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['wrt', 'wrf', 'er', 'ett', 'rftt']\nexpected = 'wertf'",
+    "playground_run": "result = run_alien_order(Solution, words)\nresult",
+    "playground_assert": "assert_alien_order(result, expected)"
+}

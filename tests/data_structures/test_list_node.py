@@ -187,13 +187,11 @@ class TestListNode:
         node = ListNode.from_list([1, 2, 3])
         assert node is not None
 
-        # Mock ImportError for graphviz
-        def mock_import(name, *args):
-            if name == "graphviz":
-                raise ImportError("No module named 'graphviz'")
-            return __import__(name, *args)
+        # Mock graphviz.Digraph to raise ImportError
+        def mock_digraph(*args, **kwargs):
+            raise ImportError("No module named 'graphviz'")
 
-        monkeypatch.setattr("builtins.__import__", mock_import)
+        monkeypatch.setattr("leetcode_py.data_structures.list_node.graphviz.Digraph", mock_digraph)
         result = node._repr_html_()
         assert "<pre>" in result
         assert "1 -> 2 -> 3" in result
@@ -203,17 +201,17 @@ class TestListNode:
         node = ListNode.from_list([1, 2])
         assert node is not None
 
-        try:
-            import importlib.util
-
-            if importlib.util.find_spec("graphviz") is None:
-                pytest.skip("graphviz not available")
-
-            result = node._repr_html_()
-            assert isinstance(result, str)
-            # Should return SVG content
-        except ImportError:
-            pytest.skip("graphviz not available")
+        result = node._repr_html_()
+        assert isinstance(result, str)
+        # Either SVG rendering works or fallback to text
+        if "<svg" in result or "svg" in result.lower():
+            # Graphviz worked successfully
+            assert True
+        elif "<pre>" in result:
+            # Fallback was used (graphviz executable not found) - this is expected
+            assert "1 -> 2" in result
+        else:
+            pytest.fail("Unexpected HTML output format")
 
     def test_repr_html_with_cycle(self) -> None:
         # Test _repr_html_ handles cycles
@@ -222,13 +220,14 @@ class TestListNode:
         node1.next = node2
         node2.next = node1  # Create cycle
 
-        try:
-            import importlib.util
-
-            if importlib.util.find_spec("graphviz") is None:
-                pytest.skip("graphviz not available")
-
-            result = node1._repr_html_()
-            assert isinstance(result, str)
-        except ImportError:
-            pytest.skip("graphviz not available")
+        result = node1._repr_html_()
+        assert isinstance(result, str)
+        # Either SVG rendering works or fallback to text
+        if "<svg" in result or "svg" in result.lower():
+            # Graphviz worked successfully
+            assert True
+        elif "<pre>" in result:
+            # Fallback was used (graphviz executable not found) - this is expected
+            assert "-> ... (cycle back to 1)" in result
+        else:
+            pytest.fail("Unexpected HTML output format")

@@ -1,5 +1,9 @@
 from typing import Generic, TypeVar
 
+import graphviz
+
+from ._utils import handle_graphviz_fallback
+
 # TODO: Remove TypeVar when minimum Python version is 3.12+ (use class ListNode[T]: syntax)
 T = TypeVar("T")
 
@@ -77,47 +81,45 @@ class ListNode(Generic[T]):
     def _repr_html_(self) -> str:
         """Generate HTML representation using Graphviz for Jupyter notebooks."""
         try:
-            import graphviz
-        except ImportError:
-            return f"<pre>{self.__str__()}</pre>"
+            dot = graphviz.Digraph(comment="LinkedList")
+            dot.attr(rankdir="LR")  # Left to right layout
+            dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightblue")
+            dot.attr("edge", color="black")
 
-        dot = graphviz.Digraph(comment="LinkedList")
-        dot.attr(rankdir="LR")  # Left to right layout
-        dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightblue")
-        dot.attr("edge", color="black")
+            current: "ListNode[T] | None" = self
+            visited: dict[int, int] = {}
+            node_id = 0
 
-        current: "ListNode[T] | None" = self
-        visited: dict[int, int] = {}
-        node_id = 0
+            # First pass: create all nodes and track positions
+            while current:
+                if id(current) in visited:
+                    # Cycle detected - add edge back to existing node
+                    cycle_target = visited[id(current)]
+                    dot.edge(
+                        f"node_{node_id - 1}",
+                        f"node_{cycle_target}",
+                        color="red",
+                        style="dashed",
+                        label="cycle",
+                    )
+                    break
 
-        # First pass: create all nodes and track positions
-        while current:
-            if id(current) in visited:
-                # Cycle detected - add edge back to existing node
-                cycle_target = visited[id(current)]
-                dot.edge(
-                    f"node_{node_id - 1}",
-                    f"node_{cycle_target}",
-                    color="red",
-                    style="dashed",
-                    label="cycle",
-                )
-                break
+                visited[id(current)] = node_id
+                dot.node(f"node_{node_id}", str(current.val))
 
-            visited[id(current)] = node_id
-            dot.node(f"node_{node_id}", str(current.val))
+                # Only add edge if next node exists and we haven't seen it (no cycle)
+                if current.next and id(current.next) not in visited:
+                    dot.edge(f"node_{node_id}", f"node_{node_id + 1}")
+                elif current.next and id(current.next) in visited:
+                    # Next iteration will detect cycle, don't add regular edge
+                    pass
 
-            # Only add edge if next node exists and we haven't seen it (no cycle)
-            if current.next and id(current.next) not in visited:
-                dot.edge(f"node_{node_id}", f"node_{node_id + 1}")
-            elif current.next and id(current.next) in visited:
-                # Next iteration will detect cycle, don't add regular edge
-                pass
+                current = current.next
+                node_id += 1
 
-            current = current.next
-            node_id += 1
-
-        return dot.pipe(format="svg", encoding="utf-8")
+            return dot.pipe(format="svg", encoding="utf-8")
+        except (ImportError, AttributeError, graphviz.ExecutableNotFound) as e:
+            return handle_graphviz_fallback(e, self.__str__())
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ListNode):

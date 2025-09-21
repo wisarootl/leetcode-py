@@ -3,6 +3,8 @@ from typing import Any, Generic, TypeVar
 import graphviz
 from anytree import Node, RenderTree
 
+from ._utils import handle_graphviz_fallback
+
 # TODO: Remove TypeVar when minimum Python version is 3.12+ (use class TreeNode[T]: syntax)
 T = TypeVar("T")
 
@@ -98,11 +100,14 @@ class TreeNode(Generic[T]):
         return "\n".join([f"{pre}{node.name}" for pre, _, node in RenderTree(tree)])
 
     def _repr_html_(self) -> str:
-        dot = graphviz.Digraph()
-        dot.attr(rankdir="TB")
+        try:
+            dot = graphviz.Digraph()
+            dot.attr(rankdir="TB")
 
-        add_nodes(dot, self)
-        return dot.pipe(format="svg", encoding="utf-8")
+            add_nodes(dot, self)
+            return dot.pipe(format="svg", encoding="utf-8")
+        except (ImportError, AttributeError, graphviz.ExecutableNotFound) as e:
+            return handle_graphviz_fallback(e, str(self))
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, TreeNode):

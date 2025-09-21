@@ -4,6 +4,8 @@ from pprint import pformat
 
 import graphviz
 
+from ._utils import handle_graphviz_fallback
+
 
 class GraphNode:
     """
@@ -88,22 +90,25 @@ class GraphNode:
 
     def _repr_html_(self) -> str:
         """HTML representation for Jupyter notebooks using Graphviz."""
-        dot = graphviz.Graph(engine="neato")
-        dot.attr("node", shape="circle", style="filled", fillcolor="lightblue")
-        dot.attr("edge", color="gray")
+        try:
+            dot = graphviz.Graph(engine="neato")
+            dot.attr("node", shape="circle", style="filled", fillcolor="lightblue")
+            dot.attr("edge", color="gray")
 
-        edges = set()
+            edges = set()
 
-        def visit(node: GraphNode) -> None:
-            dot.node(str(node.val), str(node.val))
-            for neighbor in node.neighbors:
-                edge = (min(node.val, neighbor.val), max(node.val, neighbor.val))
-                if edge not in edges:
-                    edges.add(edge)
-                    dot.edge(str(node.val), str(neighbor.val))
+            def visit(node: GraphNode) -> None:
+                dot.node(str(node.val), str(node.val))
+                for neighbor in node.neighbors:
+                    edge = (min(node.val, neighbor.val), max(node.val, neighbor.val))
+                    if edge not in edges:
+                        edges.add(edge)
+                        dot.edge(str(node.val), str(neighbor.val))
 
-        self._dfs_traverse(visit)
-        return dot.pipe(format="svg", encoding="utf-8")
+            self._dfs_traverse(visit)
+            return dot.pipe(format="svg", encoding="utf-8")
+        except (ImportError, AttributeError, graphviz.ExecutableNotFound) as e:
+            return handle_graphviz_fallback(e, str(self))
 
     def __repr__(self) -> str:
         """Developer representation showing adjacency dict."""
