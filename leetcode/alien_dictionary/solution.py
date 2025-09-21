@@ -5,7 +5,7 @@ class Solution:
     def alien_order(self, words: list[str]) -> str:
         # Build adjacency list and in-degree count
         adj: dict[str, set[str]] = {c: set() for word in words for c in word}
-        in_degree = {c: 0 for c in adj}
+        in_degree = dict.fromkeys(adj, 0)
 
         # Build graph by comparing adjacent words
         for i in range(len(words) - 1):
