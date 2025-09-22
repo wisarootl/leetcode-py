@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= alien_dictionary
+PROBLEM ?= jump_game
 FORCE ?= 0
 COMMA := ,
 

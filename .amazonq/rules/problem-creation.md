@@ -329,4 +329,4 @@ make lint
 
 ## Tags (Optional)
 
-Common tags: `["grind-75", "blind-75", "neetcode-150", "top-interview"]`
+Common tags: `["grind-75", "grind", "blind-75", "neetcode-150", "algo-master-75"]`
