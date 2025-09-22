@@ -143,12 +143,16 @@ lcpy list
 
 # Filter by tag
 lcpy list -t grind-75
+lcpy list -t blind-75
+lcpy list -t neetcode-150
+lcpy list -t algo-master-75
 
 # Filter by difficulty
 lcpy list -d Easy
 
 # Combine filters
 lcpy list -t grind-75 -d Medium
+lcpy list -t neetcode-150 -d Hard
 ```
 
 ## Problem Structure
@@ -181,8 +185,13 @@ _Comprehensive parametrized tests with 10+ test cases - executable and debuggabl
 
 Available tags for bulk operations:
 
-- `grind-75` - Essential 75 coding interview problems
-- `grind` - Original Blind 75 problems
+- `grind-75` - Essential 75 coding interview problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
+- `grind` - Extended Grind collection (100+ problems) including all Grind 75 plus additional problems 🚧 Partial
+- `blind-75` - Original [Blind 75](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions) curated list 🚧 Partial
+- `neetcode-150` - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set (150+ problems) 🚧 Partial
+- `algo-master-75` - Curated algorithmic mastery problems (75 problems) 🚧 Partial
+
+**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wisarootl/leetcode-py/blob/main/CONTRIBUTING.md)
 
 ## Output Directory
 

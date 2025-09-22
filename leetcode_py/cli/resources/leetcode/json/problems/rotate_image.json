@@ -1,0 +1,64 @@
+{
+    "problem_name": "rotate_image",
+    "solution_class_name": "Solution",
+    "problem_number": "48",
+    "problem_title": "Rotate Image",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Matrix",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "You are given an `n x n` 2D `matrix` representing an image, rotate the image by **90** degrees (clockwise).\n\nYou have to rotate the image **in-place**, which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg)\n\n```\nInput: matrix = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [[7,4,1],[8,5,2],[9,6,3]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg)\n\n```\nInput: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]\nOutput: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == matrix.length == matrix[i].length`\n- `1 <= n <= 20`\n- `-1000 <= matrix[i][j] <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rotate",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    import copy\n    matrix_copy = copy.deepcopy(matrix)\n    implementation = solution_class()\n    implementation.rotate(matrix_copy)\n    return matrix_copy",
+    "helpers_assert_name": "rotate",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rotate, run_rotate\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RotateImage",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rotate",
+                "signature": "(self, matrix: list[list[int]]) -> None",
+                "body": "        # TODO: Implement rotate\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rotate",
+                "signature": "(self, matrix: list[list[int]], expected: list[list[int]])",
+                "parametrize": "matrix, expected",
+                "test_cases": "[([[1,2,3],[4,5,6],[7,8,9]], [[7,4,1],[8,5,2],[9,6,3]]), ([[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]], [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]), ([[1]], [[1]]), ([[1,2],[3,4]], [[3,1],[4,2]]), ([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]], [[21,16,11,6,1],[22,17,12,7,2],[23,18,13,8,3],[24,19,14,9,4],[25,20,15,10,5]]), ([[0,0,0],[0,0,0],[0,0,0]], [[0,0,0],[0,0,0],[0,0,0]]), ([[-1,-2,-3],[-4,-5,-6],[-7,-8,-9]], [[-7,-4,-1],[-8,-5,-2],[-9,-6,-3]]), ([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]], [[13,9,5,1],[14,10,6,2],[15,11,7,3],[16,12,8,4]]), ([[100,200],[300,400]], [[300,100],[400,200]]), ([[1,2,3],[4,5,6],[7,8,9]], [[7,4,1],[8,5,2],[9,6,3]]), ([[10,20,30,40,50,60],[70,80,90,100,110,120],[130,140,150,160,170,180],[190,200,210,220,230,240],[250,260,270,280,290,300],[310,320,330,340,350,360]], [[310,250,190,130,70,10],[320,260,200,140,80,20],[330,270,210,150,90,30],[340,280,220,160,100,40],[350,290,230,170,110,50],[360,300,240,180,120,60]]), ([[-1000,1000],[-500,500]], [[-500,-1000],[500,1000]])]",
+                "body": "        result = run_rotate(Solution, matrix)\n        assert_rotate(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rotate, assert_rotate\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1,2,3],[4,5,6],[7,8,9]]\nexpected = [[7,4,1],[8,5,2],[9,6,3]]",
+    "playground_run": "result = run_rotate(Solution, matrix)\nresult",
+    "playground_assert": "assert_rotate(result, expected)"
+}

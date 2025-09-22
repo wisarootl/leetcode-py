@@ -1,0 +1,64 @@
+{
+    "problem_name": "jump_game",
+    "solution_class_name": "Solution",
+    "problem_number": "55",
+    "problem_title": "Jump Game",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Greedy",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.\n\nReturn `true` *if you can reach the last index, or* `false` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,3,1,1,4]\nOutput: true\nExplanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,2,1,0,4]\nOutput: false\nExplanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^4`\n- `0 <= nums[i] <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_jump",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_jump(nums)",
+    "helpers_assert_name": "can_jump",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_jump, run_can_jump\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "JumpGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_jump",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement can_jump\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_jump",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": "[([2, 3, 1, 1, 4], True), ([3, 2, 1, 0, 4], False), ([0], True), ([1], True), ([1, 0], True), ([0, 1], False), ([2, 0, 0], True), ([1, 1, 1, 0], True), ([3, 0, 8, 2, 0, 0, 1], True), ([1, 0, 1, 0], False), ([2, 5, 0, 0], True), ([1, 2, 3], True), ([5, 4, 3, 2, 1, 0, 0], False), ([1, 1, 2, 2, 0, 1, 1], True), ([4, 2, 0, 0, 1, 1, 4, 4, 4, 0, 4, 0], True)]",
+                "body": "        result = run_can_jump(Solution, nums)\n        assert_can_jump(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_jump, assert_can_jump\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 3, 1, 1, 4]\nexpected = True",
+    "playground_run": "result = run_can_jump(Solution, nums)\nresult",
+    "playground_assert": "assert_can_jump(result, expected)"
+}
