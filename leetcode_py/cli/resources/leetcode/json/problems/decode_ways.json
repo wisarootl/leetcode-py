@@ -1,0 +1,67 @@
+{
+    "problem_name": "decode_ways",
+    "solution_class_name": "Solution",
+    "problem_number": "91",
+    "problem_title": "Decode Ways",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "You have intercepted a secret message encoded as a string of numbers. The message is decoded via the mapping: `\"1\" -> 'A', \"2\" -> 'B', ..., \"26\" -> 'Z'`. Given a string `s` containing only digits, return the number of ways to decode it. Return `0` if it cannot be decoded.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"12\"\nOutput: 2\nExplanation: \"12\" could be decoded as \"AB\" (1 2) or \"L\" (12).\n```"
+            },
+            {
+                "content": "```\nInput: s = \"226\"\nOutput: 3\nExplanation: \"226\" could be decoded as \"BZ\" (2 26), \"VF\" (22 6), or \"BBF\" (2 2 6).\n```"
+            },
+            {
+                "content": "```\nInput: s = \"06\"\nOutput: 0\nExplanation: leading zero makes it invalid.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 100\n- s contains only digits and may contain leading zero(s)",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_decodings",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_decodings(s)",
+    "helpers_assert_name": "num_decodings",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_decodings, run_num_decodings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DecodeWays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_decodings",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement num_decodings\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_decodings",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": "[('12', 2), ('226', 3), ('06', 0), ('0', 0), ('10', 1), ('27', 1), ('101', 1), ('100', 0), ('110', 1), ('2101', 1), ('2611055971756562', 4), ('1', 1), ('30', 0)]",
+                "body": "        result = run_num_decodings(Solution, s)\n        assert_num_decodings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_decodings, assert_num_decodings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '226'\nexpected = 3",
+    "playground_run": "result = run_num_decodings(Solution, s)\nresult",
+    "playground_assert": "assert_num_decodings(result, expected)"
+}
