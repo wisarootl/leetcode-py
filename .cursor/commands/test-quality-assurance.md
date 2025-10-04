@@ -21,8 +21,8 @@ make p-gen PROBLEM={problem_name} FORCE=1
 # Step 3: Restore original solution ONLY
 cp leetcode/{problem_name}_backup/solution.py leetcode/{problem_name}/solution.py
 
-# Step 4: Verify mypy passes (CRITICAL for CI)
-poetry run mypy leetcode/{problem_name}/test_solution.py --explicit-package-bases --install-types --non-interactive --check-untyped-defs
+# Step 4: Verify linting pass (CRITICAL for CI)
+make p-lint PROBLEM={problem_name}
 
 # Step 5: Verify tests pass (expected to fail if solution is incomplete)
 make p-test PROBLEM={problem_name}

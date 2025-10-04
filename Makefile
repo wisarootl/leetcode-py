@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= top_k_frequent_elements
+PROBLEM ?= palindromic_substrings
 FORCE ?= 0
 COMMA := ,
 
