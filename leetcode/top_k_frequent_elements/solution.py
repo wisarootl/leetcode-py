@@ -13,11 +13,13 @@ class Solution:
         """
         counter = Counter(nums)
 
-        # Use min heap of size k
+        # Use min heap of size k - keep the k most frequent elements
         heap: list[tuple[int, int]] = []
         for num, count in counter.items():
-            heapq.heappush(heap, (count, num))
-            if len(heap) > k:
-                heapq.heappop(heap)
+            if len(heap) < k:
+                heapq.heappush(heap, (count, num))
+            elif count > heap[0][0]:
+                heapq.heapreplace(heap, (count, num))
 
+        # Extract numbers from heap (order doesn't matter for this problem)
         return [num for _, num in heap]
