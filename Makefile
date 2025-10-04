@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= same_tree
+PROBLEM ?= number_of_1_bits
 FORCE ?= 0
 COMMA := ,
 

@@ -1,0 +1,82 @@
+{
+    "problem_name": "binary_tree_maximum_path_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "124",
+    "problem_title": "Binary Tree Maximum Path Sum",
+    "difficulty": "Hard",
+    "topics": "Dynamic Programming, Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "A **path** in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence **at most once**. Note that the path does not need to pass through the root.\n\nThe **path sum** of a path is the sum of the node's values in the path.\n\nGiven the `root` of a binary tree, return *the maximum **path sum** of any **non-empty** path*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg)\n\n```\nInput: root = [1,2,3]\nOutput: 6\nExplanation: The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/13/exx2.jpg)\n\n```\nInput: root = [-10,9,20,null,null,15,7]\nOutput: 42\nExplanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 42.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 3 * 10^4].\n- -1000 <= Node.val <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "max_path_sum",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.max_path_sum(root)",
+    "helpers_assert_name": "max_path_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_path_sum, run_max_path_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeMaximumPathSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_path_sum",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement max_path_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_path_sum",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], 6)",
+                        "([-10, 9, 20, None, None, 15, 7], 42)",
+                        "([1], 1)",
+                        "([-3], -3)",
+                        "([1, -2, 3], 4)",
+                        "([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1], 48)",
+                        "([1, 2, 3, 4, 5], 11)",
+                        "([-1, -2, -3], -1)",
+                        "([1, -1, 2], 3)",
+                        "([1, 2, -3, 4, 5], 11)",
+                        "([1, 2, 3, None, None, 4, 5], 12)",
+                        "([-1, 2, 3], 4)",
+                        "([1, -2, -3, 1, 3, -2, None, -1], 3)",
+                        "([2, -1], 2)",
+                        "([1, 2], 3)"
+                    ]
+                },
+                "body": "        result = run_max_path_sum(Solution, root_list)\n        assert_max_path_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_path_sum, assert_max_path_sum\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3]\nexpected: int = 6",
+    "playground_run": "result = run_max_path_sum(Solution, root_list)\nresult",
+    "playground_assert": "assert_max_path_sum(result, expected)"
+}

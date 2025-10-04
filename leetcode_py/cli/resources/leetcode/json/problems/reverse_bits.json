@@ -1,0 +1,83 @@
+{
+    "problem_name": "reverse_bits",
+    "solution_class_name": "Solution",
+    "problem_number": "190",
+    "problem_title": "Reverse Bits",
+    "difficulty": "Easy",
+    "topics": "Divide and Conquer, Bit Manipulation",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Reverse bits of a given 32 bits signed integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 43261596\nOutput: 964176192\nExplanation:\n\n| Integer    | Binary                              |\n|------------|-------------------------------------|\n| 43261596   | 00000010100101000001111010011100    |\n| 964176192  | 00111001011110000010100101000000    |\n```"
+            },
+            {
+                "content": "```\nInput: n = 2147483644\nOutput: 1073741822\nExplanation:\n\n| Integer     | Binary                              |\n|-------------|-------------------------------------|\n| 2147483644  | 01111111111111111111111111111100    |\n| 1073741822  | 00111111111111111111111111111110    |\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 2^31 - 2\n- n is even.",
+    "readme_additional": "**Follow up:** If this function is called many times, how would you optimize it?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_bits",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_bits(n)",
+    "helpers_assert_name": "reverse_bits",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_bits, run_reverse_bits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseBits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_bits",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement reverse_bits\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_bits",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(43261596, 964176192)",
+                        "(2147483644, 1073741822)",
+                        "(0, 0)",
+                        "(1, 2147483648)",
+                        "(2, 1073741824)",
+                        "(3, 3221225472)",
+                        "(4, 536870912)",
+                        "(5, 2684354560)",
+                        "(6, 1610612736)",
+                        "(7, 3758096384)",
+                        "(8, 268435456)",
+                        "(9, 2415919104)",
+                        "(10, 1342177280)",
+                        "(11, 3489660928)",
+                        "(12, 805306368)",
+                        "(13, 2952790016)"
+                    ]
+                },
+                "body": "        result = run_reverse_bits(Solution, n)\n        assert_reverse_bits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_bits, assert_reverse_bits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn: int = 43261596\nexpected: int = 964176192",
+    "playground_run": "result = run_reverse_bits(Solution, n)\nresult",
+    "playground_assert": "assert_reverse_bits(result, expected)"
+}
