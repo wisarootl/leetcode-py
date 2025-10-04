@@ -67,13 +67,14 @@ def update_tags(tag_names=None):
                 # Only include missing problems in the update
                 if missing_problems:
                     update_tags[tag_name] = sorted(missing_problems)
-                    print(
-                        f"{tag_name}: Missing {len(missing_problems)} problems: {sorted(missing_problems)}"
-                    )
+                    missing_list = sorted(missing_problems)
+                    print(f"{tag_name}: Missing {len(missing_problems)} problems: {missing_list}")
 
                 if removed_problems:
+                    removed_list = sorted(removed_problems)
                     print(
-                        f"{tag_name}: Removed {len(removed_problems)} problems: {sorted(removed_problems)} (not included in update)"
+                        f"{tag_name}: Removed {len(removed_problems)} problems: {removed_list} "
+                        f"(not included in update)"
                     )
 
     if not changes_found:

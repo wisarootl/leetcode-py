@@ -2,7 +2,7 @@ class Solution:
 
     # Time: O(n) - single pass through string
     # Space: O(1) - at most 26 characters in count dict
-    def characterReplacement(self, s: str, k: int) -> int:
+    def character_replacement(self, s: str, k: int) -> int:
         """
         Find the length of the longest substring with same character
         after at most k replacements using sliding window approach.

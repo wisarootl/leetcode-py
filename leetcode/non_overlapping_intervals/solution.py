@@ -2,7 +2,7 @@ class Solution:
 
     # Time: O(n log n) - sorting dominates
     # Space: O(1) - no extra space used
-    def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:
+    def erase_overlap_intervals(self, intervals: list[list[int]]) -> int:
         """
         Find minimum number of intervals to remove to make non-overlapping.
         Uses greedy approach: sort by end time and keep intervals with earliest end times.

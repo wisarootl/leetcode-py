@@ -301,8 +301,16 @@ The template below uses JSON5 format with comments for documentation purposes on
 - **problem_name**: snake_case (e.g., "two_sum", "valid_palindrome")
 - **solution_class_name**: Usually "Solution", except for design problems (e.g., "LRUCache")
 - **test_class_name**: PascalCase (e.g., "TwoSum", "ValidPalindrome")
-- **method_name**: snake_case (e.g., "two_sum", "is_palindrome")
+- **method_name**: snake_case (e.g., "two_sum", "is_palindrome", "character_replacement")
 - **parameters**: Use snake_case for all parameter names
+
+**CRITICAL: Method Naming Convention**
+
+- Always convert LeetCode method names from camelCase to snake_case
+- Example: `characterReplacement` → `character_replacement`
+- Example: `isSubtree` → `is_subtree`
+- Example: `countSubstrings` → `count_substrings`
+- This ensures Python convention compliance and consistency across the codebase
 
 ### PascalCase Rules for Properties
 

@@ -25,7 +25,7 @@
     "helpers_content": "",
     "helpers_run_name": "is_subtree",
     "helpers_run_signature": "(solution_class: type, root_list: list[int | None], sub_root_list: list[int | None])",
-    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    sub_root = TreeNode[int].from_list(sub_root_list)\n    implementation = solution_class()\n    return implementation.isSubtree(root, sub_root)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    sub_root = TreeNode[int].from_list(sub_root_list)\n    implementation = solution_class()\n    return implementation.is_subtree(root, sub_root)",
     "helpers_assert_name": "is_subtree",
     "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -39,9 +39,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "isSubtree",
+                "name": "is_subtree",
                 "signature": "(self, root: TreeNode[int] | None, subRoot: TreeNode[int] | None) -> bool",
-                "body": "        # TODO: Implement isSubtree\n        return False"
+                "body": "        # TODO: Implement is_subtree\n        return False"
             }
         ]
     },

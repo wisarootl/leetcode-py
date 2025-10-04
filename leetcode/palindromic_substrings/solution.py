@@ -2,7 +2,7 @@ class Solution:
 
     # Time: O(n^2) - expand around centers approach
     # Space: O(1) - no extra space used
-    def countSubstrings(self, s: str) -> int:
+    def count_substrings(self, s: str) -> int:
         """
         Count palindromic substrings using expand around centers approach.
         For each possible center (single char or between two chars), expand outward

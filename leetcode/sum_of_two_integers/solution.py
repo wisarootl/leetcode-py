@@ -2,7 +2,7 @@ class Solution:
 
     # Time: O(1) - constant time bit operations
     # Space: O(1) - no extra space used
-    def getSum(self, a: int, b: int) -> int:
+    def get_sum(self, a: int, b: int) -> int:
         """
         Add two integers without using + or - operators.
         Uses bit manipulation approach:

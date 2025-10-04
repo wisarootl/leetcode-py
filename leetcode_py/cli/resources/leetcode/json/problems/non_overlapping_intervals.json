@@ -28,7 +28,7 @@
     "helpers_content": "",
     "helpers_run_name": "erase_overlap_intervals",
     "helpers_run_signature": "(solution_class: type, intervals: list[list[int]])",
-    "helpers_run_body": "    implementation = solution_class()\n    return implementation.eraseOverlapIntervals(intervals)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.erase_overlap_intervals(intervals)",
     "helpers_assert_name": "erase_overlap_intervals",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -42,9 +42,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "eraseOverlapIntervals",
+                "name": "erase_overlap_intervals",
                 "signature": "(self, intervals: list[list[int]]) -> int",
-                "body": "        # TODO: Implement eraseOverlapIntervals\n        return 0"
+                "body": "        # TODO: Implement erase_overlap_intervals\n        return 0"
             }
         ]
     },

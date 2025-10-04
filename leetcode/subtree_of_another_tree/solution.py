@@ -5,7 +5,7 @@ class Solution:
 
     # Time: O(m * n) - where m is nodes in root, n is nodes in subRoot
     # Space: O(h) - where h is height of root tree (recursion stack)
-    def isSubtree(self, root: TreeNode[int] | None, subRoot: TreeNode[int] | None) -> bool:
+    def is_subtree(self, root: TreeNode[int] | None, subRoot: TreeNode[int] | None) -> bool:
         """
         Check if subRoot is a subtree of root.
         Uses DFS to check every node in root as potential subtree root.
@@ -20,7 +20,7 @@ class Solution:
             return True
 
         # Recursively check left and right subtrees
-        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+        return self.is_subtree(root.left, subRoot) or self.is_subtree(root.right, subRoot)
 
     def _is_same_tree(self, p: TreeNode[int] | None, q: TreeNode[int] | None) -> bool:
         """Helper method to check if two trees are identical."""

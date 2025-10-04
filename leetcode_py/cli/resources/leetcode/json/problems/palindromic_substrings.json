@@ -25,7 +25,7 @@
     "helpers_content": "",
     "helpers_run_name": "count_substrings",
     "helpers_run_signature": "(solution_class: type, s: str)",
-    "helpers_run_body": "    implementation = solution_class()\n    return implementation.countSubstrings(s)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_substrings(s)",
     "helpers_assert_name": "count_substrings",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -39,9 +39,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "countSubstrings",
+                "name": "count_substrings",
                 "signature": "(self, s: str) -> int",
-                "body": "        # TODO: Implement countSubstrings\n        return 0"
+                "body": "        # TODO: Implement count_substrings\n        return 0"
             }
         ]
     },

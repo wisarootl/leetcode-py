@@ -25,7 +25,7 @@
     "helpers_content": "",
     "helpers_run_name": "character_replacement",
     "helpers_run_signature": "(solution_class: type, s: str, k: int)",
-    "helpers_run_body": "    implementation = solution_class()\n    return implementation.characterReplacement(s, k)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.character_replacement(s, k)",
     "helpers_assert_name": "character_replacement",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -39,9 +39,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "characterReplacement",
+                "name": "character_replacement",
                 "signature": "(self, s: str, k: int) -> int",
-                "body": "        # TODO: Implement characterReplacement\n        return 0"
+                "body": "        # TODO: Implement character_replacement\n        return 0"
             }
         ]
     },

@@ -25,7 +25,7 @@
     "helpers_content": "",
     "helpers_run_name": "get_sum",
     "helpers_run_signature": "(solution_class: type, a: int, b: int)",
-    "helpers_run_body": "    implementation = solution_class()\n    return implementation.getSum(a, b)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_sum(a, b)",
     "helpers_assert_name": "get_sum",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -39,9 +39,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "getSum",
+                "name": "get_sum",
                 "signature": "(self, a: int, b: int) -> int",
-                "body": "        # TODO: Implement getSum\n        return 0"
+                "body": "        # TODO: Implement get_sum\n        return 0"
             }
         ]
     },
