@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= number_of_1_bits
+PROBLEM ?= top_k_frequent_elements
 FORCE ?= 0
 COMMA := ,
 

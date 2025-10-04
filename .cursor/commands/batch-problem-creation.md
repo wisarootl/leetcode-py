@@ -9,8 +9,10 @@ When user requests **batch creation of multiple problems**, the assistant will:
 3. **For each problem**:
     - Find next problem via `poetry run python .cursor/.dev/next_problem.py`
     - Follow all steps from `.cursor/commands/problem-creation.md`
-    - Verify reproducibility and quality via `.cursor/commands/test-quality-assurance.md`
+    - **MANDATORY**: Read and follow `.cursor/commands/test-quality-assurance.md` for quality verification
 4. **Provide batch summary** at the end
+
+**CRITICAL INSTRUCTION**: You MUST read the test-quality-assurance.md file before executing quality assurance for any problem. Do not rely on memory or assumptions about the workflow.
 
 ## High-Level Process
 
@@ -32,6 +34,7 @@ poetry run python .cursor/.dev/next_problem.py
 
 - Extract problem number and name from output
 - Log progress: "Problem X/Count: #NUMBER - NAME"
+- **Note**: The script automatically excludes unscrapable problems (premium, API issues, etc.)
 
 #### 2.2: Follow Problem Creation Workflow
 
@@ -55,15 +58,17 @@ Execute complete workflow from `.cursor/commands/problem-creation.md`:
 3. **Use parametrized testing**: Ensure all solution approaches are tested
 4. **Verify correctness**: Solution must handle all test cases correctly
 
-#### 2.4: Quality Assurance
+#### 2.4: Quality Assurance & Reproducibility Verification
 
-Execute workflow from `.cursor/commands/test-quality-assurance.md`:
+**MANDATORY**: You MUST read and follow the complete workflow from `.cursor/commands/test-quality-assurance.md` for EVERY problem.
 
-1. **Run tests**: `make p-test PROBLEM={problem_name}`
-2. **Check test coverage**: Ensure minimum 12 test cases
-3. **Enhance if needed**: Update JSON with more test cases
-4. **Verify reproducibility**: Ensure all tests pass consistently
-5. **Final verification**: `make p-lint PROBLEM={problem_name}`
+**REQUIRED ACTION**: Before proceeding with quality assurance, you MUST:
+
+1. **Read the file**: `read_file /Users/wisl/Desktop/vault/personal-repo/leetcode-py/.cursor/commands/test-quality-assurance.md`
+2. **Follow the exact 4-step process** described in that file
+3. **Execute each step** as specified in the test-quality-assurance.md workflow
+
+**CRITICAL**: Do NOT proceed without reading the test-quality-assurance.md file first. The workflow includes specific backup, regenerate, and restore steps that must be followed exactly.
 
 ### Step 3: Batch Summary
 
@@ -142,11 +147,12 @@ Next Steps: All problems created successfully!
 
 ### Common failure scenarios:
 
-- Scraping fails (problem not found)
+- Scraping fails (problem not found, premium problem, API issues)
 - JSON template issues (invalid syntax)
 - Generation fails (missing dependencies)
 - Tests fail (incorrect expected values)
 - Linting errors (template problems)
+- Unscrapable problems (automatically excluded by next_problem.py)
 
 ### Recovery actions:
 
@@ -155,6 +161,9 @@ Next Steps: All problems created successfully!
 - **Generation**: Check Makefile and dependencies
 - **Tests**: Update expected values in JSON template
 - **Linting**: Fix template issues and regenerate
+- **Unscrapable**: Add to `.cursor/.dev/problem_lists/unscrapable.py` and continue with next problem
+
+**CRITICAL**: Never edit generated files directly (helpers.py, test_solution.py, README.md, etc.). Always fix issues in the JSON template and regenerate to ensure reproducibility. The ONLY exception is solution.py implementation - you may edit this file directly to implement the optimal solution.
 
 ## Success Criteria
 
@@ -166,10 +175,13 @@ Each problem must meet:
 - ✅ **Parametrized testing** for all solution approaches
 - ✅ Linting passes without errors
 - ✅ All tests pass
-- ✅ Minimum 12 comprehensive test cases
+- ✅ **test-quality-assurance.md file read and complete workflow executed**
+- ✅ Minimum 12 comprehensive test cases (verified via check_test_cases tool)
+- ✅ **Test reproducibility verified** (tests pass consistently)
 - ✅ Images included in README if available
-- ✅ Proper JSON template created
+- ✅ Proper JSON template created and updated
 - ✅ Code coverage includes edge cases
+- ✅ **Original solution preserved** after quality assurance process
 
 ## Batch Parameters
 
@@ -177,6 +189,26 @@ Each problem must meet:
 - **Tags**: Optional filter for specific problem lists
 - **Force**: Whether to overwrite existing problems
 - **Dry Run**: Preview mode without actual creation
+
+## Unscrapable Problems Management
+
+### Adding Unscrapable Problems
+
+When encountering a problem that cannot be scraped (premium, API issues, etc.):
+
+1. **Add to unscrapable list**: Update `.cursor/.dev/problem_lists/unscrapable.py`
+2. **Format**: `(problem_number, "problem-name")`
+3. **Continue batch**: The next_problem.py script will automatically skip unscrapable problems
+
+### Example unscrapable.py entry:
+
+```python
+UNSCRAPABLE_PROBLEMS = [
+    (252, "meeting-rooms"),
+    (253, "meeting-rooms-ii"),  # if also unscrapable
+    # Add more as discovered
+]
+```
 
 ## Notes
 
@@ -187,3 +219,4 @@ Each problem must meet:
 - **Quality Focus**: Ensure each problem meets all quality standards
 - **Reproducibility**: Verify tests pass consistently with implemented solutions
 - **Documentation**: Maintain clear logs of the entire process
+- **Unscrapable Handling**: Automatically exclude known unscrapable problems
