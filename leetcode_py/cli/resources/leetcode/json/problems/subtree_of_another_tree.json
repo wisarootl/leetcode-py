@@ -1,0 +1,92 @@
+{
+    "problem_name": "subtree_of_another_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "572",
+    "problem_title": "Subtree of Another Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, String Matching, Binary Tree, Hash Function",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise.\n\nA subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be considered as a subtree of itself.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg)\n\n```\nInput: root = [3,4,5,1,2], subRoot = [4,1,2]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/28/subtree2-tree.jpg)\n\n```\nInput: root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "The number of nodes in the root tree is in the range [1, 2000].\nThe number of nodes in the subRoot tree is in the range [1, 1000].\n-10^4 <= root.val <= 10^4\n-10^4 <= subRoot.val <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_subtree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], sub_root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    sub_root = TreeNode[int].from_list(sub_root_list)\n    implementation = solution_class()\n    return implementation.is_subtree(root, sub_root)",
+    "helpers_assert_name": "is_subtree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_subtree, run_is_subtree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SubtreeOfAnotherTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_subtree",
+                "signature": "(self, root: TreeNode[int] | None, sub_root: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement is_subtree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_subtree",
+                "signature": "(self, root_list: list[int | None], sub_root_list: list[int | None], expected: bool)",
+                "parametrize": "root_list, sub_root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3,4,5,1,2], [4,1,2], True)",
+                        "([3,4,5,1,2,None,None,None,None,0], [4,1,2], False)",
+                        "([1], [1], True)",
+                        "([1], [2], False)",
+                        "([1,2,3], [2], True)",
+                        "([1,2,3], [2,4], False)",
+                        "([1,2,3,4,5], [2,4,5], True)",
+                        "([1,2,3,4,5], [2,4,6], False)",
+                        "([1,2,3,4,5,6,7], [2,4,5], True)",
+                        "([1,2,3,4,5,6,7], [3,6,7], True)",
+                        "([1,2,3,4,5,6,7], [2,4,6], False)",
+                        "([1,2,3,4,5,6,7], [1,2,4], False)",
+                        "([1,2,3,4,5,6,7], [4,5,6,7], False)",
+                        "([1,2,3,4,5,6,7], [1,2,3,4,5,6,7], True)"
+                    ]
+                },
+                "body": "        result = run_is_subtree(Solution, root_list, sub_root_list)\n        assert_is_subtree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_subtree, assert_is_subtree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3,4,5,1,2]\nsub_root_list: list[int | None] = [4,1,2]\nexpected = True",
+    "playground_run": "result = run_is_subtree(Solution, root_list, sub_root_list)\nresult",
+    "playground_assert": "assert_is_subtree(result, expected)",
+    "playground_test_case": "root_list = [3,4,5,1,2], sub_root_list = [4,1,2]",
+    "playground_execution": "result = run_is_subtree(Solution, root_list, sub_root_list)",
+    "playground_assertion": "assert_is_subtree(result, True)"
+}

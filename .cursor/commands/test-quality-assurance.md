@@ -1,42 +1,50 @@
 # Test Quality Assurance Rules
 
-## Simple Enhancement Workflow
-
-When user requests test case enhancement or **test reproducibility verification**:
+## CRITICAL: Follow These Steps EXACTLY - No Deviations
 
 ### 1. Problem Resolution
 
 - Use active file context or user-provided problem name
 - If unclear, run: `poetry run python -m leetcode_py.tools.check_test_cases --threshold=10 --max=1`
 
-### 2. Enhancement Process
+### 2. Test Reproducibility Verification Process
+
+**MANDATORY 6-Step Process - Execute in Order:**
 
 ```bash
-# Simple 4-step process:
-# 1. Update JSON template with more test cases (12-15 total)
-# 2. Backup original
-mv leetcode/{problem_name} .cache/leetcode/{problem_name}
-# 3. Regenerate with enhanced tests
-make p-gen PROBLEM={problem_name} FORCE=1 && make p-lint PROBLEM={problem_name}
-# 4. Restore original solution, keep enhanced tests
-cp .cache/leetcode/{problem_name}/solution.py leetcode/{problem_name}/solution.py
+# Step 1: Backup original files
+cp -r leetcode/{problem_name} leetcode/{problem_name}_backup
+
+# Step 2: Regenerate from JSON template (use Makefile, NOT poetry run)
+make p-gen PROBLEM={problem_name} FORCE=1
+
+# Step 3: Restore original solution ONLY
+cp leetcode/{problem_name}_backup/solution.py leetcode/{problem_name}/solution.py
+
+# Step 4: Verify linting pass (CRITICAL for CI)
+make p-lint PROBLEM={problem_name}
+
+# Step 5: Verify tests pass (expected to fail if solution is incomplete)
+make p-test PROBLEM={problem_name}
+
+# Step 6: Cleanup
+rm -rf leetcode/{problem_name}_backup
 ```
 
-### 3. Verification
+### 3. What NOT to Do
 
-- Run `make p-test PROBLEM={problem_name}`
-- Fix any incorrect expected values in test cases
-- Update JSON template with corrections
+- ❌ **NEVER edit cookiecutter templates** (`{{cookiecutter.problem_name}}/` files)
+- ❌ **NEVER use `poetry run python -m leetcode_py.cli.main gen`** - use `make p-gen` instead
+- ❌ **NEVER modify helpers.py manually** - let regeneration handle it
+- ❌ **NEVER skip mypy verification** - this is the main CI issue
+- ❌ **NEVER assume tests will pass** - they may fail if solution is incomplete
 
-### 4. Restore Backup
+### 4. What to Do
 
-```bash
-# Copy enhanced test_solution.py to backup
-cp leetcode/{problem_name}/test_solution.py .cache/leetcode/{problem_name}/
-# Restore all original files (preserves user edits)
-rm -rf leetcode/{problem_name}
-mv .cache/leetcode/{problem_name} leetcode/{problem_name}
-```
+- ✅ **ALWAYS use `make p-gen PROBLEM={problem_name} FORCE=1`** for regeneration
+- ✅ **ALWAYS verify mypy passes** before considering task complete
+- ✅ **ALWAYS restore original solution** after regeneration
+- ✅ **ALWAYS check JSON template** if mypy fails (look for `assert_assert_` bugs)
 
 ## Test Case Standards
 
@@ -84,24 +92,34 @@ poetry run python -m leetcode_py.tools.check_test_cases --threshold=12
 make p-gen PROBLEM={problem_name} FORCE=1
 ```
 
-## Test Reproducibility Verification
+## Common Issues & Solutions
 
-Use this same workflow when CI tests fail due to reproducibility issues:
+### Issue: `assert_assert_missing_number` Error
 
-**Process Name**: Test Reproducibility Verification
+**Cause**: JSON template has `helpers_assert_name: "assert_missing_number"` but template adds `assert_` prefix
+**Solution**: Change JSON to `helpers_assert_name: "missing_number"` so template generates `assert_missing_number`
 
-**When to Use**:
+### Issue: mypy Import Errors
 
-- CI test failures in reproducibility checks
-- Inconsistent test results between environments
-- Missing edge cases causing coverage gaps
-- Need to ensure 100% code coverage
+**Cause**: Regenerated helpers.py doesn't match test imports
+**Solution**: Use `make p-gen` (not poetry run) and verify JSON template is correct
+
+### Issue: Tests Fail After Regeneration
+
+**Expected**: Tests may fail if solution is incomplete (returns 0 or placeholder)
+**Action**: This is normal - focus on mypy passing, not test results
 
 ## Success Criteria
 
-- All tests pass with enhanced test cases
-- Minimum 12 comprehensive test cases per problem
-- Original solution code preserved
-- **Enhanced test cases in final test_solution.py**
-- JSON template updated for future regeneration
-- **100% code coverage including edge cases**
+- ✅ **mypy passes** with no errors (CRITICAL for CI)
+- ✅ **Test structure matches JSON template** exactly
+- ✅ **Original solution preserved** (user's code intact)
+- ✅ **helpers.py generated correctly** (no `assert_assert_` bugs)
+- ✅ **Reproducibility verified** (can regenerate consistently)
+
+## When to Use This Workflow
+
+- GitHub Actions CI failures due to mypy errors
+- Test reproducibility verification requests
+- Need to ensure test structure matches JSON template
+- CI test failures in reproducibility checks

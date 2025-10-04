@@ -1,0 +1,87 @@
+{
+    "problem_name": "word_search_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "212",
+    "problem_title": "Word Search II",
+    "difficulty": "Hard",
+    "topics": "Array, String, Backtracking, Trie, Matrix",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "Given an m x n board of characters and a list of strings words, return all words on the board.\n\nEach word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: board = [[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]], words = [\"oath\",\"pea\",\"eat\",\"rain\"]\nOutput: [\"eat\",\"oath\"]\n```\n**Explanation:** The words \"eat\" and \"oath\" can be found on the board."
+            },
+            {
+                "content": "```\nInput: board = [[\"a\",\"b\"],[\"c\",\"d\"]], words = [\"abcb\"]\nOutput: []\n```\n**Explanation:** The word \"abcb\" cannot be found on the board."
+            }
+        ]
+    },
+    "readme_constraints": "- m == board.length\n- n == board[i].length\n- 1 <= m, n <= 12\n- board[i][j] is a lowercase English letter.\n- 1 <= words.length <= 3 * 10^4\n- 1 <= words[i].length <= 10\n- words[i] consists of lowercase English letters.\n- All the strings of words are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_words",
+    "helpers_run_signature": "(solution_class: type, board: list[list[str]], words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_words(board, words)",
+    "helpers_assert_name": "find_words",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert set(result) == set(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_words, run_find_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordSearchII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_words",
+                "signature": "(self, board: list[list[str]], words: list[str]) -> list[str]",
+                "body": "        # TODO: Implement find_words\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_words",
+                "signature": "(self, board: list[list[str]], words: list[str], expected: list[str])",
+                "parametrize": "board, words, expected",
+                "test_cases": {
+                    "list": [
+                        "([[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]], [\"oath\",\"pea\",\"eat\",\"rain\"], [\"eat\",\"oath\"])",
+                        "([[\"a\",\"b\"],[\"c\",\"d\"]], [\"abcb\"], [])",
+                        "([[\"a\"]], [\"a\"], [\"a\"])",
+                        "([[\"a\"]], [\"b\"], [])",
+                        "([[\"a\",\"a\"],[\"a\",\"a\"]], [\"aaaa\"], [\"aaaa\"])",
+                        "([[\"a\",\"a\"],[\"a\",\"a\"]], [\"aa\"], [\"aa\"])",
+                        "([[\"a\",\"b\"],[\"c\",\"d\"]], [\"ab\",\"cd\",\"ac\",\"bd\"], [\"ab\",\"cd\",\"ac\",\"bd\"])",
+                        "([[\"a\",\"b\"],[\"c\",\"d\"]], [\"abcd\"], [])",
+                        "([[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]], [\"oath\",\"pea\",\"eat\",\"rain\",\"oathf\"], [\"oath\",\"oathf\",\"eat\"])",
+                        "([[\"a\",\"b\",\"c\"],[\"a\",\"e\",\"d\"],[\"a\",\"f\",\"g\"]], [\"abcdefg\",\"gfedcbaaa\",\"eaabcdgfa\",\"befa\",\"dgc\",\"ade\"], [\"abcdefg\",\"befa\",\"eaabcdgfa\",\"gfedcbaaa\"])",
+                        "([[\"a\",\"b\"],[\"c\",\"d\"]], [\"abdc\"], [\"abdc\"])",
+                        "([[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"],[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"]], [\"a\",\"aa\",\"aaa\",\"aaaa\",\"aaaaa\",\"aaaaaa\",\"aaaaaaa\",\"aaaaaaaa\",\"aaaaaaaaa\",\"aaaaaaaaaa\"], [\"a\",\"aa\",\"aaa\",\"aaaa\",\"aaaaa\",\"aaaaaa\",\"aaaaaaa\",\"aaaaaaaa\",\"aaaaaaaaa\",\"aaaaaaaaaa\"])"
+                    ]
+                },
+                "body": "        result = run_find_words(Solution, board, words)\n        assert_find_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_words, assert_find_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]]\nwords = [\"oath\",\"pea\",\"eat\",\"rain\"]\nexpected = [\"eat\",\"oath\"]",
+    "playground_run": "result = run_find_words(Solution, board, words)\nresult",
+    "playground_assert": "assert_find_words(result, expected)"
+}

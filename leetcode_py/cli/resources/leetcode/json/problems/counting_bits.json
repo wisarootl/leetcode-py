@@ -1,0 +1,91 @@
+{
+    "problem_name": "counting_bits",
+    "solution_class_name": "Solution",
+    "problem_number": "338",
+    "problem_title": "Counting Bits",
+    "difficulty": "Easy",
+    "topics": "Dynamic Programming, Bit Manipulation",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "Given an integer `n`, return *an array* `ans` *of length* `n + 1` *such that for each* `i` *(0 <= i <= n),* `ans[i]` *is the **number of*** `1`***'s** in the binary representation of* `i`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: [0,1,1]\nExplanation:\n0 --> 0\n1 --> 1\n2 --> 10\n```"
+            },
+            {
+                "content": "```\nInput: n = 5\nOutput: [0,1,1,2,1,2]\nExplanation:\n0 --> 0\n1 --> 1\n2 --> 10\n3 --> 11\n4 --> 100\n5 --> 101\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 10^5",
+    "readme_additional": "**Follow up:**\n\n- It is very easy to come up with a solution with a runtime of `O(n log n)`. Can you do it in linear time `O(n)` and possibly in a single pass?\n- Can you do it without using any built-in function (i.e., like `__builtin_popcount` in C++)?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_bits",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_bits(n)",
+    "helpers_assert_name": "count_bits",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_bits, run_count_bits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestCountingBits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_bits",
+                "signature": "(self, n: int) -> list[int]",
+                "body": "        # TODO: Implement count_bits\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_bits, assert_count_bits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nexpected = [0, 1, 1]",
+    "playground_run": "result = run_count_bits(Solution, n)\nresult",
+    "playground_assert": "assert_count_bits(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_bits",
+                "signature": "(self, solution_class, n: int, expected: list[int])",
+                "parametrize": "solution_class, n, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 2, [0, 1, 1])",
+                        "(Solution, 5, [0, 1, 1, 2, 1, 2])",
+                        "(Solution, 0, [0])",
+                        "(Solution, 1, [0, 1])",
+                        "(Solution, 3, [0, 1, 1, 2])",
+                        "(Solution, 4, [0, 1, 1, 2, 1])",
+                        "(Solution, 6, [0, 1, 1, 2, 1, 2, 2])",
+                        "(Solution, 7, [0, 1, 1, 2, 1, 2, 2, 3])",
+                        "(Solution, 8, [0, 1, 1, 2, 1, 2, 2, 3, 1])",
+                        "(Solution, 9, [0, 1, 1, 2, 1, 2, 2, 3, 1, 2])",
+                        "(Solution, 10, [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2])",
+                        "(Solution, 15, [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4])",
+                        "(Solution, 16, [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1])"
+                    ]
+                },
+                "body": "        result = run_count_bits(solution_class, n)\n        assert_count_bits(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "n = 2",
+    "playground_execution": "result = run_count_bits(Solution, n)",
+    "playground_assertion": "assert_count_bits(result, [0, 1, 1])"
+}

@@ -6,6 +6,7 @@ from pathlib import Path
 # Import the problem lists
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from problem_lists import available_lists
+from problem_lists.unscrapable import get_unscrapable_numbers
 from problem_lists.utils import get_existing_problems
 
 
@@ -15,6 +16,7 @@ def get_next_problem(tag_names=None):
         tag_names = list(available_lists.keys())
 
     existing_problems = get_existing_problems()
+    unscrapable_numbers = get_unscrapable_numbers()
 
     # Find the list with the lowest missing problems
     best_list = None
@@ -24,7 +26,8 @@ def get_next_problem(tag_names=None):
     for tag_name, problem_tuples in available_lists.items():
         if tag_name in tag_names:
             problem_numbers = {num for num, _ in problem_tuples}
-            missing = problem_numbers - existing_problems
+            # Exclude unscrapable problems from missing problems
+            missing = problem_numbers - existing_problems - unscrapable_numbers
             missing_count = len(missing)
 
             if missing_count > 0 and missing_count < min_missing:

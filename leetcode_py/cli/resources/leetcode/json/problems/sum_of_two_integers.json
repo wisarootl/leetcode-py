@@ -1,0 +1,93 @@
+{
+    "problem_name": "sum_of_two_integers",
+    "solution_class_name": "Solution",
+    "problem_number": "371",
+    "problem_title": "Sum of Two Integers",
+    "difficulty": "Medium",
+    "topics": "Math, Bit Manipulation",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "Given two integers a and b, return the sum of the two integers without using the operators + and -.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: a = 1, b = 2\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: a = 2, b = 3\nOutput: 5\n```"
+            }
+        ]
+    },
+    "readme_constraints": "-1000 <= a, b <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_sum",
+    "helpers_run_signature": "(solution_class: type, a: int, b: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_sum(a, b)",
+    "helpers_assert_name": "get_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_sum, run_get_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumOfTwoIntegers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_sum",
+                "signature": "(self, a: int, b: int) -> int",
+                "body": "        # TODO: Implement get_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_sum",
+                "signature": "(self, a: int, b: int, expected: int)",
+                "parametrize": "a, b, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2, 3)",
+                        "(2, 3, 5)",
+                        "(-1, 1, 0)",
+                        "(0, 0, 0)",
+                        "(100, 200, 300)",
+                        "(-100, -200, -300)",
+                        "(1, -1, 0)",
+                        "(999, 1, 1000)",
+                        "(-999, -1, -1000)",
+                        "(0, 1, 1)",
+                        "(1, 0, 1)",
+                        "(5, -3, 2)",
+                        "(-5, 3, -2)",
+                        "(1000, 0, 1000)",
+                        "(0, 1000, 1000)"
+                    ]
+                },
+                "body": "        result = run_get_sum(Solution, a, b)\n        assert_get_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_sum, assert_get_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = 1\nb = 2\nexpected = 3",
+    "playground_run": "result = run_get_sum(Solution, a, b)\nresult",
+    "playground_assert": "assert_get_sum(result, expected)",
+    "playground_test_case": "a = 1, b = 2",
+    "playground_execution": "result = run_get_sum(Solution, a, b)",
+    "playground_assertion": "assert_get_sum(result, 3)"
+}

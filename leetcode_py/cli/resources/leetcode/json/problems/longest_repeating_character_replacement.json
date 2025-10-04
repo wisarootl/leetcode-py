@@ -1,0 +1,93 @@
+{
+    "problem_name": "longest_repeating_character_replacement",
+    "solution_class_name": "Solution",
+    "problem_number": "424",
+    "problem_title": "Longest Repeating Character Replacement",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.\n\nReturn the length of the longest substring containing the same letter you can get after performing the above operations.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ABAB\", k = 2\nOutput: 4\nExplanation: Replace the two 'A's with two 'B's or vice versa.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"AABABBA\", k = 1\nOutput: 4\nExplanation: Replace the one 'A' in the middle with 'B' and form \"AABBBBA\".\nThe substring \"BBBB\" has the longest repeating letters, which is 4.\nThere may exists other ways to achieve this answer too.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "1 <= s.length <= 10^5\ns consists of only uppercase English letters.\n0 <= k <= s.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "character_replacement",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.character_replacement(s, k)",
+    "helpers_assert_name": "character_replacement",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_character_replacement, run_character_replacement\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestRepeatingCharacterReplacement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "character_replacement",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement character_replacement\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_character_replacement",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('ABAB', 2, 4)",
+                        "('AABABBA', 1, 4)",
+                        "('AAAA', 0, 4)",
+                        "('ABCDE', 0, 1)",
+                        "('ABCDE', 4, 5)",
+                        "('A', 0, 1)",
+                        "('A', 1, 1)",
+                        "('AAAB', 0, 3)",
+                        "('AAAB', 1, 4)",
+                        "('ABABAB', 2, 5)",
+                        "('ABABAB', 3, 6)",
+                        "('ABCDEF', 0, 1)",
+                        "('ABCDEF', 1, 2)",
+                        "('ABCDEF', 5, 6)",
+                        "('AABABBA', 2, 5)"
+                    ]
+                },
+                "body": "        result = run_character_replacement(Solution, s, k)\n        assert_character_replacement(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_character_replacement, assert_character_replacement\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ABAB'\nk = 2\nexpected = 4",
+    "playground_run": "result = run_character_replacement(Solution, s, k)\nresult",
+    "playground_assert": "assert_character_replacement(result, expected)",
+    "playground_test_case": "s = 'ABAB', k = 2",
+    "playground_execution": "result = run_character_replacement(Solution, s, k)",
+    "playground_assertion": "assert_character_replacement(result, 4)"
+}

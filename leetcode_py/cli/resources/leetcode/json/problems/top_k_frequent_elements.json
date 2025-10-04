@@ -1,0 +1,94 @@
+{
+    "problem_name": "top_k_frequent_elements",
+    "solution_class_name": "Solution",
+    "problem_number": "347",
+    "problem_title": "Top K Frequent Elements",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",
+    "_tags": {
+        "list": ["blind-75"]
+    },
+    "readme_description": "Given an integer array `nums` and an integer `k`, return *the* `k` *most frequent elements*. You may return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,1,1,2,2,3], k = 2\nOutput: [1,2]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1], k = 1\nOutput: [1]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,1,2,1,2,3,1,3,2], k = 2\nOutput: [1,2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- -10^4 <= nums[i] <= 10^4\n- k is in the range [1, the number of unique elements in the array].\n- It is **guaranteed** that the answer is **unique**.",
+    "readme_additional": "**Follow up:** Your algorithm's time complexity must be better than `O(n log n)`, where n is the array's size.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "top_k_frequent",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.top_k_frequent(nums, k)",
+    "helpers_assert_name": "top_k_frequent",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert set(result) == set(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_top_k_frequent, run_top_k_frequent\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestTopKFrequentElements",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "top_k_frequent",
+                "signature": "(self, nums: list[int], k: int) -> list[int]",
+                "body": "        # TODO: Implement top_k_frequent\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_top_k_frequent, assert_top_k_frequent\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 1, 1, 2, 2, 3]\nk = 2\nexpected = [1, 2]",
+    "playground_run": "result = run_top_k_frequent(Solution, nums, k)\nresult",
+    "playground_assert": "assert_top_k_frequent(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_top_k_frequent",
+                "signature": "(self, solution_class, nums: list[int], k: int, expected: list[int])",
+                "parametrize": "solution_class, nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, [1, 1, 1, 2, 2, 3], 2, [1, 2])",
+                        "(Solution, [1], 1, [1])",
+                        "(Solution, [1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 2, [1, 2])",
+                        "(Solution, [1, 2, 3, 4, 5], 1, [1])",
+                        "(Solution, [1, 1, 2, 2, 3, 3], 3, [1, 2, 3])",
+                        "(Solution, [1, 1, 1, 1, 1], 1, [1])",
+                        "(Solution, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, [1, 2, 3, 4, 5])",
+                        "(Solution, [1, 1, 2, 2, 3, 3, 4, 4, 5, 5], 2, [1, 2])",
+                        "(Solution, [1, 2, 3, 1, 2, 3, 1, 2, 3], 3, [1, 2, 3])",
+                        "(Solution, [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4], 4, [1, 2, 3, 4])",
+                        "(Solution, [1, 1, 1, 1, 2, 2, 2, 3, 3, 4], 3, [1, 2, 3])",
+                        "(Solution, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5], 5, [1, 2, 3, 4, 5])",
+                        "(Solution, [1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5], 3, [1, 2, 3])"
+                    ]
+                },
+                "body": "        result = run_top_k_frequent(solution_class, nums, k)\n        assert_top_k_frequent(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "nums = [1, 1, 1, 2, 2, 3], k = 2",
+    "playground_execution": "result = run_top_k_frequent(Solution, nums, k)",
+    "playground_assertion": "assert_top_k_frequent(result, [1, 2])"
+}

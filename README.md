@@ -40,13 +40,13 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 **Current Problem Sets**:
 
-- **grind-75** (75 problems) - Essential coding interview questions from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
-- **grind** (100+ problems) - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
-- **blind-75** (75 problems) - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list 🚧 Partial
-- **neetcode-150** (150+ problems) - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set 🚧 Partial
-- **algo-master-75** (75 problems) - Curated algorithmic mastery problems 🚧 Partial
+- **grind-75** - Essential coding interview questions from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
+- **grind** - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
+- **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list 🚧 Partial
+- **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set 🚧 Partial
+- **algo-master-75** - Curated algorithmic mastery problems 🚧 Partial
 
-**Coverage**: 100+ unique problems across all major coding interview topics and difficulty levels.
+**Coverage**: 120+ unique problems across all major coding interview topics and difficulty levels.
 
 **Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wisarootl/leetcode-py/blob/main/CONTRIBUTING.md)
 

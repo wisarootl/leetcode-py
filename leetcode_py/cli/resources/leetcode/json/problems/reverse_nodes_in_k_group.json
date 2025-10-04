@@ -1,0 +1,87 @@
+{
+    "problem_name": "reverse_nodes_in_k_group",
+    "solution_class_name": "Solution",
+    "problem_number": "25",
+    "problem_title": "Reverse Nodes in k-Group",
+    "difficulty": "Hard",
+    "topics": "Linked List, Recursion",
+    "_tags": { "list": ["algo-master-75"] },
+    "readme_description": "Given the `head` of a linked list, reverse the nodes of the list `k` at a time, and return *the modified list*.\n\n`k` is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of `k` then left-out nodes, in the end, should remain as it is.\n\nYou may not alter the values in the list's nodes, only nodes themselves may be changed.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg)\n\n```\nInput: head = [1,2,3,4,5], k = 2\nOutput: [2,1,4,3,5]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/03/reverse_ex2.jpg)\n\n```\nInput: head = [1,2,3,4,5], k = 3\nOutput: [3,2,1,4,5]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is n.\n- 1 <= k <= n <= 5000\n- 0 <= Node.val <= 1000",
+    "readme_additional": "**Follow-up:** Can you solve the problem in `O(1)` extra memory space?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_k_group",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int], k: int)",
+    "helpers_run_body": "    head = ListNode.from_list(head_vals)\n    implementation = solution_class()\n    return implementation.reverse_k_group(head, k)",
+    "helpers_assert_name": "reverse_k_group",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_vals: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode.from_list(expected_vals)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_k_group, run_reverse_k_group\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseNodesInKGroup",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_k_group",
+                "signature": "(self, head: ListNode[int] | None, k: int) -> ListNode[int] | None",
+                "body": "        # TODO: Implement reverse_k_group\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_k_group",
+                "signature": "(self, head_vals: list[int], k: int, expected_vals: list[int])",
+                "parametrize": "head_vals, k, expected_vals",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5], 2, [2, 1, 4, 3, 5])",
+                        "([1, 2, 3, 4, 5], 3, [3, 2, 1, 4, 5])",
+                        "([1, 2, 3, 4, 5], 1, [1, 2, 3, 4, 5])",
+                        "([1, 2, 3, 4, 5], 5, [5, 4, 3, 2, 1])",
+                        "([1], 1, [1])",
+                        "([1, 2], 1, [1, 2])",
+                        "([1, 2], 2, [2, 1])",
+                        "([1, 2, 3], 1, [1, 2, 3])",
+                        "([1, 2, 3], 2, [2, 1, 3])",
+                        "([1, 2, 3], 3, [3, 2, 1])",
+                        "([1, 2, 3, 4], 2, [2, 1, 4, 3])",
+                        "([1, 2, 3, 4], 3, [3, 2, 1, 4])",
+                        "([1, 2, 3, 4], 4, [4, 3, 2, 1])",
+                        "([1, 2, 3, 4, 5, 6], 2, [2, 1, 4, 3, 6, 5])",
+                        "([1, 2, 3, 4, 5, 6], 3, [3, 2, 1, 6, 5, 4])",
+                        "([1, 2, 3, 4, 5, 6], 4, [4, 3, 2, 1, 5, 6])",
+                        "([1, 2, 3, 4, 5, 6, 7], 2, [2, 1, 4, 3, 6, 5, 7])",
+                        "([1, 2, 3, 4, 5, 6, 7], 3, [3, 2, 1, 6, 5, 4, 7])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 2, [2, 1, 4, 3, 6, 5, 8, 7])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 3, [3, 2, 1, 6, 5, 4, 7, 8])"
+                    ]
+                },
+                "body": "        result = run_reverse_k_group(Solution, head_vals, k)\n        assert_reverse_k_group(result, expected_vals)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_k_group, assert_reverse_k_group\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals = [1, 2, 3, 4, 5]\nk = 2\nexpected_vals = [2, 1, 4, 3, 5]",
+    "playground_run": "result = run_reverse_k_group(Solution, head_vals, k)\nresult",
+    "playground_assert": "assert_reverse_k_group(result, expected_vals)"
+}
