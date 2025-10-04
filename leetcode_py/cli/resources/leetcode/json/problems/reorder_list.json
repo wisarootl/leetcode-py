@@ -23,7 +23,7 @@
     "helpers_content": "",
     "helpers_run_name": "reorder_list",
     "helpers_run_signature": "(solution_class: type, head_list: list[int])",
-    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    implementation.reorder_list(head)\n    return head.to_list()",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    implementation.reorder_list(head)\n    return head.to_list() if head else []",
     "helpers_assert_name": "reorder_list",
     "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
