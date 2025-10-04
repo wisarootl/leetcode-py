@@ -24,7 +24,7 @@ define lint_target
 	poetry run black $(1)
 	poetry run isort $(1)
 	$(if $(filter .,$(1)), \
-		poetry run nbqa ruff . --nbqa-exclude="leetcode_py/cli/resources/" --ignore=F401$(COMMA)F821, \
+		poetry run nbqa ruff . --nbqa-exclude="leetcode_py/cli/resources/" --ignore=F401$(COMMA)F821 --fix, \
 		poetry run nbqa ruff $(1) --ignore=F401$(COMMA)F821)
 	poetry run ruff check $(1) --exclude="**/*.ipynb"
 	poetry run mypy $(1) \
