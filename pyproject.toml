@@ -89,8 +89,9 @@ select = [
     "W",   # pycodestyle warnings
     "F",   # pyflakes
     "I",   # isort
-    "N802", # pep8-naming
+    "N", # pep8-naming
 ]
+ignore = ["N806"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"

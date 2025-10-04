@@ -40,7 +40,7 @@
         "list": [
             {
                 "name": "is_subtree",
-                "signature": "(self, root: TreeNode[int] | None, subRoot: TreeNode[int] | None) -> bool",
+                "signature": "(self, root: TreeNode[int] | None, sub_root: TreeNode[int] | None) -> bool",
                 "body": "        # TODO: Implement is_subtree\n        return False"
             }
         ]
