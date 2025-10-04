@@ -50,6 +50,12 @@ Required fields for `leetcode_py/cli/resources/leetcode/json/problems/{problem_n
 - `playground_assertion`: Use single quotes for string literals
 - Double quotes in JSON + cookiecutter + Jupyter notebook = triple escaping issues
 
+**Test Cases Format:**
+
+- `test_cases`: Use structured format with `{"list": ["..."]}` instead of string arrays
+- Each test case should be a string representation of the tuple/parameters
+- Example: `{"list": ["('input1', 'input2', expected)", "('input3', 'input4', expected)"]}`
+
 **IMPORTANT: Create actual JSON files, not JSON5**
 
 The template below uses JSON5 format with comments for documentation purposes only. When creating the actual `.json` file, you must:
@@ -183,9 +189,30 @@ The template below uses JSON5 format with comments for documentation purposes on
                 parametrize: "s, t, expected", // pytest parametrize parameters
                 // For tree: "root_list, expected_list"
                 // For design: "operations, inputs, expected"
-                test_cases: "[('anagram', 'nagaram', True), ('rat', 'car', False), ('listen', 'silent', True), ('hello', 'bello', False), ('', '', True), ('a', 'a', True), ('a', 'b', False), ('ab', 'ba', True), ('abc', 'bca', True), ('abc', 'def', False), ('aab', 'abb', False), ('aabbcc', 'abcabc', True), ('abcd', 'abcde', False), ('race', 'care', True), ('elbow', 'below', True), ('study', 'dusty', True), ('night', 'thing', True), ('stressed', 'desserts', True)]",
-                // For tree: "[([4, 2, 7, 1, 3, 6, 9], [4, 7, 2, 9, 6, 3, 1]), ([2, 1, 3], [2, 3, 1]), ([], [])]"
-                // For design: "[(['LRUCache', 'put', 'get'], [[2], [1, 1], [1]], [None, None, 1])]"
+                test_cases: {
+                    list: [
+                        "('anagram', 'nagaram', True)",
+                        "('rat', 'car', False)",
+                        "('listen', 'silent', True)",
+                        "('hello', 'bello', False)",
+                        "('', '', True)",
+                        "('a', 'a', True)",
+                        "('a', 'b', False)",
+                        "('ab', 'ba', True)",
+                        "('abc', 'bca', True)",
+                        "('abc', 'def', False)",
+                        "('aab', 'abb', False)",
+                        "('aabbcc', 'abcabc', True)",
+                        "('abcd', 'abcde', False)",
+                        "('race', 'care', True)",
+                        "('elbow', 'below', True)",
+                        "('study', 'dusty', True)",
+                        "('night', 'thing', True)",
+                        "('stressed', 'desserts', True)",
+                    ],
+                },
+                // For tree: {"list": ["([4, 2, 7, 1, 3, 6, 9], [4, 7, 2, 9, 6, 3, 1])", "([2, 1, 3], [2, 3, 1])", "([], [])"]}
+                // For design: {"list": ["(['LRUCache', 'put', 'get'], [[2], [1, 1], [1]], [None, None, 1])"]}
                 body: "        result = run_is_anagram(Solution, s, t)\n        assert_is_anagram(result, expected)",
                 // For tree: "        result = run_invert_tree(Solution, root_list)\n        assert_invert_tree(result, expected_list)"
                 // For design: "        result, _ = run_lru_cache(LRUCache, operations, inputs)\n        assert_lru_cache(result, expected)"
@@ -218,7 +245,7 @@ The template below uses JSON5 format with comments for documentation purposes on
     // - solution_class_name: "Solution"
     // - solution_imports: ""
     // - Simple method signatures: "(self, s: str, t: str) -> bool"
-    // - Basic test cases: string/number parameters
+    // - Basic test cases: structured format with {"list": ["..."]}
     // - Playground: single quotes for strings
     //
     // TREE PROBLEMS (invert_binary_tree):
@@ -226,7 +253,7 @@ The template below uses JSON5 format with comments for documentation purposes on
     // - solution_imports: "from leetcode_py import TreeNode"
     // - Tree method signatures: "(self, root: TreeNode[int] | None) -> TreeNode[int] | None"
     // - Helper functions use TreeNode.from_list()
-    // - Test cases: list representations of trees
+    // - Test cases: structured format with list representations of trees
     // - Playground: TreeNode imports and list conversions
     //
     // LINKED LIST PROBLEMS (merge_two_sorted_lists):
@@ -234,13 +261,13 @@ The template below uses JSON5 format with comments for documentation purposes on
     // - solution_imports: "from leetcode_py import ListNode"
     // - List method signatures: "(self, list1: ListNode[int] | None, list2: ListNode[int] | None) -> ListNode[int] | None"
     // - Helper functions use ListNode.from_list()
-    // - Test cases: list representations of linked lists
+    // - Test cases: structured format with list representations of linked lists
     // - Playground: ListNode imports and list conversions
     //
     // DESIGN PROBLEMS (lru_cache):
     // - solution_class_name: "LRUCache" (custom class name)
     // - Multiple methods including __init__
-    // - Operations-based testing: operations, inputs, expected arrays
+    // - Operations-based testing: structured format with operations, inputs, expected arrays
     // - Complex test body with operation loops
     // - Helper functions return (results, instance) for debugging
     // - Playground: print results, return instance
@@ -250,7 +277,7 @@ The template below uses JSON5 format with comments for documentation purposes on
     // - solution_class_name: "Trie(DictTree[str])" (with inheritance)
     // - solution_imports: "from leetcode_py.data_structures import DictTree, RecursiveDict"
     // - Custom class with inheritance from DictTree
-    // - Operations-based testing like design problems
+    // - Operations-based testing with structured format like design problems
     // - Helper functions return (results, instance) for debugging
     //
     // MULTIPLE SOLUTIONS (invert_binary_tree, lru_cache):
