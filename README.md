@@ -222,8 +222,8 @@ To extend the problem collection beyond the current catalog, leverage an LLM ass
 
 **Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
 
-- [`.amazonq/rules/problem-creation.md`](https://github.com/wisarootl/leetcode-py/blob/main/.amazonq/rules/problem-creation.md) - Complete problem generation workflow
-- [`.amazonq/rules/test-quality-assurance.md`](https://github.com/wisarootl/leetcode-py/blob/main/.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
+- [`.cursor/commands/problem-creation.md`](https://github.com/wisarootl/leetcode-py/blob/main/.cursor/commands/problem-creation.md) - Complete problem generation workflow
+- [`.cursor/commands/test-quality-assurance.md`](https://github.com/wisarootl/leetcode-py/blob/main/.cursor/commands/test-quality-assurance.md) - Test enhancement and reproducibility verification
 
 **Manual Check**: Find problems needing more test cases:
 
