@@ -1,0 +1,67 @@
+{
+    "problem_name": "same_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "100",
+    "problem_title": "Same Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.\n\nTwo binary trees are considered the same if they are structurally identical, and the nodes have the same value.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg)\n\n```\nInput: p = [1,2,3], q = [1,2,3]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg)\n\n```\nInput: p = [1,2], q = [1,null,2]\nOutput: false\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg)\n\n```\nInput: p = [1,2,1], q = [1,1,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in both trees is in the range [0, 100].\n- -10^4 <= Node.val <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_same_tree",
+    "helpers_run_signature": "(solution_class: type, p_list: list[int | None], q_list: list[int | None])",
+    "helpers_run_body": "    p = TreeNode[int].from_list(p_list)\n    q = TreeNode[int].from_list(q_list)\n    implementation = solution_class()\n    return implementation.is_same_tree(p, q)",
+    "helpers_assert_name": "is_same_tree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_same_tree, run_is_same_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SameTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_same_tree",
+                "signature": "(self, p: TreeNode[int] | None, q: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement is_same_tree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_same_tree",
+                "signature": "(self, p_list: list[int | None], q_list: list[int | None], expected: bool)",
+                "parametrize": "p_list, q_list, expected",
+                "test_cases": "[([1, 2, 3], [1, 2, 3], True), ([1, 2], [1, None, 2], False), ([1, 2, 1], [1, 1, 2], False), ([], [], True), ([1], [1], True), ([1], [2], False), ([1, None, 2], [1, 2], False), ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], True), ([1, 2, 3, 4, 5], [1, 2, 3, 4, 6], False), ([1, 2, 3, None, 4], [1, 2, 3, None, 4], True), ([1, 2, 3, None, 4], [1, 2, 3, 4, None], False)]",
+                "body": "        result = run_is_same_tree(Solution, p_list, q_list)\n        assert_is_same_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_same_tree, assert_is_same_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\np_list: list[int | None] = [1, 2, 3]\nq_list: list[int | None] = [1, 2, 3]\nexpected = True",
+    "playground_run": "result = run_is_same_tree(Solution, p_list, q_list)\nresult",
+    "playground_assert": "assert_is_same_tree(result, expected)"
+}

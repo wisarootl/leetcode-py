@@ -1,4 +1,6 @@
-algo_master_75_tuples = [
+tag_name = "algo-master-75"
+
+problems_list = [
     (2, "Add Two Numbers"),
     (3, "Longest Substring Without Repeating Characters"),
     (4, "Median of Two Sorted Arrays"),

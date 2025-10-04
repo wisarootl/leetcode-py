@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= jump_game
+PROBLEM ?= same_tree
 FORCE ?= 0
 COMMA := ,
 

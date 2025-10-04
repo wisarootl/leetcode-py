@@ -12,9 +12,9 @@ The LLM-assisted workflow enables you to add new problems to your collection wit
 
 For optimal results, include these rule files in your LLM context:
 
-- [`.amazonq/rules/problem-creation.md`](../.amazonq/rules/problem-creation.md) - Complete problem generation workflow
-- [`.amazonq/rules/test-quality-assurance.md`](../.amazonq/rules/test-quality-assurance.md) - Test enhancement and reproducibility verification
-- [`.amazonq/rules/development-rules.md`](../.amazonq/rules/development-rules.md) - Code standards and testing patterns
+- [`.cursor/commands/problem-creation.md`](../.cursor/commands/problem-creation.md) - Complete problem generation workflow
+- [`.cursor/commands/test-quality-assurance.md`](../.cursor/commands/test-quality-assurance.md) - Test enhancement and reproducibility verification
+- [`.cursor/rules/development-rules.mdc`](../.cursor/rules/development-rules.mdc) - Code standards and testing patterns
 
 ### Setup Your IDE
 

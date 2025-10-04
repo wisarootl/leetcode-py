@@ -1,4 +1,6 @@
-blind_75_tuples = [
+tag_name = "blind-75"
+
+problem_list = [
     (1, "Two Sum"),
     (3, "Longest Substring Without Repeating Characters"),
     (5, "Longest Palindromic Substring"),

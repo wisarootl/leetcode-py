@@ -19,6 +19,14 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 8. **Verify** with `make p-lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
 9. **Iterate** if JSON fixes: re-run `make p-gen PROBLEM={problem_name} FORCE=1` and `make p-lint` until passes to ensure reproducibility
 
+**If user does not specify a problem number or name/slug**, run:
+
+```bash
+poetry run python .cursor/.dev/next_problem.py
+```
+
+This will suggest the next problem to work on from the available problem lists based on completion status.
+
 ## Scraping Commands
 
 ```bash
