@@ -29,7 +29,7 @@
     "helpers_content": "",
     "helpers_run_name": "hamming_weight",
     "helpers_run_signature": "(solution_class: type, n: int)",
-    "helpers_run_body": "    implementation = solution_class()\n    return implementation.hammingWeight(n)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.hamming_weight(n)",
     "helpers_assert_name": "hamming_weight",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
@@ -43,9 +43,9 @@
     "_solution_methods": {
         "list": [
             {
-                "name": "hammingWeight",
+                "name": "hamming_weight",
                 "signature": "(self, n: int) -> int",
-                "body": "        # TODO: Implement hammingWeight\n        return 0"
+                "body": "        # TODO: Implement hamming_weight\n        return 0"
             }
         ]
     },
