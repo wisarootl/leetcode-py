@@ -5,7 +5,9 @@
     "problem_title": "Implement Trie (Prefix Tree)",
     "difficulty": "Medium",
     "topics": "Hash Table, String, Design, Trie",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "A **trie** (pronounced as \"try\") or **prefix tree** is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n\n- `Trie()` Initializes the trie object.\n- `void insert(String word)` Inserts the string `word` into the trie.\n- `boolean search(String word)` Returns `true` if the string `word` is in the trie (i.e., was inserted before), and `false` otherwise.\n- `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.",
     "_readme_examples": {
         "list": [
@@ -55,14 +57,31 @@
             }
         ]
     },
-    "_test_helper_methods": { "list": [] },
+    "_test_helper_methods": {
+        "list": []
+    },
     "_test_methods": {
         "list": [
             {
                 "name": "test_trie_operations",
                 "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[bool | None])",
                 "parametrize": "operations, inputs, expected",
-                "test_cases": "[([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"search\"], [[], [\"app\"], [\"apple\"], [\"app\"], [\"apple\"], [\"appl\"]], [None, None, None, True, True, False]), ([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\"], [[], [\"cat\"], [\"car\"], [\"card\"], [\"cat\"], [\"car\"], [\"care\"]], [None, None, None, None, True, True, False]), ([\"Trie\", \"insert\", \"insert\", \"starts_with\", \"starts_with\", \"starts_with\"], [[], [\"test\"], [\"testing\"], [\"test\"], [\"testing\"], [\"te\"]], [None, None, None, True, True, True]), ([\"Trie\", \"insert\", \"search\", \"search\", \"insert\", \"search\", \"search\"], [[], [\"abc\"], [\"abc\"], [\"ab\"], [\"ab\"], [\"ab\"], [\"abc\"]], [None, None, True, False, None, True, True]), ([\"Trie\", \"insert\", \"search\", \"starts_with\"], [[], [\"a\"], [\"a\"], [\"a\"]], [None, None, True, True]), ([\"Trie\", \"search\", \"starts_with\"], [[], [\"empty\"], [\"empty\"]], [None, False, False]), ([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"word\"], [\"world\"], [\"word\"], [\"world\"], [\"wor\"], [\"wo\"]], [None, None, None, True, True, True, True]), ([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\", \"starts_with\"], [[], [\"aa\"], [\"aaa\"], [\"aaaa\"], [\"aa\"], [\"aaa\"], [\"aaaa\"], [\"a\"]], [None, None, None, None, True, True, True, True]), ([\"Trie\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"hello\"], [\"hello\"], [\"hell\"], [\"hello\"], [\"hel\"]], [None, None, True, False, True, True]), ([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"she\"], [\"sells\"], [\"sea\"], [\"she\"], [\"shells\"], [\"sea\"], [\"se\"], [\"s\"]], [None, None, None, None, True, False, True, True, True]), ([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\", \"starts_with\"], [[], [\"programming\"], [\"program\"], [\"programming\"], [\"program\"], [\"prog\"], [\"programming\"], [\"programm\"]], [None, None, None, True, True, True, True, True]), ([\"Trie\", \"insert\", \"search\", \"starts_with\", \"insert\", \"search\", \"starts_with\"], [[], [\"z\"], [\"z\"], [\"z\"], [\"zzz\"], [\"zzz\"], [\"zz\"]], [None, None, True, True, None, True, True])]",
+                "test_cases": {
+                    "list": [
+                        "([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"search\"], [[], [\"app\"], [\"apple\"], [\"app\"], [\"apple\"], [\"appl\"]], [None, None, None, True, True, False])",
+                        "([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\"], [[], [\"cat\"], [\"car\"], [\"card\"], [\"cat\"], [\"car\"], [\"care\"]], [None, None, None, None, True, True, False])",
+                        "([\"Trie\", \"insert\", \"insert\", \"starts_with\", \"starts_with\", \"starts_with\"], [[], [\"test\"], [\"testing\"], [\"test\"], [\"testing\"], [\"te\"]], [None, None, None, True, True, True])",
+                        "([\"Trie\", \"insert\", \"search\", \"search\", \"insert\", \"search\", \"search\"], [[], [\"abc\"], [\"abc\"], [\"ab\"], [\"ab\"], [\"ab\"], [\"abc\"]], [None, None, True, False, None, True, True])",
+                        "([\"Trie\", \"insert\", \"search\", \"starts_with\"], [[], [\"a\"], [\"a\"], [\"a\"]], [None, None, True, True])",
+                        "([\"Trie\", \"search\", \"starts_with\"], [[], [\"empty\"], [\"empty\"]], [None, False, False])",
+                        "([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"word\"], [\"world\"], [\"word\"], [\"world\"], [\"wor\"], [\"wo\"]], [None, None, None, True, True, True, True])",
+                        "([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\", \"starts_with\"], [[], [\"aa\"], [\"aaa\"], [\"aaaa\"], [\"aa\"], [\"aaa\"], [\"aaaa\"], [\"a\"]], [None, None, None, None, True, True, True, True])",
+                        "([\"Trie\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"hello\"], [\"hello\"], [\"hell\"], [\"hello\"], [\"hel\"]], [None, None, True, False, True, True])",
+                        "([\"Trie\", \"insert\", \"insert\", \"insert\", \"search\", \"search\", \"search\", \"starts_with\", \"starts_with\"], [[], [\"she\"], [\"sells\"], [\"sea\"], [\"she\"], [\"shells\"], [\"sea\"], [\"se\"], [\"s\"]], [None, None, None, None, True, False, True, True, True])",
+                        "([\"Trie\", \"insert\", \"insert\", \"search\", \"search\", \"starts_with\", \"starts_with\", \"starts_with\"], [[], [\"programming\"], [\"program\"], [\"programming\"], [\"program\"], [\"prog\"], [\"programming\"], [\"programm\"]], [None, None, None, True, True, True, True, True])",
+                        "([\"Trie\", \"insert\", \"search\", \"starts_with\", \"insert\", \"search\", \"starts_with\"], [[], [\"z\"], [\"z\"], [\"z\"], [\"zzz\"], [\"zzz\"], [\"zz\"]], [None, None, True, True, None, True, True])"
+                    ]
+                },
                 "body": "        result, _ = run_trie_operations(Trie, operations, inputs)\n        assert_trie_operations(result, expected)"
             }
         ]

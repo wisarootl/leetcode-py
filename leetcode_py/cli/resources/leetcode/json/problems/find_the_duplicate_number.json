@@ -5,13 +5,21 @@
     "problem_title": "Find the Duplicate Number",
     "difficulty": "Medium",
     "topics": "Array, Two Pointers, Binary Search, Bit Manipulation",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Given an array of integers `nums` containing `n + 1` integers where each integer is in the range `[1, n]` inclusive.\n\nThere is only **one repeated number** in `nums`, return *this repeated number*.\n\nYou must solve the problem **without** modifying the array `nums` and using only constant extra space.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: nums = [1,3,4,2,2]\nOutput: 2\n```" },
-            { "content": "```\nInput: nums = [3,1,3,4,2]\nOutput: 3\n```" },
-            { "content": "```\nInput: nums = [3,3,3,3,3]\nOutput: 3\n```" }
+            {
+                "content": "```\nInput: nums = [1,3,4,2,2]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,1,3,4,2]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,3,3,3,3]\nOutput: 3\n```"
+            }
         ]
     },
     "readme_constraints": "- `1 <= n <= 10^5`\n- `nums.length == n + 1`\n- `1 <= nums[i] <= n`\n- All the integers in `nums` appear only **once** except for **precisely one integer** which appears **two or more** times.",
@@ -41,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -49,7 +63,28 @@
                 "name": "test_find_duplicate",
                 "signature": "(self, nums: list[int], expected: int)",
                 "parametrize": "nums, expected",
-                "test_cases": "[([1, 3, 4, 2, 2], 2), ([3, 1, 3, 4, 2], 3), ([3, 3, 3, 3, 3], 3), ([1, 1], 1), ([2, 2, 2], 2), ([1, 2, 3, 4, 4], 4), ([4, 3, 2, 1, 2], 2), ([2, 5, 9, 6, 9, 3, 8, 9, 7, 1], 9), ([1, 4, 4, 2, 4], 4), ([3, 1, 3, 4, 2], 3), ([1, 3, 4, 2, 2], 2), ([2, 1, 3, 4, 5, 6, 7, 8, 9, 9], 9), ([5, 2, 1, 3, 5, 7, 6, 4], 5), ([1, 2, 2], 2), ([1, 1, 2], 1), ([2, 1, 1], 1), ([1, 2, 3, 3], 3), ([4, 1, 2, 3, 4], 4)]",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, 4, 2, 2], 2)",
+                        "([3, 1, 3, 4, 2], 3)",
+                        "([3, 3, 3, 3, 3], 3)",
+                        "([1, 1], 1)",
+                        "([2, 2, 2], 2)",
+                        "([1, 2, 3, 4, 4], 4)",
+                        "([4, 3, 2, 1, 2], 2)",
+                        "([2, 5, 9, 6, 9, 3, 8, 9, 7, 1], 9)",
+                        "([1, 4, 4, 2, 4], 4)",
+                        "([3, 1, 3, 4, 2], 3)",
+                        "([1, 3, 4, 2, 2], 2)",
+                        "([2, 1, 3, 4, 5, 6, 7, 8, 9, 9], 9)",
+                        "([5, 2, 1, 3, 5, 7, 6, 4], 5)",
+                        "([1, 2, 2], 2)",
+                        "([1, 1, 2], 1)",
+                        "([2, 1, 1], 1)",
+                        "([1, 2, 3, 3], 3)",
+                        "([4, 1, 2, 3, 4], 4)"
+                    ]
+                },
                 "body": "        result = run_find_duplicate(Solution, nums)\n        assert_find_duplicate(result, expected)"
             }
         ]

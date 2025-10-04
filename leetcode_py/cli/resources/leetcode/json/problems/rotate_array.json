@@ -5,7 +5,9 @@
     "problem_title": "Rotate Array",
     "difficulty": "Medium",
     "topics": "Array, Math, Two Pointers",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Given an integer array `nums`, rotate the array to the right by `k` steps, where `k` is non-negative.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,25 @@
                 "name": "test_rotate",
                 "signature": "(self, nums: list[int], k: int, expected: list[int])",
                 "parametrize": "nums, k, expected",
-                "test_cases": "[([1, 2, 3, 4, 5, 6, 7], 3, [5, 6, 7, 1, 2, 3, 4]), ([-1, -100, 3, 99], 2, [3, 99, -1, -100]), ([1, 2], 1, [2, 1]), ([1], 1, [1]), ([1, 2, 3], 0, [1, 2, 3]), ([1, 2, 3], 3, [1, 2, 3]), ([1, 2, 3], 4, [3, 1, 2]), ([1, 2, 3, 4, 5], 2, [4, 5, 1, 2, 3]), ([1, 2, 3, 4, 5, 6], 4, [3, 4, 5, 6, 1, 2]), ([-1, -2, -3, -4], 1, [-4, -1, -2, -3]), ([1, 2, 3, 4, 5, 6, 7, 8, 9], 5, [5, 6, 7, 8, 9, 1, 2, 3, 4]), ([10, 20, 30], 6, [10, 20, 30]), ([5, 4, 3, 2, 1], 10, [5, 4, 3, 2, 1]), ([1, 2, 3, 4, 5, 6, 7, 8], 3, [6, 7, 8, 1, 2, 3, 4, 5]), ([100], 0, [100])]",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6, 7], 3, [5, 6, 7, 1, 2, 3, 4])",
+                        "([-1, -100, 3, 99], 2, [3, 99, -1, -100])",
+                        "([1, 2], 1, [2, 1])",
+                        "([1], 1, [1])",
+                        "([1, 2, 3], 0, [1, 2, 3])",
+                        "([1, 2, 3], 3, [1, 2, 3])",
+                        "([1, 2, 3], 4, [3, 1, 2])",
+                        "([1, 2, 3, 4, 5], 2, [4, 5, 1, 2, 3])",
+                        "([1, 2, 3, 4, 5, 6], 4, [3, 4, 5, 6, 1, 2])",
+                        "([-1, -2, -3, -4], 1, [-4, -1, -2, -3])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9], 5, [5, 6, 7, 8, 9, 1, 2, 3, 4])",
+                        "([10, 20, 30], 6, [10, 20, 30])",
+                        "([5, 4, 3, 2, 1], 10, [5, 4, 3, 2, 1])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 3, [6, 7, 8, 1, 2, 3, 4, 5])",
+                        "([100], 0, [100])"
+                    ]
+                },
                 "body": "        result = run_rotate(Solution, nums, k)\n        assert_rotate(result, expected)"
             }
         ]

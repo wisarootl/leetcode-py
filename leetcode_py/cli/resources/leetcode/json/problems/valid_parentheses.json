@@ -5,15 +5,27 @@
     "problem_title": "Valid Parentheses",
     "difficulty": "Easy",
     "topics": "String, Stack",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.\n\nAn input string is valid if:\n\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: s = \"()\"\nOutput: true\n```" },
-            { "content": "```\nInput: s = \"()[]{}\"\nOutput: true\n```" },
-            { "content": "```\nInput: s = \"(]\"\nOutput: false\n```" },
-            { "content": "```\nInput: s = \"([])\"\nOutput: true\n```" },
-            { "content": "```\nInput: s = \"([)]\"\nOutput: false\n```" }
+            {
+                "content": "```\nInput: s = \"()\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"()[]{}\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(]\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: s = \"([])\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"([)]\"\nOutput: false\n```"
+            }
         ]
     },
     "readme_constraints": "- `1 <= s.length <= 10^4`\n- `s` consists of parentheses only `'()[]{}'`.",
@@ -43,7 +55,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -51,7 +69,30 @@
                 "name": "test_is_valid",
                 "signature": "(self, s: str, expected: bool)",
                 "parametrize": "s, expected",
-                "test_cases": "[('()', True), ('()[]{}', True), ('(]', False), ('([])', True), ('([)]', False), ('', True), ('(', False), (')', False), ('{[()]}', True), ('{[(])}', False), ('((', False), ('))', False), ('([{}])', True), ('([{]})', False), ('{[}]', False), ('((()))', True), ('((())', False), ('(){}[]', True), ('{[(', False), (']})', False)]",
+                "test_cases": {
+                    "list": [
+                        "('()', True)",
+                        "('()[]{}', True)",
+                        "('(]', False)",
+                        "('([])', True)",
+                        "('([)]', False)",
+                        "('', True)",
+                        "('(', False)",
+                        "(')', False)",
+                        "('{[()]}', True)",
+                        "('{[(])}', False)",
+                        "('((', False)",
+                        "('))', False)",
+                        "('([{}])', True)",
+                        "('([{]})', False)",
+                        "('{[}]', False)",
+                        "('((()))', True)",
+                        "('((())', False)",
+                        "('(){}[]', True)",
+                        "('{[(', False)",
+                        "(']})', False)"
+                    ]
+                },
                 "body": "        result = run_is_valid(Solution, s)\n        assert_is_valid(result, expected)"
             }
         ]

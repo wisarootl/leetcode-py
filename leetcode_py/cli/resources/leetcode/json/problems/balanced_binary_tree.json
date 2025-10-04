@@ -5,7 +5,9 @@
     "problem_title": "Balanced Binary Tree",
     "difficulty": "Easy",
     "topics": "Tree, Depth-First Search, Binary Tree",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given a binary tree, determine if it is **height-balanced**.\n\nA height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.",
     "_readme_examples": {
         "list": [
@@ -15,7 +17,9 @@
             {
                 "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg)\n\n```\nInput: root = [1,2,2,3,3,null,null,4,4]\nOutput: false\n```"
             },
-            { "content": "```\nInput: root = []\nOutput: true\n```" }
+            {
+                "content": "```\nInput: root = []\nOutput: true\n```"
+            }
         ]
     },
     "readme_constraints": "- The number of nodes in the tree is in the range `[0, 5000]`.\n- `-10^4 <= Node.val <= 10^4`",
@@ -45,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -53,7 +63,25 @@
                 "name": "test_is_balanced",
                 "signature": "(self, root_list: list[int | None], expected: bool)",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([3, 9, 20, None, None, 15, 7], True), ([1, 2, 2, 3, 3, None, None, 4, 4], False), ([], True), ([1], True), ([1, 2], True), ([1, None, 2], True), ([1, 2, 3, 4], True), ([1, 2, 2, 3, None, None, 3, 4, None, None, 4], False), ([1, 2, 3], True), ([1, 2, None, 3], False), ([1, None, 2, None, 3], False), ([1, 2, 3, 4, 5, 6, 7], True), ([1, 2, 3, None, None, 4, None, None, 5], False), ([5, 1, 4, None, None, 3, 6], True), ([1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, None, None, 5, 5], True)]",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], True)",
+                        "([1, 2, 2, 3, 3, None, None, 4, 4], False)",
+                        "([], True)",
+                        "([1], True)",
+                        "([1, 2], True)",
+                        "([1, None, 2], True)",
+                        "([1, 2, 3, 4], True)",
+                        "([1, 2, 2, 3, None, None, 3, 4, None, None, 4], False)",
+                        "([1, 2, 3], True)",
+                        "([1, 2, None, 3], False)",
+                        "([1, None, 2, None, 3], False)",
+                        "([1, 2, 3, 4, 5, 6, 7], True)",
+                        "([1, 2, 3, None, None, 4, None, None, 5], False)",
+                        "([5, 1, 4, None, None, 3, 6], True)",
+                        "([1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, None, None, 5, 5], True)"
+                    ]
+                },
                 "body": "        result = run_is_balanced(Solution, root_list)\n        assert_is_balanced(result, expected)"
             }
         ]

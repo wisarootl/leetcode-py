@@ -5,7 +5,9 @@
     "problem_title": "Climbing Stairs",
     "difficulty": "Easy",
     "topics": "Math, Dynamic Programming, Memoization",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "You are climbing a staircase. It takes `n` steps to reach the top.\n\nEach time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,27 @@
                 "name": "test_climb_stairs",
                 "signature": "(self, n: int, expected: int)",
                 "parametrize": "n, expected",
-                "test_cases": "[(1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21), (8, 34), (9, 55), (10, 89), (15, 987), (20, 10946), (25, 121393), (30, 1346269), (35, 14930352), (40, 165580141), (45, 1836311903)]",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 5)",
+                        "(5, 8)",
+                        "(6, 13)",
+                        "(7, 21)",
+                        "(8, 34)",
+                        "(9, 55)",
+                        "(10, 89)",
+                        "(15, 987)",
+                        "(20, 10946)",
+                        "(25, 121393)",
+                        "(30, 1346269)",
+                        "(35, 14930352)",
+                        "(40, 165580141)",
+                        "(45, 1836311903)"
+                    ]
+                },
                 "body": "        result = run_climb_stairs(Solution, n)\n        assert_climb_stairs(result, expected)"
             }
         ]

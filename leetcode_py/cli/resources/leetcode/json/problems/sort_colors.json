@@ -5,12 +5,18 @@
     "problem_title": "Sort Colors",
     "difficulty": "Medium",
     "topics": "Array, Two Pointers, Sorting",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given an array `nums` with `n` objects colored red, white, or blue, sort them **in-place** so that objects of the same color are adjacent, with the colors in the order red, white, and blue.\n\nWe will use the integers `0`, `1`, and `2` to represent the color red, white, and blue, respectively.\n\nYou must solve this problem without using the library's sort function.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: nums = [2,0,2,1,1,0]\nOutput: [0,0,1,1,2,2]\n```" },
-            { "content": "```\nInput: nums = [2,0,1]\nOutput: [0,1,2]\n```" }
+            {
+                "content": "```\nInput: nums = [2,0,2,1,1,0]\nOutput: [0,0,1,1,2,2]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,0,1]\nOutput: [0,1,2]\n```"
+            }
         ]
     },
     "readme_constraints": "- `n == nums.length`\n- `1 <= n <= 300`\n- `nums[i]` is either `0`, `1`, or `2`.",
@@ -40,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -48,7 +60,25 @@
                 "name": "test_sort_colors",
                 "signature": "(self, nums: list[int], expected: list[int])",
                 "parametrize": "nums, expected",
-                "test_cases": "[([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2]), ([2, 0, 1], [0, 1, 2]), ([0], [0]), ([1], [1]), ([2], [2]), ([0, 1, 2], [0, 1, 2]), ([2, 2, 2], [2, 2, 2]), ([0, 0, 0], [0, 0, 0]), ([1, 1, 1], [1, 1, 1]), ([2, 1, 0], [0, 1, 2]), ([1, 0, 2, 1, 0, 2], [0, 0, 1, 1, 2, 2]), ([0, 2, 1, 0, 2, 1], [0, 0, 1, 1, 2, 2]), ([2, 2, 1, 0, 0, 1], [0, 0, 1, 1, 2, 2]), ([1, 2, 0, 1, 2, 0, 1], [0, 0, 1, 1, 1, 2, 2]), ([0, 1, 0, 2, 1, 2, 0], [0, 0, 0, 1, 1, 2, 2])]",
+                "test_cases": {
+                    "list": [
+                        "([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2])",
+                        "([2, 0, 1], [0, 1, 2])",
+                        "([0], [0])",
+                        "([1], [1])",
+                        "([2], [2])",
+                        "([0, 1, 2], [0, 1, 2])",
+                        "([2, 2, 2], [2, 2, 2])",
+                        "([0, 0, 0], [0, 0, 0])",
+                        "([1, 1, 1], [1, 1, 1])",
+                        "([2, 1, 0], [0, 1, 2])",
+                        "([1, 0, 2, 1, 0, 2], [0, 0, 1, 1, 2, 2])",
+                        "([0, 2, 1, 0, 2, 1], [0, 0, 1, 1, 2, 2])",
+                        "([2, 2, 1, 0, 0, 1], [0, 0, 1, 1, 2, 2])",
+                        "([1, 2, 0, 1, 2, 0, 1], [0, 0, 1, 1, 1, 2, 2])",
+                        "([0, 1, 0, 2, 1, 2, 0], [0, 0, 0, 1, 1, 2, 2])"
+                    ]
+                },
                 "body": "        result = run_sort_colors(Solution, nums)\n        assert_sort_colors(result, expected)"
             }
         ]

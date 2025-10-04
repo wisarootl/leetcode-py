@@ -5,15 +5,21 @@
     "problem_title": "Letter Combinations of a Phone Number",
     "difficulty": "Medium",
     "topics": "Hash Table, String, Backtracking",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given a string containing digits from `2-9` inclusive, return all possible letter combinations that the number could represent. Return the answer in **any order**.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.",
     "_readme_examples": {
         "list": [
             {
                 "content": "![Phone Keypad](https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png)\n\n```\nInput: digits = \"23\"\nOutput: [\"ad\",\"ae\",\"af\",\"bd\",\"be\",\"bf\",\"cd\",\"ce\",\"cf\"]\n```"
             },
-            { "content": "```\nInput: digits = \"\"\nOutput: []\n```" },
-            { "content": "```\nInput: digits = \"2\"\nOutput: [\"a\",\"b\",\"c\"]\n```" }
+            {
+                "content": "```\nInput: digits = \"\"\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: digits = \"2\"\nOutput: [\"a\",\"b\",\"c\"]\n```"
+            }
         ]
     },
     "readme_constraints": "- `0 <= digits.length <= 4`\n- `digits[i]` is a digit in the range `['2', '9']`.",
@@ -43,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -51,7 +63,22 @@
                 "name": "test_letter_combinations",
                 "signature": "(self, digits: str, expected: list[str])",
                 "parametrize": "digits, expected",
-                "test_cases": "[('23', ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']), ('', []), ('2', ['a', 'b', 'c']), ('234', ['adg', 'adh', 'adi', 'aeg', 'aeh', 'aei', 'afg', 'afh', 'afi', 'bdg', 'bdh', 'bdi', 'beg', 'beh', 'bei', 'bfg', 'bfh', 'bfi', 'cdg', 'cdh', 'cdi', 'ceg', 'ceh', 'cei', 'cfg', 'cfh', 'cfi']), ('7', ['p', 'q', 'r', 's']), ('9', ['w', 'x', 'y', 'z']), ('79', ['pw', 'px', 'py', 'pz', 'qw', 'qx', 'qy', 'qz', 'rw', 'rx', 'ry', 'rz', 'sw', 'sx', 'sy', 'sz']), ('22', ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']), ('3456', ['dgjm', 'dgjn', 'dgjo', 'dgkm', 'dgkn', 'dgko', 'dglm', 'dgln', 'dglo', 'dhjm', 'dhjn', 'dhjo', 'dhkm', 'dhkn', 'dhko', 'dhlm', 'dhln', 'dhlo', 'dijm', 'dijn', 'dijo', 'dikm', 'dikn', 'diko', 'dilm', 'diln', 'dilo', 'egjm', 'egjn', 'egjo', 'egkm', 'egkn', 'egko', 'eglm', 'egln', 'eglo', 'ehjm', 'ehjn', 'ehjo', 'ehkm', 'ehkn', 'ehko', 'ehlm', 'ehln', 'ehlo', 'eijm', 'eijn', 'eijo', 'eikm', 'eikn', 'eiko', 'eilm', 'eiln', 'eilo', 'fgjm', 'fgjn', 'fgjo', 'fgkm', 'fgkn', 'fgko', 'fglm', 'fgln', 'fglo', 'fhjm', 'fhjn', 'fhjo', 'fhkm', 'fhkn', 'fhko', 'fhlm', 'fhln', 'fhlo', 'fijm', 'fijn', 'fijo', 'fikm', 'fikn', 'fiko', 'film', 'filn', 'filo']), ('25', ['aj', 'ak', 'al', 'bj', 'bk', 'bl', 'cj', 'ck', 'cl']), ('78', ['pt', 'pu', 'pv', 'qt', 'qu', 'qv', 'rt', 'ru', 'rv', 'st', 'su', 'sv']), ('89', ['tw', 'tx', 'ty', 'tz', 'uw', 'ux', 'uy', 'uz', 'vw', 'vx', 'vy', 'vz'])]",
+                "test_cases": {
+                    "list": [
+                        "('23', ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf'])",
+                        "('', [])",
+                        "('2', ['a', 'b', 'c'])",
+                        "('234', ['adg', 'adh', 'adi', 'aeg', 'aeh', 'aei', 'afg', 'afh', 'afi', 'bdg', 'bdh', 'bdi', 'beg', 'beh', 'bei', 'bfg', 'bfh', 'bfi', 'cdg', 'cdh', 'cdi', 'ceg', 'ceh', 'cei', 'cfg', 'cfh', 'cfi'])",
+                        "('7', ['p', 'q', 'r', 's'])",
+                        "('9', ['w', 'x', 'y', 'z'])",
+                        "('79', ['pw', 'px', 'py', 'pz', 'qw', 'qx', 'qy', 'qz', 'rw', 'rx', 'ry', 'rz', 'sw', 'sx', 'sy', 'sz'])",
+                        "('22', ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc'])",
+                        "('3456', ['dgjm', 'dgjn', 'dgjo', 'dgkm', 'dgkn', 'dgko', 'dglm', 'dgln', 'dglo', 'dhjm', 'dhjn', 'dhjo', 'dhkm', 'dhkn', 'dhko', 'dhlm', 'dhln', 'dhlo', 'dijm', 'dijn', 'dijo', 'dikm', 'dikn', 'diko', 'dilm', 'diln', 'dilo', 'egjm', 'egjn', 'egjo', 'egkm', 'egkn', 'egko', 'eglm', 'egln', 'eglo', 'ehjm', 'ehjn', 'ehjo', 'ehkm', 'ehkn', 'ehko', 'ehlm', 'ehln', 'ehlo', 'eijm', 'eijn', 'eijo', 'eikm', 'eikn', 'eiko', 'eilm', 'eiln', 'eilo', 'fgjm', 'fgjn', 'fgjo', 'fgkm', 'fgkn', 'fgko', 'fglm', 'fgln', 'fglo', 'fhjm', 'fhjn', 'fhjo', 'fhkm', 'fhkn', 'fhko', 'fhlm', 'fhln', 'fhlo', 'fijm', 'fijn', 'fijo', 'fikm', 'fikn', 'fiko', 'film', 'filn', 'filo'])",
+                        "('25', ['aj', 'ak', 'al', 'bj', 'bk', 'bl', 'cj', 'ck', 'cl'])",
+                        "('78', ['pt', 'pu', 'pv', 'qt', 'qu', 'qv', 'rt', 'ru', 'rv', 'st', 'su', 'sv'])",
+                        "('89', ['tw', 'tx', 'ty', 'tz', 'uw', 'ux', 'uy', 'uz', 'vw', 'vx', 'vy', 'vz'])"
+                    ]
+                },
                 "body": "        result = run_letter_combinations(Solution, digits)\n        assert_letter_combinations(result, expected)"
             }
         ]

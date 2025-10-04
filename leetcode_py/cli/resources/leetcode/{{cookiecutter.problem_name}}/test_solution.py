@@ -27,7 +27,7 @@ class Test{{cookiecutter.test_class_name}}:
     @logged_test
 {% endif %}
 {% if method.parametrize %}
-    @pytest.mark.parametrize("{{method.parametrize}}", {{method.test_cases}})
+    @pytest.mark.parametrize("{{method.parametrize}}", [{{method.test_cases.list | join(', ')}}])
 {% endif %}
     def {{method.name}}{{method.signature}}:
 {{method.body}}

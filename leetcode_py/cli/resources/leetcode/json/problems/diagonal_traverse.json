@@ -5,14 +5,18 @@
     "problem_title": "Diagonal Traverse",
     "difficulty": "Medium",
     "topics": "Array, Matrix, Simulation",
-    "_tags": { "list": [] },
+    "_tags": {
+        "list": []
+    },
     "readme_description": "Given an `m x n` matrix `mat`, return *an array of all the elements of the array in a diagonal order*.",
     "_readme_examples": {
         "list": [
             {
                 "content": "![Diagonal Traverse](https://assets.leetcode.com/uploads/2021/04/10/diag1-grid.jpg)\n\n```\nInput: mat = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [1,2,4,7,5,3,6,8,9]\n```"
             },
-            { "content": "```\nInput: mat = [[1,2],[3,4]]\nOutput: [1,2,3,4]\n```" }
+            {
+                "content": "```\nInput: mat = [[1,2],[3,4]]\nOutput: [1,2,3,4]\n```"
+            }
         ]
     },
     "readme_constraints": "- `m == mat.length`\n- `n == mat[i].length`\n- `1 <= m, n <= 10^4`\n- `1 <= m * n <= 10^4`\n- `-10^5 <= mat[i][j] <= 10^5`",
@@ -42,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -50,7 +60,22 @@
                 "name": "test_find_diagonal_order",
                 "signature": "(self, mat: list[list[int]], expected: list[int])",
                 "parametrize": "mat, expected",
-                "test_cases": "[([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [1, 2, 4, 7, 5, 3, 6, 8, 9]), ([[1, 2], [3, 4]], [1, 2, 3, 4]), ([[1]], [1]), ([[1, 2, 3]], [1, 2, 3]), ([[1], [2], [3]], [1, 2, 3]), ([[1, 2, 3, 4], [5, 6, 7, 8]], [1, 2, 5, 6, 3, 4, 7, 8]), ([[1, 2], [3, 4], [5, 6]], [1, 2, 3, 5, 4, 6]), ([[1, 2, 3, 4, 5]], [1, 2, 3, 4, 5]), ([[1], [2], [3], [4], [5]], [1, 2, 3, 4, 5]), ([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]], [1, 2, 5, 9, 6, 3, 4, 7, 10, 11, 8, 12]), ([[-1, 0, 1], [2, -3, 4]], [-1, 0, 2, -3, 1, 4]), ([[100]], [100])]",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [1, 2, 4, 7, 5, 3, 6, 8, 9])",
+                        "([[1, 2], [3, 4]], [1, 2, 3, 4])",
+                        "([[1]], [1])",
+                        "([[1, 2, 3]], [1, 2, 3])",
+                        "([[1], [2], [3]], [1, 2, 3])",
+                        "([[1, 2, 3, 4], [5, 6, 7, 8]], [1, 2, 5, 6, 3, 4, 7, 8])",
+                        "([[1, 2], [3, 4], [5, 6]], [1, 2, 3, 5, 4, 6])",
+                        "([[1, 2, 3, 4, 5]], [1, 2, 3, 4, 5])",
+                        "([[1], [2], [3], [4], [5]], [1, 2, 3, 4, 5])",
+                        "([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]], [1, 2, 5, 9, 6, 3, 4, 7, 10, 11, 8, 12])",
+                        "([[-1, 0, 1], [2, -3, 4]], [-1, 0, 2, -3, 1, 4])",
+                        "([[100]], [100])"
+                    ]
+                },
                 "body": "        result = run_find_diagonal_order(Solution, mat)\n        assert_find_diagonal_order(result, expected)"
             }
         ]

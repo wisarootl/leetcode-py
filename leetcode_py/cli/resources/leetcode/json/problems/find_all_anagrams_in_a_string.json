@@ -5,7 +5,9 @@
     "problem_title": "Find All Anagrams in a String",
     "difficulty": "Medium",
     "topics": "Hash Table, String, Sliding Window",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given two strings `s` and `p`, return an array of all the start indices of `p`'s anagrams in `s`. You may return the answer in any order.\n\nAn **anagram** is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,22 @@
                 "name": "test_find_anagrams",
                 "signature": "(self, s: str, p: str, expected: list[int])",
                 "parametrize": "s, p, expected",
-                "test_cases": "[('cbaebabacd', 'abc', [0, 6]), ('abab', 'ab', [0, 1, 2]), ('a', 'aa', []), ('aa', 'aa', [0]), ('abcdefg', 'xyz', []), ('aab', 'ab', [1]), ('aaab', 'ab', [2]), ('baa', 'aa', [1]), ('abacabad', 'aaab', []), ('ababacb', 'abc', [3, 4]), ('abaacbabc', 'abc', [3, 4, 6]), ('abab', 'abab', [0])]",
+                "test_cases": {
+                    "list": [
+                        "('cbaebabacd', 'abc', [0, 6])",
+                        "('abab', 'ab', [0, 1, 2])",
+                        "('a', 'aa', [])",
+                        "('aa', 'aa', [0])",
+                        "('abcdefg', 'xyz', [])",
+                        "('aab', 'ab', [1])",
+                        "('aaab', 'ab', [2])",
+                        "('baa', 'aa', [1])",
+                        "('abacabad', 'aaab', [])",
+                        "('ababacb', 'abc', [3, 4])",
+                        "('abaacbabc', 'abc', [3, 4, 6])",
+                        "('abab', 'abab', [0])"
+                    ]
+                },
                 "body": "        result = run_find_anagrams(Solution, s, p)\n        assert_find_anagrams(result, expected)"
             }
         ]

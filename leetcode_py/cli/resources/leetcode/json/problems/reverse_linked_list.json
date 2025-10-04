@@ -5,7 +5,9 @@
     "problem_title": "Reverse Linked List",
     "difficulty": "Easy",
     "topics": "Linked List, Recursion",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `head` of a singly linked list, reverse the list, and return the reversed list.",
     "_readme_examples": {
         "list": [
@@ -15,7 +17,9 @@
             {
                 "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg)\n\n```\nInput: head = [1,2]\nOutput: [2,1]\n```"
             },
-            { "content": "```\nInput: head = []\nOutput: []\n```" }
+            {
+                "content": "```\nInput: head = []\nOutput: []\n```"
+            }
         ]
     },
     "readme_constraints": "- The number of nodes in the list is the range `[0, 5000]`.\n- `-5000 <= Node.val <= 5000`",
@@ -45,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -53,7 +63,25 @@
                 "name": "test_reverse_list",
                 "signature": "(self, head_list: list[int], expected_list: list[int])",
                 "parametrize": "head_list, expected_list",
-                "test_cases": "[([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]), ([1, 2], [2, 1]), ([1], [1]), ([], []), ([1, 2, 3], [3, 2, 1]), ([1, 2, 3, 4], [4, 3, 2, 1]), ([-1, -2, -3], [-3, -2, -1]), ([0], [0]), ([5000, -5000], [-5000, 5000]), ([1, 1, 1], [1, 1, 1]), ([10, 20, 30, 40, 50, 60], [60, 50, 40, 30, 20, 10]), ([-100, 0, 100], [100, 0, -100]), ([7], [7]), ([1, 2, 3, 4, 5, 6, 7], [7, 6, 5, 4, 3, 2, 1]), ([42, 42, 42, 42], [42, 42, 42, 42])]",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])",
+                        "([1, 2], [2, 1])",
+                        "([1], [1])",
+                        "([], [])",
+                        "([1, 2, 3], [3, 2, 1])",
+                        "([1, 2, 3, 4], [4, 3, 2, 1])",
+                        "([-1, -2, -3], [-3, -2, -1])",
+                        "([0], [0])",
+                        "([5000, -5000], [-5000, 5000])",
+                        "([1, 1, 1], [1, 1, 1])",
+                        "([10, 20, 30, 40, 50, 60], [60, 50, 40, 30, 20, 10])",
+                        "([-100, 0, 100], [100, 0, -100])",
+                        "([7], [7])",
+                        "([1, 2, 3, 4, 5, 6, 7], [7, 6, 5, 4, 3, 2, 1])",
+                        "([42, 42, 42, 42], [42, 42, 42, 42])"
+                    ]
+                },
                 "body": "        result = run_reverse_list(Solution, head_list)\n        assert_reverse_list(result, expected_list)"
             }
         ]

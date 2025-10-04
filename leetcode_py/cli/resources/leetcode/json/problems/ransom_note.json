@@ -5,13 +5,21 @@
     "problem_title": "Ransom Note",
     "difficulty": "Easy",
     "topics": "Hash Table, String, Counting",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given two strings `ransomNote` and `magazine`, return `true` if `ransomNote` can be constructed by using the letters from `magazine` and `false` otherwise.\n\nEach letter in `magazine` can only be used once in `ransomNote`.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: ransomNote = \"a\", magazine = \"b\"\nOutput: false\n```" },
-            { "content": "```\nInput: ransomNote = \"aa\", magazine = \"ab\"\nOutput: false\n```" },
-            { "content": "```\nInput: ransomNote = \"aa\", magazine = \"aab\"\nOutput: true\n```" }
+            {
+                "content": "```\nInput: ransomNote = \"a\", magazine = \"b\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: ransomNote = \"aa\", magazine = \"ab\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: ransomNote = \"aa\", magazine = \"aab\"\nOutput: true\n```"
+            }
         ]
     },
     "readme_constraints": "- 1 <= ransomNote.length, magazine.length <= 10^5\n- ransomNote and magazine consist of lowercase English letters.",
@@ -41,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -49,7 +63,21 @@
                 "name": "test_can_construct",
                 "signature": "(self, ransom_note: str, magazine: str, expected: bool)",
                 "parametrize": "ransom_note, magazine, expected",
-                "test_cases": "[('a', 'b', False), ('aa', 'ab', False), ('aa', 'aab', True), ('aab', 'baa', True), ('', '', True), ('', 'abc', True), ('abc', '', False), ('abc', 'abc', True), ('abc', 'cba', True), ('aaa', 'aa', False), ('ab', 'ba', True)]",
+                "test_cases": {
+                    "list": [
+                        "('a', 'b', False)",
+                        "('aa', 'ab', False)",
+                        "('aa', 'aab', True)",
+                        "('aab', 'baa', True)",
+                        "('', '', True)",
+                        "('', 'abc', True)",
+                        "('abc', '', False)",
+                        "('abc', 'abc', True)",
+                        "('abc', 'cba', True)",
+                        "('aaa', 'aa', False)",
+                        "('ab', 'ba', True)"
+                    ]
+                },
                 "body": "        result = run_can_construct(Solution, ransom_note, magazine)\n        assert_can_construct(result, expected)"
             }
         ]

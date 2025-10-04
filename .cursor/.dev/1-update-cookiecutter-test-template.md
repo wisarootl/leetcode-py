@@ -67,6 +67,7 @@ Update the cookiecutter template for `test_solution.py` to use a for loop approa
     - Change from `{{method.test_cases}}` to `{{method.test_cases.list | join(', ')}}`
     - This follows the existing pattern used by other list fields in the template
     - Template line 30: `@pytest.mark.parametrize("{{method.parametrize}}", [{{method.test_cases.list | join(', ')}}])`
+    - **✅ Validated:** Correctly follows existing "list" pattern used by `_tags`, `_readme_examples`, etc.
 
 ### Phase 2: Create JSON Migration Script
 
@@ -83,14 +84,7 @@ Update the cookiecutter template for `test_solution.py` to use a for loop approa
     - Create backup of original files
     - Validate migrated JSON structure
 
-### Phase 4: Update Template Generation Logic
-
-1. **Modify cookiecutter generation code**
-    - Update any code that generates the `test_cases` field to output JSON arrays instead of strings
-    - Ensure new list format is used when creating new problems
-    - Keep all other generation logic the same
-
-### Phase 5: Testing and Validation
+### Phase 4: Testing and Validation
 
 1. **Test generated templates**
     - Generate a test problem using updated template
@@ -105,7 +99,7 @@ Update the cookiecutter template for `test_solution.py` to use a for loop approa
     - Verify no regressions in test functionality
     - Document any issues found and fix them
 
-### Phase 6: Update Documentation
+### Phase 5: Update Documentation
 
 1. **Update problem creation documentation**
     - Update `.cursor/commands/problem-creation.md` to reflect new JSON structure
@@ -140,16 +134,18 @@ Update the cookiecutter template for `test_solution.py` to use a for loop approa
 
 ### Generation Code
 
-- Any code that creates the `test_cases` field (to be identified)
+- **No changes needed** - The `test_cases` field is created manually, not by automated code
+- The existing "list" pattern is already established and working correctly
+- Phase 4 removed after investigation showed no automated generation code exists
 
 ## Implementation Steps
 
 1. ✅ Create this plan document
-2. 🔄 Update cookiecutter template
-3. 🔄 Create migration script
-4. 🔄 Run migration on all JSON files
-5. 🔄 Test updated template generation
-6. 🔄 Validate all tests still work
+2. ✅ Update cookiecutter template
+3. ✅ Create migration script
+4. ✅ Run migration on all JSON files
+5. ✅ Test updated template generation
+6. ✅ Validate all tests still work
 7. 🔄 Update documentation (separate step - do not combine with implementation)
 
 ## Risk Mitigation

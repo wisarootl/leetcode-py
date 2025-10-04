@@ -5,7 +5,9 @@
     "problem_title": "LRU Cache",
     "difficulty": "Medium",
     "topics": "Hash Table, Linked List, Design, Doubly-Linked List",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.\n\nImplement the `LRUCache` class:\n\n- `LRUCache(int capacity)` Initialize the LRU cache with positive size capacity\n- `int get(int key)` Return the value of the key if the key exists, otherwise return -1\n- `void put(int key, int value)` Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key\n\nThe functions `get` and `put` must each run in `O(1)` average time complexity.",
     "_readme_examples": {
         "list": [
@@ -50,14 +52,31 @@
             }
         ]
     },
-    "_test_helper_methods": { "list": [] },
+    "_test_helper_methods": {
+        "list": []
+    },
     "_test_methods": {
         "list": [
             {
                 "name": "test_lru_cache",
                 "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
                 "parametrize": "operations, inputs, expected",
-                "test_cases": "[(['LRUCache', 'put', 'put', 'get', 'put', 'get', 'put', 'get', 'get', 'get'], [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]], [None, None, None, 1, None, -1, None, -1, 3, 4]), (['LRUCache', 'get', 'put', 'get', 'put', 'put', 'get', 'get'], [[2], [2], [2, 6], [1], [1, 5], [1, 2], [1], [2]], [None, -1, None, -1, None, None, 2, 6]), (['LRUCache', 'put', 'get', 'put', 'get', 'get'], [[1], [2, 1], [2], [3, 2], [2], [3]], [None, None, 1, None, -1, 2]), (['LRUCache', 'get'], [[1], [1]], [None, -1]), (['LRUCache', 'put', 'get'], [[1], [1, 100], [1]], [None, None, 100]), (['LRUCache', 'put', 'put', 'get', 'get'], [[2], [1, 1], [2, 2], [1], [2]], [None, None, None, 1, 2]), (['LRUCache', 'put', 'put', 'put', 'get', 'get', 'get'], [[2], [1, 1], [2, 2], [3, 3], [1], [2], [3]], [None, None, None, None, -1, 2, 3]), (['LRUCache', 'put', 'get', 'put', 'get', 'put', 'get'], [[3], [1, 1], [1], [2, 2], [2], [3, 3], [3]], [None, None, 1, None, 2, None, 3]), (['LRUCache', 'put', 'put', 'put', 'put', 'get', 'get'], [[3], [1, 1], [2, 2], [3, 3], [4, 4], [4], [3]], [None, None, None, None, None, 4, 3]), (['LRUCache', 'put', 'put', 'get', 'put', 'get', 'get'], [[2], [2, 1], [1, 1], [2], [4, 1], [1], [2]], [None, None, None, 1, None, -1, 1]), (['LRUCache', 'put', 'put', 'get', 'put', 'put', 'get'], [[2], [2, 1], [2, 2], [2], [1, 1], [4, 1], [2]], [None, None, None, 2, None, None, -1]), (['LRUCache', 'put', 'put', 'put', 'get', 'put', 'get', 'get', 'get', 'get'], [[3], [1, 1], [2, 2], [3, 3], [2], [4, 4], [1], [3], [4], [2]], [None, None, None, None, 2, None, -1, 3, 4, 2])]",
+                "test_cases": {
+                    "list": [
+                        "(['LRUCache', 'put', 'put', 'get', 'put', 'get', 'put', 'get', 'get', 'get'], [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]], [None, None, None, 1, None, -1, None, -1, 3, 4])",
+                        "(['LRUCache', 'get', 'put', 'get', 'put', 'put', 'get', 'get'], [[2], [2], [2, 6], [1], [1, 5], [1, 2], [1], [2]], [None, -1, None, -1, None, None, 2, 6])",
+                        "(['LRUCache', 'put', 'get', 'put', 'get', 'get'], [[1], [2, 1], [2], [3, 2], [2], [3]], [None, None, 1, None, -1, 2])",
+                        "(['LRUCache', 'get'], [[1], [1]], [None, -1])",
+                        "(['LRUCache', 'put', 'get'], [[1], [1, 100], [1]], [None, None, 100])",
+                        "(['LRUCache', 'put', 'put', 'get', 'get'], [[2], [1, 1], [2, 2], [1], [2]], [None, None, None, 1, 2])",
+                        "(['LRUCache', 'put', 'put', 'put', 'get', 'get', 'get'], [[2], [1, 1], [2, 2], [3, 3], [1], [2], [3]], [None, None, None, None, -1, 2, 3])",
+                        "(['LRUCache', 'put', 'get', 'put', 'get', 'put', 'get'], [[3], [1, 1], [1], [2, 2], [2], [3, 3], [3]], [None, None, 1, None, 2, None, 3])",
+                        "(['LRUCache', 'put', 'put', 'put', 'put', 'get', 'get'], [[3], [1, 1], [2, 2], [3, 3], [4, 4], [4], [3]], [None, None, None, None, None, 4, 3])",
+                        "(['LRUCache', 'put', 'put', 'get', 'put', 'get', 'get'], [[2], [2, 1], [1, 1], [2], [4, 1], [1], [2]], [None, None, None, 1, None, -1, 1])",
+                        "(['LRUCache', 'put', 'put', 'get', 'put', 'put', 'get'], [[2], [2, 1], [2, 2], [2], [1, 1], [4, 1], [2]], [None, None, None, 2, None, None, -1])",
+                        "(['LRUCache', 'put', 'put', 'put', 'get', 'put', 'get', 'get', 'get', 'get'], [[3], [1, 1], [2, 2], [3, 3], [2], [4, 4], [1], [3], [4], [2]], [None, None, None, None, 2, None, -1, 3, 4, 2])"
+                    ]
+                },
                 "body": "        result, _ = run_lru_cache(LRUCache, operations, inputs)\n        assert_lru_cache(result, expected)"
             }
         ]

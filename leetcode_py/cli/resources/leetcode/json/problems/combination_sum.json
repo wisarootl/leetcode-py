@@ -5,7 +5,9 @@
     "problem_title": "Combination Sum",
     "difficulty": "Medium",
     "topics": "Array, Backtracking",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given an array of **distinct** integers `candidates` and a target integer `target`, return *a list of all **unique combinations** of* `candidates` *where the chosen numbers sum to* `target`. You may return the combinations in **any order**.\n\nThe **same** number may be chosen from `candidates` an **unlimited number of times**. Two combinations are unique if the frequency of at least one of the chosen numbers is different.\n\nThe test cases are generated such that the number of unique combinations that sum up to `target` is less than `150` combinations for the given input.",
     "_readme_examples": {
         "list": [
@@ -15,7 +17,9 @@
             {
                 "content": "```\nInput: candidates = [2,3,5], target = 8\nOutput: [[2,2,2,2],[2,3,3],[3,5]]\n```"
             },
-            { "content": "```\nInput: candidates = [2], target = 1\nOutput: []\n```" }
+            {
+                "content": "```\nInput: candidates = [2], target = 1\nOutput: []\n```"
+            }
         ]
     },
     "readme_constraints": "- 1 <= candidates.length <= 30\n- 2 <= candidates[i] <= 40\n- All elements of candidates are distinct.\n- 1 <= target <= 40",
@@ -45,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -53,7 +63,22 @@
                 "name": "test_combination_sum",
                 "signature": "(self, candidates: list[int], target: int, expected: list[list[int]])",
                 "parametrize": "candidates, target, expected",
-                "test_cases": "[([2, 3, 6, 7], 7, [[2, 2, 3], [7]]), ([2, 3, 5], 8, [[2, 2, 2, 2], [2, 3, 3], [3, 5]]), ([2], 1, []), ([2, 3], 1, []), ([3, 5], 3, [[3]]), ([2, 4], 6, [[2, 2, 2], [2, 4]]), ([5], 5, [[5]]), ([2, 3, 4], 6, [[2, 2, 2], [2, 4], [3, 3]]), ([4, 2, 8], 8, [[2, 2, 2, 2], [2, 2, 4], [4, 4], [8]]), ([3, 4, 5], 9, [[3, 3, 3], [4, 5]]), ([6, 3, 2], 6, [[2, 2, 2], [3, 3], [6]]), ([2, 7], 9, [[2, 7]])]",
+                "test_cases": {
+                    "list": [
+                        "([2, 3, 6, 7], 7, [[2, 2, 3], [7]])",
+                        "([2, 3, 5], 8, [[2, 2, 2, 2], [2, 3, 3], [3, 5]])",
+                        "([2], 1, [])",
+                        "([2, 3], 1, [])",
+                        "([3, 5], 3, [[3]])",
+                        "([2, 4], 6, [[2, 2, 2], [2, 4]])",
+                        "([5], 5, [[5]])",
+                        "([2, 3, 4], 6, [[2, 2, 2], [2, 4], [3, 3]])",
+                        "([4, 2, 8], 8, [[2, 2, 2, 2], [2, 2, 4], [4, 4], [8]])",
+                        "([3, 4, 5], 9, [[3, 3, 3], [4, 5]])",
+                        "([6, 3, 2], 6, [[2, 2, 2], [3, 3], [6]])",
+                        "([2, 7], 9, [[2, 7]])"
+                    ]
+                },
                 "body": "        result = run_combination_sum(Solution, candidates, target)\n        assert_combination_sum(result, expected)"
             }
         ]

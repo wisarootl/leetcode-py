@@ -5,14 +5,18 @@
     "problem_title": "Alien Dictionary",
     "difficulty": "Hard",
     "topics": "Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "There is a new alien language that uses the English alphabet. However, the order among the letters is unknown to you.\n\nYou are given a list of strings `words` from the alien language's dictionary, where the strings in `words` are **sorted lexicographically** by the rules of this new language.\n\nReturn *a string of the unique letters in the new alien language sorted in **lexicographically increasing order** by the new language's rules. If there is no solution, return* `\"\"`*. If there are multiple solutions, return **any of them***.",
     "_readme_examples": {
         "list": [
             {
                 "content": "```\nInput: words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]\nOutput: \"wertf\"\n```"
             },
-            { "content": "```\nInput: words = [\"z\",\"x\"]\nOutput: \"zx\"\n```" },
+            {
+                "content": "```\nInput: words = [\"z\",\"x\"]\nOutput: \"zx\"\n```"
+            },
             {
                 "content": "```\nInput: words = [\"z\",\"x\",\"z\"]\nOutput: \"\"\nExplanation: The order is invalid, so return \"\".\n```"
             }
@@ -45,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -53,7 +63,28 @@
                 "name": "test_alien_order",
                 "signature": "(self, words: list[str], expected: str)",
                 "parametrize": "words, expected",
-                "test_cases": "[(['wrt', 'wrf', 'er', 'ett', 'rftt'], 'wertf'), (['z', 'x'], 'zx'), (['z', 'x', 'z'], ''), (['z', 'z'], 'z'), (['abc', 'ab'], ''), (['ab', 'adc'], 'abdc'), (['ac', 'ab', 'zc', 'zb'], 'acbz'), (['z'], 'z'), (['za', 'zb', 'ca', 'cb'], 'zcab'), (['zy', 'zx'], 'zyx'), (['a', 'b', 'ca', 'cc'], 'abc'), (['abc', 'bcd', 'cde'], 'abcde'), (['a', 'aa'], 'a'), (['ab', 'abc'], 'abc'), (['abc', 'ab'], ''), (['a', 'b', 'c', 'd'], 'abcd'), (['d', 'c', 'b', 'a'], 'dcba'), (['ac', 'ab', 'b'], 'acb')]",
+                "test_cases": {
+                    "list": [
+                        "(['wrt', 'wrf', 'er', 'ett', 'rftt'], 'wertf')",
+                        "(['z', 'x'], 'zx')",
+                        "(['z', 'x', 'z'], '')",
+                        "(['z', 'z'], 'z')",
+                        "(['abc', 'ab'], '')",
+                        "(['ab', 'adc'], 'abdc')",
+                        "(['ac', 'ab', 'zc', 'zb'], 'acbz')",
+                        "(['z'], 'z')",
+                        "(['za', 'zb', 'ca', 'cb'], 'zcab')",
+                        "(['zy', 'zx'], 'zyx')",
+                        "(['a', 'b', 'ca', 'cc'], 'abc')",
+                        "(['abc', 'bcd', 'cde'], 'abcde')",
+                        "(['a', 'aa'], 'a')",
+                        "(['ab', 'abc'], 'abc')",
+                        "(['abc', 'ab'], '')",
+                        "(['a', 'b', 'c', 'd'], 'abcd')",
+                        "(['d', 'c', 'b', 'a'], 'dcba')",
+                        "(['ac', 'ab', 'b'], 'acb')"
+                    ]
+                },
                 "body": "        result = run_alien_order(Solution, words)\n        assert_alien_order(result, expected)"
             }
         ]

@@ -5,7 +5,9 @@
     "problem_title": "Binary Tree Right Side View",
     "difficulty": "Medium",
     "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `root` of a binary tree, imagine yourself standing on the **right side** of it, return *the values of the nodes you can see ordered from top to bottom*.",
     "_readme_examples": {
         "list": [
@@ -15,8 +17,12 @@
             {
                 "content": "![Example 2](https://assets.leetcode.com/uploads/2024/11/24/tmpkpe40xeh-1.png)\n\n```\nInput: root = [1,2,3,4,null,null,null,5]\nOutput: [1,3,4,5]\n```"
             },
-            { "content": "```\nInput: root = [1,null,3]\nOutput: [1,3]\n```" },
-            { "content": "```\nInput: root = []\nOutput: []\n```" }
+            {
+                "content": "```\nInput: root = [1,null,3]\nOutput: [1,3]\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            }
         ]
     },
     "readme_constraints": "- The number of nodes in the tree is in the range `[0, 100]`.\n- `-100 <= Node.val <= 100`",
@@ -46,7 +52,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -54,7 +66,24 @@
                 "name": "test_right_side_view",
                 "signature": "(self, root_list: list[int | None], expected: list[int])",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([1, 2, 3, None, 5, None, 4], [1, 3, 4]), ([1, 2, 3, 4, None, None, None, 5], [1, 3, 4, 5]), ([1, None, 3], [1, 3]), ([], []), ([1], [1]), ([1, 2], [1, 2]), ([1, None, 2], [1, 2]), ([1, 2, 3], [1, 3]), ([1, 2, None, 4], [1, 2, 4]), ([1, 2, 3, 4, 5, 6, 7], [1, 3, 7]), ([1, 2, 3, None, None, 4, 5], [1, 3, 5]), ([5, 4, 6, None, None, None, 7], [5, 6, 7]), ([1, 2, 3, 4, 5, None, None, 8], [1, 3, 5, 8]), ([10, 5, 15, None, 6, 12, 20], [10, 15, 20])]",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, None, 5, None, 4], [1, 3, 4])",
+                        "([1, 2, 3, 4, None, None, None, 5], [1, 3, 4, 5])",
+                        "([1, None, 3], [1, 3])",
+                        "([], [])",
+                        "([1], [1])",
+                        "([1, 2], [1, 2])",
+                        "([1, None, 2], [1, 2])",
+                        "([1, 2, 3], [1, 3])",
+                        "([1, 2, None, 4], [1, 2, 4])",
+                        "([1, 2, 3, 4, 5, 6, 7], [1, 3, 7])",
+                        "([1, 2, 3, None, None, 4, 5], [1, 3, 5])",
+                        "([5, 4, 6, None, None, None, 7], [5, 6, 7])",
+                        "([1, 2, 3, 4, 5, None, None, 8], [1, 3, 5, 8])",
+                        "([10, 5, 15, None, 6, 12, 20], [10, 15, 20])"
+                    ]
+                },
                 "body": "        result = run_right_side_view(Solution, root_list)\n        assert_right_side_view(result, expected)"
             }
         ]

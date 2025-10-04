@@ -5,7 +5,9 @@
     "problem_title": "Decode Ways",
     "difficulty": "Medium",
     "topics": "String, Dynamic Programming",
-    "_tags": { "list": ["blind-75"] },
+    "_tags": {
+        "list": ["blind-75"]
+    },
     "readme_description": "You have intercepted a secret message encoded as a string of numbers. The message is decoded via the mapping: `\"1\" -> 'A', \"2\" -> 'B', ..., \"26\" -> 'Z'`. Given a string `s` containing only digits, return the number of ways to decode it. Return `0` if it cannot be decoded.",
     "_readme_examples": {
         "list": [
@@ -47,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -55,7 +63,23 @@
                 "name": "test_num_decodings",
                 "signature": "(self, s: str, expected: int)",
                 "parametrize": "s, expected",
-                "test_cases": "[('12', 2), ('226', 3), ('06', 0), ('0', 0), ('10', 1), ('27', 1), ('101', 1), ('100', 0), ('110', 1), ('2101', 1), ('2611055971756562', 4), ('1', 1), ('30', 0)]",
+                "test_cases": {
+                    "list": [
+                        "('12', 2)",
+                        "('226', 3)",
+                        "('06', 0)",
+                        "('0', 0)",
+                        "('10', 1)",
+                        "('27', 1)",
+                        "('101', 1)",
+                        "('100', 0)",
+                        "('110', 1)",
+                        "('2101', 1)",
+                        "('2611055971756562', 4)",
+                        "('1', 1)",
+                        "('30', 0)"
+                    ]
+                },
                 "body": "        result = run_num_decodings(Solution, s)\n        assert_num_decodings(result, expected)"
             }
         ]

@@ -5,7 +5,9 @@
     "problem_title": "Rotting Oranges",
     "difficulty": "Medium",
     "topics": "Array, Breadth-First Search, Matrix",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "You are given an `m x n` `grid` where each cell can have one of three values:\n\n- `0` representing an empty cell,\n- `1` representing a fresh orange, or\n- `2` representing a rotten orange.\n\nEvery minute, any fresh orange that is **4-directionally adjacent** to a rotten orange becomes rotten.\n\nReturn *the minimum number of minutes that must elapse until no cell has a fresh orange*. If *this is impossible, return* `-1`.",
     "_readme_examples": {
         "list": [
@@ -47,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -55,7 +63,21 @@
                 "name": "test_oranges_rotting",
                 "signature": "(self, grid: list[list[int]], expected: int)",
                 "parametrize": "grid, expected",
-                "test_cases": "[([[2, 1, 1], [1, 1, 0], [0, 1, 1]], 4), ([[2, 1, 1], [0, 1, 1], [1, 0, 1]], -1), ([[0, 2]], 0), ([[0]], 0), ([[1]], -1), ([[2]], 0), ([[1, 2]], 1), ([[2, 1]], 1), ([[0, 1, 2]], 1), ([[2, 2], [1, 1], [0, 0]], 1), ([[2, 1, 1], [1, 1, 1], [0, 1, 2]], 2)]",
+                "test_cases": {
+                    "list": [
+                        "([[2, 1, 1], [1, 1, 0], [0, 1, 1]], 4)",
+                        "([[2, 1, 1], [0, 1, 1], [1, 0, 1]], -1)",
+                        "([[0, 2]], 0)",
+                        "([[0]], 0)",
+                        "([[1]], -1)",
+                        "([[2]], 0)",
+                        "([[1, 2]], 1)",
+                        "([[2, 1]], 1)",
+                        "([[0, 1, 2]], 1)",
+                        "([[2, 2], [1, 1], [0, 0]], 1)",
+                        "([[2, 1, 1], [1, 1, 1], [0, 1, 2]], 2)"
+                    ]
+                },
                 "body": "        result = run_oranges_rotting(Solution, grid)\n        assert_oranges_rotting(result, expected)"
             }
         ]
