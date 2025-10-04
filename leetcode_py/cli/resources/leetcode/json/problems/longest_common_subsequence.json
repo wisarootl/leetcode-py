@@ -1,0 +1,88 @@
+{
+    "problem_name": "longest_common_subsequence",
+    "solution_class_name": "Solution",
+    "problem_number": "1143",
+    "problem_title": "Longest Common Subsequence",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Given two strings `text1` and `text2`, return *the length of their longest **common subsequence**. *If there is no **common subsequence**, return `0`.\n\nA **subsequence** of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\n- For example, `\"ace\"` is a subsequence of `\"abcde\"`.\n\nA **common subsequence** of two strings is a subsequence that is common to both strings.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: text1 = \"abcde\", text2 = \"ace\" \nOutput: 3  \nExplanation: The longest common subsequence is \"ace\" and its length is 3.\n```"
+            },
+            {
+                "content": "```\nInput: text1 = \"abc\", text2 = \"abc\"\nOutput: 3\nExplanation: The longest common subsequence is \"abc\" and its length is 3.\n```"
+            },
+            {
+                "content": "```\nInput: text1 = \"abc\", text2 = \"def\"\nOutput: 0\nExplanation: There is no such common subsequence, so the result is 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= text1.length, text2.length <= 1000\n- text1 and text2 consist of only lowercase English characters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_common_subsequence",
+    "helpers_run_signature": "(solution_class: type, text1: str, text2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_common_subsequence(text1, text2)",
+    "helpers_assert_name": "longest_common_subsequence",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_common_subsequence, run_longest_common_subsequence\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestCommonSubsequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_common_subsequence",
+                "signature": "(self, text1: str, text2: str) -> int",
+                "body": "        # TODO: Implement longest_common_subsequence\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_common_subsequence",
+                "signature": "(self, text1: str, text2: str, expected: int)",
+                "parametrize": "text1, text2, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcde', 'ace', 3)",
+                        "('abc', 'abc', 3)",
+                        "('abc', 'def', 0)",
+                        "('', '', 0)",
+                        "('a', 'a', 1)",
+                        "('a', 'b', 0)",
+                        "('ab', 'ba', 1)",
+                        "('abc', 'bca', 2)",
+                        "('abcdef', 'ace', 3)",
+                        "('abcdef', 'adf', 3)",
+                        "('abcdef', 'xyz', 0)",
+                        "('abcdef', 'abcdef', 6)",
+                        "('abcdef', 'fedcba', 1)",
+                        "('abcdef', 'aceg', 3)",
+                        "('abcdef', 'bdf', 3)",
+                        "('abcdef', 'bdfh', 3)",
+                        "('abcdef', 'bdfhj', 3)",
+                        "('abcdef', 'bdfhjl', 3)"
+                    ]
+                },
+                "body": "        result = run_longest_common_subsequence(Solution, text1, text2)\n        assert_longest_common_subsequence(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_common_subsequence, assert_longest_common_subsequence\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntext1 = 'abcde'\ntext2 = 'ace'\nexpected = 3",
+    "playground_run": "result = run_longest_common_subsequence(Solution, text1, text2)\nresult",
+    "playground_assert": "assert_longest_common_subsequence(result, expected)"
+}

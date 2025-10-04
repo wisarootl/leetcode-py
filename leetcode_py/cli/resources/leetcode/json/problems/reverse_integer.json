@@ -1,0 +1,84 @@
+{
+    "problem_name": "reverse_integer",
+    "solution_class_name": "Solution",
+    "problem_number": "7",
+    "problem_title": "Reverse Integer",
+    "difficulty": "Medium",
+    "topics": "Math",
+    "_tags": { "list": ["algo-master-75"] },
+    "readme_description": "Given a signed 32-bit integer `x`, return `x` *with its digits reversed*. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-2^31, 2^31 - 1]`, then return `0`.\n\n**Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: x = 123\nOutput: 321\n```" },
+            { "content": "```\nInput: x = -123\nOutput: -321\n```" },
+            { "content": "```\nInput: x = 120\nOutput: 21\n```" }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= x <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse",
+    "helpers_run_signature": "(solution_class: type, x: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse(x)",
+    "helpers_assert_name": "reverse",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse, run_reverse\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseInteger",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse",
+                "signature": "(self, x: int) -> int",
+                "body": "        # TODO: Implement reverse\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse",
+                "signature": "(self, x: int, expected: int)",
+                "parametrize": "x, expected",
+                "test_cases": {
+                    "list": [
+                        "(123, 321)",
+                        "(-123, -321)",
+                        "(120, 21)",
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(-1, -1)",
+                        "(10, 1)",
+                        "(-10, -1)",
+                        "(100, 1)",
+                        "(-100, -1)",
+                        "(1534236469, 0)",
+                        "(-1534236469, 0)",
+                        "(2147483647, 0)",
+                        "(-2147483648, 0)",
+                        "(1463847412, 2147483641)",
+                        "(-1463847412, -2147483641)",
+                        "(123456789, 987654321)",
+                        "(-123456789, -987654321)",
+                        "(1000000003, 0)",
+                        "(-1000000003, 0)"
+                    ]
+                },
+                "body": "        result = run_reverse(Solution, x)\n        assert_reverse(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse, assert_reverse\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 123\nexpected = 321",
+    "playground_run": "result = run_reverse(Solution, x)\nresult",
+    "playground_assert": "assert_reverse(result, expected)"
+}

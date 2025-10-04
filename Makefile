@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= palindromic_substrings
+PROBLEM ?= reverse_nodes_in_k_group
 FORCE ?= 0
 COMMA := ,
 
