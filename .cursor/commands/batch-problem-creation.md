@@ -53,10 +53,8 @@ Execute complete workflow from `.cursor/commands/problem-creation.md`:
 
 **CRITICAL**: Before running quality assurance, implement the optimal solution:
 
-1. **Implement solution**: Write the optimal algorithm in `solution.py`
-2. **Add multiple approaches**: Include alternative solutions (e.g., Solution, SolutionOptimized)
-3. **Use parametrized testing**: Ensure all solution approaches are tested
-4. **Verify correctness**: Solution must handle all test cases correctly
+1. **Implement solution**: Write the optimal algorithm in `solution.py` - implement only 1 solution in the `Solution` class, no need to add more classes
+2. **Verify correctness**: Solution must handle all test cases correctly
 
 #### 2.4: Quality Assurance & Reproducibility Verification
 

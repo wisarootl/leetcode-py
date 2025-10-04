@@ -29,7 +29,7 @@
     "helpers_run_name": "missing_number",
     "helpers_run_signature": "(solution_class: type, nums: list[int])",
     "helpers_run_body": "    implementation = solution_class()\n    return implementation.missing_number(nums)",
-    "helpers_assert_name": "assert_missing_number",
+    "helpers_assert_name": "missing_number",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
