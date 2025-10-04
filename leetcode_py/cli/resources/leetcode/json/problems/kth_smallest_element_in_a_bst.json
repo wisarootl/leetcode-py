@@ -5,7 +5,9 @@
     "problem_title": "Kth Smallest Element in a BST",
     "difficulty": "Medium",
     "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `root` of a binary search tree, and an integer `k`, return the `k`th smallest value (1-indexed) of all the values of the nodes in the tree.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,22 @@
                 "name": "test_kth_smallest",
                 "signature": "(self, root_list: list[int | None], k: int, expected: int)",
                 "parametrize": "root_list, k, expected",
-                "test_cases": "[([3, 1, 4, None, 2], 1, 1), ([5, 3, 6, 2, 4, None, None, 1], 3, 3), ([1], 1, 1), ([2, 1, 3], 2, 2), ([4, 2, 6, 1, 3, 5, 7], 4, 4), ([1, None, 2], 2, 2), ([5, 3, 6, 2, 4, None, None, 1], 1, 1), ([5, 3, 6, 2, 4, None, None, 1], 4, 4), ([10, 5, 15, 3, 7, 12, 20], 1, 3), ([10, 5, 15, 3, 7, 12, 20], 7, 20), ([1, None, 2, None, 3], 3, 3), ([3, 1, 4, None, 2], 4, 4)]",
+                "test_cases": {
+                    "list": [
+                        "([3, 1, 4, None, 2], 1, 1)",
+                        "([5, 3, 6, 2, 4, None, None, 1], 3, 3)",
+                        "([1], 1, 1)",
+                        "([2, 1, 3], 2, 2)",
+                        "([4, 2, 6, 1, 3, 5, 7], 4, 4)",
+                        "([1, None, 2], 2, 2)",
+                        "([5, 3, 6, 2, 4, None, None, 1], 1, 1)",
+                        "([5, 3, 6, 2, 4, None, None, 1], 4, 4)",
+                        "([10, 5, 15, 3, 7, 12, 20], 1, 3)",
+                        "([10, 5, 15, 3, 7, 12, 20], 7, 20)",
+                        "([1, None, 2, None, 3], 3, 3)",
+                        "([3, 1, 4, None, 2], 4, 4)"
+                    ]
+                },
                 "body": "        result = run_kth_smallest(Solution, root_list, k)\n        assert_kth_smallest(result, expected)"
             }
         ]

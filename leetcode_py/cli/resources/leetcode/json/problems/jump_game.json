@@ -5,7 +5,9 @@
     "problem_title": "Jump Game",
     "difficulty": "Medium",
     "topics": "Array, Dynamic Programming, Greedy",
-    "_tags": { "list": ["blind-75"] },
+    "_tags": {
+        "list": ["blind-75"]
+    },
     "readme_description": "You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.\n\nReturn `true` *if you can reach the last index, or* `false` *otherwise*.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,25 @@
                 "name": "test_can_jump",
                 "signature": "(self, nums: list[int], expected: bool)",
                 "parametrize": "nums, expected",
-                "test_cases": "[([2, 3, 1, 1, 4], True), ([3, 2, 1, 0, 4], False), ([0], True), ([1], True), ([1, 0], True), ([0, 1], False), ([2, 0, 0], True), ([1, 1, 1, 0], True), ([3, 0, 8, 2, 0, 0, 1], True), ([1, 0, 1, 0], False), ([2, 5, 0, 0], True), ([1, 2, 3], True), ([5, 4, 3, 2, 1, 0, 0], False), ([1, 1, 2, 2, 0, 1, 1], True), ([4, 2, 0, 0, 1, 1, 4, 4, 4, 0, 4, 0], True)]",
+                "test_cases": {
+                    "list": [
+                        "([2, 3, 1, 1, 4], True)",
+                        "([3, 2, 1, 0, 4], False)",
+                        "([0], True)",
+                        "([1], True)",
+                        "([1, 0], True)",
+                        "([0, 1], False)",
+                        "([2, 0, 0], True)",
+                        "([1, 1, 1, 0], True)",
+                        "([3, 0, 8, 2, 0, 0, 1], True)",
+                        "([1, 0, 1, 0], False)",
+                        "([2, 5, 0, 0], True)",
+                        "([1, 2, 3], True)",
+                        "([5, 4, 3, 2, 1, 0, 0], False)",
+                        "([1, 1, 2, 2, 0, 1, 1], True)",
+                        "([4, 2, 0, 0, 1, 1, 4, 4, 4, 0, 4, 0], True)"
+                    ]
+                },
                 "body": "        result = run_can_jump(Solution, nums)\n        assert_can_jump(result, expected)"
             }
         ]

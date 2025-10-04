@@ -5,7 +5,9 @@
     "problem_title": "Top K Frequent Words",
     "difficulty": "Medium",
     "topics": "Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Given an array of strings `words` and an integer `k`, return *the* `k` *most frequent strings*.\n\nReturn the answer **sorted** by **the frequency** from highest to lowest. Sort the words with the same frequency by their **lexicographical order**.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,28 @@
                 "name": "test_top_k_frequent",
                 "signature": "(self, words: list[str], k: int, expected: list[str])",
                 "parametrize": "words, k, expected",
-                "test_cases": "[(['i', 'love', 'leetcode', 'i', 'love', 'coding'], 2, ['i', 'love']), (['the', 'day', 'is', 'sunny', 'the', 'the', 'the', 'sunny', 'is', 'is'], 4, ['the', 'is', 'sunny', 'day']), (['a', 'aa', 'aaa'], 1, ['a']), (['a', 'aa', 'aaa'], 2, ['a', 'aa']), (['a', 'aa', 'aaa'], 3, ['a', 'aa', 'aaa']), (['apple', 'banana', 'apple'], 1, ['apple']), (['apple', 'banana', 'apple'], 2, ['apple', 'banana']), (['word', 'word', 'word'], 1, ['word']), (['a', 'b', 'c', 'd', 'e'], 3, ['a', 'b', 'c']), (['hello', 'world', 'hello'], 2, ['hello', 'world']), (['cat', 'dog', 'cat', 'dog', 'bird'], 2, ['cat', 'dog']), (['x', 'y', 'z', 'x', 'y', 'x'], 2, ['x', 'y']), (['test'], 1, ['test']), (['a', 'b', 'a', 'c', 'b', 'a'], 3, ['a', 'b', 'c']), (['python', 'java', 'python', 'cpp', 'java', 'python'], 3, ['python', 'java', 'cpp']), (['one', 'two', 'three', 'one', 'two', 'one'], 2, ['one', 'two']), (['red', 'blue', 'green', 'red', 'blue', 'red'], 3, ['red', 'blue', 'green']), (['same', 'same', 'same', 'same'], 1, ['same'])]",
+                "test_cases": {
+                    "list": [
+                        "(['i', 'love', 'leetcode', 'i', 'love', 'coding'], 2, ['i', 'love'])",
+                        "(['the', 'day', 'is', 'sunny', 'the', 'the', 'the', 'sunny', 'is', 'is'], 4, ['the', 'is', 'sunny', 'day'])",
+                        "(['a', 'aa', 'aaa'], 1, ['a'])",
+                        "(['a', 'aa', 'aaa'], 2, ['a', 'aa'])",
+                        "(['a', 'aa', 'aaa'], 3, ['a', 'aa', 'aaa'])",
+                        "(['apple', 'banana', 'apple'], 1, ['apple'])",
+                        "(['apple', 'banana', 'apple'], 2, ['apple', 'banana'])",
+                        "(['word', 'word', 'word'], 1, ['word'])",
+                        "(['a', 'b', 'c', 'd', 'e'], 3, ['a', 'b', 'c'])",
+                        "(['hello', 'world', 'hello'], 2, ['hello', 'world'])",
+                        "(['cat', 'dog', 'cat', 'dog', 'bird'], 2, ['cat', 'dog'])",
+                        "(['x', 'y', 'z', 'x', 'y', 'x'], 2, ['x', 'y'])",
+                        "(['test'], 1, ['test'])",
+                        "(['a', 'b', 'a', 'c', 'b', 'a'], 3, ['a', 'b', 'c'])",
+                        "(['python', 'java', 'python', 'cpp', 'java', 'python'], 3, ['python', 'java', 'cpp'])",
+                        "(['one', 'two', 'three', 'one', 'two', 'one'], 2, ['one', 'two'])",
+                        "(['red', 'blue', 'green', 'red', 'blue', 'red'], 3, ['red', 'blue', 'green'])",
+                        "(['same', 'same', 'same', 'same'], 1, ['same'])"
+                    ]
+                },
                 "body": "        result = run_top_k_frequent(Solution, words, k)\n        assert_top_k_frequent(result, expected)"
             }
         ]

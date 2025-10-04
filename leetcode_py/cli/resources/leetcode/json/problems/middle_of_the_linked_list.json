@@ -5,7 +5,9 @@
     "problem_title": "Middle of the Linked List",
     "difficulty": "Easy",
     "topics": "Linked List, Two Pointers",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `head` of a singly linked list, return *the middle node of the linked list*.\n\nIf there are two middle nodes, return **the second middle** node.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,24 @@
                 "name": "test_middle_node",
                 "signature": "(self, head_list: list[int], expected_list: list[int])",
                 "parametrize": "head_list, expected_list",
-                "test_cases": "[([1, 2, 3, 4, 5], [3, 4, 5]), ([1, 2, 3, 4, 5, 6], [4, 5, 6]), ([1], [1]), ([1, 2], [2]), ([1, 2, 3], [2, 3]), ([1, 2, 3, 4], [3, 4]), ([10, 20, 30, 40, 50, 60, 70], [40, 50, 60, 70]), ([5, 10], [10]), ([1, 3, 5, 7, 9], [5, 7, 9]), ([2, 4, 6, 8, 10, 12], [8, 10, 12]), ([100], [100]), ([7, 14, 21], [14, 21]), ([11, 22, 33, 44], [33, 44]), ([1, 1, 1, 1, 1], [1, 1, 1])]",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5], [3, 4, 5])",
+                        "([1, 2, 3, 4, 5, 6], [4, 5, 6])",
+                        "([1], [1])",
+                        "([1, 2], [2])",
+                        "([1, 2, 3], [2, 3])",
+                        "([1, 2, 3, 4], [3, 4])",
+                        "([10, 20, 30, 40, 50, 60, 70], [40, 50, 60, 70])",
+                        "([5, 10], [10])",
+                        "([1, 3, 5, 7, 9], [5, 7, 9])",
+                        "([2, 4, 6, 8, 10, 12], [8, 10, 12])",
+                        "([100], [100])",
+                        "([7, 14, 21], [14, 21])",
+                        "([11, 22, 33, 44], [33, 44])",
+                        "([1, 1, 1, 1, 1], [1, 1, 1])"
+                    ]
+                },
                 "body": "        result = run_middle_node(Solution, head_list)\n        assert_middle_node(result, expected_list)"
             }
         ]

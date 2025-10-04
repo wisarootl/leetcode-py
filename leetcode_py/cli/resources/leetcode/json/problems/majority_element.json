@@ -5,12 +5,18 @@
     "problem_title": "Majority Element",
     "difficulty": "Easy",
     "topics": "Array, Hash Table, Divide and Conquer, Sorting, Counting",
-    "_tags": { "list": ["grind-75"] },
-    "readme_description": "Given an array `nums` of size `n`, return the majority element.\n\nThe majority element is the element that appears more than `\u230an / 2\u230b` times. You may assume that the majority element always exists in the array.",
+    "_tags": {
+        "list": ["grind-75"]
+    },
+    "readme_description": "Given an array `nums` of size `n`, return the majority element.\n\nThe majority element is the element that appears more than `⌊n / 2⌋` times. You may assume that the majority element always exists in the array.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: nums = [3,2,3]\nOutput: 3\n```" },
-            { "content": "```\nInput: nums = [2,2,1,1,1,2,2]\nOutput: 2\n```" }
+            {
+                "content": "```\nInput: nums = [3,2,3]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,2,1,1,1,2,2]\nOutput: 2\n```"
+            }
         ]
     },
     "readme_constraints": "- n == nums.length\n- 1 <= n <= 5 * 10^4\n- -10^9 <= nums[i] <= 10^9",
@@ -40,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -48,7 +60,25 @@
                 "name": "test_majority_element",
                 "signature": "(self, nums: list[int], expected: int)",
                 "parametrize": "nums, expected",
-                "test_cases": "[([3,2,3], 3), ([2,2,1,1,1,2,2], 2), ([1], 1), ([1,1,2], 1), ([2,2,2,1,1], 2), ([5,5,5,5,1,2,3], 5), ([1,2,3,4,4,4,4], 4), ([0,0,0], 0), ([-1,-1,-1,1,1], -1), ([100,100,100,99,99], 100), ([7,7,7,7,7,8,8], 7), ([1,1,1,1,1,1,2,2,2], 1), ([9,9,9,9,8,8,8], 9), ([-5,-5,-5,-4,-4], -5), ([1000,1000,999,999,1000], 1000)]",
+                "test_cases": {
+                    "list": [
+                        "([3,2,3], 3)",
+                        "([2,2,1,1,1,2,2], 2)",
+                        "([1], 1)",
+                        "([1,1,2], 1)",
+                        "([2,2,2,1,1], 2)",
+                        "([5,5,5,5,1,2,3], 5)",
+                        "([1,2,3,4,4,4,4], 4)",
+                        "([0,0,0], 0)",
+                        "([-1,-1,-1,1,1], -1)",
+                        "([100,100,100,99,99], 100)",
+                        "([7,7,7,7,7,8,8], 7)",
+                        "([1,1,1,1,1,1,2,2,2], 1)",
+                        "([9,9,9,9,8,8,8], 9)",
+                        "([-5,-5,-5,-4,-4], -5)",
+                        "([1000,1000,999,999,1000], 1000)"
+                    ]
+                },
                 "body": "        result = run_majority_element(Solution, nums)\n        assert_majority_element(result, expected)"
             }
         ]

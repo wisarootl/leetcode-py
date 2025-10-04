@@ -5,7 +5,9 @@
     "problem_title": "Flood Fill",
     "difficulty": "Easy",
     "topics": "Array, Depth-First Search, Breadth-First Search, Matrix",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "You are given an image represented by an `m x n` grid of integers `image`, where `image[i][j]` represents the pixel value of the image. You are also given three integers `sr`, `sc`, and `color`. Your task is to perform a **flood fill** on the image starting from the pixel `image[sr][sc]`.\n\nTo perform a **flood fill**:\n\n1. Begin with the starting pixel and change its color to `color`.\n2. Perform the same process for each pixel that is **directly adjacent** (pixels that share a side with the original pixel, either horizontally or vertically) and shares the **same color** as the starting pixel.\n3. Keep **repeating** this process by checking neighboring pixels of the *updated* pixels and modifying their color if it matches the original color of the starting pixel.\n4. The process **stops** when there are **no more** adjacent pixels of the original color to update.\n\nReturn the **modified** image after performing the flood fill.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,22 @@
                 "name": "test_flood_fill",
                 "signature": "(self, image: list[list[int]], sr: int, sc: int, color: int, expected: list[list[int]])",
                 "parametrize": "image, sr, sc, color, expected",
-                "test_cases": "[([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2, [[2, 2, 2], [2, 2, 0], [2, 0, 1]]), ([[0, 0, 0], [0, 0, 0]], 0, 0, 0, [[0, 0, 0], [0, 0, 0]]), ([[0, 0, 0], [0, 1, 1]], 1, 1, 1, [[0, 0, 0], [0, 1, 1]]), ([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 1, [[1, 1, 1], [1, 1, 0], [1, 0, 1]]), ([[1]], 0, 0, 2, [[2]]), ([[0, 1], [1, 0]], 0, 0, 3, [[3, 1], [1, 0]]), ([[1, 1], [1, 1]], 0, 0, 2, [[2, 2], [2, 2]]), ([[0, 1, 0], [1, 0, 1], [0, 1, 0]], 1, 1, 2, [[0, 1, 0], [1, 2, 1], [0, 1, 0]]), ([[2, 2, 2], [2, 2, 0], [2, 0, 1]], 0, 0, 3, [[3, 3, 3], [3, 3, 0], [3, 0, 1]]), ([[1, 0, 1], [0, 1, 0], [1, 0, 1]], 1, 1, 5, [[1, 0, 1], [0, 5, 0], [1, 0, 1]]), ([[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]], 1, 1, 2, [[0, 0, 0, 0], [0, 2, 2, 0], [0, 2, 2, 0], [0, 0, 0, 0]]), ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, 1, 0, [[1, 2, 3], [4, 0, 6], [7, 8, 9]])]",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2, [[2, 2, 2], [2, 2, 0], [2, 0, 1]])",
+                        "([[0, 0, 0], [0, 0, 0]], 0, 0, 0, [[0, 0, 0], [0, 0, 0]])",
+                        "([[0, 0, 0], [0, 1, 1]], 1, 1, 1, [[0, 0, 0], [0, 1, 1]])",
+                        "([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 1, [[1, 1, 1], [1, 1, 0], [1, 0, 1]])",
+                        "([[1]], 0, 0, 2, [[2]])",
+                        "([[0, 1], [1, 0]], 0, 0, 3, [[3, 1], [1, 0]])",
+                        "([[1, 1], [1, 1]], 0, 0, 2, [[2, 2], [2, 2]])",
+                        "([[0, 1, 0], [1, 0, 1], [0, 1, 0]], 1, 1, 2, [[0, 1, 0], [1, 2, 1], [0, 1, 0]])",
+                        "([[2, 2, 2], [2, 2, 0], [2, 0, 1]], 0, 0, 3, [[3, 3, 3], [3, 3, 0], [3, 0, 1]])",
+                        "([[1, 0, 1], [0, 1, 0], [1, 0, 1]], 1, 1, 5, [[1, 0, 1], [0, 5, 0], [1, 0, 1]])",
+                        "([[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]], 1, 1, 2, [[0, 0, 0, 0], [0, 2, 2, 0], [0, 2, 2, 0], [0, 0, 0, 0]])",
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, 1, 0, [[1, 2, 3], [4, 0, 6], [7, 8, 9]])"
+                    ]
+                },
                 "body": "        result = run_flood_fill(Solution, image, sr, sc, color)\n        assert_flood_fill(result, expected)"
             }
         ]

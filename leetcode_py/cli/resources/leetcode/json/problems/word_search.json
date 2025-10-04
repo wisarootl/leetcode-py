@@ -5,7 +5,9 @@
     "problem_title": "Word Search",
     "difficulty": "Medium",
     "topics": "Array, String, Backtracking, Depth-First Search, Matrix",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given an `m x n` grid of characters `board` and a string `word`, return `true` *if* `word` *exists in the grid*.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.",
     "_readme_examples": {
         "list": [
@@ -47,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -55,7 +63,22 @@
                 "name": "test_exist",
                 "signature": "(self, board: list[list[str]], word: str, expected: bool)",
                 "parametrize": "board, word, expected",
-                "test_cases": "[([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCCED', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SEE', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCB', False), ([['A']], 'A', True), ([['A']], 'B', False), ([['A', 'B'], ['C', 'D']], 'ACDB', True), ([['A', 'B'], ['C', 'D']], 'ABDC', True), ([['A', 'B'], ['C', 'D']], 'ABCD', False), ([['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], 'AAB', True), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCESEEEFS', False), ([['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A']], 'AAAAAAAAAAAAAAB', False), ([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SFCS', True)]",
+                "test_cases": {
+                    "list": [
+                        "([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCCED', True)",
+                        "([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SEE', True)",
+                        "([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCB', False)",
+                        "([['A']], 'A', True)",
+                        "([['A']], 'B', False)",
+                        "([['A', 'B'], ['C', 'D']], 'ACDB', True)",
+                        "([['A', 'B'], ['C', 'D']], 'ABDC', True)",
+                        "([['A', 'B'], ['C', 'D']], 'ABCD', False)",
+                        "([['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], 'AAB', True)",
+                        "([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'ABCESEEEFS', False)",
+                        "([['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A'], ['A', 'A', 'A', 'A', 'A', 'A']], 'AAAAAAAAAAAAAAB', False)",
+                        "([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], 'SFCS', True)"
+                    ]
+                },
                 "body": "        result = run_exist(Solution, board, word)\n        assert_exist(result, expected)"
             }
         ]

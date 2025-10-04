@@ -5,15 +5,21 @@
     "problem_title": "Two Sum",
     "difficulty": "Easy",
     "topics": "Array, Hash Table",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.",
     "_readme_examples": {
         "list": [
             {
                 "content": "```\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\n```\n**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1]."
             },
-            { "content": "```\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n```" },
-            { "content": "```\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n```" }
+            {
+                "content": "```\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n```"
+            }
         ]
     },
     "readme_constraints": "- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists.",
@@ -43,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -51,7 +63,28 @@
                 "name": "test_two_sum",
                 "signature": "(self, nums: list[int], target: int, expected: list[int])",
                 "parametrize": "nums, target, expected",
-                "test_cases": "[([2, 7, 11, 15], 9, [0, 1]), ([3, 2, 4], 6, [1, 2]), ([3, 3], 6, [0, 1]), ([2, 5, 5, 11], 10, [1, 2]), ([1, 2, 3, 4, 5], 8, [2, 4]), ([0, 4, 3, 0], 0, [0, 3]), ([-1, -2, -3, -4, -5], -8, [2, 4]), ([1, 3, 4, 2], 6, [2, 3]), ([5, 75, 25], 100, [1, 2]), ([-3, 4, 3, 90], 0, [0, 2]), ([1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 2], 6, [5, 11]), ([2, 1, 9, 4, 4, 56, 90, 3], 8, [3, 4]), ([89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], 185, [3, 4]), ([-1000000000, 1000000000], 0, [0, 1]), ([0, 1], 1, [0, 1]), ([1, 2], 5, []), ([3, 5, 7], 1, []), ([10, 20, 30], 15, [])]",
+                "test_cases": {
+                    "list": [
+                        "([2, 7, 11, 15], 9, [0, 1])",
+                        "([3, 2, 4], 6, [1, 2])",
+                        "([3, 3], 6, [0, 1])",
+                        "([2, 5, 5, 11], 10, [1, 2])",
+                        "([1, 2, 3, 4, 5], 8, [2, 4])",
+                        "([0, 4, 3, 0], 0, [0, 3])",
+                        "([-1, -2, -3, -4, -5], -8, [2, 4])",
+                        "([1, 3, 4, 2], 6, [2, 3])",
+                        "([5, 75, 25], 100, [1, 2])",
+                        "([-3, 4, 3, 90], 0, [0, 2])",
+                        "([1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 2], 6, [5, 11])",
+                        "([2, 1, 9, 4, 4, 56, 90, 3], 8, [3, 4])",
+                        "([89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], 185, [3, 4])",
+                        "([-1000000000, 1000000000], 0, [0, 1])",
+                        "([0, 1], 1, [0, 1])",
+                        "([1, 2], 5, [])",
+                        "([3, 5, 7], 1, [])",
+                        "([10, 20, 30], 15, [])"
+                    ]
+                },
                 "body": "        result = run_two_sum(Solution, nums, target)\n        assert_two_sum(result, expected)"
             }
         ]

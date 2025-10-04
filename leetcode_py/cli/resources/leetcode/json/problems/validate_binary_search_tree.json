@@ -5,7 +5,9 @@
     "problem_title": "Validate Binary Search Tree",
     "difficulty": "Medium",
     "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).\n\nA **valid BST** is defined as follows:\n\n- The left subtree of a node contains only nodes with keys **strictly less than** the node's key.\n- The right subtree of a node contains only nodes with keys **strictly greater than** the node's key.\n- Both the left and right subtrees must also be binary search trees.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,22 @@
                 "name": "test_is_valid_bst",
                 "signature": "(self, root_list: list[int | None], expected: bool)",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([2, 1, 3], True), ([5, 1, 4, None, None, 3, 6], False), ([1], True), ([1, 1], False), ([10, 5, 15, None, None, 6, 20], False), ([2, 1, 3, None, None, None, 4], True), ([0], True), ([2147483647], True), ([-2147483648], True), ([5, 4, 6, None, None, 3, 7], False), ([10, 5, 15, None, None, 12, 20, None, None, None, None, 6, 25], True), ([3, 1, 5, 0, 2, 4, 6], True)]",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 3], True)",
+                        "([5, 1, 4, None, None, 3, 6], False)",
+                        "([1], True)",
+                        "([1, 1], False)",
+                        "([10, 5, 15, None, None, 6, 20], False)",
+                        "([2, 1, 3, None, None, None, 4], True)",
+                        "([0], True)",
+                        "([2147483647], True)",
+                        "([-2147483648], True)",
+                        "([5, 4, 6, None, None, 3, 7], False)",
+                        "([10, 5, 15, None, None, 12, 20, None, None, None, None, 6, 25], True)",
+                        "([3, 1, 5, 0, 2, 4, 6], True)"
+                    ]
+                },
                 "body": "        result = run_is_valid_bst(Solution, root_list)\n        assert_is_valid_bst(result, expected)"
             }
         ]

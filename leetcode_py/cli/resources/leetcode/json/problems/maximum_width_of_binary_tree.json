@@ -5,7 +5,9 @@
     "problem_title": "Maximum Width of Binary Tree",
     "difficulty": "Medium",
     "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Given the `root` of a binary tree, return *the **maximum width** of the given tree*.\n\nThe **maximum width** of a tree is the maximum **width** among all levels.\n\nThe **width** of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), where the null nodes between the end-nodes that would be present in a complete binary tree extending down to that level are also counted into the length calculation.\n\nIt is **guaranteed** that the answer will in the range of a **32-bit** signed integer.",
     "_readme_examples": {
         "list": [
@@ -47,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -55,7 +63,26 @@
                 "name": "test_width_of_binary_tree",
                 "signature": "(self, root_list: list[int | None], expected: int)",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([1, 3, 2, 5, 3, None, 9], 4), ([1, 3, 2, 5, None, None, 9, 6, None, 7], 7), ([1, 3, 2, 5], 2), ([1], 1), ([1, 2], 1), ([1, None, 2], 1), ([1, 2, 3], 2), ([1, 2, 3, 4], 2), ([1, 2, 3, 4, 5], 2), ([1, 2, 3, None, None, 4, 5], 2), ([1, 2, 3, None, 4, None, 5], 3), ([1, 2, 3, 4, None, None, 5, 6], 4), ([1, None, 2, None, 3, None, 4], 1), ([1, 2, None, 3, None, 4], 1), ([1, 2, 3, 4, 5, 6, 7], 4), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 8)]",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, 2, 5, 3, None, 9], 4)",
+                        "([1, 3, 2, 5, None, None, 9, 6, None, 7], 7)",
+                        "([1, 3, 2, 5], 2)",
+                        "([1], 1)",
+                        "([1, 2], 1)",
+                        "([1, None, 2], 1)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, 3, 4], 2)",
+                        "([1, 2, 3, 4, 5], 2)",
+                        "([1, 2, 3, None, None, 4, 5], 2)",
+                        "([1, 2, 3, None, 4, None, 5], 3)",
+                        "([1, 2, 3, 4, None, None, 5, 6], 4)",
+                        "([1, None, 2, None, 3, None, 4], 1)",
+                        "([1, 2, None, 3, None, 4], 1)",
+                        "([1, 2, 3, 4, 5, 6, 7], 4)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 8)"
+                    ]
+                },
                 "body": "        result = run_width_of_binary_tree(Solution, root_list)\n        assert_width_of_binary_tree(result, expected)"
             }
         ]

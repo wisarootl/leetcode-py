@@ -5,7 +5,9 @@
     "problem_title": "Best Time to Buy and Sell Stock",
     "difficulty": "Easy",
     "topics": "Array, Dynamic Programming",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "You are given an array `prices` where `prices[i]` is the price of a given stock on the ith day.\n\nYou want to maximize your profit by choosing a **single day** to buy one stock and choosing a **different day in the future** to sell that stock.\n\nReturn *the maximum profit you can achieve from this transaction*. If you cannot achieve any profit, return `0`.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,25 @@
                 "name": "test_max_profit",
                 "signature": "(self, prices: list[int], expected: int)",
                 "parametrize": "prices, expected",
-                "test_cases": "[([7, 1, 5, 3, 6, 4], 5), ([7, 6, 4, 3, 1], 0), ([1, 2, 3, 4, 5], 4), ([5, 4, 3, 2, 1], 0), ([1], 0), ([2, 1], 0), ([1, 2], 1), ([3, 2, 6, 5, 0, 3], 4), ([2, 4, 1], 2), ([1, 5, 3, 6, 4], 5), ([10, 1, 5, 6, 7, 1], 6), ([6, 1, 3, 2, 4, 7], 6), ([1, 4, 2], 3), ([3, 3, 5, 0, 0, 3, 1, 4], 4), ([2, 1, 2, 1, 0, 1, 2], 2)]",
+                "test_cases": {
+                    "list": [
+                        "([7, 1, 5, 3, 6, 4], 5)",
+                        "([7, 6, 4, 3, 1], 0)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([5, 4, 3, 2, 1], 0)",
+                        "([1], 0)",
+                        "([2, 1], 0)",
+                        "([1, 2], 1)",
+                        "([3, 2, 6, 5, 0, 3], 4)",
+                        "([2, 4, 1], 2)",
+                        "([1, 5, 3, 6, 4], 5)",
+                        "([10, 1, 5, 6, 7, 1], 6)",
+                        "([6, 1, 3, 2, 4, 7], 6)",
+                        "([1, 4, 2], 3)",
+                        "([3, 3, 5, 0, 0, 3, 1, 4], 4)",
+                        "([2, 1, 2, 1, 0, 1, 2], 2)"
+                    ]
+                },
                 "body": "        result = run_max_profit(Solution, prices)\n        assert_max_profit(result, expected)"
             }
         ]

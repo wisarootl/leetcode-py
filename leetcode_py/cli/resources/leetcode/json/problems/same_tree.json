@@ -5,7 +5,9 @@
     "problem_title": "Same Tree",
     "difficulty": "Easy",
     "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
-    "_tags": { "list": ["blind-75"] },
+    "_tags": {
+        "list": ["blind-75"]
+    },
     "readme_description": "Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.\n\nTwo binary trees are considered the same if they are structurally identical, and the nodes have the same value.",
     "_readme_examples": {
         "list": [
@@ -47,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -55,7 +63,21 @@
                 "name": "test_is_same_tree",
                 "signature": "(self, p_list: list[int | None], q_list: list[int | None], expected: bool)",
                 "parametrize": "p_list, q_list, expected",
-                "test_cases": "[([1, 2, 3], [1, 2, 3], True), ([1, 2], [1, None, 2], False), ([1, 2, 1], [1, 1, 2], False), ([], [], True), ([1], [1], True), ([1], [2], False), ([1, None, 2], [1, 2], False), ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], True), ([1, 2, 3, 4, 5], [1, 2, 3, 4, 6], False), ([1, 2, 3, None, 4], [1, 2, 3, None, 4], True), ([1, 2, 3, None, 4], [1, 2, 3, 4, None], False)]",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], [1, 2, 3], True)",
+                        "([1, 2], [1, None, 2], False)",
+                        "([1, 2, 1], [1, 1, 2], False)",
+                        "([], [], True)",
+                        "([1], [1], True)",
+                        "([1], [2], False)",
+                        "([1, None, 2], [1, 2], False)",
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], True)",
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 6], False)",
+                        "([1, 2, 3, None, 4], [1, 2, 3, None, 4], True)",
+                        "([1, 2, 3, None, 4], [1, 2, 3, 4, None], False)"
+                    ]
+                },
                 "body": "        result = run_is_same_tree(Solution, p_list, q_list)\n        assert_is_same_tree(result, expected)"
             }
         ]

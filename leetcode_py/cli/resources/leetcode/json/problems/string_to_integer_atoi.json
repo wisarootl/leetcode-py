@@ -5,7 +5,9 @@
     "problem_title": "String to Integer (atoi)",
     "difficulty": "Medium",
     "topics": "String",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Implement the `my_atoi(string s)` function, which converts a string to a 32-bit signed integer.\n\nThe algorithm for `my_atoi(string s)` is as follows:\n\n1. **Whitespace**: Ignore any leading whitespace (` `).\n2. **Signedness**: Determine the sign by checking if the next character is `-` or `+`, assuming positivity if neither present.\n3. **Conversion**: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.\n4. **Rounding**: If the integer is out of the 32-bit signed integer range `[-2^31, 2^31 - 1]`, then round the integer to remain in the range. Specifically, integers less than `-2^31` should be rounded to `-2^31`, and integers greater than `2^31 - 1` should be rounded to `2^31 - 1`.\n\nReturn the integer as the final result.",
     "_readme_examples": {
         "list": [
@@ -53,7 +55,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -61,7 +69,23 @@
                 "name": "test_my_atoi",
                 "signature": "(self, s: str, expected: int)",
                 "parametrize": "s, expected",
-                "test_cases": "[('42', 42), ('   -042', -42), ('1337c0d3', 1337), ('0-1', 0), ('words and 987', 0), ('', 0), ('   ', 0), ('+1', 1), ('-1', -1), ('2147483647', 2147483647), ('-2147483648', -2147483648), ('2147483648', 2147483647), ('-2147483649', -2147483648)]",
+                "test_cases": {
+                    "list": [
+                        "('42', 42)",
+                        "('   -042', -42)",
+                        "('1337c0d3', 1337)",
+                        "('0-1', 0)",
+                        "('words and 987', 0)",
+                        "('', 0)",
+                        "('   ', 0)",
+                        "('+1', 1)",
+                        "('-1', -1)",
+                        "('2147483647', 2147483647)",
+                        "('-2147483648', -2147483648)",
+                        "('2147483648', 2147483647)",
+                        "('-2147483649', -2147483648)"
+                    ]
+                },
                 "body": "        result = run_my_atoi(Solution, s)\n        assert_my_atoi(result, expected)"
             }
         ]

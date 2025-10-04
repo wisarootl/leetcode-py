@@ -5,14 +5,18 @@
     "problem_title": "Maximum Depth of Binary Tree",
     "difficulty": "Easy",
     "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given the `root` of a binary tree, return *its maximum depth*.\n\nA binary tree's **maximum depth** is the number of nodes along the longest path from the root node down to the farthest leaf node.",
     "_readme_examples": {
         "list": [
             {
                 "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/26/tmp-tree.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: 3\n```"
             },
-            { "content": "```\nInput: root = [1,null,2]\nOutput: 2\n```" }
+            {
+                "content": "```\nInput: root = [1,null,2]\nOutput: 2\n```"
+            }
         ]
     },
     "readme_constraints": "- The number of nodes in the tree is in the range `[0, 10^4]`.\n- `-100 <= Node.val <= 100`",
@@ -42,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -50,7 +60,25 @@
                 "name": "test_max_depth",
                 "signature": "(self, root_list: list[int | None], expected: int)",
                 "parametrize": "root_list, expected",
-                "test_cases": "[([3, 9, 20, None, None, 15, 7], 3), ([1, None, 2], 2), ([], 0), ([1], 1), ([1, 2], 2), ([1, 2, 3], 2), ([1, 2, 3, 4], 3), ([1, None, 2, None, 3], 3), ([1, 2, 3, 4, 5, 6, 7], 3), ([1, 2, None, 4, None, None, None, 8], 3), ([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1], 4), ([1, 2, 3, None, None, 4, 5, None, None, 6], 4), ([10], 1), ([1, 2, 2, 3, 3, 3, 3], 3), ([0, -1, 1, -2, -1, 0, 2], 3)]",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], 3)",
+                        "([1, None, 2], 2)",
+                        "([], 0)",
+                        "([1], 1)",
+                        "([1, 2], 2)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, 3, 4], 3)",
+                        "([1, None, 2, None, 3], 3)",
+                        "([1, 2, 3, 4, 5, 6, 7], 3)",
+                        "([1, 2, None, 4, None, None, None, 8], 3)",
+                        "([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1], 4)",
+                        "([1, 2, 3, None, None, 4, 5, None, None, 6], 4)",
+                        "([10], 1)",
+                        "([1, 2, 2, 3, 3, 3, 3], 3)",
+                        "([0, -1, 1, -2, -1, 0, 2], 3)"
+                    ]
+                },
                 "body": "        result = run_max_depth(Solution, root_list)\n        assert_max_depth(result, expected)"
             }
         ]

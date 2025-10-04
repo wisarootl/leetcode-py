@@ -5,7 +5,9 @@
     "problem_title": "Longest Palindrome",
     "difficulty": "Easy",
     "topics": "Hash Table, String, Greedy",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given a string `s` which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.\n\nLetters are case sensitive, for example, \"Aa\" is not considered a palindrome.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,23 @@
                 "name": "test_longest_palindrome",
                 "signature": "(self, s: str, expected: int)",
                 "parametrize": "s, expected",
-                "test_cases": "[('abccccdd', 7), ('a', 1), ('Aa', 1), ('aabbcc', 6), ('', 0), ('aA', 1), ('abcdef', 1), ('aabbccdd', 8), ('aaaa', 4), ('abcdefg', 1), ('AAaa', 4), ('racecar', 7), ('abcABC', 1)]",
+                "test_cases": {
+                    "list": [
+                        "('abccccdd', 7)",
+                        "('a', 1)",
+                        "('Aa', 1)",
+                        "('aabbcc', 6)",
+                        "('', 0)",
+                        "('aA', 1)",
+                        "('abcdef', 1)",
+                        "('aabbccdd', 8)",
+                        "('aaaa', 4)",
+                        "('abcdefg', 1)",
+                        "('AAaa', 4)",
+                        "('racecar', 7)",
+                        "('abcABC', 1)"
+                    ]
+                },
                 "body": "        result = run_longest_palindrome(Solution, s)\n        assert_longest_palindrome(result, expected)"
             }
         ]

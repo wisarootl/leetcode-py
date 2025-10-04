@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import ast
 import json
 from typing import Any
 
@@ -20,22 +19,9 @@ def count_test_cases_for_problem(json_data: dict[str, Any]) -> int:
 
     for method in test_methods:
         test_cases = method.get("test_cases", "")
-        if test_cases.strip():
-            try:
-                # Try ast.literal_eval first (safer)
-                cases_list = ast.literal_eval(test_cases)
-                total += len(cases_list)
-            except (ValueError, SyntaxError):
-                try:
-                    # Fallback to eval for expressions like 'string' * 100
-                    # This is safe since we're only evaluating test case data
-                    cases_list = eval(test_cases)
-                    total += len(cases_list)
-                except Exception as e:
-                    # Re-raise with more context
-                    raise ValueError(
-                        f"Failed to parse test_cases in method '{method.get('name', 'unknown')}': {e}"
-                    )
+
+        if isinstance(test_cases, dict) and "list" in test_cases:
+            total += len(test_cases["list"])
     return total
 
 

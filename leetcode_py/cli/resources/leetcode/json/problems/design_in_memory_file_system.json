@@ -5,7 +5,9 @@
     "problem_title": "Design In-Memory File System",
     "difficulty": "Hard",
     "topics": "Design, Trie, Hash Table, String",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Design an in-memory file system to simulate the following functions:\n\n`ls`: Given a path in string format. If it is a file path, return a list that only contains this file's name. If it is a directory path, return the list of file and directory names **in this directory**. Your output (file and directory names together) should in **lexicographic order**.\n\n`mkdir`: Given a **directory path** that does not exist, you should make a new directory according to the path. If the middle directories in the path don't exist either, you should create them as well. This function has void return type.\n\n`addContentToFile`: Given a **file path** and **file content** in string format. If the file doesn't exist, you need to create that file containing given content. If the file already exists, you need to **append** given content to original content. This function has void return type.\n\n`readContentFromFile`: Given a **file path**, return its **content** in string format.",
     "_readme_examples": {
         "list": [
@@ -69,7 +71,22 @@
                 "name": "test_file_system",
                 "signature": "(self, operations: list[str], inputs: list[list], expected: list[str | list[str] | None])",
                 "parametrize": "operations, inputs, expected",
-                "test_cases": "[(['FileSystem', 'ls', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/'], ['/a/b/c'], ['/a/b/c/d', 'hello'], ['/'], ['/a/b/c/d']], [None, [], None, None, ['a'], 'hello']), (['FileSystem', 'ls', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/'], ['/a'], ['/'], ['/a/b'], ['/']], [None, [], None, ['a'], None, ['a']]), (['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/x/y'], ['/x/y/z', 'content'], ['/x/y'], ['/x/y/z']], [None, None, None, ['z'], 'content']), (['FileSystem', 'addContentToFile', 'readContentFromFile', 'addContentToFile', 'readContentFromFile'], [[], ['/file', 'hello'], ['/file'], ['/file', ' world'], ['/file']], [None, None, 'hello', None, 'hello world']), (['FileSystem', 'mkdir', 'mkdir', 'ls', 'addContentToFile', 'ls'], [[], ['/a'], ['/a/b'], ['/a'], ['/a/file', 'test'], ['/a']], [None, None, None, ['b'], None, ['b', 'file']]), (['FileSystem', 'ls'], [[], ['/']], [None, []]), (['FileSystem', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/dir1'], ['/'], ['/dir2'], ['/']], [None, None, ['dir1'], None, ['dir1', 'dir2']]), (['FileSystem', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/root/file', 'data'], ['/root'], ['/root/file']], [None, None, ['file'], 'data']), (['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/folder'], ['/folder/doc', 'text'], ['/folder'], ['/folder/doc']], [None, None, None, ['doc'], 'text']), (['FileSystem', 'addContentToFile', 'addContentToFile', 'readContentFromFile'], [[], ['/log', 'line1'], ['/log', 'line2'], ['/log']], [None, None, None, 'line1line2']), (['FileSystem', 'mkdir', 'mkdir', 'mkdir', 'ls'], [[], ['/a/b/c'], ['/a/b/d'], ['/a/e'], ['/a']], [None, None, None, None, ['b', 'e']]), (['FileSystem', 'mkdir', 'addContentToFile', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/docs'], ['/docs/readme', 'intro'], ['/docs/config', 'settings'], ['/docs'], ['/docs/readme']], [None, None, None, None, ['config', 'readme'], 'intro'])]",
+                "test_cases": {
+                    "list": [
+                        "(['FileSystem', 'ls', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/'], ['/a/b/c'], ['/a/b/c/d', 'hello'], ['/'], ['/a/b/c/d']], [None, [], None, None, ['a'], 'hello'])",
+                        "(['FileSystem', 'ls', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/'], ['/a'], ['/'], ['/a/b'], ['/']], [None, [], None, ['a'], None, ['a']])",
+                        "(['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/x/y'], ['/x/y/z', 'content'], ['/x/y'], ['/x/y/z']], [None, None, None, ['z'], 'content'])",
+                        "(['FileSystem', 'addContentToFile', 'readContentFromFile', 'addContentToFile', 'readContentFromFile'], [[], ['/file', 'hello'], ['/file'], ['/file', ' world'], ['/file']], [None, None, 'hello', None, 'hello world'])",
+                        "(['FileSystem', 'mkdir', 'mkdir', 'ls', 'addContentToFile', 'ls'], [[], ['/a'], ['/a/b'], ['/a'], ['/a/file', 'test'], ['/a']], [None, None, None, ['b'], None, ['b', 'file']])",
+                        "(['FileSystem', 'ls'], [[], ['/']], [None, []])",
+                        "(['FileSystem', 'mkdir', 'ls', 'mkdir', 'ls'], [[], ['/dir1'], ['/'], ['/dir2'], ['/']], [None, None, ['dir1'], None, ['dir1', 'dir2']])",
+                        "(['FileSystem', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/root/file', 'data'], ['/root'], ['/root/file']], [None, None, ['file'], 'data'])",
+                        "(['FileSystem', 'mkdir', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/folder'], ['/folder/doc', 'text'], ['/folder'], ['/folder/doc']], [None, None, None, ['doc'], 'text'])",
+                        "(['FileSystem', 'addContentToFile', 'addContentToFile', 'readContentFromFile'], [[], ['/log', 'line1'], ['/log', 'line2'], ['/log']], [None, None, None, 'line1line2'])",
+                        "(['FileSystem', 'mkdir', 'mkdir', 'mkdir', 'ls'], [[], ['/a/b/c'], ['/a/b/d'], ['/a/e'], ['/a']], [None, None, None, None, ['b', 'e']])",
+                        "(['FileSystem', 'mkdir', 'addContentToFile', 'addContentToFile', 'ls', 'readContentFromFile'], [[], ['/docs'], ['/docs/readme', 'intro'], ['/docs/config', 'settings'], ['/docs'], ['/docs/readme']], [None, None, None, None, ['config', 'readme'], 'intro'])"
+                    ]
+                },
                 "body": "        result, _ = run_file_system(FileSystem, operations, inputs)\n        assert_file_system(result, expected)"
             }
         ]

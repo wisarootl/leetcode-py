@@ -5,15 +5,21 @@
     "problem_title": "Longest Consecutive Sequence",
     "difficulty": "Medium",
     "topics": "Array, Hash Table, Union Find",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind"]
+    },
     "readme_description": "Given an unsorted array of integers `nums`, return *the length of the longest consecutive elements sequence.*\n\nYou must write an algorithm that runs in `O(n)` time.",
     "_readme_examples": {
         "list": [
             {
                 "content": "```\nInput: nums = [100,4,200,1,3,2]\nOutput: 4\nExplanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.\n```"
             },
-            { "content": "```\nInput: nums = [0,3,7,2,5,8,4,6,0,1]\nOutput: 9\n```" },
-            { "content": "```\nInput: nums = [1,0,1,2]\nOutput: 3\n```" }
+            {
+                "content": "```\nInput: nums = [0,3,7,2,5,8,4,6,0,1]\nOutput: 9\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,0,1,2]\nOutput: 3\n```"
+            }
         ]
     },
     "readme_constraints": "- 0 <= nums.length <= 10^5\n- -10^9 <= nums[i] <= 10^9",
@@ -43,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -51,7 +63,25 @@
                 "name": "test_longest_consecutive",
                 "signature": "(self, nums: list[int], expected: int)",
                 "parametrize": "nums, expected",
-                "test_cases": "[([100, 4, 200, 1, 3, 2], 4), ([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9), ([1, 0, 1, 2], 3), ([], 0), ([1], 1), ([1, 2, 3, 4, 5], 5), ([5, 4, 3, 2, 1], 5), ([1, 3, 5, 7, 9], 1), ([1, 2, 0, 1], 3), ([9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6], 7), ([-1, -2, -3, -4, -5], 5), ([1000000000, -1000000000], 1), ([1, 2, 3, 5, 6, 7, 8], 4), ([10, 5, 12, 3, 55, 30, 4, 11, 2], 4), ([1, 9, 3, 10, 4, 20, 2], 4)]",
+                "test_cases": {
+                    "list": [
+                        "([100, 4, 200, 1, 3, 2], 4)",
+                        "([0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9)",
+                        "([1, 0, 1, 2], 3)",
+                        "([], 0)",
+                        "([1], 1)",
+                        "([1, 2, 3, 4, 5], 5)",
+                        "([5, 4, 3, 2, 1], 5)",
+                        "([1, 3, 5, 7, 9], 1)",
+                        "([1, 2, 0, 1], 3)",
+                        "([9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6], 7)",
+                        "([-1, -2, -3, -4, -5], 5)",
+                        "([1000000000, -1000000000], 1)",
+                        "([1, 2, 3, 5, 6, 7, 8], 4)",
+                        "([10, 5, 12, 3, 55, 30, 4, 11, 2], 4)",
+                        "([1, 9, 3, 10, 4, 20, 2], 4)"
+                    ]
+                },
                 "body": "        result = run_longest_consecutive(Solution, nums)\n        assert_longest_consecutive(result, expected)"
             }
         ]

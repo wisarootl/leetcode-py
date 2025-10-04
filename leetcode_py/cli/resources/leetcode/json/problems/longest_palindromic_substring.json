@@ -5,14 +5,18 @@
     "problem_title": "Longest Palindromic Substring",
     "difficulty": "Medium",
     "topics": "Two Pointers, String, Dynamic Programming",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "Given a string `s`, return the longest palindromic substring in `s`.",
     "_readme_examples": {
         "list": [
             {
                 "content": "```\nInput: s = \"babad\"\nOutput: \"bab\"\n```\n**Explanation:** \"aba\" is also a valid answer."
             },
-            { "content": "```\nInput: s = \"cbbd\"\nOutput: \"bb\"\n```" }
+            {
+                "content": "```\nInput: s = \"cbbd\"\nOutput: \"bb\"\n```"
+            }
         ]
     },
     "readme_constraints": "- `1 <= s.length <= 1000`\n- `s` consist of only digits and English letters.",
@@ -42,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -50,7 +60,22 @@
                 "name": "test_longest_palindrome",
                 "signature": "(self, s: str, expected: set[str])",
                 "parametrize": "s, expected",
-                "test_cases": "[('babad', {'bab', 'aba'}), ('cbbd', {'bb'}), ('a', {'a'}), ('ac', {'a', 'c'}), ('racecar', {'racecar'}), ('aabbaa', {'aabbaa'}), ('abacabad', {'abacaba'}), ('noon', {'noon'}), ('abccba', {'abccba'}), ('aa', {'aa'}), ('aba', {'aba'}), ('abcba', {'abcba'})]",
+                "test_cases": {
+                    "list": [
+                        "('babad', {'bab', 'aba'})",
+                        "('cbbd', {'bb'})",
+                        "('a', {'a'})",
+                        "('ac', {'a', 'c'})",
+                        "('racecar', {'racecar'})",
+                        "('aabbaa', {'aabbaa'})",
+                        "('abacabad', {'abacaba'})",
+                        "('noon', {'noon'})",
+                        "('abccba', {'abccba'})",
+                        "('aa', {'aa'})",
+                        "('aba', {'aba'})",
+                        "('abcba', {'abcba'})"
+                    ]
+                },
                 "body": "        result = run_longest_palindrome(Solution, s)\n        assert_longest_palindrome(result, expected)"
             }
         ]

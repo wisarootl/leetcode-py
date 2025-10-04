@@ -5,7 +5,9 @@
     "problem_title": "Unique Paths",
     "difficulty": "Medium",
     "topics": "Math, Dynamic Programming, Combinatorics",
-    "_tags": { "list": ["grind-75"] },
+    "_tags": {
+        "list": ["grind-75"]
+    },
     "readme_description": "There is a robot on an `m x n` grid. The robot is initially located at the **top-left corner** (i.e., `grid[0][0]`). The robot tries to move to the **bottom-right corner** (i.e., `grid[m - 1][n - 1]`). The robot can only move either down or right at any point in time.\n\nGiven the two integers `m` and `n`, return *the number of possible unique paths that the robot can take to reach the bottom-right corner*.\n\nThe test cases are generated so that the answer will be less than or equal to `2 * 10^9`.",
     "_readme_examples": {
         "list": [
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -52,7 +60,25 @@
                 "name": "test_unique_paths",
                 "signature": "(self, m: int, n: int, expected: int)",
                 "parametrize": "m, n, expected",
-                "test_cases": "[(3, 7, 28), (3, 2, 3), (1, 1, 1), (1, 10, 1), (10, 1, 1), (2, 2, 2), (3, 3, 6), (4, 4, 20), (5, 5, 70), (2, 3, 3), (3, 4, 10), (4, 5, 35), (6, 3, 21), (7, 3, 28), (10, 10, 48620)]",
+                "test_cases": {
+                    "list": [
+                        "(3, 7, 28)",
+                        "(3, 2, 3)",
+                        "(1, 1, 1)",
+                        "(1, 10, 1)",
+                        "(10, 1, 1)",
+                        "(2, 2, 2)",
+                        "(3, 3, 6)",
+                        "(4, 4, 20)",
+                        "(5, 5, 70)",
+                        "(2, 3, 3)",
+                        "(3, 4, 10)",
+                        "(4, 5, 35)",
+                        "(6, 3, 21)",
+                        "(7, 3, 28)",
+                        "(10, 10, 48620)"
+                    ]
+                },
                 "body": "        result = run_unique_paths(Solution, m, n)\n        assert_unique_paths(result, expected)"
             }
         ]
