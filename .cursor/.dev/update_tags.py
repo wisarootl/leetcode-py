@@ -8,36 +8,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from problem_lists import available_lists
 
-# Import existing function to reuse the tag resolution logic
-try:
-    from leetcode_py.cli.utils.problem_finder import find_problems_by_tag
-except ImportError:
-    # Fallback if import fails
-    def find_problems_by_tag(tag: str) -> list[str]:
-        """Fallback function to find problems by tag."""
-        try:
-            import json5
-
-            tags_path = (
-                Path(__file__).parent.parent.parent
-                / "leetcode_py/cli/resources/leetcode/json/tags.json5"
-            )
-            with open(tags_path, "r") as f:
-                tags_data = json5.load(f)
-
-            problems = []
-            tag_items = tags_data.get(tag, [])
-
-            for item in tag_items:
-                if isinstance(item, dict) and "tag" in item:
-                    # Resolve tag reference recursively
-                    referenced_problems = find_problems_by_tag(item["tag"])
-                    problems.extend(referenced_problems)
-                elif isinstance(item, str):
-                    problems.append(item)
-            return problems
-        except Exception:
-            return []
+from leetcode_py.cli.utils.problem_finder import find_problems_by_tag
 
 
 def get_existing_problems():

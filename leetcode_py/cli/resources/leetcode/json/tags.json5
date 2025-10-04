@@ -110,6 +110,7 @@
 
     // Blind 75 - (on-going)
     "blind-75": [
+        "alien_dictionary",
         "best_time_to_buy_and_sell_stock",
         "binary_tree_level_order_traversal",
         "climbing_stairs",
@@ -149,6 +150,7 @@
         "remove_nth_node_from_end_of_list",
         "reverse_linked_list",
         "rotate_image",
+        "same_tree",
         "search_in_rotated_sorted_array",
         "serialize_and_deserialize_binary_tree",
         "set_matrix_zeroes",
@@ -166,6 +168,7 @@
 
     // NeetCode 150 - (on-going)
     "neetcode-150": [
+        "alien_dictionary",
         "balanced_binary_tree",
         "best_time_to_buy_and_sell_stock",
         "binary_search",
@@ -181,6 +184,7 @@
         "course_schedule",
         "course_schedule_ii",
         "daily_temperatures",
+        "decode_ways",
         "design_add_and_search_words_data_structure",
         "diameter_of_binary_tree",
         "evaluate_reverse_polish_notation",
@@ -192,6 +196,7 @@
         "implement_trie_prefix_tree",
         "insert_interval",
         "invert_binary_tree",
+        "jump_game",
         "k_closest_points_to_origin",
         "kth_smallest_element_in_a_bst",
         "largest_rectangle_in_histogram",
@@ -218,9 +223,12 @@
         "product_of_array_except_self",
         "remove_nth_node_from_end_of_list",
         "reverse_linked_list",
+        "rotate_image",
         "rotting_oranges",
+        "same_tree",
         "search_in_rotated_sorted_array",
         "serialize_and_deserialize_binary_tree",
+        "set_matrix_zeroes",
         "spiral_matrix",
         "subsets",
         "task_scheduler",
@@ -269,6 +277,7 @@
         "permutations",
         "product_of_array_except_self",
         "remove_nth_node_from_end_of_list",
+        "rotate_image",
         "rotting_oranges",
         "search_in_rotated_sorted_array",
         "serialize_and_deserialize_binary_tree",
