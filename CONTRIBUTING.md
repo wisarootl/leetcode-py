@@ -56,7 +56,7 @@ cd leetcode-py
 poetry install
 
 # Add upstream remote
-git remote add upstream https://github.com/wisarootl/leetcode-py.git
+git remote add upstream https://github.com/wislertt/leetcode-py.git
 
 # Verify setup
 make test
