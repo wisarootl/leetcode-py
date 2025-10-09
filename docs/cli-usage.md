@@ -72,11 +72,11 @@ lcpy gen -t grind-75
 lcpy gen --problem-tag grind-75 --output leetcode
 ```
 
-![Problem Generation](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation.png)
+![Problem Generation](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation.png)
 
 _Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
 
-![Problem Generation 2](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation-2.png)
+![Problem Generation 2](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation-2.png)
 
 _Generated folder structure showing all 75 problem directories after command execution_
 
@@ -169,15 +169,15 @@ problem_name/
 └── __init__.py         # Package marker
 ```
 
-![README Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/readme-example.png)
+![README Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/readme-example.png)
 
 _README format that mirrors LeetCode's problem description layout_
 
-![Solution Boilerplate](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/solution-boilerplate.png)
+![Solution Boilerplate](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/solution-boilerplate.png)
 
 _Solution boilerplate with type hints and TODO placeholder_
 
-![Test Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/test-example.png)
+![Test Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/test-example.png)
 
 _Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
 
@@ -191,7 +191,7 @@ Available tags for bulk operations:
 - `neetcode-150` - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set (150+ problems) 🚧 Partial
 - `algo-master-75` - Curated algorithmic mastery problems (75 problems) 🚧 Partial
 
-**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wisarootl/leetcode-py/blob/main/CONTRIBUTING.md)
+**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wislertt/leetcode-py/blob/main/CONTRIBUTING.md)
 
 ## Output Directory
 

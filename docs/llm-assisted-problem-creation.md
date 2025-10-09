@@ -31,7 +31,7 @@ Configure your IDE with an LLM assistant:
 
 Simply ask your LLM assistant to add a problem:
 
-![Prompt with Context](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/prompt-with-context.png)
+![Prompt with Context](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/prompt-with-context.png)
 
 _Example prompt showing how to request a new problem with the LLM assistant_
 
@@ -53,7 +53,7 @@ The LLM assistant will execute the complete workflow:
 5. **Generate** complete problem structure in `leetcode/{problem_name}/`
 6. **Verify** with linting checks (iterates from step 3 until all pass)
 
-![Problems Are Generated](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-are-generated.png)
+![Problems Are Generated](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-are-generated.png)
 
 _Source control view showing all files created and modified during the problem generation process_
 
@@ -63,7 +63,7 @@ _Source control view showing all files created and modified during the problem g
 
 The assistant generates a clean solution template with proper type hints:
 
-![Generated Solution](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/generated-solution.png)
+![Generated Solution](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/generated-solution.png)
 
 _Generated solution.py file with TODO placeholder and proper method signature_
 
@@ -71,7 +71,7 @@ _Generated solution.py file with TODO placeholder and proper method signature_
 
 Each problem includes 10+ test cases covering edge cases (note: generated test cases may need verification for correctness):
 
-![Generated Test](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/generated-test.png)
+![Generated Test](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/generated-test.png)
 
 _Generated test_solution.py with parametrized tests and comprehensive test cases_
 

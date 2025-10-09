@@ -1,16 +1,16 @@
 # LeetCode Practice Environment Generator 🚀
 
-[![tests](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wisarootl/leetcode-py/actions/workflows/ci-test.yml)
-[![release](https://img.shields.io/github/actions/workflow/status/wisarootl/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wisarootl/leetcode-py/actions/workflows/cd.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wisarootl_leetcode-py&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=wisarootl_leetcode-py)
-[![codecov](https://codecov.io/gh/wisarootl/leetcode-py/graph/badge.svg?token=TI97VUIA4Z)](https://codecov.io/gh/wisarootl/leetcode-py)
+[![tests](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/ci-test.yml)
+[![release](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
+[![codecov](https://codecov.io/gh/wislertt/leetcode-py/graph/badge.svg?token=TI97VUIA4Z)](https://codecov.io/gh/wislertt/leetcode-py)
 [![pypi](https://img.shields.io/pypi/v/leetcode-py-sdk.svg?color=blue)](https://pypi.python.org/pypi/leetcode-py-sdk)
 [![downloads](https://static.pepy.tech/personalized-badge/leetcode-py-sdk?period=total&units=international_system&left_color=grey&right_color=blue&left_text=pypi%20downloads)](https://pepy.tech/projects/leetcode-py-sdk)
-[![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?logo=python)](https://github.com/wisarootl/leetcode-py/)
-[![Star ⭐](https://img.shields.io/github/stars/wisarootl/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wisarootl/leetcode-py)
-[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wisarootl)
+[![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?logo=python)](https://github.com/wislertt/leetcode-py/)
+[![Star ⭐](https://img.shields.io/github/stars/wislertt/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wislertt/leetcode-py)
+[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wislertt)
 
 A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
 
@@ -29,12 +29,12 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 **What makes this different:**
 
-- 🤖 **[LLM-Assisted Workflow](https://github.com/wisarootl/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)**: Generate new problems instantly with AI assistance
+- 🤖 **[LLM-Assisted Workflow](https://github.com/wislertt/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)**: Generate new problems instantly with AI assistance
 - 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
 - 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
 - 🚀 **Modern Python**: PEP 585/604 type hints, Poetry, and professional tooling
 - 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
-- ⚡ **[Powerful CLI](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)**: Generate problems anywhere with `lcpy` command
+- ⚡ **[Powerful CLI](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)**: Generate problems anywhere with `lcpy` command
 
 ## <a id="whats-included"></a>🎯 What's Included
 
@@ -48,7 +48,7 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 **Coverage**: 120+ unique problems across all major coding interview topics and difficulty levels.
 
-**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wisarootl/leetcode-py/blob/main/CONTRIBUTING.md)
+**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wislertt/leetcode-py/blob/main/CONTRIBUTING.md)
 
 ## <a id="quick-start"></a>🚀 Quick Start
 
@@ -82,11 +82,11 @@ lcpy gen --problem-tag neetcode-150 --output leetcode   # Generate NeetCode 150 
 lcpy gen --problem-tag blind-75 --output leetcode       # Generate Blind 75 problems
 ```
 
-![Problem Generation](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation.png)
+![Problem Generation](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation.png)
 
 _Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
 
-![Problem Generation 2](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/problems-generation-2.png)
+![Problem Generation 2](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation-2.png)
 
 _Generated folder structure showing all 75 problem directories after command execution_
 
@@ -104,19 +104,19 @@ leetcode/two_sum/
 └── __init__.py         # Package marker
 ```
 
-![README Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/readme-example.png)
+![README Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/readme-example.png)
 
 _README format that mirrors LeetCode's problem description layout_
 
-![Solution Boilerplate](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/solution-boilerplate.png)
+![Solution Boilerplate](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/solution-boilerplate.png)
 
 _Solution boilerplate with type hints and TODO placeholder_
 
-![Test Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/test-example.png)
+![Test Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/test-example.png)
 
 _Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
 
-![Test Logging](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/logs-in-test-solution.png)
+![Test Logging](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/logs-in-test-solution.png)
 
 _Beautiful colorful test output with loguru integration for enhanced debugging and test result visualization_
 
@@ -141,21 +141,21 @@ Professional-grade visualization for debugging complex data structures with dual
 
 #### Jupyter Notebook Integration (HTML Rendering)
 
-![Tree Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-viz.png)
+![Tree Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-viz.png)
 
 _Interactive tree visualization using Graphviz SVG rendering in Jupyter notebooks_
 
-![LinkedList Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-viz.png)
+![LinkedList Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-viz.png)
 
 _Professional linked list visualization with Graphviz in Jupyter environment_
 
 #### Terminal/Console Output (String Rendering)
 
-![Tree String Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/tree-str-viz.png)
+![Tree String Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-str-viz.png)
 
 _Clean ASCII tree rendering using anytree for terminal debugging and logging_
 
-![LinkedList String Visualization](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/linkedlist-str-viz.png)
+![LinkedList String Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-str-viz.png)
 
 _Simple arrow-based list representation for console output and test debugging_
 
@@ -166,7 +166,7 @@ _Simple arrow-based list representation for console output and test debugging_
 - **Repository State**: This repo converts them to Python files (`.py`) for better version control
 - **Dual Rendering**: Automatic HTML visualization in notebooks, clean string output in terminals
 
-![Notebook Example](https://raw.githubusercontent.com/wisarootl/leetcode-py/main/docs/images/notebook-example.png)
+![Notebook Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/notebook-example.png)
 
 _Interactive multi-cell playground with rich data structure visualization for each problem_
 
@@ -174,7 +174,7 @@ _Interactive multi-cell playground with rich data structure visualization for ea
 
 ### CLI Usage (Global Installation)
 
-Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)** for detailed documentation with all options and examples.
+Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)** for detailed documentation with all options and examples.
 
 ## <a id="development-setup"></a>🛠️ Development Setup
 
@@ -190,7 +190,7 @@ For working within this repository to generate additional LeetCode problems usin
 
 ```bash
 # Clone repository for development
-git clone https://github.com/wisarootl/leetcode-py.git
+git clone https://github.com/wislertt/leetcode-py.git
 cd leetcode-py
 poetry install
 
@@ -206,7 +206,7 @@ make gen-all-problems
 
 To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.).
 
-📖 **[Complete LLM-Assisted Problem Creation Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
+📖 **[Complete LLM-Assisted Problem Creation Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
 
 **Quick Start:**
 
@@ -222,8 +222,8 @@ To extend the problem collection beyond the current catalog, leverage an LLM ass
 
 **Required LLM Context**: Include these rule files in your LLM context for automated problem generation and test enhancement:
 
-- [`.cursor/commands/problem-creation.md`](https://github.com/wisarootl/leetcode-py/blob/main/.cursor/commands/problem-creation.md) - Complete problem generation workflow
-- [`.cursor/commands/test-quality-assurance.md`](https://github.com/wisarootl/leetcode-py/blob/main/.cursor/commands/test-quality-assurance.md) - Test enhancement and reproducibility verification
+- [`.cursor/commands/problem-creation.md`](https://github.com/wislertt/leetcode-py/blob/main/.cursor/commands/problem-creation.md) - Complete problem generation workflow
+- [`.cursor/commands/test-quality-assurance.md`](https://github.com/wislertt/leetcode-py/blob/main/.cursor/commands/test-quality-assurance.md) - Test enhancement and reproducibility verification
 
 **Manual Check**: Find problems needing more test cases:
 
@@ -261,7 +261,7 @@ poetry run python -m leetcode_py.tools.check_test_cases --threshold=10
 
 ### CLI Commands (Global)
 
-📖 **[Complete CLI Usage Guide](https://github.com/wisarootl/leetcode-py/blob/main/docs/cli-usage.md)** - Detailed documentation with all options and examples.
+📖 **[Complete CLI Usage Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)** - Detailed documentation with all options and examples.
 
 ```bash
 # Generate problems
@@ -318,8 +318,8 @@ Perfect for systematic coding interview preparation with professional developmen
 
 ## 💖 Support This Project
 
-[![Star ⭐](https://img.shields.io/github/stars/wisarootl/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wisarootl/leetcode-py)
-[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wisarootl)
+[![Star ⭐](https://img.shields.io/github/stars/wislertt/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wislertt/leetcode-py)
+[![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wislertt)
 
 If you find this project helpful, please consider **starring the repo ⭐** or **sponsoring my work 💖**.
 Your support helps me maintain and improve this project. Thank you!

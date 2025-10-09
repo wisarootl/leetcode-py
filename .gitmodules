@@ -1,4 +1,4 @@
 [submodule "scripts/shared"]
 	path = scripts/shared
-	url = https://github.com/wisarootl/shared-scripts.git
+	url = https://github.com/wislertt/shared-scripts.git
 	branch = main

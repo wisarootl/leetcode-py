@@ -5,8 +5,8 @@ description = "Modern Python LeetCode practice environment with automated proble
 authors = ["Wisaroot Lertthaweedech <l.wisaroot@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://github.com/wisarootl/leetcode-py"
-repository = "https://github.com/wisarootl/leetcode-py"
+homepage = "https://github.com/wislertt/leetcode-py"
+repository = "https://github.com/wislertt/leetcode-py"
 keywords = ["leetcode", "algorithms", "data-structures", "interview-prep", "coding-practice"]
 classifiers = [
     "Development Status :: 4 - Beta",
