@@ -187,7 +187,7 @@ Available tags for bulk operations:
 
 - `grind-75` - Essential 75 coding interview problems from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
 - `grind` - Extended Grind collection (100+ problems) including all Grind 75 plus additional problems 🚧 Partial
-- `blind-75` - Original [Blind 75](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions) curated list 🚧 Partial
+- `blind-75` - Original [Blind 75](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions) curated list ✅ Complete
 - `neetcode-150` - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set (150+ problems) 🚧 Partial
 - `algo-master-75` - Curated algorithmic mastery problems (75 problems) 🚧 Partial
 
