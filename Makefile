@@ -1,5 +1,5 @@
 PYTHON_VERSION = 3.13
-PROBLEM ?= reverse_nodes_in_k_group
+PROBLEM ?= number_of_connected_components_in_an_undirected_graph
 FORCE ?= 0
 COMMA := ,
 
