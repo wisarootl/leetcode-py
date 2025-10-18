@@ -42,11 +42,11 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 - **grind-75** - Essential coding interview questions from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
 - **grind** - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
-- **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list 🚧 Partial
+- **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list ✅ Complete
 - **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set 🚧 Partial
 - **algo-master-75** - Curated algorithmic mastery problems 🚧 Partial
 
-**Coverage**: 120+ unique problems across all major coding interview topics and difficulty levels.
+**Coverage**: 130+ unique problems across all major coding interview topics and difficulty levels.
 
 **Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wislertt/leetcode-py/blob/main/CONTRIBUTING.md)
 
@@ -82,11 +82,11 @@ lcpy gen --problem-tag neetcode-150 --output leetcode   # Generate NeetCode 150 
 lcpy gen --problem-tag blind-75 --output leetcode       # Generate Blind 75 problems
 ```
 
-![Problem Generation](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation.png" alt="Problem Generation" style="pointer-events: none;">
 
 _Bulk generation output showing "Generated problem:" messages for all 75 Grind problems_
 
-![Problem Generation 2](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation-2.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/problems-generation-2.png" alt="Problem Generation 2" style="pointer-events: none;">
 
 _Generated folder structure showing all 75 problem directories after command execution_
 
@@ -104,19 +104,19 @@ leetcode/two_sum/
 └── __init__.py         # Package marker
 ```
 
-![README Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/readme-example.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/readme-example.png" alt="README Example" style="pointer-events: none;">
 
 _README format that mirrors LeetCode's problem description layout_
 
-![Solution Boilerplate](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/solution-boilerplate.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/solution-boilerplate.png" alt="Solution Boilerplate" style="pointer-events: none;">
 
 _Solution boilerplate with type hints and TODO placeholder_
 
-![Test Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/test-example.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/test-example.png" alt="Test Example" style="pointer-events: none;">
 
 _Comprehensive parametrized tests with 10+ test cases - executable and debuggable in local development environment_
 
-![Test Logging](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/logs-in-test-solution.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/logs-in-test-solution.png" alt="Test Logging" style="pointer-events: none;">
 
 _Beautiful colorful test output with loguru integration for enhanced debugging and test result visualization_
 
@@ -141,21 +141,21 @@ Professional-grade visualization for debugging complex data structures with dual
 
 #### Jupyter Notebook Integration (HTML Rendering)
 
-![Tree Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-viz.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-viz.png" alt="Tree Visualization" style="pointer-events: none;">
 
 _Interactive tree visualization using Graphviz SVG rendering in Jupyter notebooks_
 
-![LinkedList Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-viz.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-viz.png" alt="LinkedList Visualization" style="pointer-events: none;">
 
 _Professional linked list visualization with Graphviz in Jupyter environment_
 
 #### Terminal/Console Output (String Rendering)
 
-![Tree String Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-str-viz.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/tree-str-viz.png" alt="Tree String Visualization" style="pointer-events: none;">
 
 _Clean ASCII tree rendering using anytree for terminal debugging and logging_
 
-![LinkedList String Visualization](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-str-viz.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/linkedlist-str-viz.png" alt="LinkedList String Visualization" style="pointer-events: none;">
 
 _Simple arrow-based list representation for console output and test debugging_
 
@@ -166,7 +166,7 @@ _Simple arrow-based list representation for console output and test debugging_
 - **Repository State**: This repo converts them to Python files (`.py`) for better version control
 - **Dual Rendering**: Automatic HTML visualization in notebooks, clean string output in terminals
 
-![Notebook Example](https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/notebook-example.png)
+<img src="https://raw.githubusercontent.com/wislertt/leetcode-py/main/docs/images/notebook-example.png" alt="Notebook Example" style="pointer-events: none;">
 
 _Interactive multi-cell playground with rich data structure visualization for each problem_
 
@@ -301,8 +301,8 @@ make gen-all-problems              # Regenerate all problems (destructive)
 
 ## 🏗️ Architecture
 
-- **Template-Driven**: JSON templates in `.templates/leetcode/json/` drive code generation
-- **Cookiecutter Integration**: Uses `.templates/leetcode/{{cookiecutter.problem_name}}/` template for consistent file structure
+- **Template-Driven**: JSON templates in `leetcode_py/cli/resources/leetcode/json/problems/` drive code generation
+- **Cookiecutter Integration**: Uses `leetcode_py/cli/resources/leetcode/{{cookiecutter.problem_name}}/` template for consistent file structure
 - **Automated Scraping**: LLM-assisted problem data extraction from LeetCode
 - **Version Control Friendly**: Python files by default, optional notebook support
 

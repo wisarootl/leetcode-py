@@ -1,0 +1,83 @@
+{
+    "problem_name": "meeting_rooms_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "253",
+    "problem_title": "Meeting Rooms II",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue)",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Given an array of meeting time intervals consisting of start and end times `[[s1,e1],[s2,e2],...]` (si < ei), find the minimum number of conference rooms required.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: [[0,30],[5,10],[15,20]]\nOutput: 2\n```" },
+            { "content": "```\nInput: [[7,10],[2,4]]\nOutput: 1\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= intervals.length <= 10^4\n- 0 <= starti < endi <= 10^6",
+    "readme_additional": "**Note:** Input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_meeting_rooms",
+    "helpers_run_signature": "(solution_class: type, intervals: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_meeting_rooms(intervals)",
+    "helpers_assert_name": "min_meeting_rooms",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_meeting_rooms, run_min_meeting_rooms\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MeetingRoomsII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_meeting_rooms",
+                "signature": "(self, intervals: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_meeting_rooms\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_meeting_rooms",
+                "signature": "(self, intervals: list[list[int]], expected: int)",
+                "parametrize": "intervals, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,30],[5,10],[15,20]], 2)",
+                        "([[7,10],[2,4]], 1)",
+                        "([[1,5]], 1)",
+                        "([[1,5],[8,9]], 1)",
+                        "([[1,5],[2,6]], 2)",
+                        "([[0,1],[1,2]], 1)",
+                        "([[0,2],[1,3]], 2)",
+                        "([[1,3],[2,4],[3,5]], 2)",
+                        "([[1,2],[3,4],[5,6]], 1)",
+                        "([[0,5],[5,10],[10,15]], 1)",
+                        "([[1,4],[2,3]], 2)",
+                        "([[1,10],[2,3],[4,5]], 2)",
+                        "([[9,10],[4,9],[4,17]], 2)",
+                        "([[2,7]], 1)",
+                        "([[1,13],[13,15]], 1)",
+                        "([[6,7],[2,4],[8,12]], 1)",
+                        "([[13,15],[1,13]], 1)",
+                        "([[0,30],[5,10],[15,20],[25,35]], 2)",
+                        "([[1,2],[2,3],[3,4],[4,5]], 1)",
+                        "([[1,3],[2,4],[4,6],[5,7]], 2)"
+                    ]
+                },
+                "body": "        result = run_min_meeting_rooms(Solution, intervals)\n        assert_min_meeting_rooms(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_meeting_rooms, assert_min_meeting_rooms\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nintervals = [[0,30],[5,10],[15,20]]\nexpected = 2",
+    "playground_run": "result = run_min_meeting_rooms(Solution, intervals)\nresult",
+    "playground_assert": "assert_min_meeting_rooms(result, expected)"
+}

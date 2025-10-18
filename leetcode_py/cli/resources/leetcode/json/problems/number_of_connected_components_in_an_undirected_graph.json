@@ -1,0 +1,85 @@
+{
+    "problem_name": "number_of_connected_components_in_an_undirected_graph",
+    "solution_class_name": "Solution",
+    "problem_number": "323",
+    "problem_title": "Number of Connected Components in an Undirected Graph",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Union Find, Graph",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each edge is a pair of nodes), write a function to find the number of connected components in an undirected graph.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 5 and edges = [[0, 1], [1, 2], [3, 4]]\n\n     0          3\n     |          |\n     1 --- 2    4\n\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: n = 5 and edges = [[0, 1], [1, 2], [2, 3], [3, 4]]\n\n     0           4\n     |           |\n     1 --- 2 --- 3\n\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 2000\n- 1 <= edges.length <= 5000\n- edges[i].length == 2\n- 0 <= ai, bi < n\n- ai != bi\n- There are no repeated edges.",
+    "readme_additional": "**Note:** You can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1] is the same as [1, 0] and thus will not appear together in edges.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_components",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_components(n, edges)",
+    "helpers_assert_name": "count_components",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_components, run_count_components\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfConnectedComponentsInAnUndirectedGraph",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_components",
+                "signature": "(self, n: int, edges: list[list[int]]) -> int",
+                "body": "        # TODO: Implement count_components\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_components",
+                "signature": "(self, n: int, edges: list[list[int]], expected: int)",
+                "parametrize": "n, edges, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[0, 1], [1, 2], [3, 4]], 2)",
+                        "(5, [[0, 1], [1, 2], [2, 3], [3, 4]], 1)",
+                        "(1, [], 1)",
+                        "(2, [[0, 1]], 1)",
+                        "(2, [], 2)",
+                        "(3, [[0, 1]], 2)",
+                        "(3, [[0, 1], [1, 2]], 1)",
+                        "(4, [[0, 1], [2, 3]], 2)",
+                        "(4, [[0, 1], [1, 2], [2, 3]], 1)",
+                        "(6, [[0, 1], [1, 2], [3, 4]], 3)",
+                        "(0, [], 0)",
+                        "(7, [[0, 1], [1, 2], [3, 4], [4, 5]], 3)",
+                        "(8, [[0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 7]], 2)",
+                        "(5, [[0, 1], [0, 2], [0, 3], [0, 4]], 1)",
+                        "(6, [[0, 1], [0, 2], [1, 3], [2, 4], [3, 5]], 1)",
+                        "(10, [], 10)",
+                        "(4, [[0, 1], [0, 2], [1, 2]], 2)",
+                        "(5, [[0, 1], [2, 3], [4, 4]], 3)"
+                    ]
+                },
+                "body": "        result = run_count_components(Solution, n, edges)\n        assert_count_components(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_components, assert_count_components\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nedges = [[0, 1], [1, 2], [3, 4]]\nexpected = 2",
+    "playground_run": "result = run_count_components(Solution, n, edges)\nresult",
+    "playground_assert": "assert_count_components(result, expected)"
+}

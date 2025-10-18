@@ -1,0 +1,89 @@
+{
+    "problem_name": "encode_and_decode_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "271",
+    "problem_title": "Encode and Decode Strings",
+    "difficulty": "Medium",
+    "topics": "Array, String, Design",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: dummy_input = [\"Hello\",\"World\"]\nOutput: \"Hello,World\"\nExplanation: Machine 1:\nCodec encoder = new Codec();\nString msg = encoder.encode(strs);\nMachine 1 ---msg---> Machine 2\nMachine 2:\nCodec decoder = new Codec();\nString[] strs = decoder.decode(msg);\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= strs.length <= 200\n- 0 <= strs[i].length <= 200\n- strs[i] contains any possible characters out of 256 valid ASCII characters.",
+    "readme_additional": "**Note:**\n- The string may contain any possible characters out of 256 valid ASCII characters. Your algorithm should be generalized enough to work on any possible characters.\n- Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.\n- Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "encode_decode",
+    "helpers_run_signature": "(solution_class: type, strs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    encoded = implementation.encode(strs)\n    decoded = implementation.decode(encoded)\n    return decoded",
+    "helpers_assert_name": "encode_decode",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_encode_decode, run_encode_decode\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EncodeAndDecodeStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "encode",
+                "signature": "(self, strs: list[str]) -> str",
+                "body": "        # TODO: Implement encode\n        return \"\""
+            },
+            {
+                "name": "decode",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement decode\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_encode_decode",
+                "signature": "(self, strs: list[str])",
+                "parametrize": "strs",
+                "test_cases": {
+                    "list": [
+                        "[\"Hello\", \"World\"]",
+                        "[\"abc\", \"def\"]",
+                        "[\"\"]",
+                        "[\"a\", \"b\", \"c\"]",
+                        "[\"\", \"\", \"\"]",
+                        "[\"hello\", \"\", \"world\"]",
+                        "[\"a#b\", \"c#d\"]",
+                        "[\"4#3hello\", \"world\"]",
+                        "[\"#\", \"##\", \"###\"]",
+                        "[\"abc123\", \"def456\", \"ghi789\"]",
+                        "[\"special!@#$%^&*()\"]",
+                        "[\"with spaces\", \"and tabs\\t\", \"and newlines\\n\"]",
+                        "[\"unicode测试\", \"emoji😀\"]",
+                        "[\"very long string \" * 10]",
+                        "[\"a\" * 200]",
+                        "[]",
+                        "[\"single\"]",
+                        "[\"comma,separated\", \"values,here\"]",
+                        "[\"pipe|separated\", \"values|here\"]",
+                        "[\"colon:separated\", \"values:here\"]"
+                    ]
+                },
+                "body": "        result = run_encode_decode(Solution, strs)\n        assert_encode_decode(result, strs)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_encode_decode, assert_encode_decode\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstrs = ['Hello', 'World']\nexpected = strs",
+    "playground_run": "result = run_encode_decode(Solution, strs)\nresult",
+    "playground_assert": "assert_encode_decode(result, expected)"
+}

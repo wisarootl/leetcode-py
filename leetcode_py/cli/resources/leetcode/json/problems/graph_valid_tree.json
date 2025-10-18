@@ -1,0 +1,85 @@
+{
+    "problem_name": "graph_valid_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "261",
+    "problem_title": "Graph Valid Tree",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Union Find, Graph",
+    "_tags": { "list": ["blind-75"] },
+    "readme_description": "Given `n` nodes labeled from `0` to `n-1` and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: n = 5, and edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 2000\n- 0 <= edges.length <= 5000\n- edges[i].length == 2\n- 0 <= ai, bi < n\n- ai != bi\n- There are no self-loops or repeated edges.",
+    "readme_additional": "**Note:** you can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0,1] is the same as [1,0] and thus will not appear together in edges.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_tree",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_tree(n, edges)",
+    "helpers_assert_name": "valid_tree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_tree, run_valid_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GraphValidTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_tree",
+                "signature": "(self, n: int, edges: list[list[int]]) -> bool",
+                "body": "        # TODO: Implement valid_tree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_tree",
+                "signature": "(self, n: int, edges: list[list[int]], expected: bool)",
+                "parametrize": "n, edges, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[0,1], [0,2], [0,3], [1,4]], True)",
+                        "(5, [[0,1], [1,2], [2,3], [1,3], [1,4]], False)",
+                        "(1, [], True)",
+                        "(2, [[0,1]], True)",
+                        "(2, [], False)",
+                        "(3, [[0,1], [1,2]], True)",
+                        "(3, [[0,1], [0,2], [1,2]], False)",
+                        "(4, [[0,1], [2,3]], False)",
+                        "(4, [[0,1], [1,2], [2,3]], True)",
+                        "(4, [[0,1], [1,2], [2,3], [3,0]], False)",
+                        "(0, [], True)",
+                        "(6, [[0,1], [0,2], [1,3], [2,4], [3,5]], True)",
+                        "(6, [[0,1], [0,2], [1,3], [2,4], [3,5], [4,5]], False)",
+                        "(5, [[0,1], [0,2], [0,3], [0,4]], True)",
+                        "(3, [[0,1]], False)",
+                        "(4, [[0,1], [0,2], [0,3], [1,2]], False)",
+                        "(7, [[0,1], [1,2], [2,3], [3,4], [4,5], [5,6]], True)",
+                        "(5, [[0,1], [1,2], [3,4]], False)"
+                    ]
+                },
+                "body": "        result = run_valid_tree(Solution, n, edges)\n        assert_valid_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_tree, assert_valid_tree\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nedges = [[0,1], [0,2], [0,3], [1,4]]\nexpected = True",
+    "playground_run": "result = run_valid_tree(Solution, n, edges)\nresult",
+    "playground_assert": "assert_valid_tree(result, expected)"
+}
